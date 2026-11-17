@@ -102,6 +102,19 @@ th,td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vert
 tr:last-child td{border-bottom:0}
 th{background:var(--chip);font-weight:700;letter-spacing:.03em;white-space:nowrap}
 tbody tr:hover td{background:#FBF9F4}
+.tblwrap table.wide{min-width:640px}
+.svc-cards{display:grid;gap:12px}
+@media(min-width:760px){.svc-cards{grid-template-columns:1fr 1fr}}
+.svc-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+.svc-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.svc-top b{font-size:15.5px;letter-spacing:.02em}
+.svc-ent{font-size:13px;color:var(--sub)}
+.svc-kv{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;margin:10px 0 0}
+.svc-kv>div:last-child{grid-column:1/-1}
+@media(min-width:640px){.svc-kv{grid-template-columns:repeat(3,1fr)}.svc-kv>div:last-child{grid-column:auto}}
+.svc-kv dt{font-size:11.5px;color:var(--sub);font-weight:700;letter-spacing:.04em}
+.svc-kv dd{margin:0;font-size:13.5px;font-variant-numeric:tabular-nums;line-height:1.55}
+.more-row{text-align:center;margin-top:18px}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
 .state-card{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s}
 .state-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
@@ -139,7 +152,7 @@ footer.site{border-top:1px solid var(--line);margin-top:64px;padding:26px 0;colo
 <h2>比べた項目と、並び順の決め方（先に開示します）</h2>
 <ul><li>対象は、2社間のファクタリングで、公式の公表値と照合できた12サービスです。公式サイトに手数料の明示がないサービスは、この表には入れていません。</li><li>比べた項目は、手数料の下限と上限、入金までの速さ、買取可能額の下限と上限です。</li><li>表の並び順は、手数料の下限が小さい順です。これは「おすすめの順番」ではありません。実際の手数料は売掛先の信用と期日までの長さで決まるため、下限が小さい会社が、自分の売掛金でも安くなるとは限りません。</li><li>仲介・紹介のサービスは、自社の買取条件を持たないため、この表には入れていません。</li><li>各サービスには「透明性スコア」を付けています。これは当サイトが定義した物差しで、確認できた公表項目の数（費用の下限と上限、金額の下限と上限、償還請求権の有無、実績、所在地と代表者の5項目のうち、いくつを公表しているか）です。スコアが低いことは、その会社の条件が悪いことを意味しません。公表されていない項目は、見積もりや契約書で確認する必要がある場所として読んでください。</li></ul>
 <h2>比較表（2026年11月17日確認）</h2>
-<div class="tblwrap"><table><tr><th>サービス</th><th>運営会社</th><th>手数料</th><th>入金までの速さ</th><th>買取可能額</th><th>透明性スコア</th></tr><tr><td>No.1</td><td>株式会社No.1</td><td>0.5〜15%</td><td>最短即日</td><td>50万円〜3億円</td><td>3</td></tr><tr><td>アクセルファクター</td><td>株式会社アクセルファクター</td><td>0.5〜12%</td><td>最短2時間</td><td>下限なし〜1億円</td><td>3</td></tr><tr><td>トップ・マネジメント</td><td>株式会社トップ・マネジメント</td><td>0.5〜12.5%</td><td>最短即日</td><td>30万円〜3億円</td><td>3</td></tr><tr><td>PAYTODAY</td><td>Dual Life Partners株式会社</td><td>1〜9.5%</td><td>最短30分</td><td>下限なし〜上限なし</td><td>3</td></tr><tr><td>QuQuMo</td><td>株式会社アクティブサポート</td><td>1〜14.8%（比較資料の値。公式は料率を公表していない）</td><td>最短2時間</td><td>下限なし〜上限なし</td><td>3</td></tr><tr><td>日本中小企業金融サポート機構</td><td>一般社団法人 日本中小企業金融サポート機構</td><td>1.5%〜（上限は非公表）</td><td>最短3時間</td><td>下限なし〜上限なし</td><td>2</td></tr><tr><td>OLTA</td><td>OLTA株式会社</td><td>2〜9%</td><td>最短即日</td><td>下限なし〜上限なし</td><td>3</td></tr><tr><td>PMG</td><td>ピーエムジー株式会社</td><td>2%〜（上限は非公表）</td><td>最短30分</td><td>50万円〜上限なし</td><td>1</td></tr><tr><td>ビートレーディング</td><td>株式会社ビートレーディング</td><td>2〜12%（2社間は4〜12%）</td><td>最短1時間</td><td>1万円〜30億円</td><td>3</td></tr><tr><td>ベストファクター</td><td>株式会社アレシア</td><td>2〜20%</td><td>最短即日</td><td>10万円〜1億円超</td><td>3</td></tr><tr><td>みんなのファクタリング</td><td>株式会社チェンジ</td><td>7〜15%</td><td>最短60分</td><td>1万円〜300万円</td><td>2</td></tr><tr><td>ラボル</td><td>株式会社ラボル</td><td>一律10%</td><td>最短30分</td><td>1万円〜上限なし</td><td>4</td></tr></table></div>
+<div class="tblwrap"><table class="wide"><tr><th>サービス</th><th>運営会社</th><th>手数料</th><th>入金までの速さ</th><th>買取可能額</th><th>透明性スコア</th></tr><tr><td>No.1</td><td>株式会社No.1</td><td>0.5〜15%</td><td>最短即日</td><td>50万円〜3億円</td><td>3</td></tr><tr><td>アクセルファクター</td><td>株式会社アクセルファクター</td><td>0.5〜12%</td><td>最短2時間</td><td>下限なし〜1億円</td><td>3</td></tr><tr><td>トップ・マネジメント</td><td>株式会社トップ・マネジメント</td><td>0.5〜12.5%</td><td>最短即日</td><td>30万円〜3億円</td><td>3</td></tr><tr><td>PAYTODAY</td><td>Dual Life Partners株式会社</td><td>1〜9.5%</td><td>最短30分</td><td>下限なし〜上限なし</td><td>3</td></tr><tr><td>QuQuMo</td><td>株式会社アクティブサポート</td><td>1〜14.8%（比較資料の値。公式は料率を公表していない）</td><td>最短2時間</td><td>下限なし〜上限なし</td><td>3</td></tr><tr><td>日本中小企業金融サポート機構</td><td>一般社団法人 日本中小企業金融サポート機構</td><td>1.5%〜（上限は非公表）</td><td>最短3時間</td><td>下限なし〜上限なし</td><td>2</td></tr><tr><td>OLTA</td><td>OLTA株式会社</td><td>2〜9%</td><td>最短即日</td><td>下限なし〜上限なし</td><td>3</td></tr><tr><td>PMG</td><td>ピーエムジー株式会社</td><td>2%〜（上限は非公表）</td><td>最短30分</td><td>50万円〜上限なし</td><td>1</td></tr><tr><td>ビートレーディング</td><td>株式会社ビートレーディング</td><td>2〜12%（2社間は4〜12%）</td><td>最短1時間</td><td>1万円〜30億円</td><td>3</td></tr><tr><td>ベストファクター</td><td>株式会社アレシア</td><td>2〜20%</td><td>最短即日</td><td>10万円〜1億円超</td><td>3</td></tr><tr><td>みんなのファクタリング</td><td>株式会社チェンジ</td><td>7〜15%</td><td>最短60分</td><td>1万円〜300万円</td><td>2</td></tr><tr><td>ラボル</td><td>株式会社ラボル</td><td>一律10%</td><td>最短30分</td><td>1万円〜上限なし</td><td>4</td></tr></table></div>
 <h2>表の読み方</h2>
 <p>手数料の幅が広いサービスは、売掛先の信用による振れ幅が大きいという意味です。幅の下限だけで選ぶと、見積もりで想定より高くなる場合があります。入金の速さは、いずれも審査が最短で進んだ場合の公表値です。書類に不足がある場合や、申し込みが集中する時期は、その限りではありません。</p>
 <p>少額の売掛金では、買取可能額の下限が効きます。1万円から申し込めるのは、ビートレーディング、みんなのファクタリング、ラボルの3サービスです。個人事業主とフリーランスに限るサービス（ラボル）もあるため、対象の欄もあわせて確認してください。</p>
