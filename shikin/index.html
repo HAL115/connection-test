@@ -172,7 +172,7 @@ footer.site{border-top:1px solid var(--line);margin-top:64px;padding:26px 0;colo
 <section id="check">
 <p class="eyebrow dark">01 — CHECK</p>
 <h2 class="sec">状態チェック</h2>
-<p class="sec-sub">質問は4つです。選ぶと次に進みます。競合の診断と違い、連絡先を聞かずに結果を最後まで出します。</p>
+<p class="sec-sub">質問は6つです。選ぶと次に進みます。競合の診断と違い、連絡先を聞かずに結果を最後まで出します。</p>
 <div class="panel" id="wiz">
 <div class="step-label" id="step-label">STEP 1 / 4</div>
 <div class="progress"><i id="progress-bar" style="width:0%"></i></div>
@@ -182,7 +182,7 @@ footer.site{border-top:1px solid var(--line);margin-top:64px;padding:26px 0;colo
 </div>
 <div id="result" style="display:none"></div>
 <div class="steps3">
-<div class="step3 rv"><b><i>1</i>質問に答える</b><p>事業の形、期限、売掛金の有無、借入の状況の4つです。</p></div>
+<div class="step3 rv"><b><i>1</i>質問に答える</b><p>事業の形、期限、売掛金の有無、借入と決算の状態、希望金額の6つです。</p></div>
 <div class="step3 rv"><b><i>2</i>間に合う手法と候補が出る</b><p>向かない手法も、理由つきで確認できます。</p></div>
 <div class="step3 rv"><b><i>3</i>各社の公式サイトで申し込む</b><p>当サイトは連絡先を取りません。申し込みは各社へ直接どうぞ。</p></div>
 </div>
@@ -194,7 +194,7 @@ footer.site{border-top:1px solid var(--line);margin-top:64px;padding:26px 0;colo
 <p class="sec-sub">ピラーの記事は、状態ごとに進め方を書いています。</p>
 <div class="split">
 <img class="photo rv" src="assets/section-owner.webp" alt="請求書を確認する事業者">
-<div class="cards" style="grid-template-columns:1fr"><a class="state-card" href="articles/guide-payment-gap.html"><b>入金は来月なのに、今月の支払いが厳しい</b><span>支払いと入金のズレへの進め方を見る →</span></a><a class="state-card" href="articles/basics-2sha.html"><b>売掛金を早く現金化したい</b><span>ファクタリングの仕組みと手順を見る →</span></a><a class="state-card" href="articles/compare-2sha.html"><b>手数料と速さを比べて選びたい</b><span>2社間の12サービス比較を見る →</span></a><a class="state-card" href="#check"><b>創業したばかりで実績が少ない</b><span>状態チェックで使える手法を見る →</span></a><a class="state-card" href="#check"><b>銀行の審査に落ちた</b><span>状態チェックで使える手法を見る →</span></a><a class="state-card" href="articles/guide-payment-gap.html"><b>初めての資金調達で全体像を知りたい</b><span>状態別アドバイスを読む →</span></a></div>
+<div class="cards" style="grid-template-columns:1fr"><a class="state-card" href="articles/guide-payment-gap.html"><b>入金は来月なのに、今月の支払いが厳しい</b><span>支払いと入金のズレへの進め方を見る →</span></a><a class="state-card" href="articles/guide-first-time.html"><b>初めての資金調達で全体像を知りたい</b><span>初めての資金調達の進め方を見る →</span></a><a class="state-card" href="articles/guide-rejected.html"><b>銀行の審査に落ちた</b><span>理由の切り分けと次の窓口を見る →</span></a><a class="state-card" href="articles/guide-tax-arrears.html"><b>税金の滞納がある</b><span>残る選択肢と最初の一手を見る →</span></a><a class="state-card" href="articles/guide-startup.html"><b>創業したばかりで実績が少ない</b><span>創業直後の窓口と順番を見る →</span></a><a class="state-card" href="articles/guide-akaji.html"><b>赤字・債務超過が続いている</b><span>決算で決まらない系統を見る →</span></a><a class="state-card" href="articles/guide-equipment.html"><b>設備投資の資金を考えている</b><span>期間のミスマッチを避ける進め方を見る →</span></a><a class="state-card" href="articles/guide-subsidy-bridge.html"><b>補助金に採択されたが入金が先</b><span>つなぎ資金の進め方を見る →</span></a><a class="state-card" href="articles/guide-arv-delay.html"><b>売掛先の入金が遅れた・倒産した</b><span>使える制度と手当てを見る →</span></a><a class="state-card" href="articles/basics-2sha.html"><b>売掛金を早く現金化したい</b><span>ファクタリングの仕組みと手順を見る →</span></a><a class="state-card" href="articles/compare-2sha.html"><b>手数料と速さを比べて選びたい</b><span>2社間の12サービス比較を見る →</span></a></div>
 </div>
 </section>
 
@@ -260,8 +260,26 @@ const STEPS = [
   {key:'ent', q:'事業の形はどちらですか', opts:[['corp','法人'],['sole','個人事業主']]},
   {key:'days', q:'資金が要るのは、いつまでですか', opts:[['1','今日〜明日','支払いが目前に迫っている'],['7','今週中'],['30','今月中'],['999','急がない','じっくり比べたい']]},
   {key:'arv', q:'売掛金（入金待ちの請求書）はありますか', opts:[['yes','ある','取引先への請求が済んでいて、入金待ちのもの'],['no','ない']]},
-  {key:'loan', q:'借入の状況はどれに近いですか', opts:[['first','初めて借りる'],['has','借入がある'],['rejected','審査に落ちたことがある'],['tax','税金の滞納がある']]}
+  {key:'loan', q:'借入の状況はどれに近いですか', opts:[['first','初めて借りる'],['has','借入がある'],['rejected','審査に落ちたことがある'],['tax','税金の滞納がある']]},
+  {key:'fin', q:'決算の状態はどれに近いですか', opts:[['stable','黒字で安定している'],['akaji','赤字が続いている'],['over','債務超過がある'],['unknown','分からない']]},
+  {key:'amt', q:'希望する金額はどれくらいですか', opts:[['u100','100万円未満'],['u500','100万〜500万円'],['u3000','500万〜3,000万円'],['over','3,000万円を超える']]}
 ];
+const TAX_NG = ['M02','M03','M04','M05','M06','M18','M19','M20'];
+const FIN_CAUTION = ['M01','M02','M03'];
+const BAND_LO = {u100: 0, u500: 100, u3000: 500, over: 3000};
+function amtHiWan(s){
+  if(!s.amt_hi) return null;
+  if(s.amt_hi.includes('上限なし')) return Infinity;
+  let total = 0, found = false;
+  const oku = s.amt_hi.match(/([\d.]+)\s*億/);
+  if(oku){ total += parseFloat(oku[1]) * 10000; found = true; }
+  const man = s.amt_hi.replace(/[\d.]+\s*億/, '').match(/([\d,]+)\s*万/);
+  if(man){ total += parseFloat(man[1].replace(/,/g, '')); found = true; }
+  if(found) return total;
+  const yen = s.amt_hi.match(/([\d,]+)\s*円/);
+  if(yen) return parseFloat(yen[1].replace(/,/g, '')) / 10000;
+  return null;
+}
 let step = 0; const ans = {};
 function renderStep(){
   const s = STEPS[step];
@@ -282,12 +300,21 @@ function pick(key, val){
 }
 function backStep(){ if(step > 0){ step--; renderStep(); } }
 function restart(){ step = 0; for(const k in ans) delete ans[k]; document.getElementById('wiz').style.display = 'block'; document.getElementById('result').style.display = 'none'; renderStep(); }
-function svcOf(mid){ return SERVICES.filter(s => s.method === mid); }
+function svcOf(mid){
+  const lo = BAND_LO[ans.amt] || 0;
+  return SERVICES.filter(s => {
+    if(s.method !== mid) return false;
+    if(!lo) return true;
+    const hi = amtHiWan(s);
+    return hi === null || hi >= lo;
+  });
+}
 function showResult(){
   const maxD = parseInt(ans.days, 10);
   let fit = [], maybe = [], unfit = [];
   for(const m of METHODS){
-    if(m.needsArv && ans.arv === 'no') unfit.push([m, '売掛金（請求書）が必要な手法です。']);
+    if(ans.loan === 'tax' && TAX_NG.includes(m.id)) unfit.push([m, '税金の滞納がある場合、納税証明書の提出が必要な公的な融資や補助は対象外になります。']);
+    else if(m.needsArv && ans.arv === 'no') unfit.push([m, '売掛金（請求書）が必要な手法です。']);
     else if(ans.ent === 'sole' && !m.target.includes('個人事業主')) unfit.push([m, '対象が法人中心の手法です。']);
     else if(m.maxDays <= maxD) fit.push(m);
     else if(m.minDays <= maxD) maybe.push(m);
@@ -299,7 +326,7 @@ function showResult(){
     const svcs = svcOf(m.id).slice().sort((a,b) => (parseInt(b.score)||0) - (parseInt(a.score)||0));
     h += '<div class="mcard"><h3>' + m.name + (m._maybe ? ' <span class="badge low">最短では間に合うが確実ではない</span>' : '') + '</h3><p style="margin:0">' + m.def + '</p>';
     h += '<dl class="kv"><dt>費用の目安</dt><dd>' + m.cost + '</dd><dt>入金まで</dt><dd>' + m.period + '</dd><dt>必要書類</dt><dd>' + m.docs + '</dd></dl>';
-    if(ans.loan === 'tax' && m.taxCaution) h += '<p class="note"><b>注意：</b>税金の滞納がある場合、公的な融資や補助は対象外になることがあります。</p>';
+    if((ans.fin === 'akaji' || ans.fin === 'over') && FIN_CAUTION.includes(m.id)) h += '<p class="note"><b>注意：</b>赤字や債務超過が続いている場合、この手法は決算内容の審査が中心になるため、結果が厳しくなることがあります。</p>';
     for(const s of svcs.slice(0,3)){
       h += '<div class="svc"><div><b><a href="services/' + s.id.toLowerCase() + '.html">' + s.name + '</a></b>（' + s.entity + '）<br>手数料 ' + feeText(s) + '／入金 ' + (s.speed || '―') + '／公表している金額 ' + amtText(s) + '</div><span class="badge' + ((parseInt(s.score)||0) >= 3 ? '' : ' low') + '">透明性 ' + (s.score || '―') + ' / 5</span></div>';
     }
