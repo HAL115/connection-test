@@ -89,6 +89,7 @@ h2.sec{font-size:26px;font-weight:900;letter-spacing:.03em;line-height:1.5;margi
 details.unfit,details.faq{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:4px 22px;margin-bottom:10px;box-shadow:var(--shadow)}
 details.unfit summary,details.faq summary{cursor:pointer;font-weight:700;min-height:48px;display:flex;align-items:center;letter-spacing:.02em}
 details.unfit p,details.faq p{font-size:14.5px;color:#33312D;padding-bottom:10px}
+.why-list{margin:0 0 8px;padding-left:20px;font-size:14.5px;line-height:1.8}
 .split{display:grid;gap:26px;align-items:stretch}
 @media(min-width:860px){.split{grid-template-columns:5fr 7fr}}
 .split img.photo{width:100%;height:100%;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-lg);display:block}
@@ -316,23 +317,48 @@ function svcOf(mid){
 }
 function showResult(){
   const maxD = parseInt(ans.days, 10);
-  let fit = [], maybe = [], unfit = [];
+  let fit = [], maybe = [], unfit1 = [], unfit2 = [];
   for(const m of METHODS){
-    if(ans.loan === 'tax' && TAX_NG.includes(m.id)) unfit.push([m, '税金の滞納がある場合、納税証明書の提出が必要な公的な融資や補助は対象外になります。']);
-    else if(m.id === 'M01' && ans.age === 'new') unfit.push([m, '銀行融資（プロパー）は複数期の実績が前提です。創業期は公庫と保証協会の創業向けが入口になります。']);
-    else if(m.id === 'M23' && ans.age === 'new') unfit.push([m, '私募債は、発行できる会社の条件（規模と実績）が決まっています。']);
-    else if(m.needsArv && ans.arv === 'no') unfit.push([m, '売掛金（請求書）が必要な手法です。']);
-    else if(ans.ent === 'sole' && !m.target.includes('個人事業主')) unfit.push([m, '対象が法人中心の手法です。']);
+    if(ans.loan === 'tax' && TAX_NG.includes(m.id)) unfit1.push([m, '税金の滞納がある場合、納税証明書の提出が必要な公的な融資や補助は対象外になります。']);
+    else if(m.id === 'M01' && ans.age === 'new') unfit1.push([m, '銀行融資（プロパー）は複数期の実績が前提です。創業期は公庫と保証協会の創業向けが入口になります。']);
+    else if(m.id === 'M23' && ans.age === 'new') unfit1.push([m, '私募債は、発行できる会社の条件（規模と実績）が決まっています。']);
+    else if(m.needsArv && ans.arv === 'no') unfit1.push([m, '売掛金（請求書）が必要な手法です。']);
+    else if(ans.ent === 'sole' && !m.target.includes('個人事業主')) unfit1.push([m, '対象が法人中心の手法です。']);
     else if(m.maxDays <= maxD) fit.push(m);
     else if(m.minDays <= maxD) maybe.push(m);
-    else unfit.push([m, '入金までの期間の目安が「' + m.period + '」で、必要な時期に間に合いません。']);
+    else unfit2.push([m, '入金までの期間の目安が「' + m.period + '」で、必要な時期に間に合いません。']);
   }
-  fit = fit.concat(maybe.map(m => { m._maybe = true; return m; }));
-  let h = '<div class="result-head"><b>あなたの状態では、期限に間に合う手法は ' + fit.length + '件です。</b><br>向かない ' + unfit.length + '件も、理由つきで下に置きました。</div>';
-  for(const m of fit){
+  const DAYS_LABEL = {'1':'今日〜明日', '7':'今週中', '30':'今月中', '999':'急がない'};
+  const BAND_LABEL = {u100:'100万円未満', u500:'100万〜500万円', u3000:'500万〜3,000万円', over:'3,000万円超'};
+  function reasons(m, isMaybe){
+    const rs = [];
+    if(isMaybe) rs.push('期限：最短では必要な時期（' + DAYS_LABEL[ans.days] + '）に間に合いますが、確実ではありません。期間の目安は「' + m.period + '」です。');
+    else rs.push('期限：入金までの期間の目安は「' + m.period + '」で、必要な時期（' + DAYS_LABEL[ans.days] + '）に間に合います。');
+    if(m.needsArv && ans.arv === 'yes') rs.push('売掛金：売掛金があるため、売掛金を資金に換える系統が使えます。審査の中心は申込者ではなく売掛先の信用です。');
+    if(ans.age === 'new' && (m.id === 'M03' || m.id === 'M02')) rs.push('創業：創業期向けに設計された制度です。実績がなくても、計画と自己資金で判断されます。');
+    if(ans.fin === 'stable' && FIN_CAUTION.includes(m.id)) rs.push('決算：黒字で安定しており、決算内容の審査が中心の手法でも進められます。');
+    if((ans.fin === 'akaji' || ans.fin === 'over') && ['M09','M10','M13','M14','M15','M16','M17'].includes(m.id)) rs.push('決算：決算が弱くても、不動産や売掛金という別の裏付けで進める系統です。');
+    if(ans.loan === 'rejected' && ['M09','M10','M13','M14','M15','M16','M17'].includes(m.id)) rs.push('審査の形：銀行の審査に落ちたことがあっても、審査の中心が決算ではない系統です。');
+    if(ans.loan === 'first' && (m.id === 'M02' || m.id === 'M03')) rs.push('借入の実績：初めての借入でも、実績づくりの入口として使われる制度です。');
+    const n = svcOf(m.id).length;
+    if(n > 0) rs.push('金額：希望の帯（' + BAND_LABEL[ans.amt] + '）に公表条件が合う候補が' + n + '件あります。');
+    if(m.fit) rs.push('手法の向く状態：' + m.fit);
+    return rs;
+  }
+  const shown = fit.concat(maybe.map(m => { m._maybe = true; return m; }));
+  const remain1 = METHODS.length - unfit1.length;
+  const remain2 = remain1 - unfit2.length;
+  let h = '<div class="result-head"><b>絞り込みの過程</b><br>'
+    + '全手法 ' + METHODS.length + '件 → 第1段階（絶対条件：対象、税金の滞納、創業からの期間、売掛金の要否）で ' + unfit1.length + '件を除外し、残り ' + remain1 + '件<br>'
+    + '→ 第2段階（期限）で ' + unfit2.length + '件を除外し、残り ' + remain2 + '件<br>'
+    + '→ 第3段階（決算と借入の状態）では除外せず、注意を付けて示します<br>'
+    + '<b>提示する手法は ' + shown.length + '件です。</b>手法ごとにおすすめの理由を付けました。外れた手法も、段階ごとに理由つきで下に置きました。</div>';
+  for(const m of shown){
     const svcs = svcOf(m.id).slice().sort((a,b) => (parseInt(b.score)||0) - (parseInt(a.score)||0));
     h += '<div class="mcard"><h3>' + m.name + (m._maybe ? ' <span class="badge low">最短では間に合うが確実ではない</span>' : '') + '</h3><p style="margin:0">' + m.def + '</p>';
     h += '<dl class="kv"><dt>費用の目安</dt><dd>' + m.cost + '</dd><dt>入金まで</dt><dd>' + m.period + '</dd><dt>必要書類</dt><dd>' + m.docs + '</dd></dl>';
+    const rs = reasons(m, !!m._maybe);
+    if(rs.length) h += '<p style="margin:10px 0 2px"><b>おすすめの理由</b></p><ul class="why-list">' + rs.map(r => '<li>' + r + '</li>').join('') + '</ul>';
     if((ans.fin === 'akaji' || ans.fin === 'over') && FIN_CAUTION.includes(m.id)){
       const finNote = (ans.fin === 'over' && m.id === 'M01')
         ? '注意：債務超過の場合、決算内容が審査の中心になる銀行融資は特に厳しくなります。不動産担保や売掛金の系統も並行して検討してください。'
@@ -352,8 +378,14 @@ function showResult(){
     if(GUIDE[m.id]) h += '<a class="btn btn-ghost btn-sm" href="' + GUIDE[m.id] + '">仕組みを知る</a>';
     h += '</div></div>';
   }
-  h += '<h3 style="margin-top:30px">今回は向かない手法（' + unfit.length + '件）</h3>';
-  for(const [m, r] of unfit) h += '<details class="unfit"><summary>' + m.name + '</summary><p>' + r + '</p></details>';
+  if(unfit1.length){
+    h += '<h3 style="margin-top:30px">第1段階で外れた手法（絶対条件・' + unfit1.length + '件）</h3>';
+    for(const [m, r] of unfit1) h += '<details class="unfit"><summary>' + m.name + '</summary><p>' + r + '</p></details>';
+  }
+  if(unfit2.length){
+    h += '<h3 style="margin-top:30px">第2段階で外れた手法（期限・' + unfit2.length + '件）</h3>';
+    for(const [m, r] of unfit2) h += '<details class="unfit"><summary>' + m.name + '</summary><p>' + r + '</p></details>';
+  }
   h += '<div class="cta-row"><button class="btn btn-sub" onclick="restart()">条件を変えて見直す</button><a class="btn btn-ghost" href="#search">サービス一覧から探す</a></div>';
   h += '<p class="note">この結果は一般的な情報の提示です。個別の可否は各社の審査で決まります。</p>';
   document.getElementById('wiz').style.display = 'none';
