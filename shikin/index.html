@@ -5,140 +5,206 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
 <style>
 :root{
-  --primary:#14504C; --primary-dark:#0C3835; --cta:#C2410C; --cta-dark:#9A3412;
-  --ink:#1A1A1A; --sub:#55534E; --bg:#FBFAF7; --surface:#FFFFFF; --line:#D8D4CC;
-  --ok:#1B7A43; --okbg:#EDF7F0; --warnbg:#F7F5F0; --chip:#EAF2F1;
-  --radius:12px;
+  --primary:#14504C; --primary-deep:#0B3532; --cta:#C2410C; --cta-dark:#9A3412; --gold:#E8B34B;
+  --ink:#191919; --sub:#5A564E; --bg:#FAF8F4; --surface:#FFFFFF; --line:#DDD8CE; --chip:#EAF2F1;
+  --shadow:0 1px 2px rgba(20,40,38,.05),0 8px 24px rgba(20,40,38,.06);
+  --shadow-lg:0 2px 4px rgba(20,40,38,.06),0 16px 40px rgba(20,40,38,.12);
+  --radius:14px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Noto Sans JP',-apple-system,'Hiragino Kaku Gothic ProN',sans-serif;font-size:16px;line-height:1.75;color:var(--ink);background:var(--bg);margin:0;padding:0 0 120px}
+body{font-family:'Noto Sans JP',-apple-system,'Hiragino Kaku Gothic ProN',sans-serif;font-size:16px;line-height:1.85;letter-spacing:.02em;color:var(--ink);background:var(--bg);margin:0;padding:0 0 120px;-webkit-font-smoothing:antialiased}
+::selection{background:var(--primary);color:#fff}
 .wrap{max-width:1024px;margin:0 auto;padding:0 20px}
-header.site{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
-header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-.logo{font-weight:900;font-size:18px;color:var(--primary);letter-spacing:.02em}
-.logo small{display:block;font-size:10px;color:var(--sub);font-weight:500}
-.hdr-cta{background:var(--cta);color:#fff;text-decoration:none;font-weight:700;border-radius:8px;padding:10px 18px;font-size:14px;min-height:44px;display:inline-flex;align-items:center}
+a{color:var(--primary)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+header.site{background:rgba(255,255,255,.92);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;backdrop-filter:blur(6px)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-weight:900;font-size:18px;color:var(--primary);letter-spacing:.04em;line-height:1.3}
+.logo small{display:block;font-size:10px;color:var(--sub);font-weight:500;letter-spacing:.08em}
+.hdr-cta{background:var(--cta);color:#fff;text-decoration:none;font-weight:700;border-radius:8px;padding:10px 18px;font-size:14px;letter-spacing:.04em;min-height:44px;display:inline-flex;align-items:center;transition:background .2s}
 .hdr-cta:hover{background:var(--cta-dark)}
-.hero{background:linear-gradient(160deg,#14504C 0%,#0C3835 100%);color:#fff;padding:56px 0 48px}
-.hero h1{font-size:34px;line-height:1.45;font-weight:900;margin:0 0 16px}
-.hero p.lead{font-size:17px;line-height:1.8;margin:0 0 24px;max-width:640px}
-.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 28px}
-.chip{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:6px 14px;font-size:13px}
-.chip b{font-size:15px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;font-weight:700;text-decoration:none;cursor:pointer;border:0;min-height:56px;padding:14px 28px;font-size:17px}
-.btn-cta{background:var(--cta);color:#fff;box-shadow:0 4px 14px rgba(194,65,12,.35)}
-.btn-cta:hover{background:var(--cta-dark)}
+.hero{position:relative;color:#fff;overflow:hidden;background:var(--primary-deep) center/cover no-repeat}
+.hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero-shade{position:absolute;inset:0;background:linear-gradient(100deg,rgba(8,38,35,.92) 0%,rgba(8,38,35,.72) 46%,rgba(8,38,35,.30) 100%)}
+.hero-in{position:relative;padding:84px 0 72px;max-width:680px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--gold);margin:0 0 18px}
+.eyebrow.dark{color:var(--cta)}
+.hero h1{font-size:clamp(30px,5.2vw,52px);line-height:1.32;font-weight:900;letter-spacing:.02em;margin:0 0 20px}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p.lead{font-size:17px;line-height:1.9;margin:0 0 30px;max-width:600px;color:rgba(255,255,255,.94)}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-note{font-size:13px;color:rgba(255,255,255,.82);margin-top:16px;letter-spacing:.03em}
+.hero-stats{display:flex;gap:0;flex-wrap:wrap;margin-top:44px;border-top:1px solid rgba(255,255,255,.28);padding-top:22px}
+.hstat{padding-right:30px;margin-right:30px;border-right:1px solid rgba(255,255,255,.22)}
+.hstat:last-child{border-right:0;margin-right:0;padding-right:0}
+.hstat b{display:block;font-size:34px;font-weight:900;line-height:1.1;font-variant-numeric:tabular-nums}
+.hstat b i{font-style:normal;font-size:16px;font-weight:700;margin-left:2px}
+.hstat span{font-size:12px;color:rgba(255,255,255,.8);letter-spacing:.06em}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;font-weight:700;letter-spacing:.04em;text-decoration:none;cursor:pointer;border:0;min-height:56px;padding:14px 28px;font-size:16px;transition:transform .18s,box-shadow .18s,background .18s}
+.btn-cta{background:var(--cta);color:#fff;box-shadow:0 6px 20px rgba(194,65,12,.35)}
+.btn-cta:hover{background:var(--cta-dark);transform:translateY(-2px)}
+.btn-hero{font-size:18px;min-height:62px;padding:16px 36px}
+.btn-glass{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.55)}
+.btn-glass:hover{background:rgba(255,255,255,.2)}
 .btn-sub{background:var(--surface);color:var(--primary);border:2px solid var(--primary)}
+.btn-sub:hover{background:var(--chip)}
 .btn-ghost{background:transparent;color:var(--primary);border:2px solid var(--line)}
 .btn-sm{min-height:48px;padding:10px 20px;font-size:15px;border-radius:8px}
-.hero .btn-cta{font-size:18px;padding:16px 34px}
-.hero-note{font-size:13px;color:rgba(255,255,255,.85);margin-top:14px}
-section{padding:44px 0 8px}
-h2.sec{font-size:24px;font-weight:900;margin:0 0 8px;display:flex;align-items:center;gap:10px}
-h2.sec::before{content:'';width:6px;height:26px;background:var(--cta);border-radius:3px}
-.sec-sub{color:var(--sub);margin:0 0 20px}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px}
-.progress{height:8px;background:#ECE9E2;border-radius:4px;overflow:hidden;margin:6px 0 4px}
-.progress i{display:block;height:100%;background:var(--cta);transition:width .3s}
-.step-label{font-size:13px;color:var(--sub);font-weight:700;letter-spacing:.06em}
-.wiz-q{font-size:21px;font-weight:900;margin:10px 0 18px}
-.opts{display:grid;gap:12px}
+section{padding:72px 0 4px}
+h2.sec{font-size:26px;font-weight:900;letter-spacing:.03em;line-height:1.5;margin:0 0 10px}
+.sec-sub{color:var(--sub);margin:0 0 24px;max-width:720px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow)}
+.progress{height:8px;background:#ECE9E2;border-radius:4px;overflow:hidden;margin:8px 0 6px}
+.progress i{display:block;height:100%;background:var(--cta);border-radius:4px;transition:width .35s cubic-bezier(.22,.61,.36,1)}
+.step-label{font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.14em}
+.wiz-q{font-size:22px;font-weight:900;letter-spacing:.03em;margin:12px 0 20px;animation:fadeSlide .35s cubic-bezier(.22,.61,.36,1)}
+.opts{display:grid;gap:12px;animation:fadeSlide .35s cubic-bezier(.22,.61,.36,1)}
 @media(min-width:640px){.opts{grid-template-columns:1fr 1fr}}
-.opt{display:flex;align-items:center;gap:12px;border:2px solid var(--line);border-radius:10px;padding:16px 18px;font-size:16px;font-weight:700;cursor:pointer;min-height:60px;background:#fff;text-align:left;width:100%}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.opt{display:flex;align-items:center;gap:12px;border:2px solid var(--line);border-radius:12px;padding:16px 18px;font-size:16px;font-weight:700;letter-spacing:.03em;cursor:pointer;min-height:64px;background:#fff;text-align:left;width:100%;font-family:inherit;color:var(--ink);transition:border-color .15s,background .15s}
 .opt:hover{border-color:var(--primary)}
 .opt.sel{border-color:var(--cta);background:#FFF4EC}
-.opt .sub{display:block;font-weight:500;font-size:13px;color:var(--sub)}
-.wiz-nav{display:flex;justify-content:space-between;margin-top:20px}
-.linkbtn{background:none;border:0;color:var(--primary);font-size:15px;font-weight:700;cursor:pointer;min-height:44px}
-.result-head{background:var(--chip);border-radius:var(--radius);padding:20px 24px;margin-bottom:20px}
-.result-head b{font-size:20px}
-.mcard{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:20px 22px;margin:0 0 16px}
-.mcard h3{margin:0 0 6px;font-size:19px}
-.mcard .meta{font-size:14px;color:var(--sub)}
-.kv{display:grid;grid-template-columns:88px 1fr;gap:4px 12px;font-size:15px;margin:10px 0}
+.opt .sub{display:block;font-weight:500;font-size:13px;color:var(--sub);letter-spacing:.02em}
+.wiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:22px}
+.linkbtn{background:none;border:0;color:var(--primary);font-size:15px;font-weight:700;cursor:pointer;min-height:44px;font-family:inherit}
+.steps3{display:grid;gap:12px;margin-top:18px}
+@media(min-width:760px){.steps3{grid-template-columns:repeat(3,1fr)}}
+.step3{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow)}
+.step3 b{display:flex;align-items:center;gap:10px;font-size:15px}
+.step3 b i{font-style:normal;background:var(--primary);color:#fff;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex:none}
+.step3 p{margin:8px 0 0;font-size:14px;color:var(--sub)}
+.result-head{background:var(--chip);border-radius:var(--radius);padding:22px 26px;margin-bottom:20px}
+.result-head b{font-size:20px;letter-spacing:.03em}
+.mcard{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:22px 24px;margin:0 0 16px;box-shadow:var(--shadow)}
+.mcard h3{margin:0 0 6px;font-size:19px;letter-spacing:.03em}
+.kv{display:grid;grid-template-columns:92px 1fr;gap:5px 14px;font-size:15px;margin:12px 0}
 .kv dt{color:var(--sub);font-weight:700}
 .kv dd{margin:0}
-.svc{display:flex;justify-content:space-between;gap:12px;border-top:1px dashed var(--line);padding:10px 0;font-size:14px}
+.svc{display:flex;justify-content:space-between;gap:12px;border-top:1px dashed var(--line);padding:11px 0;font-size:14px}
 .svc:first-of-type{border-top:0}
-.badge{display:inline-block;background:var(--primary);color:#fff;border-radius:999px;font-size:12px;font-weight:700;padding:2px 10px;white-space:nowrap}
+.badge{display:inline-block;background:var(--primary);color:#fff;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;padding:3px 11px;white-space:nowrap;height:fit-content}
 .badge.low{background:#8A8578}
-.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px}
-details.unfit{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:6px 20px;margin-bottom:10px}
-details.unfit summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
-details.unfit p{font-size:14px;color:var(--sub)}
-.stat-band{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}
-.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;text-align:center}
-.stat b{display:block;font-size:28px;color:var(--primary);font-weight:900}
-.stat span{font-size:13px;color:var(--sub)}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+details.unfit,details.faq{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:4px 22px;margin-bottom:10px;box-shadow:var(--shadow)}
+details.unfit summary,details.faq summary{cursor:pointer;font-weight:700;min-height:48px;display:flex;align-items:center;letter-spacing:.02em}
+details.unfit p,details.faq p{font-size:14.5px;color:#33312D;padding-bottom:10px}
+.split{display:grid;gap:26px;align-items:stretch}
+@media(min-width:860px){.split{grid-template-columns:5fr 7fr}}
+.split img.photo{width:100%;height:100%;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-lg);display:block}
+.stat-band{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:32px;color:var(--primary);font-weight:900;font-variant-numeric:tabular-nums;line-height:1.15}
+.stat span{font-size:12.5px;color:var(--sub);letter-spacing:.05em}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
 table{border-collapse:collapse;width:100%;font-size:14px;background:#fff}
-th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
-th{background:var(--chip);font-weight:700}
+th,td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{background:var(--chip);font-weight:700;letter-spacing:.03em;white-space:nowrap}
+tbody tr:hover td{background:#FBF9F4}
 .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
-.state-card{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;text-decoration:none;color:var(--ink)}
-.state-card:hover{border-color:var(--primary)}
-.state-card b{font-size:16px}
-.state-card span{display:block;color:var(--cta);font-weight:700;font-size:14px;margin-top:6px}
-.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
-.filters select{font-size:15px;padding:10px;border:1px solid var(--line);border-radius:8px;min-height:44px;background:#fff}
-.filters label{font-size:14px;font-weight:700;display:inline-flex;align-items:center;gap:6px;min-height:44px}
-.pr{display:inline-block;background:#FFF3D6;border:1px solid #D9A400;color:#6B4E00;font-size:12px;font-weight:700;border-radius:6px;padding:3px 10px}
-article h1{font-size:28px;line-height:1.5;font-weight:900}
-article h2{font-size:21px;font-weight:900;border-left:6px solid var(--primary);padding-left:10px;margin-top:36px}
+.state-card{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s}
+.state-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.state-card b{font-size:15.5px;letter-spacing:.02em}
+.state-card span{display:block;color:var(--cta);font-weight:700;font-size:13.5px;margin-top:6px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.filters select{font-size:15px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;min-height:46px;background:#fff;font-family:inherit}
+.filters label{font-size:14px;font-weight:700;display:inline-flex;align-items:center;gap:6px;min-height:46px}
+.filters input[type=checkbox]{width:18px;height:18px;accent-color:var(--primary)}
+.pr{display:inline-block;background:#FFF3D6;border:1px solid #D9A400;color:#6B4E00;font-size:12px;font-weight:700;border-radius:6px;padding:3px 10px;letter-spacing:.03em}
+article h1{font-size:28px;line-height:1.55;font-weight:900;letter-spacing:.02em}
+article h2{font-size:21px;font-weight:900;letter-spacing:.03em;border-left:6px solid var(--primary);padding-left:12px;margin-top:38px}
 article h3{font-size:17px}
-.cta-box{background:var(--chip);border-radius:var(--radius);padding:24px;text-align:center;margin:40px 0}
-.cta-box p{font-weight:900;font-size:18px;margin:0 0 14px}
-.sticky-cta{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);border-top:1px solid var(--line);padding:10px 16px;z-index:50;backdrop-filter:blur(4px)}
+.cta-box{background:var(--chip);border-radius:var(--radius);padding:28px;text-align:center;margin:44px 0}
+.cta-box p{font-weight:900;font-size:18px;margin:0 0 16px;letter-spacing:.03em}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);border-top:1px solid var(--line);padding:10px 16px;z-index:50;backdrop-filter:blur(6px)}
 .sticky-cta .wrap{display:flex;align-items:center;gap:14px;padding:0}
-.sticky-cta p{margin:0;font-size:14px;font-weight:700;flex:1}
+.sticky-cta p{margin:0;font-size:14px;font-weight:700;flex:1;letter-spacing:.02em}
 .sticky-cta .btn{min-height:48px;padding:10px 22px;font-size:15px}
-@media(max-width:640px){.sticky-cta p{display:none}.sticky-cta .btn{flex:1}.hero h1{font-size:27px}}
-footer.site{border-top:1px solid var(--line);margin-top:56px;padding:24px 0;color:var(--sub);font-size:13px}
+@media(max-width:640px){.sticky-cta p{display:none}.sticky-cta .btn{flex:1}.hstat{padding-right:18px;margin-right:18px}.hstat b{font-size:26px}section{padding:52px 0 4px}}
+footer.site{border-top:1px solid var(--line);margin-top:64px;padding:26px 0;color:var(--sub);font-size:13px}
 .note{font-size:13px;color:var(--sub)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .wiz-q,.opts{animation:none}
+  html{scroll-behavior:auto}
+}
 </style></head>
 <body>
 <header class="site"><div class="wrap"><div class="logo">資金調達データベース<small>ステージング試作／サイト名は仮</small></div><a class="hdr-cta" href="index.html#check">状態チェック</a></div></header>
 <main>
-<div class="hero"><div class="wrap">
-<h1>支払いの期限に間に合う<br>資金調達を、状態から見つける</h1>
+<div class="hero" style="background-image:url('assets/hero-poster.webp')">
+<video class="hero-media" autoplay muted loop playsinline poster="assets/hero-poster.webp"><source src="assets/hero-bg.mp4" type="video/mp4"></video>
+<div class="hero-shade"></div>
+<div class="wrap"><div class="hero-in">
+<p class="eyebrow">FUNDING OBSERVATORY — 資金調達の観測データベース</p>
+<h1>支払いの期限に<em>間に合う</em><br>資金調達を、状態から<br>見つける</h1>
 <p class="lead">手法と会社の条件を観測して記録しているデータベースです。4つの質問に答えると、あなたの状態で期限に間に合う手法と、候補の会社がその場で分かります。</p>
-<div class="chips"><span class="chip">収録サービス <b>324件</b></span><span class="chip">手法 <b>24件</b></span><span class="chip">最終確認日 <b>2026-11-17</b></span><span class="chip">観測で直した条件の差分 <b>55件</b></span></div>
-<a class="btn btn-cta" href="#check">状態チェックをはじめる →</a>
+<div class="hero-cta">
+<a class="btn btn-cta btn-hero" href="#check">状態チェックをはじめる →</a>
+<a class="btn btn-glass" href="#search">324件のサービスから探す</a>
+</div>
 <p class="hero-note">連絡先は取りません。結果はこの場で最後まで表示します。営業の連絡も行いません。</p>
+<div class="hero-stats">
+<div class="hstat"><b><span data-count="324">0</span><i>件</i></b><span>収録サービス</span></div>
+<div class="hstat"><b><span data-count="24">0</span><i>件</i></b><span>資金調達の手法</span></div>
+<div class="hstat"><b><span data-count="55">0</span><i>件</i></b><span>観測で直した条件の差分</span></div>
+<div class="hstat"><b style="font-size:22px;padding-top:8px">2026-11-17</b><span>最終確認日</span></div>
+</div>
 </div></div>
+</div>
 <main class="wrap">
 <section id="check">
+<p class="eyebrow dark">01 — CHECK</p>
 <h2 class="sec">状態チェック</h2>
-<p class="sec-sub">質問は4つです。選ぶと次に進みます。</p>
+<p class="sec-sub">質問は4つです。選ぶと次に進みます。競合の診断と違い、連絡先を聞かずに結果を最後まで出します。</p>
 <div class="panel" id="wiz">
-<div class="step-label" id="step-label">ステップ 1 / 4</div>
+<div class="step-label" id="step-label">STEP 1 / 4</div>
 <div class="progress"><i id="progress-bar" style="width:0%"></i></div>
 <div class="wiz-q" id="wiz-q"></div>
 <div class="opts" id="wiz-opts"></div>
 <div class="wiz-nav"><button class="linkbtn" id="wiz-back" onclick="backStep()">← もどる</button><span class="note">入力は送信されません</span></div>
 </div>
 <div id="result" style="display:none"></div>
+<div class="steps3">
+<div class="step3 rv"><b><i>1</i>質問に答える</b><p>事業の形、期限、売掛金の有無、借入の状況の4つです。</p></div>
+<div class="step3 rv"><b><i>2</i>間に合う手法と候補が出る</b><p>向かない手法も、理由つきで確認できます。</p></div>
+<div class="step3 rv"><b><i>3</i>各社の公式サイトで申し込む</b><p>当サイトは連絡先を取りません。申し込みは各社へ直接どうぞ。</p></div>
+</div>
 </section>
 
 <section>
+<p class="eyebrow dark">02 — BY SITUATION</p>
 <h2 class="sec">状態別の入口</h2>
 <p class="sec-sub">ピラーの記事は、状態ごとに進め方を書いています。</p>
-<div class="cards"><a class="state-card" href="articles/guide-payment-gap.html"><b>入金は来月なのに、今月の支払いが厳しい</b><span>支払いと入金のズレへの進め方を見る →</span></a><a class="state-card" href="articles/basics-2sha.html"><b>売掛金を早く現金化したい</b><span>ファクタリングの仕組みと手順を見る →</span></a><a class="state-card" href="articles/compare-2sha.html"><b>手数料と速さを比べて選びたい</b><span>2社間の12サービス比較を見る →</span></a><a class="state-card" href="#check"><b>創業したばかりで実績が少ない</b><span>状態チェックで使える手法を見る →</span></a><a class="state-card" href="#check"><b>銀行の審査に落ちた</b><span>状態チェックで使える手法を見る →</span></a><a class="state-card" href="articles/guide-payment-gap.html"><b>初めての資金調達で全体像を知りたい</b><span>状態別アドバイスを読む →</span></a></div>
+<div class="split">
+<img class="photo rv" src="assets/section-owner.webp" alt="請求書を確認する事業者">
+<div class="cards" style="grid-template-columns:1fr"><a class="state-card" href="articles/guide-payment-gap.html"><b>入金は来月なのに、今月の支払いが厳しい</b><span>支払いと入金のズレへの進め方を見る →</span></a><a class="state-card" href="articles/basics-2sha.html"><b>売掛金を早く現金化したい</b><span>ファクタリングの仕組みと手順を見る →</span></a><a class="state-card" href="articles/compare-2sha.html"><b>手数料と速さを比べて選びたい</b><span>2社間の12サービス比較を見る →</span></a><a class="state-card" href="#check"><b>創業したばかりで実績が少ない</b><span>状態チェックで使える手法を見る →</span></a><a class="state-card" href="#check"><b>銀行の審査に落ちた</b><span>状態チェックで使える手法を見る →</span></a><a class="state-card" href="articles/guide-payment-gap.html"><b>初めての資金調達で全体像を知りたい</b><span>状態別アドバイスを読む →</span></a></div>
+</div>
 </section>
 
 <section>
+<p class="eyebrow dark">03 — OBSERVATION</p>
 <h2 class="sec">観測の記録</h2>
-<p class="sec-sub">会社の条件は変わります。観測で見つけた変更を、そのまま記録しています。</p>
-<div class="stat-band">
+<p class="sec-sub">会社の条件は変わります。公式の公表を確認し、差分があれば日付つきで記録しています。手数料の上限を公表していない会社は、その事実も含めて記録します。</p>
+<div class="split">
+<img class="photo rv" src="assets/section-observation.webp" alt="資料とノートで条件を確認する机">
+<div>
+<div class="stat-band" style="margin-top:0">
 <div class="stat"><b>324</b><span>収録サービス</span></div>
 <div class="stat"><b>24</b><span>収録している手法</span></div>
 <div class="stat"><b>55件</b><span>公式確認で直した差分</span></div>
-<div class="stat"><b>2026-11-17</b><span>最終確認日</span></div>
+<div class="stat"><b style="font-size:19px;padding-top:7px">2026-11-17</b><span>最終確認日</span></div>
 </div>
-<table><tr><th>観測日</th><th>会社</th><th>項目</th><th>変更</th></tr><tr><td>2026-11-17</td><td>Paid</td><td>全体確認</td><td> → 公式と差分なし</td></tr><tr><td>2026-11-17</td><td>CAMPFIRE</td><td>全体確認</td><td> → 公式と差分なし</td></tr><tr><td>2026-11-17</td><td>Funds</td><td>全体確認</td><td> → 公式と差分なし</td></tr><tr><td>2026-11-17</td><td>事業サポートプラン</td><td>全体確認</td><td> → 公式と差分なし</td></tr><tr><td>2026-11-17</td><td>自営者カードローン</td><td>全体確認</td><td> → 公式と差分なし</td></tr></table>
+<div class="tblwrap"><table><tr><th>観測日</th><th>会社</th><th>項目</th><th>変更</th></tr><tr><td>2026-11-17</td><td>Paid</td><td>全体確認</td><td> → 公式と差分なし</td></tr><tr><td>2026-11-17</td><td>CAMPFIRE</td><td>全体確認</td><td> → 公式と差分なし</td></tr><tr><td>2026-11-17</td><td>Funds</td><td>全体確認</td><td> → 公式と差分なし</td></tr><tr><td>2026-11-17</td><td>事業サポートプラン</td><td>全体確認</td><td> → 公式と差分なし</td></tr><tr><td>2026-11-17</td><td>自営者カードローン</td><td>全体確認</td><td> → 公式と差分なし</td></tr></table></div>
+</div>
+</div>
 </section>
 
 <section id="search">
+<p class="eyebrow dark">04 — SEARCH</p>
 <h2 class="sec">サービスを探す</h2>
 <p class="sec-sub">条件で絞れます。透明性スコアは、確認できた公表項目の数です（定義は下にあります）。</p>
 <div class="filters">
@@ -153,14 +219,19 @@ footer.site{border-top:1px solid var(--line);margin-top:56px;padding:24px 0;colo
 </section>
 
 <section>
+<p class="eyebrow dark">05 — METHODS</p>
 <h2 class="sec">手法ガイド</h2>
 <p class="sec-sub">全24手法の定義と、入金までの期間、費用の目安です。</p>
 <div class="cards"><div class="mcard"><h3>銀行融資（プロパー）</h3><p style="margin:0">信用保証協会の保証を付けず、銀行が自らの判断で貸す融資</p><dl class="kv"><dt>期間</dt><dd>数週間〜1か月以上</dd><dt>費用</dt><dd>金利は銀行と取引内容で決まる。事業融資では年1〜3%台が目安とされる</dd></dl></div><div class="mcard"><h3>信用保証協会付き融資</h3><p style="margin:0">信用保証協会が保証し、銀行が貸す融資。借り手が返せなくなったとき協会が代わりに返す</p><dl class="kv"><dt>期間</dt><dd>2週間〜1か月程度</dd><dt>費用</dt><dd>金利に加えて信用保証料（保証金額に対して年0.5〜2%程度が目安）がかかる</dd></dl></div><div class="mcard"><h3>日本政策金融公庫の融資</h3><p style="margin:0">政府系の金融機関である日本政策金融公庫が、創業者や小規模事業者に貸す融資</p><dl class="kv"><dt>期間</dt><dd>3週間〜1か月程度</dd><dt>費用</dt><dd>金利は公庫の基準で決まり、創業向けは民間に比べて低めに設定される</dd></dl></div><div class="mcard"><h3>制度融資</h3><p style="margin:0">自治体が金融機関と信用保証協会と組んで行う融資の総称</p><dl class="kv"><dt>期間</dt><dd>1か月前後</dd><dt>費用</dt><dd>金利と保証料は自治体の制度ごとに決まる。補助で実質の負担が下がる場合がある</dd></dl></div><div class="mcard"><h3>マル経融資（小規模事業者経営改善資金）</h3><p style="margin:0">商工会議所などの推薦を受けて、日本政策金融公庫から無担保・無保証人で借りる融資</p><dl class="kv"><dt>期間</dt><dd>推薦まで数週間、その後の審査に数週間</dd><dt>費用</dt><dd>金利は公庫の特別利率で決まる</dd></dl></div><div class="mcard"><h3>セーフティネット保証・危機対応の貸付</h3><p style="margin:0">災害や取引先の倒産などで売上が落ちた事業者を守るための保証と貸付の枠組み</p><dl class="kv"><dt>期間</dt><dd>認定と審査で数週間</dd><dt>費用</dt><dd>金利と保証料は制度ごとに決まる</dd></dl></div><div class="mcard"><h3>ノンバンクのビジネスローン</h3><p style="margin:0">銀行以外の貸金業者が事業者向けに出す融資</p><dl class="kv"><dt>期間</dt><dd>最短で即日〜数日</dd><dt>費用</dt><dd>金利は年数%〜15%程度まで幅がある。貸金業法の上限金利の範囲内で決まる</dd></dl></div><div class="mcard"><h3>事業者向けカードローン</h3><p style="margin:0">カードや契約枠の範囲で繰り返し借りられる事業者向けのローン</p><dl class="kv"><dt>期間</dt><dd>最短で即日〜数日</dd><dt>費用</dt><dd>金利は枠と審査で決まり、ビジネスローンより高めに出ることが多い</dd></dl></div><div class="mcard"><h3>不動産担保ローン</h3><p style="margin:0">土地や建物を担保に入れて借りる融資</p><dl class="kv"><dt>期間</dt><dd>数日〜数週間</dd><dt>費用</dt><dd>金利は銀行系とノンバンクで差が大きい。登記などの費用もかかる</dd></dl></div><div class="mcard"><h3>売掛債権担保融資（ABL）</h3><p style="margin:0">売掛金や在庫などの事業の資産を担保にして借りる融資</p><dl class="kv"><dt>期間</dt><dd>数週間</dd><dt>費用</dt><dd>金利は金融機関と担保の内容で決まる。登記や評価の費用がかかる場合がある</dd></dl></div><div class="mcard"><h3>手形割引</h3><p style="margin:0">受け取った約束手形を、支払期日の前に金融機関や業者に買い取ってもらう方法</p><dl class="kv"><dt>期間</dt><dd>最短で即日〜数日</dd><dt>費用</dt><dd>割引料は手形の振出人の信用と期日までの日数で決まる</dd></dl></div><div class="mcard"><h3>リースと割賦</h3><p style="margin:0">設備や機械を、買わずに借りる（リース）、または分割で買う（割賦）方法</p><dl class="kv"><dt>期間</dt><dd>数日〜数週間</dd><dt>費用</dt><dd>月額は設備の価格と期間で決まる。金利にあたる部分は融資より高めに出ることがある</dd></dl></div><div class="mcard"><h3>ファクタリング（2社間）</h3><p style="margin:0">売掛金を、取引先に知らせずにファクタリング会社へ売って資金化する方法</p><dl class="kv"><dt>期間</dt><dd>最短で即日〜数日</dd><dt>費用</dt><dd>手数料は売掛先の信用と期日までの長さで決まる。2社間の相場は8〜18%とされる（民間の比較資料の目安）</dd></dl></div><div class="mcard"><h3>ファクタリング（3社間）</h3><p style="margin:0">売掛先の承諾を得て、売掛金をファクタリング会社へ売る方法</p><dl class="kv"><dt>期間</dt><dd>数日〜2週間程度（売掛先の手続きによる）</dd><dt>費用</dt><dd>手数料は2社間より低く、2〜9%が相場とされる（民間の比較資料の目安）</dd></dl></div><div class="mcard"><h3>注文書ファクタリング</h3><p style="margin:0">請求書ではなく、受注の段階（注文書や発注書）で将来の売掛金を買い取る方法</p><dl class="kv"><dt>期間</dt><dd>数日程度</dd><dt>費用</dt><dd>手数料は請求書のファクタリングより高めに出ることが多い</dd></dl></div><div class="mcard"><h3>診療報酬・介護報酬ファクタリング</h3><p style="margin:0">医療機関や介護事業者が、国保連などへの請求債権を早期に資金化する方法</p><dl class="kv"><dt>期間</dt><dd>数日〜2週間</dd><dt>費用</dt><dd>手数料は一般のファクタリングより低め（数%程度が目安とされる）</dd></dl></div><div class="mcard"><h3>手形・電子記録債権の売却</h3><p style="margin:0">約束手形や電子記録債権（でんさい）を、期日前に第三者へ譲って資金化する方法</p><dl class="kv"><dt>期間</dt><dd>数日程度</dd><dt>費用</dt><dd>手数料や割引料は振出人の信用と期日で決まる</dd></dl></div><div class="mcard"><h3>補助金</h3><p style="margin:0">国や自治体が、設備投資や新しい取り組みの費用の一部を後から支給する制度</p><dl class="kv"><dt>期間</dt><dd>公募から入金まで数か月〜1年以上</dd><dt>費用</dt><dd>返済は不要。ただし対象費用の自己負担分は要る。つなぎの資金が別に要る場合が多い</dd></dl></div><div class="mcard"><h3>雇用関係の助成金</h3><p style="margin:0">人を雇う、育てる、待遇を改善する取り組みに対して支給される助成金</p><dl class="kv"><dt>期間</dt><dd>申請から支給まで数か月</dd><dt>費用</dt><dd>返済は不要。要件を満たす取り組みの費用が前提になる</dd></dl></div><div class="mcard"><h3>自治体の利子補給・保証料補助</h3><p style="margin:0">融資の利子や保証料の一部を自治体が補助する制度</p><dl class="kv"><dt>期間</dt><dd>融資の実行後、数か月で支給されることが多い</dd><dt>費用</dt><dd>補助の割合と上限は自治体ごとに決まる</dd></dl></div><div class="mcard"><h3>クラウドファンディング（購入型・融資型）</h3><p style="margin:0">不特定多数の人から、商品の予約販売や貸付の形で資金を集める方法</p><dl class="kv"><dt>期間</dt><dd>募集の準備に数週間、入金は募集の終了後</dd><dt>費用</dt><dd>購入型はプラットフォームの手数料（集まった額の10〜20%程度が目安）。融資型は金利と手数料</dd></dl></div><div class="mcard"><h3>出資（ベンチャーキャピタル・個人投資家）</h3><p style="margin:0">会社の株式を引き受けてもらい、返済の要らない資金を得る方法</p><dl class="kv"><dt>期間</dt><dd>数か月〜半年以上</dd><dt>費用</dt><dd>金利はかからない。代わりに株式の割合を渡す</dd></dl></div><div class="mcard"><h3>私募債・銀行保証付私募債</h3><p style="margin:0">会社が債券を発行して、少数の相手から資金を集める方法</p><dl class="kv"><dt>期間</dt><dd>1〜2か月程度</dd><dt>費用</dt><dd>金利と発行の費用、保証付は保証料がかかる</dd></dl></div><div class="mcard"><h3>請求書カード払い・B2B掛け払い</h3><p style="margin:0">請求書の支払いをカードや掛け払いの仕組みに置き換え、支払いの時期を後ろへずらす方法</p><dl class="kv"><dt>期間</dt><dd>申し込みは即日〜数日、立て替えは請求書ごと</dd><dt>費用</dt><dd>手数料は支払う額に対して数%が目安とされる</dd></dl></div></div>
 </section>
 
 <section>
-<h2 class="sec">掲載の基準</h2>
-<div class="panel">
+<p class="eyebrow dark">06 — FAQ</p>
+<h2 class="sec">よくある質問</h2>
+<p class="sec-sub">当サイトの数字の出し方と、掲載の基準について答えます。</p>
+<details class="faq rv"><summary>手数料の上限が書いていない会社があるのはなぜですか</summary><p>会社の公式サイトが、手数料の下限だけを公表しているためです。当サイトは公表されていない数字を推測で埋めず、「非公表」と書きます。上限が分からない会社は、見積もりの段階で料率の幅を確認する必要があります。</p></details><details class="faq rv"><summary>状態チェックで、調達できる金額の目安が出ないのはなぜですか</summary><p>当サイトは審査をしていないためです。各社が公表している金額の範囲は事実として並べますが、「あなたは○○万円調達できます」という表示は根拠のない約束になるので出しません。実際に調達できる金額は、各社の審査で決まります。</p></details><details class="faq rv"><summary>透明性スコアとは何ですか</summary><p>当サイトが定義した物差しです。費用の下限と上限、金額の下限と上限、償還請求権の有無、実績、所在地と代表者の5項目のうち、公式の公表で確認できた項目の数を数えています。スコアが低いことは、その会社の条件が悪いことを意味しません。公表されていない項目は、見積もりや契約書で確認する必要がある場所として読んでください。</p></details><details class="faq rv"><summary>給与ファクタリングの会社は載っていますか</summary><p>載せていません。給与ファクタリングは貸金業に当たるとする判断が出ており、金融庁も注意喚起を公表しています。当サイトの掲載基準では対象外です。</p></details><details class="faq rv"><summary>情報はいつ時点のものですか</summary><p>各サービスの行に最終確認日を付けています。会社の条件は変わるため、当サイトは公式の公表を観測し、差分があれば記録して記事に反映します。直近の観測で直した差分は「観測の記録」に載せています。</p></details><details class="faq rv"><summary>このサイトの利用に料金はかかりますか</summary><p>かかりません。状態チェックと検索は、連絡先を登録せずに最後まで使えます。申し込みは各社の公式サイトで行ってください。</p></details>
+<div class="panel rv" style="margin-top:22px">
+<h3 style="margin-top:0">掲載の基準</h3>
 <p>掲載する会社は、公式の公表で条件を確認できた会社です。広告を含むページには冒頭にPR表示を置きます。順位を付ける場合は、比べた項目と順位の付け方を同じページで開示します。給与ファクタリングを行う会社は掲載しません。</p>
 <p style="margin-bottom:0">悪質な業者の見分け方は、<a href="articles/basics-2sha.html">2社間ファクタリングの仕組みと申し込みの流れ</a>に書いています。</p>
 </div>
@@ -181,18 +252,20 @@ const STEPS = [
 let step = 0; const ans = {};
 function renderStep(){
   const s = STEPS[step];
-  document.getElementById('step-label').textContent = 'ステップ ' + (step+1) + ' / ' + STEPS.length;
-  document.getElementById('progress-bar').style.width = ((step) / STEPS.length * 100) + '%';
-  document.getElementById('wiz-q').textContent = s.q;
-  document.getElementById('wiz-opts').innerHTML = s.opts.map(o =>
+  document.getElementById('step-label').textContent = 'STEP ' + (step+1) + ' / ' + STEPS.length;
+  document.getElementById('progress-bar').style.width = (step / STEPS.length * 100) + '%';
+  const q = document.getElementById('wiz-q');
+  q.textContent = s.q;
+  const box = document.getElementById('wiz-opts');
+  box.innerHTML = s.opts.map(o =>
     '<button class="opt' + (ans[s.key] === o[0] ? ' sel' : '') + '" data-val="' + o[0] + '">' + o[1] + (o[2] ? '<span class="sub">' + o[2] + '</span>' : '') + '</button>').join('');
-  document.querySelectorAll('#wiz-opts .opt').forEach(b => b.addEventListener('click', () => pick(s.key, b.dataset.val)));
+  box.querySelectorAll('.opt').forEach(b => b.addEventListener('click', () => pick(s.key, b.dataset.val)));
   document.getElementById('wiz-back').style.visibility = step === 0 ? 'hidden' : 'visible';
 }
 function pick(key, val){
   ans[key] = val;
   renderStep();
-  setTimeout(() => { if(step < STEPS.length - 1){ step++; renderStep(); } else { showResult(); } }, 180);
+  setTimeout(() => { if(step < STEPS.length - 1){ step++; renderStep(); } else { showResult(); } }, 200);
 }
 function backStep(){ if(step > 0){ step--; renderStep(); } }
 function restart(){ step = 0; for(const k in ans) delete ans[k]; document.getElementById('wiz').style.display = 'block'; document.getElementById('result').style.display = 'none'; renderStep(); }
@@ -201,9 +274,8 @@ function showResult(){
   const maxD = parseInt(ans.days, 10);
   let fit = [], maybe = [], unfit = [];
   for(const m of METHODS){
-    let reason = '';
-    if(m.needsArv && ans.arv === 'no') reason = '売掛金（請求書）が必要な手法です。';
-    else if(ans.ent === 'sole' && !m.target.includes('個人事業主')) reason = '対象が法人中心の手法です。';
+    if(m.needsArv && ans.arv === 'no') unfit.push([m, '売掛金（請求書）が必要な手法です。']);
+    else if(ans.ent === 'sole' && !m.target.includes('個人事業主')) unfit.push([m, '対象が法人中心の手法です。']);
     else if(m.maxDays <= maxD) fit.push(m);
     else if(m.minDays <= maxD) maybe.push(m);
     else unfit.push([m, '入金までの期間の目安が「' + m.period + '」で、必要な時期に間に合いません。']);
@@ -216,23 +288,22 @@ function showResult(){
     h += '<dl class="kv"><dt>費用の目安</dt><dd>' + m.cost + '</dd><dt>入金まで</dt><dd>' + m.period + '</dd><dt>必要書類</dt><dd>' + m.docs + '</dd></dl>';
     if(ans.loan === 'tax' && m.taxCaution) h += '<p class="note"><b>注意：</b>税金の滞納がある場合、公的な融資や補助は対象外になることがあります。</p>';
     for(const s of svcs.slice(0,3)){
-      h += '<div class="svc"><div><b>' + s.name + '</b>（' + s.entity + '）<br>手数料 ' + (s.fee_lo || '―') + '〜' + (s.fee_hi || '―') + '／入金 ' + (s.speed || '―') + '／公表している金額 ' + (s.amt_lo || '―') + '〜' + (s.amt_hi || '―') + '</div><span class="badge' + ((parseInt(s.score)||0) >= 3 ? '' : ' low') + '">透明性 ' + (s.score || '―') + ' / 5</span></div>';
+      h += '<div class="svc"><div><b>' + s.name + '</b>（' + s.entity + '）<br>手数料 ' + (s.fee_lo || '―') + '〜' + (s.fee_hi || '非公表') + '／入金 ' + (s.speed || '―') + '／公表している金額 ' + (s.amt_lo || '―') + '〜' + (s.amt_hi || '―') + '</div><span class="badge' + ((parseInt(s.score)||0) >= 3 ? '' : ' low') + '">透明性 ' + (s.score || '―') + ' / 5</span></div>';
     }
-    if(svcs.length) h += '<p class="note">金額は各社が公表している範囲で、調達できる金額の約束ではありません。</p>';
+    if(svcs.length) h += '<p class="note">金額は各社が公表している範囲で、調達できる金額の約束ではありません。手数料の上限が「非公表」の会社は、見積もりで確認が必要です。</p>';
     h += '<div class="cta-row">';
     if(svcs.length) h += '<button class="btn btn-cta btn-sm" data-goto="' + m.id + '">候補 ' + svcs.length + '件を比べる</button>';
     if(COMPARE[m.id]) h += '<a class="btn btn-sub btn-sm" href="' + COMPARE[m.id] + '">比較の記事を読む</a>';
     if(GUIDE[m.id]) h += '<a class="btn btn-ghost btn-sm" href="' + GUIDE[m.id] + '">仕組みを知る</a>';
     h += '</div></div>';
   }
-  h += '<h3 style="margin-top:28px">今回は向かない手法（' + unfit.length + '件）</h3>';
+  h += '<h3 style="margin-top:30px">今回は向かない手法（' + unfit.length + '件）</h3>';
   for(const [m, r] of unfit) h += '<details class="unfit"><summary>' + m.name + '</summary><p>' + r + '</p></details>';
   h += '<div class="cta-row"><button class="btn btn-sub" onclick="restart()">条件を変えて見直す</button><a class="btn btn-ghost" href="#search">サービス一覧から探す</a></div>';
   h += '<p class="note">この結果は一般的な情報の提示です。個別の可否は各社の審査で決まります。</p>';
   document.getElementById('wiz').style.display = 'none';
   const r = document.getElementById('result');
   r.innerHTML = h; r.style.display = 'block';
-  r.querySelectorAll('[data-goto]').forEach(b => b.addEventListener('click', () => gotoSearch(b.dataset.goto)));
   r.querySelectorAll('[data-goto]').forEach(b => b.addEventListener('click', () => gotoSearch(b.dataset.goto)));
   document.getElementById('check').scrollIntoView({behavior:'smooth'});
 }
@@ -256,17 +327,34 @@ function runSearch(){
     (!form || s.form === form));
   let h = '<p><b>' + rows.length + '件</b>が該当します（最大60件を表示）</p>';
   if(rows.length){
-    h += '<table><tr><th>サービス</th><th>運営会社</th><th>手法</th><th>手数料</th><th>入金の速さ</th><th>金額</th><th>透明性</th></tr>';
+    h += '<div class="tblwrap"><table><tr><th>サービス</th><th>運営会社</th><th>手法</th><th>手数料</th><th>入金の速さ</th><th>金額</th><th>透明性</th></tr>';
     for(const s of rows.slice(0, 60)){
-      h += '<tr><td><b>' + s.name + '</b></td><td>' + s.entity + '</td><td>' + (MNAMES[s.method] || s.method) + '</td><td>' + (s.fee_lo || '―') + '〜' + (s.fee_hi || '―') + '</td><td>' + (s.speed || '―') + '</td><td>' + (s.amt_lo || '―') + '〜' + (s.amt_hi || '―') + '</td><td>' + scoreBadge(s.score) + '</td></tr>';
+      h += '<tr><td><b>' + s.name + '</b></td><td>' + s.entity + '</td><td>' + (MNAMES[s.method] || s.method) + '</td><td>' + (s.fee_lo || '―') + '〜' + (s.fee_hi || '非公表') + '</td><td>' + (s.speed || '―') + '</td><td>' + (s.amt_lo || '―') + '〜' + (s.amt_hi || '―') + '</td><td>' + scoreBadge(s.score) + '</td></tr>';
     }
-    h += '</table>';
+    h += '</table></div>';
   }
   document.getElementById('search-result').innerHTML = h;
 }
-document.addEventListener('DOMContentLoaded', () => { renderStep(); runSearch(); });
+function animateCount(el){
+  const target = parseInt(el.dataset.count, 10);
+  if(isNaN(target)) return;
+  const t0 = performance.now(), dur = 1200;
+  function tick(t){
+    const p = Math.min((t - t0) / dur, 1);
+    const eased = 1 - Math.pow(1 - p, 3);
+    el.firstChild.nodeValue = Math.round(target * eased).toLocaleString('ja-JP');
+    if(p < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+document.addEventListener('DOMContentLoaded', () => {
+  renderStep(); runSearch();
+  const cio = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ animateCount(e.target); cio.unobserve(e.target); } }), {threshold: .4});
+  document.querySelectorAll('[data-count]').forEach(el => cio.observe(el));
+});
 </script>
 </main>
 <div class="sticky-cta"><div class="wrap"><p>支払いの期限が迫っているなら、まず間に合う手法を確認できます。</p><a class="btn btn-cta" href="index.html#check">状態チェックをはじめる</a></div></div>
-<footer class="site"><div class="wrap">このサイトは一般的な情報の提供を目的としています。運営者情報は準備中です。<br>UIの一部は、デジタル庁デザインシステムのガイドライン（出典：デジタル庁デザインシステムウェブサイト https://design.digital.go.jp/dads/ ）を参考に設計しています。</div></footer>
+<footer class="site"><div class="wrap">このサイトは一般的な情報の提供を目的としています。運営者情報は準備中です。<br>デザイン仕様は DESIGN.md に固定し、タップ領域とコントラストの規則はデジタル庁デザインシステム（出典：デジタル庁デザインシステムウェブサイト https://design.digital.go.jp/dads/ ）を参考にしています。</div></footer>
+<script>const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } }), {threshold: .12}); document.querySelectorAll('.rv').forEach(el => io.observe(el));</script>
 </body></html>
