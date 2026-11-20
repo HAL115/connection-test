@@ -575,12 +575,12 @@ const sumText = '' + stateRows.map(r => r[0] + '：' + r[1]).join('／')
 + ' ' + unfitNames.join('、') + (pendingNames.length? ' ' + pendingNames.join('、'): '');
 h += '<div class="lead-panel" id="lead"><h3>結果と現状をまとめた「現状シート」を作る</h3>'
 + '<p>この結果に、あなたの現状（期限・希望額・売掛先・決算の状態）と、用意する書類の一覧を整理して1枚にまとめたシートです。提示した手法と候補の会社、外れた手法も載せるので、各社の担当者にそのまま渡せて、相談が早く進みます。作成は無料です。</p>'
-+ '<form class="lead-form" action="https://docs.google.com/forms/d/e/1FAIpQLScOuM7jBm8snBKK-FSYZq1uCiLjI3b3CFW084qohu0ubY2zcQ/formResponse" method="POST" target="gform_sink" onsubmit="return submitLead()">'
-+ '<input type="hidden" name="entry.261709220" value="' + sumText.replace(/"/g, '”') + '">'
-+ '<label>会社名<span class="req">必須</span><input type="text" name="entry.1002169229" required autocomplete="organization"></label>'
-+ '<label>担当者名<span class="req">必須</span><input type="text" name="entry.2085973920" required autocomplete="name"></label>'
-+ '<label>メールアドレス<span class="req">必須</span><input type="email" name="entry.535310179" required autocomplete="email"></label>'
-+ '<label>電話番号（任意）<input type="tel" name="entry.1614413465" autocomplete="tel"></label>'
++ '<form class="lead-form" action="https://docs.google.com/forms/d/e/1FAIpQLSf48qJWe-muxLveesTBzHgfHhrD5b7jgVHew2RjvRThgWtPuA/formResponse" method="POST" target="gform_sink" onsubmit="return submitLead()">'
++ '<input type="hidden" name="entry.18224998" value="' + sumText.replace(/"/g, '”') + '">'
++ '<label>会社名<span class="req">必須</span><input type="text" name="entry.1873836302" required autocomplete="organization"></label>'
++ '<label>担当者名<span class="req">必須</span><input type="text" name="entry.315891329" required autocomplete="name"></label>'
++ '<label>メールアドレス<span class="req">必須</span><input type="email" name="entry.1306356804" required autocomplete="email"></label>'
++ '<label>電話番号（任意）<input type="tel" name="entry.757213249" autocomplete="tel"></label>'
 + '<div class="wide"><button class="btn btn-cta btn-hero" type="submit" style="width:100%">現状シートを作成する</button>'
 + '<p class="lead-note">送信すると、その場でシートが表示されます（印刷・保存できます）。入力した連絡先は、シートの送付と、資金調達に関する案内にだけ使います。詳しくは<a href="privacy.html" style="color:#fff">プライバシーポリシー</a>をご覧ください。</p></div>'
 + '</form></div>';
