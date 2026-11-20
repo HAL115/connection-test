@@ -171,7 +171,7 @@ footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-sp
 <div class="wrap"><div class="hero-in">
 <p class="eyebrow">FUNDING OBSERVATORY — 全ての手法から探し出す</p>
 <h1>支払いの期限に<em>間に合う</em><br>資金調達を、状態から<br>見つける</h1>
-<p class="lead">質問に答えるだけ。全24手法の中から、あなたの状態で期限に間に合う手法と、貸してくれる候補の会社がその場で分かります。</p>
+<p class="lead">費用の低い手法から順に確認します。あなたの状態で使える手法と、貸してくれる候補の会社がその場で分かります。</p>
 <div class="hero-cta">
 <a class="btn btn-cta btn-hero" href="#check">状態チェックをはじめる →</a>
 <a class="btn btn-glass" href="#search">324件のサービスから探す</a>
@@ -189,7 +189,7 @@ footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-sp
 <section id="check">
 <p class="eyebrow dark">01 — CHECK</p>
 <h2 class="sec">状態チェック</h2>
-<p class="sec-sub">売掛先や書類の状態まで聞くので、結果は「可能性が高い」順に出ます。候補の会社までその場で表示されます。</p>
+<p class="sec-sub">費用の低い上位の手法から順に確認します。条件が合えば少ない質問で終わり、合わない場合は下位の手法へ進むため、質問が増えます。</p>
 <div class="panel" id="wiz">
 <div class="step-label" id="step-label">STEP 1 / 4</div>
 <div class="progress"><i id="progress-bar" style="width:0%"></i></div>
@@ -200,8 +200,8 @@ footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-sp
 <div id="result" style="display:none"></div>
 <iframe name="gform_sink" style="display:none" title="送信先"></iframe>
 <div class="steps3">
-<div class="step3 rv"><b><i>1</i>質問に答える</b><p>事業の形、期限、業種、売掛先と請求書の状態、書類の用意、売上と税金、借入と決算、担保、創業期間、希望金額です。</p></div>
-<div class="step3 rv"><b><i>2</i>間に合う手法と候補が出る</b><p>可能性が高い手法から順に出ます。向かない手法も、理由つきで確認できます。</p></div>
+<div class="step3 rv"><b><i>1</i>質問に答える</b><p>上位の手法から順に、審査で見られる条件を確認します。候補が見つかった段階で止めることもできます。</p></div>
+<div class="step3 rv"><b><i>2</i>間に合う手法と候補が出る</b><p>上位の系統から順に出ます。向かない手法も、理由つきで確認できます。</p></div>
 <div class="step3 rv"><b><i>3</i>現状シートを担当者へ渡す</b><p>結果と現状を1枚にまとめたシートを作れます。担当者への相談が早く進みます。</p></div>
 </div>
 </section>
@@ -278,19 +278,23 @@ const COMPARE = {'M13':'articles/compare-2sha.html','M14':'articles/compare-2sha
 const STEPS = [
 {key:'ent', q:'事業の形はどちらですか', opts:[['corp','法人'],['sole','個人事業主']]},
 {key:'days', q:'資金が要るのは、いつまでですか', opts:[['1','今日〜明日','支払いが目前に迫っている'],['7','今週中'],['30','今月中'],['999','急がない','じっくり比べたい']]},
+{key:'amt', q:'希望する金額はどれくらいですか', opts:[['u100','100万円未満'],['u500','100万〜500万円'],['u3000','500万〜3,000万円'],['over','3,000万円を超える']]},
+{key:'age', q:'創業からの期間はどれくらいですか', opts:[['new','創業前・開業して1年未満'],['mid','1年〜3年'],['old','3年を超える'],['unknown','分からない']]},
+{key:'docs2', q:'決算書（直近2期分）を、今すぐ提出できますか', opts:[['two','2期分とも出せる'],['one','1期分だけ'],['none-yet','まだ決算を迎えていない'],['cannot','出せない']]},
+{key:'fin', q:'決算の状態はどれに近いですか', opts:[['stable','黒字で安定している'],['akaji','赤字が続いている'],['over','債務超過がある'],['unknown','分からない']]},
+{key:'tax', q:'税金・社会保険料の滞納はありますか', opts:[['none','ない'],['install','あるが、分納している'],['yes','ある']]},
+{key:'sales', q:'直近3か月の売上は、前年同期と比べてどうですか', opts:[['down','5%以上減っている'],['same','ほぼ同じ'],['up','増えている'],['unknown','分からない']]},
 {key:'biz', q:'業種はどれに近いですか', opts:[['medical','医療・介護・調剤'],['construction','建設'],['transport','運送'],['manufacturing','製造'],['wholesale','卸・小売'],['food','飲食・サービス'],['other','その他']]},
+{key:'asset', q:'担保にできる不動産などの資産はありますか', opts:[['yes','ある'],['no','ない']]},
+{key:'loan', q:'借入の状況はどれに近いですか', opts:[['first','初めて借りる'],['has','借入がある'],['rejected','審査に落ちたことがある']]},
 {key:'cp', q:'売掛金（入金待ちの請求書）の相手は誰ですか', opts:[['corp','法人'],['sole','個人事業主'],['person','個人・一般消費者'],['public','公的機関','国保連・支払基金など'],['none','売掛金はない']]},
 {key:'inv', q:'その請求書の状態はどれですか', when:() => hasArv(), opts:[['confirmed','金額と期日が確定し、検収も済んでいる'],['issued','請求はしたが、確定していない部分がある'],['order','注文書・出来高の段階で、まだ請求書がない']]},
-{key:'invdays', q:'売掛金の支払期日まで、あとどれくらいですか', when:() => hasArv(), opts:[['d30','30日以内'],['d70','31〜70日'],['d180','71日〜6か月'],['over','6か月を超える']]},
-{key:'docs2', q:'決算書（直近2期分）を、今すぐ提出できますか', opts:[['two','2期分とも出せる'],['one','1期分だけ'],['none-yet','まだ決算を迎えていない'],['cannot','出せない']]},
-{key:'sales', q:'直近3か月の売上は、前年同期と比べてどうですか', opts:[['down','5%以上減っている'],['same','ほぼ同じ'],['up','増えている'],['unknown','分からない']]},
-{key:'tax', q:'税金・社会保険料の滞納はありますか', opts:[['none','ない'],['install','あるが、分納している'],['yes','ある']]},
-{key:'loan', q:'借入の状況はどれに近いですか', opts:[['first','初めて借りる'],['has','借入がある'],['rejected','審査に落ちたことがある']]},
-{key:'fin', q:'決算の状態はどれに近いですか', opts:[['stable','黒字で安定している'],['akaji','赤字が続いている'],['over','債務超過がある'],['unknown','分からない']]},
-{key:'asset', q:'担保にできる不動産などの資産はありますか', opts:[['yes','ある'],['no','ない']]},
-{key:'age', q:'創業からの期間はどれくらいですか', opts:[['new','創業前・開業して1年未満'],['mid','1年〜3年'],['old','3年を超える'],['unknown','分からない']]},
-{key:'amt', q:'希望する金額はどれくらいですか', opts:[['u100','100万円未満'],['u500','100万〜500万円'],['u3000','500万〜3,000万円'],['over','3,000万円を超える']]}
+{key:'invdays', q:'売掛金の支払期日まで、あとどれくらいですか', when:() => hasArv(), opts:[['d30','30日以内'],['d70','31〜70日'],['d180','71日〜6か月'],['over','6か月を超える']]}
 ];
+const QMAP = {}; for(const s of STEPS) QMAP[s.key] = s;
+const TIER = {T1:['M01','M02','M03','M04','M05','M06'], T2:['M07','M08','M09','M12','M18','M19','M20','M21','M22','M23','M24'], T3:['M10','M11','M13','M14','M15','M16','M17']};
+const TIER_NAME = {T1:'上位：公的・銀行系（費用は低いが、審査は厳しい）', T2:'中位：担保・ノンバンク系', T3:'下位：売掛金の系統（早いが、費用は高め）'};
+const TIER_SHORT = {T1:'上位（公的・銀行系）', T2:'中位（担保・ノンバンク系）', T3:'下位（売掛金の系統）'};
 const TAX_NG = ['M02','M03','M04','M05','M06','M18','M19','M20'];
 const METHOD_NOTES = {
 M05: '要件：商工会議所等の経営指導を原則6か月以上受けていること、同じ地区で1年以上の事業歴、税金の完納などが必要です。',
@@ -312,31 +316,96 @@ const yen = s.amt_hi.match(/([\d,]+)\s*円/);
 if(yen) return parseFloat(yen[1].replace(/,/g, '')) / 10000;
 return null;
 }
-let step = 0; const ans = {};
+const ans = {}; const EVAL = {}; const hist = [];
+let stageIdx = 0, qIdx = 0, branchTierNow = null, flowGen = 0;
 function hasArv(){ return!!ans.cp && ans.cp!== 'none';}
-function visSteps(){ return STEPS.filter(s =>!s.when || s.when());}
+function bSkipped(){ return parseInt(ans.days || '999', 10) <= 7;}
+const STAGE_DEFS = [
+{id:'A', label:'入口の確認', tier:null, qs:['ent','days','amt']},
+{id:'B', label:'上位の手法（公的・銀行系）の確認', tier:'T1', skipIf:() => bSkipped(), qs:['age','docs2','fin','tax','sales','biz']},
+{id:'C', label:'担保とノンバンク系の確認', tier:'T2', qs:['asset','loan','fin','tax']},
+{id:'D', label:'売掛金の系統の確認', tier:'T3', qs:['biz','cp','inv','invdays']}
+];
+function stageQs(st){
+return st.qs.map(k => QMAP[k]).filter(q => {
+if(st.id === 'C' && (q.key === 'fin' || q.key === 'tax')) return bSkipped();
+if(st.id === 'D' && q.key === 'biz') return bSkipped();
+if(q.when) return q.when();
+return true;
+});
+}
+function askedCount(){ let n = 0; for(let i = 0; i < stageIdx; i++){ if(!(STAGE_DEFS[i].skipIf && STAGE_DEFS[i].skipIf())) n += stageQs(STAGE_DEFS[i]).length;} return n + qIdx;}
 function renderStep(){
-const vis = visSteps();
-if(step >= vis.length) step = vis.length - 1;
-const s = vis[step];
-document.getElementById('step-label').textContent = 'STEP ' + (step+1) + ' / ' + vis.length;
-document.getElementById('progress-bar').style.width = (step / vis.length * 100) + '%';
+branchTierNow = null;
+const st = STAGE_DEFS[stageIdx];
+if(st.skipIf && st.skipIf()){ finishStage(); return;}
+const qs = stageQs(st);
+if(qIdx >= qs.length){ finishStage(); return;}
+const s = qs[qIdx];
+document.getElementById('step-label').textContent = st.label + '（質問 ' + (askedCount() + 1) + '）';
+document.getElementById('progress-bar').style.width = ((stageIdx + qIdx / Math.max(qs.length, 1)) / STAGE_DEFS.length * 100) + '%';
 const q = document.getElementById('wiz-q');
 q.textContent = s.q;
 const box = document.getElementById('wiz-opts');
 box.innerHTML = s.opts.map(o =>
 '<button class="opt' + (ans[s.key] === o[0]? ' sel': '') + '" data-val="' + o[0] + '">' + o[1] + (o[2]? '<span class="sub">' + o[2] + '</span>': '') + '</button>').join('');
 box.querySelectorAll('.opt').forEach(b => b.addEventListener('click', () => pick(s.key, b.dataset.val)));
-document.getElementById('wiz-back').style.visibility = step === 0? 'hidden': 'visible';
+document.getElementById('wiz-back').style.visibility = hist.length === 0? 'hidden': 'visible';
 }
 function pick(key, val){
+hist.push([stageIdx, qIdx]);
 ans[key] = val;
 if(key === 'cp' && val === 'none'){ delete ans.inv; delete ans.invdays;}
 renderStep();
-setTimeout(() => { if(step < visSteps().length - 1){ step++; renderStep();} else { showResult();}}, 200);
+const g = flowGen;
+setTimeout(() => { if(g !== flowGen) return; qIdx++; renderStep();}, 200);
 }
-function backStep(){ if(step > 0){ step--; renderStep();}}
-function restart(){ step = 0; for(const k in ans) delete ans[k]; document.getElementById('wiz').style.display = 'block'; document.getElementById('result').style.display = 'none'; renderStep();}
+function backStep(){
+if(branchTierNow){ branchTierNow = null; renderStep(); return;}
+const prev = hist.pop();
+if(!prev) return;
+stageIdx = prev[0]; qIdx = prev[1];
+renderStep();
+}
+function finishStage(){
+const st = STAGE_DEFS[stageIdx];
+if(st.tier){
+if(st.skipIf && st.skipIf()){
+EVAL[st.tier] = {fit: [], maybe: [], unfit1: [], unfit2: METHODS.filter(m => TIER[st.tier].includes(m.id)).map(m => [m, '入金までの期間の目安が「' + m.period + '」で、必要な時期に間に合いません。急ぎの場合は、下位の系統が入口になります。']), skipped: true};
+} else {
+EVAL[st.tier] = evaluate(TIER[st.tier]);
+}
+for(let i = stageIdx + 1; i < STAGE_DEFS.length; i++){ const t = STAGE_DEFS[i].tier; if(t) delete EVAL[t];}
+const ev = EVAL[st.tier];
+if(stageIdx < STAGE_DEFS.length - 1 &&!ev.skipped && (ev.fit.length + ev.maybe.length) > 0){ renderBranch(st.tier); return;}
+}
+nextStage();
+}
+function nextStage(){ stageIdx++; qIdx = 0; if(stageIdx >= STAGE_DEFS.length){ showResult(false); return;} renderStep();}
+function renderBranch(tier){
+branchTierNow = tier;
+const ev = EVAL[tier];
+const cands = ev.fit.concat(ev.maybe);
+document.getElementById('step-label').textContent = TIER_SHORT[tier] + 'の確認が終わりました';
+document.getElementById('progress-bar').style.width = ((stageIdx + 1) / STAGE_DEFS.length * 100) + '%';
+document.getElementById('wiz-q').textContent = 'ここまでの確認で、' + TIER_SHORT[tier] + 'に候補が ' + cands.length + ' 件あります。';
+const box = document.getElementById('wiz-opts');
+box.innerHTML = '<div class="panel" style="text-align:left;margin-bottom:14px"><b>候補</b><ul class="why-list">'
++ cands.map(m => '<li>' + m.name + (signals(m) >= 1 &&!m._maybe? '（可能性が高い）': '') + (m._maybe? '（最短では間に合うが確実ではない）': '') + '</li>').join('')
++ '</ul><p class="note" style="margin:0">この候補で結果を見るか、下位の手法まで調べるか選んでください。下位は費用が高くなる代わりに、審査の形が違います。状況に合う手法が下位にしかない場合は、質問に答えるほど絞り込めます。</p></div>'
++ '<button class="opt" data-act="result">この候補で結果を見る</button>'
++ '<button class="opt" data-act="deeper">下位の手法まで調べる（質問が続きます）</button>';
+box.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => { if(b.dataset.act === 'result') showResult(true); else { branchTierNow = null; nextStage();}}));
+document.getElementById('wiz-back').style.visibility = 'visible';
+}
+function resumeCascade(){
+flowGen++;
+for(let i = 0; i < STAGE_DEFS.length; i++){ const t = STAGE_DEFS[i].tier; if(t &&!EVAL[t]){ stageIdx = i; qIdx = 0; break;}}
+document.getElementById('wiz').style.display = 'block';
+document.getElementById('result').style.display = 'none';
+renderStep();
+}
+function restart(){ flowGen++; stageIdx = 0; qIdx = 0; branchTierNow = null; hist.length = 0; for(const k in ans) delete ans[k]; for(const k in EVAL) delete EVAL[k]; document.getElementById('wiz').style.display = 'block'; document.getElementById('result').style.display = 'none'; renderStep();}
 let SHEET_DATA = null;
 function saveSheet(){ try{ sessionStorage.setItem('shikin_sheet', JSON.stringify(SHEET_DATA));}catch(e){}}
 function submitLead(){ saveSheet(); setTimeout(() => { location.href = 'sheet.html';}, 900); return true;}
@@ -349,16 +418,18 @@ const hi = amtHiWan(s);
 return hi === null || hi >= lo;
 });
 }
-function showResult(){
+function evaluate(ids){
 const maxD = parseInt(ans.days, 10);
 let fit = [], maybe = [], unfit1 = [], unfit2 = [];
+for(const m of METHODS){ m._maybe = false; m._invDemote = false;}
 for(const m of METHODS){
-if(ans.tax!== 'none' && TAX_NG.includes(m.id)) unfit1.push([m, '税金・社会保険料の滞納がある場合、納税証明書の提出が必要な公的な融資や補助は対象外になります。分納中の場合も、同じ扱いの制度が大半です。']);
+if(!ids.includes(m.id)) continue;
+if(ans.tax && ans.tax!== 'none' && TAX_NG.includes(m.id)) unfit1.push([m, '税金・社会保険料の滞納がある場合、納税証明書の提出が必要な公的な融資や補助は対象外になります。分納中の場合も、同じ扱いの制度が大半です。']);
 else if(m.id === 'M16' &&!(ans.biz === 'medical' || ans.cp === 'public')) unfit1.push([m, '診療・介護・調剤報酬の債権を使う手法です。医療・介護以外の事業では使えません。']);
-else if(m.needsArv &&!hasArv()) unfit1.push([m, '売掛金（請求書）が必要な手法です。']);
+else if(m.needsArv && ans.cp &&!hasArv()) unfit1.push([m, '売掛金（請求書）が必要な手法です。']);
 else if(m.needsArv && ans.cp === 'person' && m.id!== 'M15') unfit1.push([m, '売掛先が個人・一般消費者の請求書は、多くのファクタリング会社で対象外です。']);
 else if(m.id === 'M09' && ans.asset === 'no') unfit1.push([m, '不動産などの担保が必要です。']);
-else if(m.id === 'M10' && ans.asset === 'no' &&!hasArv()) unfit1.push([m, '担保にできる資産や売掛金が必要です。']);
+else if(m.id === 'M10' && ans.asset === 'no' && ans.cp &&!hasArv()) unfit1.push([m, '担保にできる資産や売掛金が必要です。']);
 else if(m.id === 'M01' && ans.age === 'new') unfit1.push([m, '銀行融資（プロパー）は複数期の実績が前提です。創業期は公庫と保証協会の創業向けが入口になります。']);
 else if(m.id === 'M23' && ans.age === 'new') unfit1.push([m, '私募債は、発行できる会社の条件（規模と実績）が決まっています。']);
 else if(ans.ent === 'sole' &&!m.target.includes('個人事業主')) unfit1.push([m, '対象が法人中心の手法です。']);
@@ -368,13 +439,12 @@ else if(m.minDays <= maxD) maybe.push(m);
 else unfit2.push([m, '入金までの期間の目安が「' + m.period + '」で、必要な時期に間に合いません。']);
 }
 for(const m of fit){
-if(['M13','M14'].includes(m.id) && hasArv() && ans.inv!== 'confirmed'){
-m._maybe = true; m._invDemote = true;
-maybe.push(m);
-}
+if(['M13','M14'].includes(m.id) && hasArv() && ans.inv && ans.inv!== 'confirmed'){ m._maybe = true; m._invDemote = true; maybe.push(m);}
 }
 fit = fit.filter(m =>!m._invDemote);
 for(const m of maybe) m._maybe = true;
+return {fit: fit, maybe: maybe, unfit1: unfit1, unfit2: unfit2};
+}
 const DAYS_LABEL = {'1':'今日〜明日', '7':'今週中', '30':'今月中', '999':'急がない'};
 const BAND_LABEL = {u100:'100万円未満', u500:'100万〜500万円', u3000:'500万〜3,000万円', over:'3,000万円超'};
 function signals(m){
@@ -401,7 +471,7 @@ if(m.needsArv && ans.inv === 'confirmed') rs.push('債権の状態：金額と�
 if(m.id === 'M15' && ans.inv === 'order') rs.push('債権の状態：注文書・出来高の段階でも申し込める系統です。請求書の発行を待つ必要がありません。');
 if(m.id === 'M06' && ans.sales === 'down') rs.push('売上：直近3か月の売上が前年同期比で5%以上減っている場合、セーフティネット保証5号の認定要件に当たる可能性があります。');
 if(['M01','M02','M03','M04','M07'].includes(m.id) && ans.docs2 === 'two') rs.push('書類：決算書2期分をすぐ出せる状態は、審査を早く始められます。');
-if(['M13','M14'].includes(m.id) && ans.docs2!== 'two') rs.push('書類：決算書がそろっていなくても、通帳の入出金明細で審査する会社があります（使える枠に上限がある場合があります）。');
+if(['M13','M14'].includes(m.id) && ans.docs2 && ans.docs2!== 'two') rs.push('書類：決算書がそろっていなくても、通帳の入出金明細で審査する会社があります（使える枠に上限がある場合があります）。');
 if((m.id === 'M09' || m.id === 'M10') && ans.asset === 'yes') rs.push('担保：担保にできる資産があるため、金額の枠と条件の幅が広がります。');
 if(ans.age === 'new' && (m.id === 'M03' || m.id === 'M02')) rs.push('創業：創業期向けに設計された制度です。実績がなくても、計画と自己資金で判断されます。');
 if(ans.fin === 'stable' && FIN_CAUTION.includes(m.id)) rs.push('決算：黒字で安定しており、決算内容の審査が中心の手法でも進められます。');
@@ -413,19 +483,61 @@ if(n > 0) rs.push('金額：希望の帯（' + BAND_LABEL[ans.amt] + '）に公�
 if(m.fit) rs.push('手法の向く状態：' + m.fit);
 return rs;
 }
-const shownAll = fit.concat(maybe);
-for(const m of shownAll) m._sig = signals(m);
-const tierA = shownAll.filter(m =>!m._maybe && m._sig >= 1).sort((a,b) => b._sig - a._sig);
-const tierB = shownAll.filter(m =>!m._maybe && m._sig < 1);
-const tierC = shownAll.filter(m => m._maybe);
-const shown = tierA.concat(tierB, tierC);
-const remain1 = METHODS.length - unfit1.length;
-const remain2 = remain1 - unfit2.length;
-let h = '<div class="result-head"><b>絞り込みの過程</b><br>'
-+ '全手法 ' + METHODS.length + '件 → 第1段階（絶対条件：対象、売掛先、税金の滞納、担保、報酬債権）で ' + unfit1.length + '件を除外し、残り ' + remain1 + '件<br>'
-+ '→ 第2段階（期限）で ' + unfit2.length + '件を除外し、残り ' + remain2 + '件<br>'
-+ '→ 第3段階（決算と借入の状態）では除外せず、注意を付けて示します<br>'
-+ '<b>提示する手法は ' + shown.length + '件、そのうち「可能性が高い」のは ' + tierA.length + '件です。</b>可能性が高い順に並べました。外れた手法も、段階ごとに理由つきで下に置きました。</div>';
+function cardHtml(m, isA){
+const svcs = svcOf(m.id).slice().sort((a,b) => (parseInt(b.score)||0) - (parseInt(a.score)||0));
+let h = '<div class="mcard"><h3>' + m.name + (isA? ' <span class="badge">可能性が高い</span>': '') + (m._maybe? ' <span class="badge low">最短では間に合うが確実ではない</span>': '') + '</h3><p style="margin:0">' + m.def + '</p>';
+h += '<dl class="kv"><dt>費用の目安</dt><dd>' + m.cost + '</dd><dt>入金まで</dt><dd>' + m.period + '</dd><dt>必要書類</dt><dd>' + m.docs + '</dd></dl>';
+const rs = reasons(m,!!m._maybe);
+if(rs.length) h += '<p style="margin:10px 0 2px"><b>おすすめの理由</b></p><ul class="why-list">' + rs.map(r => '<li>' + r + '</li>').join('') + '</ul>';
+if((ans.fin === 'akaji' || ans.fin === 'over') && FIN_CAUTION.includes(m.id)){
+const finNote = (ans.fin === 'over' && m.id === 'M01')
+? '注意：債務超過の場合、決算内容が審査の中心になる銀行融資は特に厳しくなります。不動産担保や売掛金の系統も並行して検討してください。'
+: '注意：赤字や債務超過が続いている場合、この手法は決算内容の審査が中心になるため、結果が厳しくなることがあります。';
+h += '<p class="note"><b>' + finNote + '</b></p>';
+}
+if(METHOD_NOTES[m.id]) h += '<p class="note">' + METHOD_NOTES[m.id] + '</p>';
+if(ans.age === 'new' && m.id === 'M02') h += '<p class="note">創業の場合は、創業関連保証（限度額3,500万円、100%保証）が入口になります。</p>';
+if(ans.age === 'new' && m.id === 'M05') h += '<p class="note">マル経融資は、同じ地区で1年以上事業を続けていることが要件です。</p>';
+if(m.id === 'M02' && (ans.docs2 === 'cannot' || ans.docs2 === 'none-yet')) h += '<p class="note">注意：信用保証協会の申し込みでは、受付印のある決算書2期分が原則として必要です。今すぐ出せない場合は、まず用意できるかを確認してください。</p>';
+if(m.id === 'M07' && ans.docs2 && ans.docs2!== 'two') h += '<p class="note">注意：決算書2期分を求める会社があります。1期分だけ、または出せない場合は、申し込める会社が絞られます。</p>';
+if(m.id === 'M06' && ans.sales && ans.sales!== 'down') h += '<p class="note">セーフティネット保証5号は、指定業種で直近の売上が減っていることが認定の要件です。要件に当たらない場合は、一般の保証枠が入口になります。</p>';
+if(m.id === 'M16' && ans.tax && ans.tax!== 'none') h += '<p class="note">報酬債権の専門会社には、税金の滞納があっても審査に影響しないと案内する会社があります。条件は会社ごとに異なるため、見積もりで確認してください。</p>';
+for(const s of svcs.slice(0,3)){
+h += '<div class="svc"><div><b><a href="services/' + s.id.toLowerCase() + '.html">' + s.name + '</a></b>（' + s.entity + '）<br>手数料 ' + feeText(s) + '／入金 ' + (s.speed || '―') + '／公表している金額 ' + amtText(s) + '</div><span class="badge' + ((parseInt(s.score)||0) >= 3? '': ' low') + '">透明性 ' + (s.score || '―') + ' / 5</span></div>';
+}
+if(svcs.length) h += '<p class="note">金額は各社が公表している範囲で、調達できる金額の約束ではありません。手数料の上限が「非公表」の会社は、見積もりで確認が必要です。</p>';
+h += '<div class="cta-row">';
+if(svcs.length) h += '<button class="btn btn-cta btn-sm" data-goto="' + m.id + '">候補 ' + svcs.length + '件を比べる</button>';
+if(COMPARE[m.id]) h += '<a class="btn btn-sub btn-sm" href="' + COMPARE[m.id] + '">比較の記事を読む</a>';
+if(GUIDE[m.id]) h += '<a class="btn btn-ghost btn-sm" href="' + GUIDE[m.id] + '">仕組みを知る</a>';
+h += '</div></div>';
+return h;
+}
+function showResult(partial){
+const order = ['T1','T2','T3'];
+const shownByTier = {}; let totalShown = 0, totalA = 0;
+for(const t of order){
+if(!EVAL[t]) continue;
+const ev = EVAL[t];
+const all = ev.fit.concat(ev.maybe);
+for(const m of all) m._sig = signals(m);
+const a = all.filter(m =>!m._maybe && m._sig >= 1).sort((x,y) => y._sig - x._sig);
+const b = all.filter(m =>!m._maybe && m._sig < 1);
+const c = all.filter(m => m._maybe);
+shownByTier[t] = a.concat(b, c).map(m => ({m: m, isA: a.includes(m)}));
+totalShown += all.length; totalA += a.length;
+}
+let h = '<div class="result-head"><b>絞り込みの過程（上位から順に確認しました）</b><br>全手法 ' + METHODS.length + '件';
+for(const t of order){
+if(EVAL[t]){
+const ev = EVAL[t];
+if(ev.skipped) h += '<br>→ ' + TIER_SHORT[t] + '：期限（' + DAYS_LABEL[ans.days] + '）に間に合わないため、対象外です';
+else h += '<br>→ ' + TIER_SHORT[t] + '：候補 ' + (ev.fit.length + ev.maybe.length) + '件／外れた手法 ' + (ev.unfit1.length + ev.unfit2.length) + '件';
+} else {
+h += '<br>→ ' + TIER_SHORT[t] + '：まだ確認していません';
+}
+}
+h += '<br><b>提示する手法は ' + totalShown + '件、そのうち「可能性が高い」のは ' + totalA + '件です。</b>上位の系統から順に並べました。外れた手法も、段階ごとに理由つきで下に置きました。</div>';
 h += '<div class="panel" style="margin-bottom:20px"><b>まず用意する書類（複数社で使い回せます）</b>'
 + '<ul class="why-list">' + DOCS_COMMON.map(d => '<li>' + d + '</li>').join('') + '</ul>'
 + '<p class="note" style="margin:0">申し込み先ごとに違う書類をそろえ直す手間が、締切を逃す原因になります。共通分は先にそろえてください。現状シートにもこの一覧を載せます。</p></div>';
@@ -440,14 +552,27 @@ const TAX_LABEL = {none:'ない', install:'あるが分納している', yes:'�
 const LOAN_LABEL = {first:'初めて借りる', has:'借入がある', rejected:'審査に落ちたことがある'};
 const FIN_LABEL = {stable:'黒字で安定している', akaji:'赤字が続いている', over:'債務超過がある', unknown:'分からない'};
 const AGE_LABEL = {new:'創業前・開業して1年未満', mid:'1年〜3年', old:'3年を超える', unknown:'分からない'};
-const stateRows = [['事業の形', ENT_LABEL[ans.ent] || ''], ['資金が要る時期', DAYS_LABEL[ans.days] || ''], ['業種', BIZ_LABEL[ans.biz] || ''], ['売掛先', CP_LABEL[ans.cp] || '']];
-if(hasArv()){ stateRows.push(['請求書の状態', INV_LABEL[ans.inv] || '']); stateRows.push(['売掛金の支払期日まで', INVDAYS_LABEL[ans.invdays] || '']);}
-stateRows.push(['決算書2期分', DOCS2_LABEL[ans.docs2] || ''], ['直近3か月の売上（前年同期比）', SALES_LABEL[ans.sales] || ''], ['税金・社会保険料の滞納', TAX_LABEL[ans.tax] || ''], ['借入の状況', LOAN_LABEL[ans.loan] || ''], ['決算の状態', FIN_LABEL[ans.fin] || ''], ['担保にできる資産', ans.asset === 'yes'? 'ある': 'ない'], ['創業からの期間', AGE_LABEL[ans.age] || ''], ['希望する金額', BAND_LABEL[ans.amt] || '']);
-const shownData = shown.map(m => ({name: m.name, period: m.period, cost: m.cost, maybe:!!m._maybe, tierA: tierA.includes(m), svcs: svcOf(m.id).slice(0,3).map(s => s.name + '（' + s.entity + '）')}));
-SHEET_DATA = {date: new Date().toLocaleDateString('ja-JP'), state: stateRows, shown: shownData, unfit: unfit1.map(x => x[0].name).concat(unfit2.map(x => x[0].name)), docs: DOCS_COMMON};
+const stateRows = [['事業の形', ENT_LABEL[ans.ent] || ''], ['資金が要る時期', DAYS_LABEL[ans.days] || ''], ['希望する金額', BAND_LABEL[ans.amt] || '']];
+if(ans.age) stateRows.push(['創業からの期間', AGE_LABEL[ans.age] || '']);
+if(ans.docs2) stateRows.push(['決算書2期分', DOCS2_LABEL[ans.docs2] || '']);
+if(ans.fin) stateRows.push(['決算の状態', FIN_LABEL[ans.fin] || '']);
+if(ans.tax) stateRows.push(['税金・社会保険料の滞納', TAX_LABEL[ans.tax] || '']);
+if(ans.sales) stateRows.push(['直近3か月の売上（前年同期比）', SALES_LABEL[ans.sales] || '']);
+if(ans.biz) stateRows.push(['業種', BIZ_LABEL[ans.biz] || '']);
+if(ans.asset) stateRows.push(['担保にできる資産', ans.asset === 'yes'? 'ある': 'ない']);
+if(ans.loan) stateRows.push(['借入の状況', LOAN_LABEL[ans.loan] || '']);
+if(ans.cp){ stateRows.push(['売掛先', CP_LABEL[ans.cp] || '']); if(hasArv()){ stateRows.push(['請求書の状態', INV_LABEL[ans.inv] || '']); stateRows.push(['売掛金の支払期日まで', INVDAYS_LABEL[ans.invdays] || '']);}}
+const shownFlat = [];
+for(const t of order){ if(shownByTier[t]) for(const x of shownByTier[t]) shownFlat.push(x);}
+const shownData = shownFlat.map(x => ({name: x.m.name, period: x.m.period, cost: x.m.cost, maybe:!!x.m._maybe, tierA: x.isA, svcs: svcOf(x.m.id).slice(0,3).map(s => s.name + '（' + s.entity + '）')}));
+const unfitNames = [];
+for(const t of order){ if(EVAL[t]) for(const x of EVAL[t].unfit1.concat(EVAL[t].unfit2)) unfitNames.push(x[0].name);}
+const pendingNames = [];
+for(const t of order){ if(!EVAL[t]) for(const id of TIER[t]) pendingNames.push((METHODS.find(m => m.id === id) || {}).name);}
+SHEET_DATA = {date: new Date().toLocaleDateString('ja-JP'), state: stateRows, shown: shownData, unfit: unfitNames, docs: DOCS_COMMON, pending: pendingNames};
 const sumText = '' + stateRows.map(r => r[0] + '：' + r[1]).join('／')
 + ' ' + shownData.map(d => d.name + '：' + (d.svcs.join('、') || '候補なし')).join('／')
-+ ' ' + SHEET_DATA.unfit.join('、');
++ ' ' + unfitNames.join('、') + (pendingNames.length? ' ' + pendingNames.join('、'): '');
 h += '<div class="lead-panel" id="lead"><h3>結果と現状をまとめた「現状シート」を作る</h3>'
 + '<p>この結果に、あなたの現状（期限・希望額・売掛先・決算の状態）と、用意する書類の一覧を整理して1枚にまとめたシートです。提示した手法と候補の会社、外れた手法も載せるので、各社の担当者にそのまま渡せて、相談が早く進みます。作成は無料です。</p>'
 + '<form class="lead-form" action="https://docs.google.com/forms/d/e/1FAIpQLScOuM7jBm8snBKK-FSYZq1uCiLjI3b3CFW084qohu0ubY2zcQ/formResponse" method="POST" target="gform_sink" onsubmit="return submitLead()">'
@@ -459,43 +584,25 @@ h += '<div class="lead-panel" id="lead"><h3>結果と現状をまとめた「現
 + '<div class="wide"><button class="btn btn-cta btn-hero" type="submit" style="width:100%">現状シートを作成する</button>'
 + '<p class="lead-note">送信すると、その場でシートが表示されます（印刷・保存できます）。入力した連絡先は、シートの送付と、資金調達に関する案内にだけ使います。詳しくは<a href="privacy.html" style="color:#fff">プライバシーポリシー</a>をご覧ください。</p></div>'
 + '</form></div>';
-for(const m of shown){
-const svcs = svcOf(m.id).slice().sort((a,b) => (parseInt(b.score)||0) - (parseInt(a.score)||0));
-const isA = tierA.includes(m);
-h += '<div class="mcard"><h3>' + m.name + (isA? ' <span class="badge">可能性が高い</span>': '') + (m._maybe? ' <span class="badge low">最短では間に合うが確実ではない</span>': '') + '</h3><p style="margin:0">' + m.def + '</p>';
-h += '<dl class="kv"><dt>費用の目安</dt><dd>' + m.cost + '</dd><dt>入金まで</dt><dd>' + m.period + '</dd><dt>必要書類</dt><dd>' + m.docs + '</dd></dl>';
-const rs = reasons(m,!!m._maybe);
-if(rs.length) h += '<p style="margin:10px 0 2px"><b>おすすめの理由</b></p><ul class="why-list">' + rs.map(r => '<li>' + r + '</li>').join('') + '</ul>';
-if((ans.fin === 'akaji' || ans.fin === 'over') && FIN_CAUTION.includes(m.id)){
-const finNote = (ans.fin === 'over' && m.id === 'M01')
-? '注意：債務超過の場合、決算内容が審査の中心になる銀行融資は特に厳しくなります。不動産担保や売掛金の系統も並行して検討してください。'
-: '注意：赤字や債務超過が続いている場合、この手法は決算内容の審査が中心になるため、結果が厳しくなることがあります。';
-h += '<p class="note"><b>' + finNote + '</b></p>';
+for(const t of order){
+if(!shownByTier[t]) continue;
+h += '<h3 style="margin:26px 0 12px">' + TIER_NAME[t] + '</h3>';
+for(const x of shownByTier[t]) h += cardHtml(x.m, x.isA);
 }
-if(METHOD_NOTES[m.id]) h += '<p class="note">' + METHOD_NOTES[m.id] + '</p>';
-if(ans.age === 'new' && m.id === 'M02') h += '<p class="note">創業の場合は、創業関連保証（限度額3,500万円、100%保証）が入口になります。</p>';
-if(ans.age === 'new' && m.id === 'M05') h += '<p class="note">マル経融資は、同じ地区で1年以上事業を続けていることが要件です。</p>';
-if(m.id === 'M02' && (ans.docs2 === 'cannot' || ans.docs2 === 'none-yet')) h += '<p class="note">注意：信用保証協会の申し込みでは、受付印のある決算書2期分が原則として必要です。今すぐ出せない場合は、まず用意できるかを確認してください。</p>';
-if(m.id === 'M07' && ans.docs2!== 'two') h += '<p class="note">注意：決算書2期分を求める会社があります。1期分だけ、または出せない場合は、申し込める会社が絞られます。</p>';
-if(m.id === 'M06' && ans.sales!== 'down') h += '<p class="note">セーフティネット保証5号は、指定業種で直近の売上が減っていることが認定の要件です。要件に当たらない場合は、一般の保証枠が入口になります。</p>';
-if(m.id === 'M16' && ans.tax!== 'none') h += '<p class="note">報酬債権の専門会社には、税金の滞納があっても審査に影響しないと案内する会社があります。条件は会社ごとに異なるため、見積もりで確認してください。</p>';
-for(const s of svcs.slice(0,3)){
-h += '<div class="svc"><div><b><a href="services/' + s.id.toLowerCase() + '.html">' + s.name + '</a></b>（' + s.entity + '）<br>手数料 ' + feeText(s) + '／入金 ' + (s.speed || '―') + '／公表している金額 ' + amtText(s) + '</div><span class="badge' + ((parseInt(s.score)||0) >= 3? '': ' low') + '">透明性 ' + (s.score || '―') + ' / 5</span></div>';
+for(const t of order){
+if(!EVAL[t]) continue;
+const ev = EVAL[t];
+if(ev.unfit1.length){
+h += '<h3 style="margin-top:30px">' + TIER_SHORT[t] + 'で外れた手法（絶対条件・' + ev.unfit1.length + '件）</h3>';
+for(const [m, r] of ev.unfit1) h += '<details class="unfit"><summary>' + m.name + '</summary><p>' + r + '</p></details>';
 }
-if(svcs.length) h += '<p class="note">金額は各社が公表している範囲で、調達できる金額の約束ではありません。手数料の上限が「非公表」の会社は、見積もりで確認が必要です。</p>';
-h += '<div class="cta-row">';
-if(svcs.length) h += '<button class="btn btn-cta btn-sm" data-goto="' + m.id + '">候補 ' + svcs.length + '件を比べる</button>';
-if(COMPARE[m.id]) h += '<a class="btn btn-sub btn-sm" href="' + COMPARE[m.id] + '">比較の記事を読む</a>';
-if(GUIDE[m.id]) h += '<a class="btn btn-ghost btn-sm" href="' + GUIDE[m.id] + '">仕組みを知る</a>';
-h += '</div></div>';
+if(ev.unfit2.length){
+h += '<h3 style="margin-top:30px">' + TIER_SHORT[t] + 'で外れた手法（期限・' + ev.unfit2.length + '件）</h3>';
+for(const [m, r] of ev.unfit2) h += '<details class="unfit"><summary>' + m.name + '</summary><p>' + r + '</p></details>';
 }
-if(unfit1.length){
-h += '<h3 style="margin-top:30px">第1段階で外れた手法（絶対条件・' + unfit1.length + '件）</h3>';
-for(const [m, r] of unfit1) h += '<details class="unfit"><summary>' + m.name + '</summary><p>' + r + '</p></details>';
 }
-if(unfit2.length){
-h += '<h3 style="margin-top:30px">第2段階で外れた手法（期限・' + unfit2.length + '件）</h3>';
-for(const [m, r] of unfit2) h += '<details class="unfit"><summary>' + m.name + '</summary><p>' + r + '</p></details>';
+if(partial && pendingNames.length){
+h += '<div class="panel" style="margin-top:26px"><b>まだ確認していない手法（' + pendingNames.length + '件）</b><p style="margin:6px 0">' + pendingNames.join('、') + '</p><p class="note" style="margin:0 0 10px">下位の系統は、上の系統で候補が見つからなかった場合に効きます。続きの質問に答えると、この手法も含めて絞り込めます。</p><button class="btn btn-cta" onclick="resumeCascade()">続きの質問に答える</button></div>';
 }
 h += '<div class="cta-row"><button class="btn btn-sub" onclick="restart()">条件を変えて見直す</button><a class="btn btn-ghost" href="#search">サービス一覧から探す</a></div>';
 h += '<p class="note">この結果は一般的な情報の提示です。個別の可否は各社の審査で決まります。</p>';

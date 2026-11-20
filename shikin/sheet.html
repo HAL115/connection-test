@@ -190,6 +190,7 @@ footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-sp
     return s + '</div>';
   }).join('');
   if(d.docs && d.docs.length) h += '<h2 class="sec">まず用意する書類（複数社で使い回せます）</h2><ul class="why-list">' + d.docs.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul>';
+  if(d.pending && d.pending.length) h += '<h2 class="sec">まだ確認していない手法</h2><p>' + d.pending.join('、') + '</p>';
   if(d.unfit && d.unfit.length) h += '<h2 class="sec">今回の状態では外れた手法</h2><p>' + d.unfit.join('、') + '</p>';
   h += '<h2 class="sec">担当者へのメモ</h2><p style="border:1px solid var(--line);border-radius:8px;min-height:110px;background:#fff"></p>';
   box.innerHTML = h;
