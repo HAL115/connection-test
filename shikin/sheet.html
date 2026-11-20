@@ -135,9 +135,10 @@ article h3{font-size:17px}
 .sticky-cta .wrap{display:flex;align-items:center;gap:14px;padding:0}
 .sticky-cta p{margin:0;font-size:14px;font-weight:700;flex:1;letter-spacing:.02em}
 .sticky-cta .btn{min-height:48px;padding:10px 22px;font-size:15px;white-space:nowrap}
-@media(max-width:640px){.sticky-cta p{display:none}.sticky-cta .btn{flex:1;padding:10px 12px}.hstat{padding-right:18px;margin-right:18px}.hstat b{font-size:26px}section{padding:52px 0 4px}.logo{font-size:15px}.logo small{display:none}.hdr-cta{padding:9px 13px;font-size:13.5px}}
+@media(max-width:640px){.sticky-cta p{display:none}.sticky-cta .btn{flex:1;padding:10px 12px}.hstat{padding-right:18px;margin-right:18px}.hstat b{font-size:26px}section{padding:52px 0 4px}.logo{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.logo small{display:none}.hdr-cta{padding:9px 11px;font-size:13px}header.site .wrap{padding-left:14px;padding-right:14px}}
 footer.site{border-top:1px solid var(--line);margin-top:64px;padding:30px 0 10px;color:var(--sub);font-size:13px}
-footer.site .fnav{display:flex;gap:8px 22px;flex-wrap:wrap;margin:0 0 14px;font-size:14px}
+footer.site .fnav{display:flex;gap:2px 22px;flex-wrap:wrap;margin:0 0 14px;font-size:14px}
+footer.site .fnav a{display:inline-flex;align-items:center;min-height:44px}
 footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-spacing:.03em;margin:0 0 4px}
 .hscroll{display:flex;gap:14px;overflow-x:auto;padding:6px 2px 18px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
 .hscroll>.mcard{flex:0 0 292px;scroll-snap-align:start;margin:0}
@@ -188,6 +189,7 @@ footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-sp
     if(m.svcs.length) s += '<p style="margin:6px 0 0">候補：' + m.svcs.join('／') + '</p>';
     return s + '</div>';
   }).join('');
+  if(d.docs && d.docs.length) h += '<h2 class="sec">まず用意する書類（複数社で使い回せます）</h2><ul class="why-list">' + d.docs.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul>';
   if(d.unfit && d.unfit.length) h += '<h2 class="sec">今回の状態では外れた手法</h2><p>' + d.unfit.join('、') + '</p>';
   h += '<h2 class="sec">担当者へのメモ</h2><p style="border:1px solid var(--line);border-radius:8px;min-height:110px;background:#fff"></p>';
   box.innerHTML = h;
