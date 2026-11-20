@@ -152,6 +152,13 @@ body.menu-open{overflow:hidden}
 @media(min-width:900px){.fcols{grid-template-columns:repeat(4,1fr)}}
 .flist .fhead{display:block;font-size:13px;font-weight:900;color:var(--primary);margin-bottom:6px;text-decoration:none}
 .flist a.l{display:block;font-size:13.5px;padding:3.5px 0;color:var(--ink2);line-height:1.45}
+.sgrid{display:grid;gap:12px;margin-top:6px}
+@media(min-width:760px){.sgrid{grid-template-columns:1fr 1fr}}
+.scard{border:1px solid var(--line);border-radius:14px;padding:18px;background:#fff;text-align:left}
+.scard i{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--primary);color:#fff;font-style:normal;font-weight:900;font-size:14px;margin-bottom:8px}
+.scard b{display:block;font-size:16.5px;margin-bottom:5px}
+.scard p{margin:0 0 10px;font-size:14px;color:var(--ink2);line-height:1.65}
+.scard a{font-size:14px;font-weight:700}
 .fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:10px}
 .fcard{display:block;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff;text-decoration:none}
 .fcard b{display:block;font-size:14.5px;color:var(--ink);line-height:1.45}
@@ -239,7 +246,19 @@ footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-sp
 </section>
 
 <section>
-<p class="eyebrow dark">02 — BY SITUATION</p>
+<p class="eyebrow dark">02 — WHY THIS SITE</p>
+<h2 class="sec">このサイトの違い</h2>
+<p class="sec-sub">比べる範囲と、数字の扱い方です。どれも、裏づけのページへつながっています。</p>
+<div class="sgrid">
+<div class="scard"><i>1</i><b>全ての手法を横断して比べる</b><p>24手法・324サービス・261社を、1つの物差しで収録しています。ファクタリングだけ、融資だけのサイトでは出てこない候補まで並びます。</p><a href="methods/index.html">手法の一覧を見る</a></div>
+<div class="scard"><i>2</i><b>結果は、その場で全部出す</b><p>状態チェックは、連絡先を聞かずに、使える手法と外れる理由まで表示します。候補が見つかった段階で止めることもできます。</p><a href="#check">状態チェックをする</a></div>
+<div class="scard"><i>3</i><b>費用は、下限と上限の両方を書く</b><p>公式が公表していない項目は「公表を確認できていません」と書き、推測で埋めません。透明性スコアは、確認できた公表項目の数です。</p><a href="about.html">掲載の基準と定義を見る</a></div>
+<div class="scard"><i>4</i><b>公式ページを観測し、変更を記録する</b><p>会社の条件は変わります。公式の公表を確認し、直した差分は日付つきで公開しています。</p><a href="observation.html">観測の記録を見る</a></div>
+</div>
+</section>
+
+<section>
+<p class="eyebrow dark">03 — BY SITUATION</p>
 <h2 class="sec">状態別の入口</h2>
 <p class="sec-sub">ピラーの記事は、状態ごとに進め方を書いています。</p>
 <div class="split">
@@ -249,7 +268,7 @@ footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-sp
 </section>
 
 <section>
-<p class="eyebrow dark">03 — OBSERVATION</p>
+<p class="eyebrow dark">04 — OBSERVATION</p>
 <h2 class="sec">観測の記録</h2>
 <p class="sec-sub">会社の条件は変わります。公式の公表を確認し、差分があれば日付つきで記録しています。手数料の上限を公表していない会社は、その事実も含めて記録します。</p>
 <div class="split">
@@ -262,12 +281,13 @@ footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-sp
 <div class="stat"><b style="font-size:19px;padding-top:7px">2026-11-17</b><span>最終確認日</span></div>
 </div>
 <div class="tblwrap"><table class="wide"><tr><th>観測日</th><th>会社</th><th>項目</th><th>変更</th></tr><tr><td>2026-11-17</td><td>Paid</td><td>全体確認</td><td> → 公式と差分なし</td></tr><tr><td>2026-11-17</td><td>CAMPFIRE</td><td>全体確認</td><td> → 公式と差分なし</td></tr><tr><td>2026-11-17</td><td>Funds</td><td>全体確認</td><td> → 公式と差分なし</td></tr><tr><td>2026-11-17</td><td>事業サポートプラン</td><td>全体確認</td><td> → 公式と差分なし</td></tr><tr><td>2026-11-17</td><td>自営者カードローン</td><td>全体確認</td><td> → 公式と差分なし</td></tr></table></div>
+<p style="margin-top:10px"><a href="observation.html">観測の記録（全件）と、観測の仕組みを見る</a></p>
 </div>
 </div>
 </section>
 
 <section id="search">
-<p class="eyebrow dark">04 — SEARCH</p>
+<p class="eyebrow dark">05 — SEARCH</p>
 <h2 class="sec">サービスを探す</h2>
 <p class="sec-sub">条件で絞れます。透明性スコアは、確認できた公表項目の数です（定義は下にあります）。</p>
 <div class="filters">
@@ -282,7 +302,7 @@ footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-sp
 </section>
 
 <section id="methods">
-<p class="eyebrow dark">05 — METHODS</p>
+<p class="eyebrow dark">06 — METHODS</p>
 <h2 class="sec">手法ガイド</h2>
 <p class="sec-sub">全24手法の定義と、入金までの期間、費用の目安です。</p>
 <p class="scroll-hint">横にスクロールできます →</p>
@@ -290,7 +310,7 @@ footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-sp
 </section>
 
 <section>
-<p class="eyebrow dark">06 — FAQ</p>
+<p class="eyebrow dark">07 — FAQ</p>
 <h2 class="sec">よくある質問</h2>
 <p class="sec-sub">当サイトの数字の出し方と、掲載の基準について答えます。</p>
 <details class="faq rv"><summary>手数料の上限が書いていない会社があるのはなぜですか</summary><p>会社の公式サイトが、手数料の下限だけを公表しているためです。当サイトは公表されていない数字を推測で埋めず、「非公表」と書きます。上限が分からない会社は、見積もりの段階で料率の幅を確認する必要があります。</p></details><details class="faq rv"><summary>状態チェックで、調達できる金額の目安が出ないのはなぜですか</summary><p>当サイトは審査をしていないためです。各社が公表している金額の範囲は事実として並べますが、「あなたは○○万円調達できます」という表示は根拠のない約束になるので出しません。実際に調達できる金額は、各社の審査で決まります。</p></details><details class="faq rv"><summary>透明性スコアとは何ですか</summary><p>当サイトが定義した物差しです。費用の下限と上限、金額の下限と上限、償還請求権の有無、実績、所在地と代表者の5項目のうち、公式の公表で確認できた項目の数を数えています。スコアが低いことは、その会社の条件が悪いことを意味しません。公表されていない項目は、見積もりや契約書で確認する必要がある場所として読んでください。</p></details><details class="faq rv"><summary>給与ファクタリングの会社は載っていますか</summary><p>載せていません。給与ファクタリングは貸金業に当たるとする判断が出ており、金融庁も注意喚起を公表しています。当サイトの掲載基準では対象外です。</p></details><details class="faq rv"><summary>情報はいつ時点のものですか</summary><p>各サービスの行に最終確認日を付けています。会社の条件は変わるため、当サイトは公式の公表を観測し、差分があれば記録して記事に反映します。直近の観測で直した差分は「観測の記録」に載せています。</p></details><details class="faq rv"><summary>このサイトの利用に料金はかかりますか</summary><p>かかりません。状態チェックの結果表示も、現状シートの作成も無料です。申し込みは各社の公式サイトで行ってください。</p></details>
