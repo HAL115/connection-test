@@ -11,6 +11,11 @@ try:
     AFF = json.load(open('affiliates.json'))
 except Exception:
     AFF = {}
+# Googleマップの口コミ集計（reviews.json：事業体ID → {rating, count, checked}）
+try:
+    REVIEWS = json.load(open('reviews.json'))
+except Exception:
+    REVIEWS = {}
 PR_NOTICE = '<p class="note">このページには広告（アフィリエイトリンク）が含まれます。</p>'
 data = json.load(open(BASE + '/site/data.json'))
 methods = {m['id']: m for m in data['methods']}
@@ -270,6 +275,11 @@ for e0 in entities:
     ]
     pub_block = '<ul class="pub">' + ''.join(
         f'<li><b>{"公表あり" if ok else "―"}</b>{esc(label)}{"" if ok else "（公表を確認できていません）"}</li>' for label, ok in _pub_items) + '</ul>'
+    _rv = REVIEWS.get(e['id'])
+    review_block = ''
+    if _rv and _rv.get('count'):
+        review_block = (f'<p>Googleマップの口コミ：★{_rv["rating"]}（{_rv["count"]}件）'
+                        f'<span class="note">（{_rv.get("checked", "")}に集計）</span></p>')
     results_block = ''
     if _svc_results:
         rlis = ''.join(f'<li>{esc(s["name"])}：{esc(s["results"])}</li>' for s in _svc_results)
@@ -292,6 +302,7 @@ for e0 in entities:
 <p>当サイトは口コミの投稿を受け付けていないため、利用者の声は掲載していません。評判を判断する材料として、公式が公表している事実と、当サイトが確認できた公表の状況をまとめます。</p>
 {pub_block}
 {results_block}
+{review_block}
 <p><a href="https://www.google.com/maps/search/?api=1&query={gmap_q}" rel="nofollow noopener" target="_blank">Googleマップでこの会社と口コミを見る</a></p>
 <h2>提供しているサービス（{len(svcs)}件）</h2>
 {svc_rows if svc_rows else '<p>現在、収録しているサービスはありません。</p>'}
