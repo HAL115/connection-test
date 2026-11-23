@@ -3416,5 +3416,57 @@
   "business": "創業融資の申請支援",
   "source": "https://sougyou-kakizaki.jp/",
   "found": true
+ },
+ "C264": {
+  "location": "福岡県福岡市中央区渡辺通5丁目23番8号 サンライトビル6階",
+  "rep": "串間 新一郎",
+  "founded": "2012年4月",
+  "capital": "7,500万円",
+  "license": "貸金業登録 福岡財務支局長(5)第00173号",
+  "branches": [
+   {
+    "name": "東京支店",
+    "area": ""
+   },
+   {
+    "name": "東京北支店",
+    "area": ""
+   },
+   {
+    "name": "大阪支店",
+    "area": ""
+   },
+   {
+    "name": "神戸支店",
+    "area": ""
+   },
+   {
+    "name": "広島支店",
+    "area": ""
+   },
+   {
+    "name": "北九州支店",
+    "area": ""
+   },
+   {
+    "name": "福岡支店",
+    "area": ""
+   },
+   {
+    "name": "博多支店",
+    "area": ""
+   },
+   {
+    "name": "熊本支店",
+    "area": ""
+   },
+   {
+    "name": "鹿児島支店",
+    "area": ""
+   }
+  ],
+  "business": "事業者向け不動産担保融資、不動産売買仲介",
+  "source": "https://www.mrf-c.co.jp/company/",
+  "found": true
  }
 }
