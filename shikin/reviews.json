@@ -1,0 +1,1580 @@
+{
+ "C001": {
+  "rating": 3,
+  "count": 2,
+  "place_name": "株式会社アレシア 東京本社",
+  "address": "〒163-1524 東京都新宿区西新宿１丁目６−１ 新宿エルタワー 24階",
+  "checked": "2026-11-24"
+ },
+ "C002": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C003": {
+  "rating": 4.5,
+  "count": 31,
+  "place_name": "株式会社トップ・マネジメント",
+  "address": "〒101-0044 東京都千代田区鍛冶町１丁目４−３ 竹内ビル 2F",
+  "checked": "2026-11-24"
+ },
+ "C004": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C005": {
+  "rating": 4.8,
+  "count": 45,
+  "place_name": "株式会社No.1 東京本社",
+  "address": "〒170-0013 東京都豊島区東池袋１丁目１８−１ Hareza Tower 20F",
+  "checked": "2026-11-24"
+ },
+ "C006": {
+  "rating": 4.6,
+  "count": 128,
+  "place_name": "株式会社アクティブサポート",
+  "address": "〒171-0022 東京都豊島区南池袋２丁目１３−１０ 南池袋山本ビル 3階",
+  "checked": "2026-11-24"
+ },
+ "C007": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C008": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C009": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C010": {
+  "rating": 4.9,
+  "count": 40,
+  "place_name": "株式会社PMG Partners",
+  "address": "〒163-0825 東京都新宿区西新宿２丁目４−１ 新宿NSビル ２５階",
+  "checked": "2026-11-24"
+ },
+ "C011": {
+  "rating": 4.4,
+  "count": 166,
+  "place_name": "株式会社アクセルファクター",
+  "address": "〒171-0033 東京都豊島区高田３丁目３２−１ 大東ビル 3階",
+  "checked": "2026-11-24"
+ },
+ "C012": {
+  "rating": 2.6,
+  "count": 34,
+  "place_name": "GMOペイメントゲートウェイ株式会社",
+  "address": "〒150-0043 東京都渋谷区道玄坂１丁目２−３ 渋谷フクラス 15階 渋谷フクラス・総合受付15階",
+  "checked": "2026-11-24"
+ },
+ "C013": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C014": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C015": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C016": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C017": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C018": {
+  "rating": 1,
+  "count": 2,
+  "place_name": "ラッキーバンク･インベストメント㈱",
+  "address": "〒103-0028 東京都中央区八重洲１丁目１−３ 壽ビル",
+  "checked": "2026-11-24"
+ },
+ "C019": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C020": {
+  "rating": 4.2,
+  "count": 5,
+  "place_name": "日本政策金融公庫 東京支店",
+  "address": "〒100-0004 東京都千代田区大手町１丁目９−４ 大手町フィナンシャルシティ ノースタワ",
+  "checked": "2026-11-24"
+ },
+ "C021": {
+  "rating": 3.1,
+  "count": 11,
+  "place_name": "東京信用保証協会 本店",
+  "address": "〒104-0061 東京都中央区銀座６丁目１７−１ 銀座6丁目-Square",
+  "checked": "2026-11-24"
+ },
+ "C022": {
+  "rating": 3.3,
+  "count": 6,
+  "place_name": "大阪信用保証協会 保証事務課",
+  "address": "〒530-0001 大阪府大阪市北区梅田３丁目３−２０ 明治安田生命大阪梅田ビル 4～7・9階",
+  "checked": "2026-11-24"
+ },
+ "C023": {
+  "rating": 3.1,
+  "count": 11,
+  "place_name": "東京信用保証協会 本店",
+  "address": "〒104-0061 東京都中央区銀座６丁目１７−１ 銀座6丁目-Square",
+  "checked": "2026-11-24"
+ },
+ "C024": {
+  "rating": 4.6,
+  "count": 7,
+  "place_name": "神奈川県信用保証協会 本店",
+  "address": "〒231-0023 神奈川県横浜市中区山下町２０９ 帝蚕関内ビル",
+  "checked": "2026-11-24"
+ },
+ "C025": {
+  "rating": 3,
+  "count": 92,
+  "place_name": "三菱UFJ銀行 本店",
+  "address": "〒100-8388 東京都千代田区丸の内１丁目４−５ 三菱UFJ信託銀行本店ビル ３階",
+  "checked": "2026-11-24"
+ },
+ "C026": {
+  "rating": 1.7,
+  "count": 34,
+  "place_name": "GMOあおぞらネット銀行 本店",
+  "address": "〒150-0043 東京都渋谷区道玄坂１丁目２−３ 渋谷フクラス",
+  "checked": "2026-11-24"
+ },
+ "C027": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C028": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C029": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C030": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C031": {
+  "rating": 2.2,
+  "count": 6,
+  "place_name": "㈱インタラクティブパートナーズ",
+  "address": "〒141-0031 東京都品川区西五反田７丁目９−２ 5階",
+  "checked": "2026-11-24"
+ },
+ "C032": {
+  "rating": 3.1,
+  "count": 9,
+  "place_name": "㈱デイリープランニング",
+  "address": "〒110-0015 東京都台東区東上野１丁目７−１２ 4階401号",
+  "checked": "2026-11-24"
+ },
+ "C033": {
+  "rating": 2.5,
+  "count": 2,
+  "place_name": "ヒューリック銀座一丁目ガス灯通",
+  "address": "〒104-0061 東京都中央区銀座１丁目７−１７",
+  "checked": "2026-11-24"
+ },
+ "C034": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C035": {
+  "rating": 3.1,
+  "count": 9,
+  "place_name": "㈱デイリープランニング",
+  "address": "〒110-0015 東京都台東区東上野１丁目７−１２ 4階401号",
+  "checked": "2026-11-24"
+ },
+ "C036": {
+  "rating": 3.9,
+  "count": 390,
+  "place_name": "コモレ四谷 YOTSUYA TOWER",
+  "address": "〒160-0004 東京都新宿区四谷１丁目６−１",
+  "checked": "2026-11-24"
+ },
+ "C037": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C038": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C039": {
+  "rating": 3,
+  "count": 10,
+  "place_name": "事業資金借入・ビジネスローンならアクト・ウィル株式会社",
+  "address": "〒170-0013 東京都豊島区東池袋３丁目１１−９",
+  "checked": "2026-11-24"
+ },
+ "C040": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C041": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C042": {
+  "rating": 2.4,
+  "count": 16,
+  "place_name": "㈱ドコモCS 本社",
+  "address": "〒107-0052 東京都港区赤坂１丁目８−１",
+  "checked": "2026-11-24"
+ },
+ "C043": {
+  "rating": 2.1,
+  "count": 207,
+  "place_name": "㈱オリエントコーポレーション 本社",
+  "address": "〒102-8503 東京都千代田区麹町５丁目２−１",
+  "checked": "2026-11-24"
+ },
+ "C044": {
+  "rating": 1.4,
+  "count": 53,
+  "place_name": "三井住友カード株式会社",
+  "address": "〒541-0042 大阪府大阪市中央区今橋４丁目５−１５",
+  "checked": "2026-11-24"
+ },
+ "C045": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C046": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C047": {
+  "rating": 2.3,
+  "count": 3,
+  "place_name": "新生フィナンシャル㈱",
+  "address": "〒101-0021 東京都千代田区外神田３丁目１２−８",
+  "checked": "2026-11-24"
+ },
+ "C048": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C049": {
+  "rating": 2.2,
+  "count": 13,
+  "place_name": "SMBCコンシューマーファイナンス㈱",
+  "address": "〒135-0061 東京都江東区豊洲２丁目２−３１ SMBC豊洲ビル B１階 SMBC豊洲ビル",
+  "checked": "2026-11-24"
+ },
+ "C050": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C051": {
+  "rating": 2.3,
+  "count": 3,
+  "place_name": "株式会社アサックス 本社",
+  "address": "〒150-0012 東京都渋谷区広尾１丁目３−１４",
+  "checked": "2026-11-24"
+ },
+ "C052": {
+  "rating": 5,
+  "count": 2,
+  "place_name": "（株）Ｌ＆Ｆアセットファイナンス 本店",
+  "address": "〒105-0004 東京都港区新橋２丁目２０−１",
+  "checked": "2026-11-24"
+ },
+ "C053": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C054": {
+  "rating": 3,
+  "count": 84,
+  "place_name": "SBI新生銀行 本店フィナンシャルセンター",
+  "address": "〒103-8303 東京都中央区日本橋室町２丁目４−３ 8F",
+  "checked": "2026-11-24"
+ },
+ "C055": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C056": {
+  "rating": 3,
+  "count": 13,
+  "place_name": "㈱セゾンファンデックス 本社",
+  "address": "〒170-6037 東京都豊島区東池袋３丁目１−１ サンシャイン60 37階",
+  "checked": "2026-11-24"
+ },
+ "C057": {
+  "rating": 2.9,
+  "count": 17,
+  "place_name": "商工組合中央金庫 本店営業部",
+  "address": "〒104-0028 東京都中央区八重洲２丁目１０−１７",
+  "checked": "2026-11-24"
+ },
+ "C058": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C059": {
+  "rating": 1,
+  "count": 1,
+  "place_name": "東京都産業労働局",
+  "address": "〒160-0023 東京都新宿区西新宿２丁目８−１",
+  "checked": "2026-11-24"
+ },
+ "C060": {
+  "rating": 2.2,
+  "count": 6,
+  "place_name": "栄光商事株式会社",
+  "address": "〒244-0003 神奈川県横浜市戸塚区戸塚町１６７ １F",
+  "checked": "2026-11-24"
+ },
+ "C061": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C062": {
+  "rating": 3,
+  "count": 2,
+  "place_name": "でんさい割引と不動産担保ローンの日栄倉庫株式会社",
+  "address": "〒810-0011 福岡県福岡市中央区高砂２丁目６−２ ニチエイ高砂ビル",
+  "checked": "2026-11-24"
+ },
+ "C063": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C064": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C065": {
+  "rating": 3.7,
+  "count": 15,
+  "place_name": "山王アーバンライフ(Sanno Urban Life)",
+  "address": "〒143-0023 東京都大田区山王２丁目１−８",
+  "checked": "2026-11-24"
+ },
+ "C066": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C067": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C068": {
+  "rating": 2.4,
+  "count": 125,
+  "place_name": "フリー株式会社",
+  "address": "〒141-0032 東京都品川区大崎１丁目２−２ 21階",
+  "checked": "2026-11-24"
+ },
+ "C069": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C070": {
+  "rating": 2.7,
+  "count": 87,
+  "place_name": "㈱ビズリーチ",
+  "address": "〒150-0002 東京都渋谷区渋谷２丁目１５−１ 渋谷クロスタワー 12F",
+  "checked": "2026-11-24"
+ },
+ "C071": {
+  "rating": 5,
+  "count": 40,
+  "place_name": "GoodPlus株式会社",
+  "address": "〒169-0075 東京都新宿区高田馬場１丁目２９−２０",
+  "checked": "2026-11-24"
+ },
+ "C072": {
+  "rating": 5,
+  "count": 41,
+  "place_name": "株式会社JBL｜即日ファクタリング",
+  "address": "〒171-0022 東京都豊島区南池袋２丁目３３−６ 佐藤ビルディング ７F",
+  "checked": "2026-11-24"
+ },
+ "C073": {
+  "rating": 4.8,
+  "count": 65,
+  "place_name": "株式会社JPS",
+  "address": "〒112-0006 東京都文京区小日向４丁目６−２１ ベルメゾン茗荷谷 3F",
+  "checked": "2026-11-24"
+ },
+ "C074": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C075": {
+  "rating": 5,
+  "count": 6,
+  "place_name": "株式会社 ミライズ",
+  "address": "〒240-0061 神奈川県横浜市保土ケ谷区峰沢町３６１−５",
+  "checked": "2026-11-24"
+ },
+ "C076": {
+  "rating": 4.2,
+  "count": 24,
+  "place_name": "MSFJ株式会社｜即日ファクタリング会社",
+  "address": "〒106-0045 東京都港区麻布十番２丁目８−１６ 七面坂ビル 4階",
+  "checked": "2026-11-24"
+ },
+ "C077": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C078": {
+  "rating": 2.1,
+  "count": 10,
+  "place_name": "オッティ",
+  "address": "〒110-0015 東京都台東区東上野３丁目１０−５ 山口ビル 3F",
+  "checked": "2026-11-24"
+ },
+ "C079": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C080": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C081": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C082": {
+  "rating": 1,
+  "count": 1,
+  "place_name": "㈱ hs1",
+  "address": "〒101-0041 東京都千代田区神田須田町２丁目2−７ トーハン須田町ビル 10階",
+  "checked": "2026-11-24"
+ },
+ "C083": {
+  "rating": 4.5,
+  "count": 112,
+  "place_name": "株式会社インターテック",
+  "address": "〒103-0023 東京都中央区日本橋本町４丁目３−４ 3階",
+  "checked": "2026-11-24"
+ },
+ "C084": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C085": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C086": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C087": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C088": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C089": {
+  "rating": 3.7,
+  "count": 3,
+  "place_name": "株式会社アットライン",
+  "address": "〒170-0013 東京都豊島区東池袋１丁目３１−６ 三昌ビル ３０１号",
+  "checked": "2026-11-24"
+ },
+ "C090": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C091": {
+  "rating": 1,
+  "count": 1,
+  "place_name": "Quickマネジメント",
+  "address": "〒170-0013 東京都豊島区東池袋３丁目２０−９",
+  "checked": "2026-11-24"
+ },
+ "C092": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C093": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C094": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C095": {
+  "rating": 5,
+  "count": 1,
+  "place_name": "㈱トラストゲートウェイ",
+  "address": "〒810-0041 福岡県福岡市中央区２丁目２ 大名2丁目2番42号 ケイワン大名402号",
+  "checked": "2026-11-24"
+ },
+ "C096": {
+  "rating": 4,
+  "count": 1,
+  "place_name": "株式会社ネクストワン",
+  "address": "〒101-0047 東京都千代田区内神田３丁目２４−４ 6F",
+  "checked": "2026-11-24"
+ },
+ "C097": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C098": {
+  "rating": 3.5,
+  "count": 17,
+  "place_name": "【ファクタリングのＴＲＹ】株式会社ＳＫＯ",
+  "address": "〒110-0015 東京都台東区東上野２丁目２１−１ ケーワイビル 4Ｆ",
+  "checked": "2026-11-24"
+ },
+ "C099": {
+  "rating": 4.7,
+  "count": 31,
+  "place_name": "ワンストップビジネスセンター池袋店",
+  "address": "〒170-0013 東京都豊島区東池袋１丁目１７−１１",
+  "checked": "2026-11-24"
+ },
+ "C100": {
+  "rating": 3.4,
+  "count": 8,
+  "place_name": "（株）エムアンドエー",
+  "address": "〒664-0837 兵庫県伊丹市北河原２丁目９",
+  "checked": "2026-11-24"
+ },
+ "C101": {
+  "rating": 4.6,
+  "count": 32,
+  "place_name": "株式会社ワイズコーポレーション",
+  "address": "〒171-0014 東京都豊島区池袋２丁目５０−９ 第三共立ビル 3F",
+  "checked": "2026-11-24"
+ },
+ "C102": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C103": {
+  "rating": 4.9,
+  "count": 39,
+  "place_name": "株式会社 Mentor Capital",
+  "address": "〒160-0004 東京都新宿区四谷４丁目３０−１３ クロスシー新宿御苑前ビル 4F",
+  "checked": "2026-11-24"
+ },
+ "C104": {
+  "rating": 4.6,
+  "count": 1136,
+  "place_name": "株式会社ラボル",
+  "address": "〒150-0043 東京都渋谷区道玄坂１丁目２０−８ 寿パークビル 7F",
+  "checked": "2026-11-24"
+ },
+ "C105": {
+  "rating": 2.5,
+  "count": 10,
+  "place_name": "㈱アイズ",
+  "address": "〒150-0002 東京都渋谷区渋谷３丁目１２−２２",
+  "checked": "2026-11-24"
+ },
+ "C106": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C107": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C108": {
+  "rating": 1,
+  "count": 1,
+  "place_name": "株式会社三共サービス",
+  "address": "〒101-0047 東京都千代田区内神田２丁目１６−１１ 内神田渋谷ビル 402",
+  "checked": "2026-11-24"
+ },
+ "C109": {
+  "rating": 3.7,
+  "count": 9,
+  "place_name": "トータルサポート株式会社",
+  "address": "〒160-0004 東京都新宿区四谷４丁目29番５ ロジマン御苑 305号室",
+  "checked": "2026-11-24"
+ },
+ "C110": {
+  "rating": 4,
+  "count": 4,
+  "place_name": "SBI FinTech Solutions株式会社",
+  "address": "〒150-0002 東京都渋谷区渋谷２丁目１−１ 9F",
+  "checked": "2026-11-24"
+ },
+ "C111": {
+  "rating": 4.9,
+  "count": 39,
+  "place_name": "株式会社 Mentor Capital",
+  "address": "〒160-0004 東京都新宿区四谷４丁目３０−１３ クロスシー新宿御苑前ビル 4F",
+  "checked": "2026-11-24"
+ },
+ "C112": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C113": {
+  "rating": 1.5,
+  "count": 2,
+  "place_name": "浜銀ファイナンス㈱",
+  "address": "〒220-0012 神奈川県横浜市西区みなとみらい３丁目１−１ 横浜銀行本店ビル ５",
+  "checked": "2026-11-24"
+ },
+ "C114": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C115": {
+  "rating": 5,
+  "count": 4,
+  "place_name": "株式会社SANDBOX",
+  "address": "〒171-0022 東京都豊島区南池袋３丁目２１−１ 1F",
+  "checked": "2026-11-24"
+ },
+ "C116": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C117": {
+  "rating": 3,
+  "count": 1,
+  "place_name": "みずほファクター㈱",
+  "address": "日本、〒100-0005 東京都千代田区丸の内１丁目６",
+  "checked": "2026-11-24"
+ },
+ "C118": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C119": {
+  "rating": 4.5,
+  "count": 2,
+  "place_name": "【インボイスPay®︎】ファクタリングに代わる資金調達【スマートヘッジ株式会社】",
+  "address": "〒101-0032 東京都千代田区岩本町３丁目３−３ 秋葉原サザンビル 8F",
+  "checked": "2026-11-24"
+ },
+ "C120": {
+  "rating": 3.7,
+  "count": 3,
+  "place_name": "三菱UFJファクター㈱ 本社",
+  "address": "〒101-0063 東京都千代田区神田淡路町２丁目１０１ ワテラスタワ",
+  "checked": "2026-11-24"
+ },
+ "C121": {
+  "rating": 2.3,
+  "count": 3,
+  "place_name": "株式会社ウィット",
+  "address": "〒141-0031 東京都品川区西五反田２丁目２４−４ THE CROSS GOTANDA 4F",
+  "checked": "2026-11-24"
+ },
+ "C122": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C123": {
+  "rating": 4.6,
+  "count": 22,
+  "place_name": "BIZパートナー株式会社",
+  "address": "〒171-0021 東京都豊島区西池袋５丁目１７−１２ 創業新幹線ビル 2F",
+  "checked": "2026-11-24"
+ },
+ "C124": {
+  "rating": 5,
+  "count": 2,
+  "place_name": "アクリーティブ㈱",
+  "address": "〒102-0083 東京都千代田区麹町５丁目１−１",
+  "checked": "2026-11-24"
+ },
+ "C125": {
+  "rating": 5,
+  "count": 1,
+  "place_name": "エヌエスパートナーズ株式会社【東京本社】",
+  "address": "〒108-0075 東京都港区港南１丁目８−２３ Shinagawa HEART 12階",
+  "checked": "2026-11-24"
+ },
+ "C126": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C127": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C128": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C129": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C130": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C131": {
+  "rating": 4,
+  "count": 28,
+  "place_name": "三菱HCキャピタル㈱",
+  "address": "〒100-6525 東京都千代田区丸の内１丁目５−１ 丸の内ビルディング 新",
+  "checked": "2026-11-24"
+ },
+ "C132": {
+  "rating": 2.7,
+  "count": 18,
+  "place_name": "ベストファクター",
+  "address": "〒160-0023 東京都新宿区西新宿１丁目６−１ 新宿エルタワー 24階",
+  "checked": "2026-11-24"
+ },
+ "C133": {
+  "rating": 1.4,
+  "count": 15,
+  "place_name": "GMOイプシロン㈱",
+  "address": "〒150-0043 東京都渋谷区道玄坂１丁目１４−６ 7F",
+  "checked": "2026-11-24"
+ },
+ "C134": {
+  "rating": 5,
+  "count": 1,
+  "place_name": "エヌエスパートナーズ株式会社【東京本社】",
+  "address": "〒108-0075 東京都港区港南１丁目８−２３ Shinagawa HEART 12階",
+  "checked": "2026-11-24"
+ },
+ "C135": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C136": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C137": {
+  "rating": 3.2,
+  "count": 151,
+  "place_name": "中小企業基盤整備機構",
+  "address": "〒105-0001 東京都港区虎ノ門３丁目５−１ 虎ノ門３７森ビル",
+  "checked": "2026-11-24"
+ },
+ "C138": {
+  "rating": 3.4,
+  "count": 5,
+  "place_name": "全国商工会連合会",
+  "address": "〒100-0006 東京都千代田区有楽町１丁目７−１",
+  "checked": "2026-11-24"
+ },
+ "C139": {
+  "rating": 3.5,
+  "count": 21,
+  "place_name": "中央合同庁舎第5号館",
+  "address": "〒100-0013 東京都千代田区霞が関１丁目２−２",
+  "checked": "2026-11-24"
+ },
+ "C140": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C141": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C142": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C143": {
+  "rating": 1,
+  "count": 2,
+  "place_name": "㈱バンカーズ",
+  "address": "〒103-0025 東京都中央区日本橋茅場町１丁目８−１ 茅場町一丁目平和ビル 802",
+  "checked": "2026-11-24"
+ },
+ "C144": {
+  "rating": 3,
+  "count": 49,
+  "place_name": "㈱CAMPFIRE",
+  "address": "〒150-0033 東京都渋谷区猿楽町１８−８ ヒルサイドテラスF棟 201",
+  "checked": "2026-11-24"
+ },
+ "C145": {
+  "rating": 2.2,
+  "count": 5,
+  "place_name": "日本クラウド証券㈱",
+  "address": "〒150-0013 東京都渋谷区恵比寿１丁目１８−１４ ファーストスクエア 9F",
+  "checked": "2026-11-24"
+ },
+ "C146": {
+  "rating": 3.4,
+  "count": 5,
+  "place_name": "ファンズ㈱",
+  "address": "〒150-0021 東京都渋谷区恵比寿西１丁目１０−１１ フジワラビルディング 5階",
+  "checked": "2026-11-24"
+ },
+ "C147": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C148": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C149": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C150": {
+  "rating": 2.3,
+  "count": 26,
+  "place_name": "㈱マクアケ",
+  "address": "〒153-0042 東京都目黒区青葉台３丁目１−１２ イーストビル 1F",
+  "checked": "2026-11-24"
+ },
+ "C151": {
+  "rating": 2.5,
+  "count": 22,
+  "place_name": "READYFOR株式会社",
+  "address": "〒102-0084 東京都千代田区二番町11−７ 二番町ビル 6階 住友不動産",
+  "checked": "2026-11-24"
+ },
+ "C152": {
+  "rating": 2.3,
+  "count": 26,
+  "place_name": "㈱マクアケ",
+  "address": "〒153-0042 東京都目黒区青葉台３丁目１−１２ イーストビル 1F",
+  "checked": "2026-11-24"
+ },
+ "C153": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C154": {
+  "rating": 2.3,
+  "count": 36,
+  "place_name": "㈱ROBOT PAYMENT",
+  "address": "〒150-0001 東京都渋谷区神宮前６丁目１９−２０ 第 15荒井 ビル４Ｆ",
+  "checked": "2026-11-24"
+ },
+ "C155": {
+  "rating": 3.7,
+  "count": 47,
+  "place_name": "株式会社デジタルガレージ デジタルゲートビル",
+  "address": "〒150-0022 東京都渋谷区恵比寿南３丁目５−７ デジタルゲートビル ３Ｆ",
+  "checked": "2026-11-24"
+ },
+ "C156": {
+  "rating": 3,
+  "count": 49,
+  "place_name": "㈱ネットプロテクションズホールディングス｜㈱ネットプロテクションズ",
+  "address": "〒102-0083 東京都千代田区麹町４丁目2−６ 住友不動産麹町ファーストビル 5F",
+  "checked": "2026-11-24"
+ },
+ "C157": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C158": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C159": {
+  "rating": 1.9,
+  "count": 60,
+  "place_name": "株式会社カンム",
+  "address": "〒150-0013 東京都渋谷区恵比寿１丁目２０−１８ 三富ビル新館 10階",
+  "checked": "2026-11-24"
+ },
+ "C160": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C161": {
+  "rating": 2.3,
+  "count": 82,
+  "place_name": "SMBC豊洲ビル",
+  "address": "〒135-0061 東京都江東区豊洲２丁目２−３１ SMBC豊洲ビル B１階",
+  "checked": "2026-11-24"
+ },
+ "C162": {
+  "rating": 2.4,
+  "count": 17,
+  "place_name": "株式会社 UPSIDER",
+  "address": "〒106-0032 東京都港区六本木７丁目１５−７ 811",
+  "checked": "2026-11-24"
+ },
+ "C163": {
+  "rating": 3.3,
+  "count": 30,
+  "place_name": "オリックス㈱ 東京本社",
+  "address": "〒105-0013 東京都港区浜松町２丁目４−１ 世界貿易センタービル 南館",
+  "checked": "2026-11-24"
+ },
+ "C164": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C165": {
+  "rating": 3.3,
+  "count": 16,
+  "place_name": "オリックス･レンテック㈱",
+  "address": "〒141-0001 東京都品川区北品川５丁目５−１５",
+  "checked": "2026-11-24"
+ },
+ "C166": {
+  "rating": 4.6,
+  "count": 10,
+  "place_name": "三井住友ファイナンス＆リース㈱",
+  "address": "〒100-8287 東京都千代田区丸の内１丁目３−２",
+  "checked": "2026-11-24"
+ },
+ "C167": {
+  "rating": 4,
+  "count": 28,
+  "place_name": "三菱HCキャピタル㈱",
+  "address": "〒100-6525 東京都千代田区丸の内１丁目５−１ 丸の内ビルディング 新",
+  "checked": "2026-11-24"
+ },
+ "C168": {
+  "rating": 3.7,
+  "count": 35,
+  "place_name": "芙蓉総合リース㈱",
+  "address": "〒102-0083 東京都千代田区麹町５丁目１番地１ 住友不動産麹町ガーデンタワ",
+  "checked": "2026-11-24"
+ },
+ "C169": {
+  "rating": 4.1,
+  "count": 20,
+  "place_name": "JA三井リース㈱",
+  "address": "〒103-0027 東京都中央区日本橋１丁目４−１",
+  "checked": "2026-11-24"
+ },
+ "C170": {
+  "rating": 3.3,
+  "count": 25,
+  "place_name": "東京センチュリー㈱ 本社",
+  "address": "〒101-0022 東京都千代田区神田練塀町３",
+  "checked": "2026-11-24"
+ },
+ "C171": {
+  "rating": 3.7,
+  "count": 25,
+  "place_name": "みずほリース㈱ 本社",
+  "address": "〒105-0001 東京都港区虎ノ門２丁目２−３ 虎ノ門アルセアタワー ２８Ｆ",
+  "checked": "2026-11-24"
+ },
+ "C172": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C173": {
+  "rating": 3.4,
+  "count": 8,
+  "place_name": "横河レンタ･リース㈱ 新宿本社",
+  "address": "〒160-0023 東京都新宿区西新宿１丁目２３−７ 4F",
+  "checked": "2026-11-24"
+ },
+ "C174": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C175": {
+  "rating": 4.2,
+  "count": 10,
+  "place_name": "イークラウド株式会社",
+  "address": "〒100-0004 東京都千代田区大手町１丁目６−１ 大手町ビルヂング 4F",
+  "checked": "2026-11-24"
+ },
+ "C176": {
+  "rating": 5,
+  "count": 1,
+  "place_name": "JIA証券㈱",
+  "address": "〒104-0033 東京都中央区新川１丁目２１−２ 茅場町タワ 5F",
+  "checked": "2026-11-24"
+ },
+ "C177": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C178": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C179": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C180": {
+  "rating": 4,
+  "count": 6,
+  "place_name": "㈱グロービス･キャピタル･パートナーズ",
+  "address": "〒102-0084 東京都千代田区二番町５−1 9F 住友不動産麹町ビル",
+  "checked": "2026-11-24"
+ },
+ "C181": {
+  "rating": 4.5,
+  "count": 2,
+  "place_name": "みずほキャピタル",
+  "address": "〒100-0011 東京都千代田区内幸町１丁目２−１ 日土地内幸町ビル 6F",
+  "checked": "2026-11-24"
+ },
+ "C182": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C183": {
+  "rating": 3.3,
+  "count": 3,
+  "place_name": "三菱UFJキャピタル㈱",
+  "address": "〒103-0027 東京都中央区日本橋２丁目３−４",
+  "checked": "2026-11-24"
+ },
+ "C184": {
+  "rating": 3.5,
+  "count": 4,
+  "place_name": "SMBCベンチャーキャピタル㈱",
+  "address": "〒103-0028 東京都中央区八重洲１丁目３−４ 三井住友銀行呉服橋ビル",
+  "checked": "2026-11-24"
+ },
+ "C185": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C186": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C187": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C188": {
+  "rating": 3,
+  "count": 68,
+  "place_name": "横浜銀行 みなとみらい支店",
+  "address": "〒220-8612 神奈川県横浜市西区みなとみらい３丁目１−１ 本店営業部内",
+  "checked": "2026-11-24"
+ },
+ "C189": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C190": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C191": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C192": {
+  "rating": 2.3,
+  "count": 86,
+  "place_name": "みずほ銀行 本店",
+  "address": "〒100-0004 東京都千代田区大手町１丁目５−５",
+  "checked": "2026-11-24"
+ },
+ "C193": {
+  "rating": 2.1,
+  "count": 69,
+  "place_name": "三井住友銀行 本店営業部",
+  "address": "〒100-0005 東京都千代田区丸の内１丁目１−２",
+  "checked": "2026-11-24"
+ },
+ "C194": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C195": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C196": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C197": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C198": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C199": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C200": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C201": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C202": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C203": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C204": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C205": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C206": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C207": {
+  "rating": 4.9,
+  "count": 111,
+  "place_name": "株式会社アドプランニング",
+  "address": "〒104-0028 東京都中央区八重洲２丁目１１−７ 東栄八重洲ビル 8階",
+  "checked": "2026-11-24"
+ },
+ "C208": {
+  "rating": 3.1,
+  "count": 7,
+  "place_name": "㈱スリーエス",
+  "address": "〒150-0001 東京都渋谷区神宮前５丁目５３−６７",
+  "checked": "2026-11-24"
+ },
+ "C209": {
+  "rating": 4.4,
+  "count": 25,
+  "place_name": "KKT株式会社",
+  "address": "〒160-0004 東京都新宿区四谷１丁目１８−６ 四谷プラザビル ７F",
+  "checked": "2026-11-24"
+ },
+ "C210": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C211": {
+  "rating": 5,
+  "count": 2,
+  "place_name": "株式会社ソレイユ",
+  "address": "〒170-0013 東京都豊島区東池袋３丁目１１−９ 2階",
+  "checked": "2026-11-24"
+ },
+ "C212": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C213": {
+  "rating": 3,
+  "count": 4,
+  "place_name": "株式会社アバンティア",
+  "address": "〒170-0005 東京都豊島区南大塚２丁目１１−１０ ミモザビル 3階",
+  "checked": "2026-11-24"
+ },
+ "C214": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C215": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C216": {
+  "rating": 2,
+  "count": 47,
+  "place_name": "㈱メドレー",
+  "address": "〒106-6113 東京都港区六本木６丁目１０−１ 六本木ヒルズ森タワー 13F",
+  "checked": "2026-11-24"
+ },
+ "C217": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C218": {
+  "rating": 5,
+  "count": 2,
+  "place_name": "DotCircle Studios",
+  "address": "55/3, 1st Main Rd, kakkan colony, RBI Quarters, Besant Nagar, Chennai, Tamil Nadu 600090 インド",
+  "checked": "2026-11-24"
+ },
+ "C219": {
+  "rating": 2.5,
+  "count": 10,
+  "place_name": "㈱アイズ",
+  "address": "〒150-0002 東京都渋谷区渋谷３丁目１２−２２",
+  "checked": "2026-11-24"
+ },
+ "C220": {
+  "rating": 3.7,
+  "count": 3,
+  "place_name": "株式会社 JC",
+  "address": "〒542-0083 大阪府大阪市中央区東心斎橋１丁目２−１ 3401号室",
+  "checked": "2026-11-24"
+ },
+ "C221": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C222": {
+  "rating": 3.5,
+  "count": 27,
+  "place_name": "不動産のエース",
+  "address": "〒425-0055 静岡県焼津市道原６４０−２",
+  "checked": "2026-11-24"
+ },
+ "C223": {
+  "rating": 4.6,
+  "count": 5,
+  "place_name": "㈱ミネルバ",
+  "address": "〒142-0051 東京都品川区平塚１丁目１０−７",
+  "checked": "2026-11-24"
+ },
+ "C224": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C225": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C226": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C227": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C228": {
+  "rating": 2.8,
+  "count": 6,
+  "place_name": "補助金ポータル",
+  "address": "〒150-0011 東京都渋谷区東３丁目１５−７ ヒューリック恵比寿ビル 4F",
+  "checked": "2026-11-24"
+ },
+ "C229": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C230": {
+  "rating": 2.3,
+  "count": 3,
+  "place_name": "株式会社ライトアップ",
+  "address": "〒150-0002 東京都渋谷区渋谷２丁目１５−１ 渋谷クロスタワ 32F",
+  "checked": "2026-11-24"
+ },
+ "C231": {
+  "rating": 5,
+  "count": 9,
+  "place_name": "SOXビル",
+  "address": "〒171-0014 東京都豊島区池袋２丁目７５−１ SOXビル 2F",
+  "checked": "2026-11-24"
+ },
+ "C232": {
+  "rating": 4.1,
+  "count": 21,
+  "place_name": "株式会社エーストラスト",
+  "address": "〒105-0003 東京都港区西新橋２丁目６−１ 第二菊屋ビル ４階",
+  "checked": "2026-11-24"
+ },
+ "C233": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C234": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C235": {
+  "rating": 3,
+  "count": 5,
+  "place_name": "株式会社 一会",
+  "address": "〒101-0041 東京都千代田区神田須田町１丁目７−８",
+  "checked": "2026-11-24"
+ },
+ "C236": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C237": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C238": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C239": {
+  "rating": 1.1,
+  "count": 11,
+  "place_name": "トラストライン株式会社",
+  "address": "〒550-0004 大阪府大阪市西区靱本町１丁目４−１７ ACN信濃橋ビル 6階",
+  "checked": "2026-11-24"
+ },
+ "C240": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C241": {
+  "rating": 4.9,
+  "count": 39,
+  "place_name": "株式会社 Mentor Capital",
+  "address": "〒160-0004 東京都新宿区四谷４丁目３０−１３ クロスシー新宿御苑前ビル 4F",
+  "checked": "2026-11-24"
+ },
+ "C242": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C243": {
+  "rating": 5,
+  "count": 10,
+  "place_name": "株式会社財務再生支援センター",
+  "address": "〒171-0033 東京都豊島区高田３丁目３２−１ 3階",
+  "checked": "2026-11-24"
+ },
+ "C244": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C245": {
+  "rating": 4,
+  "count": 123,
+  "place_name": "PROGRESS 仙台駅東口店",
+  "address": "〒983-0852 宮城県仙台市宮城野区榴岡１丁目２−１０ エンドウビル 3F",
+  "checked": "2026-11-24"
+ },
+ "C246": {
+  "rating": 4.9,
+  "count": 15,
+  "place_name": "株式会社ZIST(ｼﾞｽﾄ) 売掛金ﾌｧｸﾀﾘﾝｸﾞｻｰﾋﾞｽ",
+  "address": "〒150-0044 東京都渋谷区円山町５−６ 道玄坂イトウビル7階",
+  "checked": "2026-11-24"
+ },
+ "C247": {
+  "rating": 1,
+  "count": 1,
+  "place_name": "株式会社フェイス",
+  "address": "〒251-0052 神奈川県藤沢市藤沢１０９−６ 湘南ＮＤビルディング 7階",
+  "checked": "2026-11-24"
+ },
+ "C248": {
+  "rating": 5,
+  "count": 1,
+  "place_name": "株式会社ネクストスタイル",
+  "address": "〒151-0053 東京都渋谷区代々木１丁目３２−２ 宮﨑ビル 303",
+  "checked": "2026-11-24"
+ },
+ "C249": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C250": {
+  "rating": 4.8,
+  "count": 6,
+  "place_name": "ファクタリングのＲＩＳＩＮＧ (株)ライジング・インベストメントマネジメント",
+  "address": "〒164-0001 東京都中野区中野３丁目２８−２３ 東建ビル ２階",
+  "checked": "2026-11-24"
+ },
+ "C251": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C252": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C253": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C254": {
+  "rating": 4.2,
+  "count": 5,
+  "place_name": "SMHC㈱",
+  "address": "〒160-0023 東京都新宿区西新宿７丁目２１−１ ２０１",
+  "checked": "2026-11-24"
+ },
+ "C255": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C256": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C257": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C258": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C259": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ },
+ "C260": {
+  "rating": 3.8,
+  "count": 51,
+  "place_name": "住友不動産麹町ガーデンタワー",
+  "address": "〒102-0083 東京都千代田区麹町５丁目１−１",
+  "checked": "2026-11-24"
+ },
+ "C261": {
+  "rating": 4.4,
+  "count": 166,
+  "place_name": "株式会社アクセルファクター",
+  "address": "〒171-0033 東京都豊島区高田３丁目３２−１ 大東ビル 3階",
+  "checked": "2026-11-24"
+ },
+ "C262": {
+  "count": 0,
+  "checked": "2026-11-24",
+  "unmatched": true
+ }
+}

@@ -9,8 +9,8 @@ def get(rng, width):
     return [(x + [''] * width)[:width] for x in rows if x and x[0]]
 
 methods = get('手法DB!A2:P25', 16)
-services = get('サービスDB!A2:AB326', 28)
-entities = get('事業体DB!A2:AD263', 30)
+services = get('サービスDB!A2:AB327', 28)
+entities = get('事業体DB!A2:AD264', 30)
 log = get('観測ログ!A2:G200', 7)
 
 data = {
