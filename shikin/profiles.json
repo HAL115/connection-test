@@ -1,0 +1,3409 @@
+{
+ "C020": {
+  "location": "東京都千代田区大手町1-9-4 大手町フィナンシャルシティ ノースタワー",
+  "rep": "藤井 健志（総裁）",
+  "founded": "2008年10月",
+  "capital": "11兆7,684億円",
+  "license": "株式会社日本政策金融公庫法に基づく特殊会社",
+  "branches": [],
+  "business": "政策金融（中小企業・小規模事業者、農林水産業者等への融資・信用保険等）",
+  "source": "https://www.jfc.go.jp/n/ir/pdf/2026jfc00.pdf",
+  "found": true
+ },
+ "C154": {
+  "location": "東京都渋谷区神宮前6-19-20 第15荒井ビル4F",
+  "rep": "清久 健也（代表取締役執行役員CEO）",
+  "founded": "2000年10月",
+  "capital": "2億4,448万8千円",
+  "license": "",
+  "branches": [],
+  "business": "インターネット決済代行サービス、請求管理クラウド（請求管理ロボ・サブスクペイ）の提供、ファクタリング",
+  "source": "https://www.robotpayment.co.jp/company/",
+  "found": true
+ },
+ "C004": {
+  "location": "東京都港区芝大門1-2-18-2F（商業登記上の本店所在地：東京都中央区銀座六丁目6番1号）",
+  "rep": "谷口 亮（代表理事）",
+  "founded": "2017年5月",
+  "capital": "",
+  "license": "経営革新等支援機関（関東財務局長・関東経済産業局長認定）",
+  "branches": [],
+  "business": "資金調達、資本政策、企業の財務及び事業再生等に関するアドバイザリー及びコンサルティング業務",
+  "source": "https://chushokigyo-support.or.jp/about/outline/",
+  "found": true
+ },
+ "C030": {
+  "location": "福岡県福岡市中央区渡辺通5丁目23番8号 サンライトビル6階",
+  "rep": "日下部 豊（代表取締役会長兼社長）",
+  "founded": "2012年4月",
+  "capital": "7,500万円",
+  "license": "貸金業登録 福岡財務支局長（5）第00173号、日本貸金業協会会員第005731号、宅地建物取引業 福岡県知事（3）第17446号",
+  "branches": [],
+  "business": "事業者向け不動産担保融資、不動産売買仲介業",
+  "source": "https://www.mrf-c.co.jp/company/",
+  "found": true
+ },
+ "C064": {
+  "location": "長崎県大村市水主町2丁目623番地1",
+  "rep": "石坂 鉄平（代表取締役社長）",
+  "founded": "1956年",
+  "capital": "",
+  "license": "貸金業登録 福岡財務支局長（3）第00175号、日本貸金業協会会員第000513号",
+  "branches": [
+   {
+    "name": "東京支店",
+    "area": "東京都港区"
+   }
+  ],
+  "business": "ABL（売掛債権の早期資金化）、でんさい割引、ファクタリング、レセプト資金化等の金融事業",
+  "source": "https://www.dai-kokuya.co.jp/comp2.php",
+  "found": true
+ },
+ "C120": {
+  "location": "東京都千代田区神田淡路町2丁目101番地 ワテラスタワー",
+  "rep": "山口琢磨（代表取締役社長 社長執行役員）",
+  "founded": "1977年6月",
+  "capital": "20億8千万円",
+  "license": "貸金業者登録 関東財務局長（8）第01393号",
+  "branches": [],
+  "business": "ファクタリング、収納代行・集金代行等の決済ソリューション事業",
+  "source": "https://www.muf.bk.mufg.jp/company/summary/",
+  "found": true
+ },
+ "C227": {
+  "location": "東京都新宿区西新宿8-1-2 PMO西新宿6F",
+  "rep": "村田 大輔（代表取締役）",
+  "founded": "2018年7月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "融資のマッチングプラットフォーム「クラウドローン」の運営",
+  "source": "https://corp.crowdloan.jp/company/outline/",
+  "found": true
+ },
+ "C011": {
+  "location": "東京都豊島区高田3丁目32番1号 大東ビル3階",
+  "rep": "本成 善大（代表取締役）",
+  "founded": "2018年10月",
+  "capital": "2億7,052万円（グループ総資本金）",
+  "license": "経営革新等支援機関認定",
+  "branches": [
+   {
+    "name": "仙台営業所",
+    "area": "仙台市青葉区"
+   },
+   {
+    "name": "名古屋営業所",
+    "area": "名古屋市中区"
+   },
+   {
+    "name": "大阪営業所",
+    "area": "大阪市中央区"
+   }
+  ],
+  "business": "ファクタリング事業（売掛金の早期現金化）、財務コンサルティング",
+  "source": "https://accelfacter.co.jp/",
+  "found": true
+ },
+ "C023": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "「東京都・東京信用保証協会・取扱金融機関」という複合表記で単一の会社ではないため対象外。東京信用保証協会自体は信用保証協会法に基づく公的機関で中小企業融資の信用保証を行う",
+  "source": "https://www.cgc-tokyo.or.jp/about/profile/disclosure.files/cgc_tokyo2025.pdf",
+  "found": false
+ },
+ "C034": {
+  "location": "東京都中央区八重洲2-11-7 一新ビル8階",
+  "rep": "川口 竜史（代表取締役）",
+  "founded": "2019年3月",
+  "capital": "5,000万円",
+  "license": "貸金業登録 東京都知事（1）第31997号、経営革新等支援機関認定、日本貸金業協会会員第006355号",
+  "branches": [],
+  "business": "法人向け融資サービス「HTファイナンス」、ファクタリング「HTペイ」、資金調達コンサルティング（運営：ヒューマントラスト株式会社）",
+  "source": "https://human-trust.co.jp/company/",
+  "found": true
+ },
+ "C043": {
+  "location": "東京都千代田区麹町5丁目2番地1",
+  "rep": "梅宮 真（代表取締役社長）",
+  "founded": "1954年12月",
+  "capital": "1,500億円",
+  "license": "",
+  "branches": [],
+  "business": "カード・融資事業、決済・保証事業、個品割賦事業、銀行保証事業",
+  "source": "https://www.orico.co.jp/company/corporate/about/",
+  "found": true
+ },
+ "C050": {
+  "location": "東京都千代田区丸の内1-4-1 丸の内永楽ビルディング18階",
+  "rep": "安田 裕次（代表取締役）",
+  "founded": "2001年2月",
+  "capital": "1億円",
+  "license": "貸金業登録 東京都知事（2）第31762号、日本貸金業協会会員第005814号、宅地建物取引業 東京都知事（2）第104146号",
+  "branches": [],
+  "business": "不動産担保ローン（不動産を担保にした融資）",
+  "source": "https://www.m-ams.co.jp/list-of-services/real-estate-agent-lp-meta/",
+  "found": true
+ },
+ "C056": {
+  "location": "東京都豊島区東池袋三丁目1番1号 サンシャイン60 37階",
+  "rep": "三浦 義昭（代表取締役 兼 社長執行役員）",
+  "founded": "1984年2月",
+  "capital": "45億9万8,000円",
+  "license": "貸金業者登録 関東財務局長（12）第00897号、宅地建物取引業者免許 国土交通大臣（2）第9536号",
+  "branches": [],
+  "business": "融資事業（無担保・不動産担保）、不動産金融事業、ソリューション事業、信用保証事業",
+  "source": "https://www.fundex.co.jp/company/about/",
+  "found": true
+ },
+ "C065": {
+  "location": "東京都大田区山王2-1-8 山王アーバンライフ1003号",
+  "rep": "三宅川 登（代表取締役）",
+  "founded": "2007年12月",
+  "capital": "999万円",
+  "license": "",
+  "branches": [],
+  "business": "金融系インターネット広告、ファクタリング事業（請求書買取サービス「CoolPay」）",
+  "source": "https://mrize.biz/",
+  "found": true
+ },
+ "C074": {
+  "location": "愛知県名古屋市中区錦2-17-28 CK15伏見ビル5階",
+  "rep": "奥村 淳司（代表取締役）",
+  "founded": "2013年6月",
+  "capital": "8,000万円",
+  "license": "",
+  "branches": [
+   {
+    "name": "大阪営業所",
+    "area": "大阪市"
+   }
+  ],
+  "business": "ファクタリング、コンサルティング（中小企業向け金融サービス）",
+  "source": "https://j-t-c.info/",
+  "found": true
+ },
+ "C080": {
+  "location": "東京都港区芝浦3-1-21 msb Tamachi 田町ステーションタワーS 21F",
+  "rep": "冨山 直道（代表取締役社長）",
+  "founded": "2021年8月",
+  "capital": "4億円（資本準備金含む）",
+  "license": "",
+  "branches": [],
+  "business": "オンラインファクタリング事業、請求代行事業",
+  "source": "https://bizforward.co.jp/",
+  "found": true
+ },
+ "C086": {
+  "location": "東京都港区西新橋1丁目15番9号 TWG新橋II 7階",
+  "rep": "高橋 咲季（代表取締役）",
+  "founded": "2023年11月",
+  "capital": "300万円",
+  "license": "",
+  "branches": [],
+  "business": "資金運用及び管理並びにそれらに関するコンサルティング業務（売掛金前払いサービス「iFactor」の運営）",
+  "source": "https://www.threei.jp/about/",
+  "found": true
+ },
+ "C092": {
+  "location": "埼玉県さいたま市見沼区東大宮5丁目4番地2 ロンポワンビル1階",
+  "rep": "髙木 秀男（代表取締役）",
+  "founded": "2001年7月",
+  "capital": "9,900万円",
+  "license": "貸金業登録 埼玉県知事（9）第03497号",
+  "branches": [],
+  "business": "事業者向けの金融事業、売掛債権の売買事業",
+  "source": "https://901901.jp/company/profile.html",
+  "found": true
+ },
+ "C098": {
+  "location": "東京都台東区東上野2-21-1-4F ケーワイビル",
+  "rep": "廣澤 悠哉（代表取締役）",
+  "founded": "2018年2月",
+  "capital": "1,000万円",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリングサービス（ファクタリングのTRY）、資金調達支援、金融コンサルティング",
+  "source": "https://www.factoring-try-sko.co.jp/",
+  "found": true
+ },
+ "C106": {
+  "location": "東京都中央区東日本橋2丁目16-11 スワンレイク東日本橋2F",
+  "rep": "稲田 佳介（代表取締役）",
+  "founded": "2023年7月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "信用調査及び市場調査、各種債権の買取業務（ファクタリング）、コンサルティング業務",
+  "source": "https://www.lebanta.com/",
+  "found": true
+ },
+ "C112": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "公式サイトが確認できず、公式の公表で会社情報を確認できなかった（ファクタリング会社とされるが営業継続を確認できない）",
+  "source": "",
+  "found": false
+ },
+ "C118": {
+  "location": "東京都江東区木場1-5-25 深川ギャザリア タワーS棟17F",
+  "rep": "秋山 浩一（代表取締役）",
+  "founded": "1978年10月",
+  "capital": "10億円",
+  "license": "",
+  "branches": [
+   {
+    "name": "大阪支店",
+    "area": "大阪市中央区"
+   }
+  ],
+  "business": "診療（調剤）・介護報酬債権前払いサービス、売掛債権の支払保証（ファクタリング）、収納代行サービス",
+  "source": "https://www.resona-ks.co.jp/",
+  "found": true
+ },
+ "C128": {
+  "location": "東京都文京区音羽1-26-11 大和出版ビル3階",
+  "rep": "林 裕（代表取締役）",
+  "founded": "2010年10月",
+  "capital": "5,000万円",
+  "license": "貸金業登録 東京都知事（5）第31516号",
+  "branches": [],
+  "business": "ファクタリング事業（売掛債権・診療報酬等の買取）、消費者金融業",
+  "source": "",
+  "found": true
+ },
+ "C135": {
+  "location": "東京都千代田区丸の内1-3-1",
+  "rep": "",
+  "founded": "2010年6月",
+  "capital": "25億円",
+  "license": "電子記録債権法に基づく電子債権記録機関（金融庁指定）",
+  "branches": [],
+  "business": "電子債権記録機関として、電子記録債権（でんさい）を記録・流通させる社会インフラの提供",
+  "source": "https://www.densai.net/",
+  "found": true
+ },
+ "C143": {
+  "location": "東京都中央区日本橋茅場町一丁目8番1号",
+  "rep": "廣津 朋憲（代表取締役）",
+  "founded": "1974年8月",
+  "capital": "1億円",
+  "license": "第二種金融商品取引業 関東財務局長（金商）第3216号",
+  "branches": [],
+  "business": "貸付型クラウドファンディングプラットフォーム『Bankers』の運営",
+  "source": "",
+  "found": true
+ },
+ "C149": {
+  "location": "東京都新宿区上落合3-8-25 FLAMP 1304",
+  "rep": "松崎 良太（代表取締役）",
+  "founded": "2013年2月",
+  "capital": "209,999,400円",
+  "license": "",
+  "branches": [],
+  "business": "クラウドファンディング型EC事業（Kibidangoの運営）",
+  "source": "https://kibidango.com/",
+  "found": true
+ },
+ "C156": {
+  "location": "東京都千代田区麹町4丁目2-6 住友不動産麹町ファーストビル5階",
+  "rep": "柴田 紳（代表取締役社長）",
+  "founded": "2000年1月",
+  "capital": "1億円",
+  "license": "",
+  "branches": [],
+  "business": "後払い決済サービス（NP後払い、NP掛け払い、atone、AFTEE）の運営",
+  "source": "",
+  "found": true
+ },
+ "C163": {
+  "location": "東京都港区浜松町二丁目4番1号 世界貿易センタービル南館（東京本社）",
+  "rep": "髙橋 英丈（取締役 兼 代表執行役社長・グループCEO）",
+  "founded": "1964年4月",
+  "capital": "2,211億1,100万円",
+  "license": "",
+  "branches": [],
+  "business": "多角的金融サービス業（リース、法人金融、事業投資、不動産、銀行、クレジット等）",
+  "source": "https://www.orix.co.jp/grp/company/about/summary/",
+  "found": true
+ },
+ "C169": {
+  "location": "東京都中央区銀座8-13-1 銀座三井ビルディング",
+  "rep": "松本 恭幸（代表取締役社長執行役員）",
+  "founded": "2008年4月",
+  "capital": "320億円",
+  "license": "",
+  "branches": [],
+  "business": "賃貸事業、割賦販売事業、各種ファイナンス事業、その他付帯事業",
+  "source": "https://www.jamitsuilease.co.jp/",
+  "found": true
+ },
+ "C175": {
+  "location": "東京都千代田区大手町一丁目6-1 大手町ビルヂング4階",
+  "rep": "波多江 直彦（代表取締役社長）",
+  "founded": "2018年7月",
+  "capital": "1億円",
+  "license": "第一種金融商品取引業 関東財務局長（金商）第3181号（第一種少額電子募集取扱業務、第二種金融商品取引業、投資運用業）",
+  "branches": [],
+  "business": "株式投資型クラウドファンディング「イークラウド」の運営",
+  "source": "https://ecrowd.co.jp/",
+  "found": true
+ },
+ "C181": {
+  "location": "東京都千代田区内幸町一丁目2番1号",
+  "rep": "半田 邦雄（代表取締役社長）",
+  "founded": "1983年7月",
+  "capital": "9億240万円",
+  "license": "",
+  "branches": [],
+  "business": "ベンチャーキャピタル（有価証券の取得及び保有、投資事業組合財産の運用及び管理）",
+  "source": "https://www.mizuho-vc.co.jp/",
+  "found": true
+ },
+ "C187": {
+  "location": "三重県津市岩田21番27号",
+  "rep": "杉浦 雅和（取締役頭取）",
+  "founded": "1878年11月",
+  "capital": "200億円",
+  "license": "",
+  "branches": [],
+  "business": "銀行業",
+  "source": "https://www.hyakugo.co.jp/",
+  "found": true
+ },
+ "C195": {
+  "location": "広島県広島市中区紙屋町一丁目3番8号",
+  "rep": "清宗 一男（代表取締役頭取）",
+  "founded": "1878年11月",
+  "capital": "545億7,300万円",
+  "license": "",
+  "branches": [],
+  "business": "銀行業（普通銀行業）",
+  "source": "",
+  "found": true
+ },
+ "C201": {
+  "location": "愛知県名古屋市中区栄三丁目14番12号",
+  "rep": "鈴木 武裕（代表取締役頭取）",
+  "founded": "1910年9月",
+  "capital": "180億円",
+  "license": "",
+  "branches": [],
+  "business": "銀行業",
+  "source": "",
+  "found": true
+ },
+ "C207": {
+  "location": "東京都中央区八重洲2丁目11番7号 一新ビル8階",
+  "rep": "佐藤 聖人（代表取締役）",
+  "founded": "2019年11月",
+  "capital": "",
+  "license": "",
+  "branches": [
+   {
+    "name": "池袋営業所",
+    "area": "東京都豊島区"
+   },
+   {
+    "name": "大阪支社",
+    "area": "大阪市淀川区"
+   }
+  ],
+  "business": "ファクタリング事業、ビジネスマッチング事業、資金繰りコンサルティング事業",
+  "source": "https://sokumo.jp/",
+  "found": true
+ },
+ "C213": {
+  "location": "東京都豊島区北大塚2-16-4 J・T大塚ビル501",
+  "rep": "近藤 健二",
+  "founded": "2022年6月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "経営コンサルティング、ファクタリング",
+  "source": "",
+  "found": true
+ },
+ "C219": {
+  "location": "東京都渋谷区渋谷3-12-22 渋谷プレステージ7階",
+  "rep": "福島 範幸（代表取締役社長）",
+  "founded": "2007年2月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "マーケティングプラットフォーム事業（メディアレーダー、トラミー、ファクログ等の運営）",
+  "source": "https://www.eyez.jp/",
+  "found": true
+ },
+ "C226": {
+  "location": "東京都中央区銀座八丁目10-5 DENSANビル G-14015",
+  "rep": "武田 修一／野呂 祐介（代表理事）",
+  "founded": "2022年10月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "オンラインファクタリングの自主ガイドライン策定など、業界の健全な発展と利用環境の整備を行う業界団体",
+  "source": "https://j-ofa.org/",
+  "found": true
+ },
+ "C233": {
+  "location": "神奈川県横浜市西区北幸二丁目10番48号",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリングサービス「資金調達QUICK」の運営（運営会社：株式会社MIRIZE）",
+  "source": "https://m-quick.net/",
+  "found": true
+ },
+ "C239": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "同名の株式会社トラストラインが複数存在し、資金調達・ファクタリング事業を行う単一の会社の公式サイトを特定できなかったため未収録",
+  "source": "",
+  "found": false
+ },
+ "C245": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリングを行う株式会社Progressとされるが、公式サイトの会社概要ページを直接確認できなかったため、まとめサイト転記を避け未収録",
+  "source": "",
+  "found": false
+ },
+ "C251": {
+  "location": "福岡県福岡市中央区大名1丁目1番9号 ATLAS403号",
+  "rep": "",
+  "founded": "2018年2月",
+  "capital": "5,000万円",
+  "license": "",
+  "branches": [
+   {
+    "name": "大阪支店",
+    "area": "大阪市淀川区"
+   }
+  ],
+  "business": "ファクタリング事業、経営コンサルティング事業",
+  "source": "",
+  "found": true
+ },
+ "C257": {
+  "location": "福岡県福岡市中央区大名2丁目2番42号 ケイワン大名402号",
+  "rep": "",
+  "founded": "2017年2月",
+  "capital": "8,000万円",
+  "license": "古物営業法に基づく古物営業",
+  "branches": [],
+  "business": "ファクタリング事業、経営コンサルティング事業（運営会社：株式会社トラストゲートウェイ）",
+  "source": "https://trapay.jp/",
+  "found": true
+ },
+ "C013": {
+  "location": "東京都中央区日本橋室町一丁目11番12号",
+  "rep": "辻 秀樹（代表取締役）",
+  "founded": "2023年1月",
+  "capital": "1,000万円",
+  "license": "",
+  "branches": [],
+  "business": "売掛金ファクタリング事業（みんなのファクタリング）、生花販売事業（運営会社：株式会社チェンジ）",
+  "source": "",
+  "found": true
+ },
+ "C001": {
+  "branches": [
+   {
+    "area": "大阪市中央区",
+    "name": "大阪支社"
+   },
+   {
+    "area": "福岡市中央区",
+    "name": "福岡支社"
+   }
+  ],
+  "business": "ファクタリング（売掛債権買取）による資金調達支援",
+  "capital": "7,000万円",
+  "found": true,
+  "founded": "2017年1月",
+  "license": "",
+  "location": "東京都新宿区西新宿1-6-1 新宿エルタワー24階",
+  "rep": "班目 裕樹",
+  "source": "https://bestfactor.jp/"
+ },
+ "C002": {
+  "branches": [
+   {
+    "area": "仙台市青葉区",
+    "name": "仙台支店"
+   },
+   {
+    "area": "名古屋市中区",
+    "name": "名古屋支店"
+   },
+   {
+    "area": "大阪市北区",
+    "name": "大阪支店"
+   },
+   {
+    "area": "福岡市博多区",
+    "name": "福岡支店"
+   }
+  ],
+  "business": "ファクタリング事業、コンサルティング事業",
+  "capital": "7,000万円",
+  "found": true,
+  "founded": "2012年4月",
+  "license": "経営革新等支援機関（認定番号：109713003927）",
+  "location": "東京都港区芝大門一丁目2-18 野依ビル3階・4階",
+  "rep": "鈴木 秀典／佐々木 英世",
+  "source": "https://betrading.jp/companyinfo/"
+ },
+ "C005": {
+  "branches": [
+   {
+    "area": "名古屋市中村区",
+    "name": "名古屋支社"
+   },
+   {
+    "area": "福岡市博多区",
+    "name": "福岡支社"
+   }
+  ],
+  "business": "ファクタリング業務、経営コンサルティング業務",
+  "capital": "8,000万円",
+  "found": true,
+  "founded": "2016年1月",
+  "license": "",
+  "location": "東京都豊島区東池袋1-18-1 Hareza Tower 20F",
+  "rep": "濵野 邦彦",
+  "source": "https://no1service.co.jp/company/"
+ },
+ "C068": {
+  "branches": [],
+  "business": "クラウドERP・金融サービスの開発提供、フリーランス向けファクタリング「FREENANCE」の運営",
+  "capital": "",
+  "found": true,
+  "founded": "2012年7月",
+  "license": "",
+  "location": "東京都品川区大崎1-2-2 アートヴィレッジ大崎セントラルタワー 21階",
+  "rep": "",
+  "source": "https://corp.freee.co.jp/company/"
+ },
+ "C087": {
+  "branches": [
+   {
+    "area": "豊島区",
+    "name": "豊島営業所"
+   }
+  ],
+  "business": "ファクタリング、財務・経営コンサルティング",
+  "capital": "4,850万円",
+  "found": true,
+  "founded": "1997年8月",
+  "license": "",
+  "location": "東京都中央区日本橋2-2-3 RISHEビルUCF4階",
+  "rep": "諸喜田 憲",
+  "source": "https://owl-economy.jp/about.php"
+ },
+ "C121": {
+  "branches": [],
+  "business": "ファクタリング事業、経営コンサルティング事業",
+  "capital": "",
+  "found": true,
+  "founded": "2016年11月",
+  "license": "",
+  "location": "東京都品川区西五反田2-24-4 THE CROSS GOTANDA 4F",
+  "rep": "佐野 俊亮",
+  "source": "https://witservice.co.jp/company"
+ },
+ "C012": {
+  "location": "東京都渋谷区道玄坂1丁目2番3号 渋谷フクラス",
+  "rep": "相浦一成",
+  "founded": "",
+  "capital": "133億2,300万円",
+  "license": "",
+  "branches": [],
+  "business": "総合的な決済関連サービス及び金融関連サービス",
+  "source": "https://www.gmo-pg.com/news/press/gmo-paymentgateway/2026/0203.html",
+  "found": true
+ },
+ "C113": {
+  "location": "神奈川県横浜市西区みなとみらい3丁目1番1号",
+  "rep": "原 誠",
+  "founded": "1979年9月",
+  "capital": "2億円",
+  "license": "",
+  "branches": [],
+  "business": "横浜銀行グループの総合リース会社。リース・割賦販売・支払委託などのファイナンス業務、代金回収業務、ファクタリング業務",
+  "source": "https://h-fc.co.jp/",
+  "found": true
+ },
+ "C150": {
+  "location": "東京都目黒区青葉台3-1-12 青葉台イーストビル1F",
+  "rep": "中山亮太郎",
+  "founded": "2013年5月",
+  "capital": "31億3,800万円",
+  "license": "",
+  "branches": [
+   {
+    "name": "関西支社",
+    "area": "大阪市北区"
+   },
+   {
+    "name": "北陸拠点",
+    "area": "金沢市"
+   },
+   {
+    "name": "名古屋拠点",
+    "area": "名古屋市中村区"
+   },
+   {
+    "name": "中四国拠点",
+    "area": "広島市中区"
+   },
+   {
+    "name": "九州拠点",
+    "area": "福岡市中央区"
+   }
+  ],
+  "business": "応援購入サービス「Makuake」の運営（クラウドファンディング事業）",
+  "source": "https://www.makuake.com/pages/company/pages/guideline/",
+  "found": true
+ },
+ "C157": {
+  "location": "東京都中央区日本橋蛎殻町1丁目14番14号",
+  "rep": "秋山祐二",
+  "founded": "2010年10月",
+  "capital": "490,000千円",
+  "license": "",
+  "branches": [],
+  "business": "企業間決済「Paid」と売掛保証「URIHO」を提供する決済・保証事業",
+  "source": "https://financial.raccoon.ne.jp/",
+  "found": true
+ },
+ "C170": {
+  "location": "東京都千代田区神田練塀町3 ヒューリック秋葉原タワービルディング",
+  "rep": "藤原弘治",
+  "founded": "1969年7月",
+  "capital": "811億2,900万円",
+  "license": "",
+  "branches": [
+   {
+    "name": "札幌支店",
+    "area": "札幌市中央区"
+   },
+   {
+    "name": "東北支店",
+    "area": "仙台市青葉区"
+   },
+   {
+    "name": "大宮支店",
+    "area": "さいたま市大宮区"
+   },
+   {
+    "name": "横浜支店",
+    "area": "横浜市西区"
+   },
+   {
+    "name": "名古屋支店",
+    "area": "名古屋市中区"
+   },
+   {
+    "name": "北陸支店",
+    "area": "金沢市"
+   },
+   {
+    "name": "関西支店",
+    "area": "大阪市中央区"
+   },
+   {
+    "name": "中四国支店",
+    "area": "広島市中区"
+   },
+   {
+    "name": "福岡支店",
+    "area": "福岡市博多区"
+   }
+  ],
+  "business": "リース等の金融・サービス事業（国内ビジネス、海外ビジネス、社会インフラ、トランスポート、モビリティ、企業投資）",
+  "source": "https://www.tokyocentury.co.jp/jp/company/info/outline/",
+  "found": true
+ },
+ "C176": {
+  "location": "東京都中央区新川1-21-2 茅場町タワー5階",
+  "rep": "臼井均",
+  "founded": "2015年5月",
+  "capital": "1億2,500万円",
+  "license": "第一種少額電子募集取扱業者 関東財務局長（金商）第3000号",
+  "branches": [],
+  "business": "株式投資型クラウドファンディング業務、M&Aアドバイザリー業務、財務コンサルティング業務",
+  "source": "https://www.cfangels.jp/about_us/",
+  "found": true
+ },
+ "C182": {
+  "location": "東京都港区六本木1丁目6番1号 泉ガーデンタワー19F",
+  "rep": "北尾 吉孝",
+  "founded": "1996年6月",
+  "capital": "5000万円",
+  "license": "",
+  "branches": [],
+  "business": "ベンチャーキャピタルファンドの運用・管理を行うベンチャーキャピタル事業",
+  "source": "https://www.sbinvestment.co.jp/",
+  "found": true
+ },
+ "C190": {
+  "location": "京都市下京区烏丸通松原上る薬師前町700番地",
+  "rep": "安井幹也",
+  "founded": "1941年10月",
+  "capital": "421億円",
+  "license": "",
+  "branches": [],
+  "business": "銀行業",
+  "source": "https://www.kyotobank.co.jp/about/company/outline/",
+  "found": true
+ },
+ "C057": {
+  "location": "東京都中央区八重洲二丁目10番17号",
+  "rep": "",
+  "founded": "1936年10月",
+  "capital": "2,186億円",
+  "license": "",
+  "branches": [],
+  "business": "中小企業専門の金融機関として、融資・預金・為替等の金融業務と経営支援を行う",
+  "source": "https://www.shokochukin.co.jp/recruit/career/about/",
+  "found": true
+ },
+ "C036": {
+  "location": "東京都新宿区四谷1-6-1 YOTSUYA TOWER",
+  "rep": "谷田智昭",
+  "founded": "2000年9月",
+  "capital": "722億1,000万円",
+  "license": "",
+  "branches": [],
+  "business": "銀行業（インターネット銀行）",
+  "source": "https://www.paypay-bank.co.jp/company/about/",
+  "found": true
+ },
+ "C051": {
+  "location": "東京都渋谷区広尾1-3-14",
+  "rep": "草間 雄介",
+  "founded": "1969年",
+  "capital": "2,307百万円",
+  "license": "関東財務局長（14）第00035号",
+  "branches": [],
+  "business": "不動産担保ローン事業",
+  "source": "https://www.asax.co.jp/",
+  "found": true
+ },
+ "C044": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "2023年7月1日に三井住友カード株式会社に吸収合併され解散し現存しない。現在SMBCモビットは三井住友カードのローンブランド",
+  "source": "https://www.smbc-card.com/company/info/enkaku_history_mobit.jsp",
+  "found": false
+ },
+ "C035": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "消費者金融業（フリーローン・おまとめローン・不動産担保ローン・ビジネスローン）※運営は株式会社デイリープランニング",
+  "source": "https://www.daily-p.co.jp/",
+  "found": true
+ },
+ "C066": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "資金調達・ファクタリング事業を行う株式会社エレファクトの公式サイトを確認できず、同名会社の公式公表で事業を確認できなかったため未収録",
+  "source": "",
+  "found": false
+ },
+ "C075": {
+  "location": "神奈川県横浜市西区北幸二丁目10番48号",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリングサービス「資金調達QUICK」の運営（公式会社概要の運営会社表記は株式会社ミライズ）",
+  "source": "https://m-quick.net/company/",
+  "found": true
+ },
+ "C081": {
+  "location": "東京都千代田区神田須田町一丁目7番8号VORT秋葉原IV 2F",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリングサービス「PayTech（ペイテック）」の運営",
+  "source": "https://paytech-factoring.com/",
+  "found": true
+ },
+ "C093": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリングサービス「ジャパンマネジメント」の運営（公式サイトは福岡・東京にオフィスがある旨のみで住所の公表を確認できず）",
+  "source": "https://www.japan-management.com/",
+  "found": true
+ },
+ "C099": {
+  "location": "東京都豊島区東池袋1丁目17-11 パークハイツ池袋1105号室",
+  "rep": "沼澤 光作",
+  "founded": "2013年7月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング事業、経営コンサルティング事業",
+  "source": "https://factoringjapan.jp/company/",
+  "found": true
+ },
+ "C107": {
+  "location": "東京都品川区西五反田7-22-17 TOCビル11F",
+  "rep": "堀井翔太",
+  "founded": "2019年4月",
+  "capital": "",
+  "license": "資金移動業者 関東財務局長第00084号／前払式支払手段（第三者型）関東財務局長第00782号",
+  "branches": [],
+  "business": "家計管理サービス「ワンバンク」及び決済事業の運営、個人事業主向けファクタリングサービス「ワンバンク請求書買取」の運営",
+  "source": "https://www.smartbank.co.jp/news/ii6tz32du7cm/",
+  "found": true
+ },
+ "C129": {
+  "location": "福岡市博多区博多駅東1-1-16 第2高田ビル402",
+  "rep": "平山尚",
+  "founded": "2011年12月",
+  "capital": "9,000万円",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング事業・コンサルタント事業",
+  "source": "https://three-trust.co.jp/company/",
+  "found": true
+ },
+ "C208": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "",
+  "source": "",
+  "found": false
+ },
+ "C214": {
+  "location": "東京都港区南青山2丁目2番15号 Win Aoyamaビル UCF635",
+  "rep": "桑原良太",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング事業（資金繰り支援）",
+  "source": "https://dmc-consulting.co.jp/greeting/",
+  "found": true
+ },
+ "C220": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング一括見積査定サービス「チョウタツ王」の運営（公式サイトに会社概要・所在地の公表を確認できず）",
+  "source": "https://choutatsu-o.com/",
+  "found": true
+ },
+ "C228": {
+  "location": "東京都渋谷区東3丁目15-7 ヒューリック恵比寿ビル4F",
+  "rep": "福井彰次",
+  "founded": "2018年11月",
+  "capital": "2,900万円",
+  "license": "",
+  "branches": [],
+  "business": "ポータルサイト事業／SaaS事業／コンサルティング事業",
+  "source": "https://hojyokin-portal.co.jp/company/company_profile/",
+  "found": true
+ },
+ "C234": {
+  "location": "福岡県福岡市中央区大名1丁目1番9号ATLAS403号",
+  "rep": "",
+  "founded": "2018年2月",
+  "capital": "5,000万円",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング事業、経営コンサルティング事業、各種コンサルティング事業（運営：株式会社アンカーガーディアン）",
+  "source": "https://facnet-online.com/company/",
+  "found": true
+ },
+ "C240": {
+  "location": "静岡県静岡市葵区人宿町1-6-12 タウンコート人宿町70B",
+  "rep": "勝見勇太",
+  "founded": "2026年7月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング事業（売掛債権の買取）、経営・財務・資金繰りコンサルティング（運営：ポモドーロ株式会社）",
+  "source": "https://pomodoro.co.jp/",
+  "found": true
+ },
+ "C246": {
+  "location": "東京都渋谷区円山町5番6号 道玄坂イトウビル7階",
+  "rep": "岡田裕一",
+  "founded": "2020年7月",
+  "capital": "",
+  "license": "",
+  "branches": [
+   {
+    "name": "練馬総合センター本部",
+    "area": "練馬区"
+   }
+  ],
+  "business": "ファクタリング事業、企業経営に関するアドバイス",
+  "source": "https://zist.co.jp/company",
+  "found": true
+ },
+ "C252": {
+  "location": "東京都豊島区南大塚三丁目43番1号",
+  "rep": "須賀成子",
+  "founded": "1979年11月",
+  "capital": "1,000万円",
+  "license": "",
+  "branches": [],
+  "business": "医療機関・介護福祉事業者・調剤薬局事業者・一般事業者向け債権買取業（ファクタリング）",
+  "source": "https://www.csplanning.tokyo/company/about/",
+  "found": true
+ },
+ "C258": {
+  "location": "東京都港区南青山2丁目2番15号 Win Aoyamaビル UCF635",
+  "rep": "桑原良太",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "建設業専門ファクタリングサービス「建設Pay」の運営（運営：株式会社DMC）",
+  "source": "https://dmc-consulting.co.jp/greeting/",
+  "found": true
+ },
+ "C014": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング事業、診療報酬ファクタリング事業、介護報酬ファクタリング事業、コンサルティング業、広告代理事業",
+  "source": "https://onfact.jp",
+  "found": true
+ },
+ "C021": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "単一の会社ではなく、信用保証協会という一般名称のため特定不可",
+  "source": "",
+  "found": false
+ },
+ "C024": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "神奈川県・神奈川県信用保証協会・取扱金融機関の複合表記で、単一の会社ではない",
+  "source": "",
+  "found": false
+ },
+ "C123": {
+  "location": "東京都豊島区西池袋5丁目17-12 創業新幹線ビル2F",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリングによる資金調達サポート",
+  "source": "https://biz-partner.company/",
+  "found": true
+ },
+ "C136": {
+  "location": "東京都千代田区内神田2丁目4番13号 石垣ビル5階",
+  "rep": "",
+  "founded": "1922年（大正11年創業）",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "でんさい・電子記録債権の割引・資金化サービス",
+  "source": "https://ichibill.com/",
+  "found": true
+ },
+ "C144": {
+  "location": "東京都渋谷区猿楽町18−8ヒルサイドテラスF棟201",
+  "rep": "中島真",
+  "founded": "2011年1月",
+  "capital": "73億4,935万円（資本剰余金含む）",
+  "license": "",
+  "branches": [],
+  "business": "クラウドファンディング事業の企画・開発・運営",
+  "source": "https://campfire.co.jp",
+  "found": true
+ },
+ "C164": {
+  "location": "東京都港区芝3丁目22番8号",
+  "rep": "内藤 進",
+  "founded": "1973年6月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "自動車リース、レンタカー、カーシェアリング、中古車販売・売却サポート",
+  "source": "https://www.orix.co.jp/auto//press/2025/release_250711.html",
+  "found": true
+ },
+ "C196": {
+  "location": "山口県下関市竹崎町4丁目2番36号",
+  "rep": "曽我 德將",
+  "founded": "1944年3月",
+  "capital": "100億円",
+  "license": "",
+  "branches": [
+   {
+    "name": "本店営業部",
+    "area": "下関市"
+   },
+   {
+    "name": "山口支店",
+    "area": "山口市"
+   },
+   {
+    "name": "防府支店",
+    "area": "防府市"
+   },
+   {
+    "name": "徳山支店",
+    "area": "周南市"
+   },
+   {
+    "name": "光支店",
+    "area": "光市"
+   },
+   {
+    "name": "小倉支店",
+    "area": "北九州市"
+   },
+   {
+    "name": "大分支店",
+    "area": "大分市"
+   },
+   {
+    "name": "熊本支店",
+    "area": "熊本市"
+   }
+  ],
+  "business": "銀行業",
+  "source": "https://www.yamaguchibank.co.jp/portal/news/assets_news/news_20231017_2.pdf",
+  "found": true
+ },
+ "C202": {
+  "location": "山形県山形市本町1丁目4番21号",
+  "rep": "",
+  "founded": "1941年4月",
+  "capital": "85億円",
+  "license": "東北財務局長（登金）第6号",
+  "branches": [
+   {
+    "name": "山形本店営業部",
+    "area": "山形市"
+   },
+   {
+    "name": "鶴岡営業部",
+    "area": "鶴岡市"
+   }
+  ],
+  "business": "銀行業",
+  "source": "https://www.shonai.co.jp/",
+  "found": true
+ },
+ "C003": {
+  "branches": [
+   {
+    "area": "仙台市青葉区",
+    "name": "仙台営業所"
+   }
+  ],
+  "business": "ファクタリング業務、経理・財務・経営コンサルティング",
+  "capital": "5,000万円",
+  "found": true,
+  "founded": "2009年4月",
+  "license": "",
+  "location": "〒101-0044 東京都千代田区鍛冶町1-4-3 竹内ビル2F",
+  "rep": "金井 義人",
+  "source": "https://top-management.co.jp/company/"
+ },
+ "C006": {
+  "branches": [],
+  "business": "ファクタリング事業・各種コンサルティング事業",
+  "capital": "1,000万円",
+  "found": true,
+  "founded": "",
+  "license": "",
+  "location": "〒171-0022 東京都豊島区南池袋二丁目13番10号 南池袋山本ビル3階",
+  "rep": "羽田 光成",
+  "source": "https://ququmo.com/"
+ },
+ "C016": {
+  "branches": [],
+  "business": "SBIホールディングスが2021年5月に自主的廃業とソーシャルレンディング事業からの撤退を決定したと公式発表しており、現存する事業会社ではない",
+  "capital": "",
+  "found": false,
+  "founded": "",
+  "license": "",
+  "location": "",
+  "rep": "",
+  "source": "https://www2.jpx.co.jp/disc/84730/140120210608444212.pdf"
+ },
+ "C019": {
+  "branches": [],
+  "business": "同名会社が多く、資金調達・ファクタリング関連の株式会社ライフを公式サイトで特定できなかったため収録対象外",
+  "capital": "",
+  "found": false,
+  "founded": "",
+  "license": "",
+  "location": "",
+  "rep": "",
+  "source": ""
+ },
+ "C025": {
+  "branches": [],
+  "business": "銀行業",
+  "capital": "17,119億円（単体）",
+  "found": true,
+  "founded": "1919年8月",
+  "license": "",
+  "location": "東京都千代田区丸の内一丁目4番5号",
+  "rep": "大澤 正和",
+  "source": "https://www.bk.mufg.jp/kigyou/profile.html"
+ },
+ "C026": {
+  "branches": [],
+  "business": "銀行業（インターネット銀行）",
+  "capital": "266億2,998万円",
+  "found": true,
+  "founded": "1994年2月",
+  "license": "",
+  "location": "本店 〒150-0043 東京都渋谷区道玄坂1-2-3 渋谷フクラス",
+  "rep": "水町 哲",
+  "source": "https://gmo-aozora.com/smallbusiness/needs/case6/"
+ },
+ "C037": {
+  "branches": [],
+  "business": "銀行・信託業務",
+  "capital": "2,799億円",
+  "found": true,
+  "founded": "1918年5月",
+  "license": "",
+  "location": "大阪市中央区備後町2丁目2番1号",
+  "rep": "千田 一弘",
+  "source": "https://www.resonabank.co.jp/about/gaiyo/"
+ },
+ "C040": {
+  "branches": [],
+  "business": "事業者向けビジネスローン等の事業者金融",
+  "capital": "5,000万円",
+  "found": true,
+  "founded": "",
+  "license": "貸金業登録 東京都知事（2）第31816号",
+  "location": "〒170-0005 東京都豊島区南大塚二丁目39-11 ヒサビル6階",
+  "rep": "",
+  "source": "https://fund-1.jp/lp/index.html"
+ },
+ "C046": {
+  "branches": [],
+  "business": "ローン事業・クレジットカード事業・信用保証事業",
+  "capital": "638億3,252万円",
+  "found": true,
+  "founded": "1978年10月",
+  "license": "貸金業者登録番号 関東財務局長(15)第00022号",
+  "location": "東京都港区東新橋一丁目9番1号 東京汐留ビルディング",
+  "rep": "",
+  "source": "https://www.acom.co.jp/corp/about-us/company/outline/"
+ },
+ "C052": {
+  "branches": [
+   {
+    "area": "仙台市",
+    "name": "仙台支店"
+   },
+   {
+    "area": "横浜市",
+    "name": "横浜支店"
+   },
+   {
+    "area": "名古屋市",
+    "name": "名古屋支店"
+   },
+   {
+    "area": "大阪市",
+    "name": "大阪支店"
+   },
+   {
+    "area": "広島市",
+    "name": "広島営業部"
+   },
+   {
+    "area": "福岡市",
+    "name": "福岡支店"
+   }
+  ],
+  "business": "融資事業・保証事業（不動産担保融資専門）",
+  "capital": "60億円",
+  "found": true,
+  "founded": "1992年1月",
+  "license": "貸金業登録 関東財務局長（10）第01092号",
+  "location": "〒105-0004 東京都港区新橋2-20-1 新橋三泉ビル",
+  "rep": "亀田 隆",
+  "source": "https://www.smtlf.jp/corporate/"
+ },
+ "C058": {
+  "branches": [
+   {
+    "area": "大阪市中央区",
+    "name": "大阪支店"
+   },
+   {
+    "area": "北九州市小倉北区",
+    "name": "北九州支店"
+   }
+  ],
+  "business": "中小企業向け手形割引・事業資金の融資・保証・ファクタリング",
+  "capital": "",
+  "found": true,
+  "founded": "1974年3月",
+  "license": "貸金業登録 関東財務局長（15）第01468号",
+  "location": "〒105-0001 東京都港区虎ノ門4丁目1番28号 虎ノ門タワーズオフィス",
+  "rep": "渡邉 佳洋",
+  "source": "https://jpnfs.com/"
+ },
+ "C067": {
+  "branches": [],
+  "business": "ファクタリング事業",
+  "capital": "1,000万円",
+  "found": true,
+  "founded": "2022年8月",
+  "license": "",
+  "location": "〒160-0023 東京都新宿区西新宿三丁目1番3号 MITSUWAビル5階",
+  "rep": "藤田 憲一",
+  "source": "https://fikstokyo.com/company.php"
+ },
+ "C069": {
+  "branches": [],
+  "business": "ファクタリング事業（2社間・3社間）",
+  "capital": "",
+  "found": true,
+  "founded": "",
+  "license": "",
+  "location": "東京都千代田区神田須田町2-23-1-601",
+  "rep": "吉兼 政彦",
+  "source": "https://cash-factor.com/"
+ },
+ "C076": {
+  "branches": [],
+  "business": "ファクタリング事業、建築・建設業向け斡旋サービス及びコンサルティング",
+  "capital": "900万円",
+  "found": true,
+  "founded": "2017年9月",
+  "license": "",
+  "location": "〒106-0045 東京都港区麻布十番2-8-16 七面坂ビル4階",
+  "rep": "十和田 和希",
+  "source": "https://msfj.co.jp/company/"
+ },
+ "C082": {
+  "branches": [],
+  "business": "ファクタリング（うりかけ堂）",
+  "capital": "",
+  "found": true,
+  "founded": "",
+  "license": "",
+  "location": "〒101-0041 東京都千代田区神田須田町2-2-7 トーハン須田町ビル10階",
+  "rep": "鈴木 博雅",
+  "source": "https://urikakedo.com/lp6/"
+ },
+ "C088": {
+  "branches": [],
+  "business": "経営コンサルティング事業、ビジネスマッチング、マーケティングリサーチ（ファクタリングサービス運営）",
+  "capital": "1,000万円",
+  "found": true,
+  "founded": "2019年4月",
+  "license": "",
+  "location": "東京都千代田区神田小川町2-3-7-6F",
+  "rep": "阿部 良一",
+  "source": "https://invoice-factor.jp/lp/company.html"
+ },
+ "C094": {
+  "branches": [],
+  "business": "ファクタリング",
+  "capital": "",
+  "found": true,
+  "founded": "",
+  "license": "",
+  "location": "〒541-0057 大阪府大阪市中央区北久宝寺町3-6-1 本町南ガーデンシティ7階",
+  "rep": "",
+  "source": "https://safe-trust.co.jp/contact/"
+ },
+ "C100": {
+  "branches": [],
+  "business": "公式サイトで資金調達関連の株式会社エムアンドエーティーを特定できなかったため収録対象外",
+  "capital": "",
+  "found": false,
+  "founded": "",
+  "license": "",
+  "location": "",
+  "rep": "",
+  "source": ""
+ },
+ "C108": {
+  "branches": [],
+  "business": "ファクタリング事業・コンサルティング事業",
+  "capital": "1,000万円",
+  "found": true,
+  "founded": "2001年7月",
+  "license": "",
+  "location": "〒101-0047 東京都千代田区内神田2丁目16-11 内神田渋谷ビル402",
+  "rep": "飯村 雅",
+  "source": "https://sankyo-fs.jp/?id=art_about"
+ },
+ "C114": {
+  "branches": [
+   {
+    "area": "大阪市北区",
+    "name": "大阪営業所"
+   },
+   {
+    "area": "熊本市東区",
+    "name": "熊本営業所"
+   }
+  ],
+  "business": "ファクタリング事業、経営コンサルティング事業",
+  "capital": "",
+  "found": true,
+  "founded": "2017年9月",
+  "license": "",
+  "location": "福岡市中央区薬院2丁目2-18 大地ビル2F",
+  "rep": "後藤 広美",
+  "source": "https://nishinihonfactor.jp/admin/"
+ },
+ "C124": {
+  "branches": [],
+  "business": "売掛債権買取（ファクタリング）等のファイナンス事業、医療・介護向け請求代行",
+  "capital": "1億円",
+  "found": true,
+  "founded": "1999年5月",
+  "license": "",
+  "location": "東京都千代田区麹町5-1-1 住友不動産麹町ガーデンタワー17F",
+  "rep": "菅原 猛",
+  "source": "https://www.accretive.jp/service/medicare_bpo/houkan/"
+ },
+ "C131": {
+  "branches": [],
+  "business": "各種物件のリース、各種物件の割賦販売、各種ファイナンス業務等",
+  "capital": "331億9,600万円",
+  "found": true,
+  "founded": "1971年4月",
+  "license": "貸金業者登録番号 関東財務局長（15）第00330号、第二種金融商品取引業 関東財務局長（金商）第1516号、古物商許可 東京都公安委員会 第301049601404号",
+  "location": "〒100-6525 東京都千代田区丸の内1-5-1 新丸の内ビルディング",
+  "rep": "久井 大樹",
+  "source": "https://www.mitsubishi-hc-capital.com/corporate/overview.html"
+ },
+ "C138": {
+  "branches": [],
+  "business": "中小企業庁・日本商工会議所／全国商工会連合会は単一の会社ではなく行政機関と団体の複合表記のため会社情報としては収録対象外",
+  "capital": "",
+  "found": false,
+  "founded": "",
+  "license": "",
+  "location": "",
+  "rep": "",
+  "source": "https://www.chusho.meti.go.jp/soshiki/map.html"
+ },
+ "C139": {
+  "branches": [],
+  "business": "厚生労働行政（国の行政機関）",
+  "capital": "",
+  "found": true,
+  "founded": "",
+  "license": "",
+  "location": "〒100-8916 東京都千代田区霞が関1-2-2 中央合同庁舎第5号館",
+  "rep": "",
+  "source": "https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/index.html"
+ },
+ "C145": {
+  "branches": [],
+  "business": "融資型クラウドファンディング「クラウドバンク」の運営（金融商品取引業）",
+  "capital": "1億円",
+  "found": true,
+  "founded": "1997年7月",
+  "license": "金融商品取引業 関東財務局長（金商）第115号",
+  "location": "東京都渋谷区恵比寿一丁目18番14号",
+  "rep": "安達 哲也",
+  "source": "https://crowdbank.jp/pdf/ir/disclosure/disclosure_2025_12.pdf"
+ },
+ "C151": {
+  "branches": [],
+  "business": "クラウドファンディングサービス「Readyfor」の運営、ファンドレイジング支援",
+  "capital": "1億円",
+  "found": true,
+  "founded": "2014年7月",
+  "license": "",
+  "location": "東京都千代田区二番町11-7 住友不動産二番町ビル6階",
+  "rep": "米良 はるか",
+  "source": "https://prtimes.jp/main/html/rd/p/000000426.000031325.html"
+ },
+ "C158": {
+  "branches": [],
+  "business": "金融関連サービス事業（広告費等の分割・後払いBNPL「AD YELL」等）",
+  "capital": "33億7,999万9,998円（資本準備金含む）",
+  "found": true,
+  "founded": "2021年1月",
+  "license": "",
+  "location": "東京都千代田区四番町6番 東急番町ビル",
+  "rep": "髙瀬 大輔",
+  "source": "https://prtimes.jp/main/html/rd/p/000000967.000014848.html"
+ },
+ "C161": {
+  "branches": [],
+  "business": "クレジットカード業務、決済業務、ローン業務、保証業務、信販業務等",
+  "capital": "340億3千円",
+  "found": true,
+  "founded": "1967年12月",
+  "license": "",
+  "location": "東京本社：東京都江東区豊洲二丁目2番31号 SMBC豊洲ビル／大阪本社：大阪市中央区今橋4-5-15",
+  "rep": "佐々木 丈也",
+  "source": "https://www.smbc-card.com/company/info/outline.jsp"
+ },
+ "C165": {
+  "branches": [],
+  "business": "電子計測器・科学分析機器・ICT機器・医療機器等のレンタル事業",
+  "capital": "7億3千万円",
+  "found": true,
+  "founded": "1976年9月",
+  "license": "",
+  "location": "〒141-0001 東京都品川区北品川5-5-15 大崎ブライトコア",
+  "rep": "上谷内 祐二",
+  "source": "https://www.orixrentec.jp/"
+ },
+ "C171": {
+  "branches": [],
+  "business": "総合金融サービス業（リース取引・割賦販売取引・各種金融取引）",
+  "capital": "699億6,526万円",
+  "found": true,
+  "founded": "1969年12月",
+  "license": "",
+  "location": "〒105-0001 東京都港区虎ノ門二丁目2番3号 虎ノ門アルセアタワー",
+  "rep": "中村 昭",
+  "source": "https://www.mizuho-ls.co.jp/ja/company/data.html"
+ },
+ "C177": {
+  "branches": [],
+  "business": "株式投資型クラウドファンディング「Unicorn」の運営（第一種少額電子募集取扱業務）",
+  "capital": "3億1,012.5万円",
+  "found": true,
+  "founded": "2015年12月",
+  "license": "金融商品取引業者 関東財務局長（金商）第3110号",
+  "location": "東京都千代田区永田町2丁目4番11号 フレンドビル3階",
+  "rep": "安田 次郎",
+  "source": "https://unicorn-cf.co.jp/wp-content/uploads/2026/07/業務及び財産の状況に関する説明書（2026年3月期）.pdf"
+ },
+ "C183": {
+  "branches": [
+   {
+    "area": "大阪市中央区",
+    "name": "大阪支社"
+   },
+   {
+    "area": "名古屋市中区",
+    "name": "名古屋支社"
+   }
+  ],
+  "business": "ベンチャーキャピタル事業",
+  "capital": "29億5千万円",
+  "found": true,
+  "founded": "1974年8月",
+  "license": "",
+  "location": "〒103-0027 東京都中央区日本橋2丁目3番4号 日本橋プラザビル7F",
+  "rep": "小島 拓朗",
+  "source": "https://www.mucap.co.jp/corporateinfo/overview/"
+ },
+ "C191": {
+  "branches": [],
+  "business": "銀行業",
+  "capital": "40億円",
+  "found": true,
+  "founded": "1951年6月",
+  "license": "",
+  "location": "福岡市中央区大名二丁目12番1号",
+  "rep": "",
+  "source": "https://www.fukuokachuo-bank.co.jp/invest/pdf/discro/d_2022_t03.pdf"
+ },
+ "C197": {
+  "branches": [],
+  "business": "銀行業",
+  "capital": "100億円",
+  "found": true,
+  "founded": "2011年10月",
+  "license": "",
+  "location": "福岡県北九州市小倉北区堺町1丁目1番10号",
+  "rep": "岡田 健吾",
+  "source": "https://www.ymfg.co.jp/ja/ir/library/integrated-report/COPY-202603/main/01/teaserItems2/0/linkList/01/link/202603_ymfg_c.pdf"
+ },
+ "C203": {
+  "branches": [],
+  "business": "銀行業",
+  "capital": "274億8百万円",
+  "found": true,
+  "founded": "1942年12月",
+  "license": "",
+  "location": "栃木県宇都宮市西2丁目1番18号",
+  "rep": "仲田 裕之",
+  "source": "https://www.tochigibank.co.jp/"
+ },
+ "C209": {
+  "branches": [],
+  "business": "ファクタリング業務、資金調達・経営に関するコンサルティング業務",
+  "capital": "",
+  "found": true,
+  "founded": "2024年2月",
+  "license": "",
+  "location": "東京都新宿区四谷1-18-6 四谷プラザビル7F",
+  "rep": "小玉 祐輔",
+  "source": "https://kkt-inc.co.jp/word_press/about-company/"
+ },
+ "C215": {
+  "branches": [],
+  "business": "コンサルティング業務・ファクタリング業務（ファクタリングゴールド）",
+  "capital": "1,000万円",
+  "found": true,
+  "founded": "2004年11月",
+  "license": "",
+  "location": "福岡県福岡市博多区中洲一丁目3番14号",
+  "rep": "松本 友一",
+  "source": "https://gold-f.jp/blog/company/"
+ },
+ "C221": {
+  "branches": [
+   {
+    "area": "豊島区",
+    "name": "東京支店"
+   }
+  ],
+  "business": "企業向けITソリューション事業（ポータルサイト・クラウドサービスの運営等）",
+  "capital": "4,200万円",
+  "found": true,
+  "founded": "2016年7月",
+  "license": "",
+  "location": "栃木県小山市駅東通り2-19-4 イーストビル2F",
+  "rep": "大和田 慎太郎",
+  "source": "https://jpcrest.co.jp/wp-content/uploads/2020/01/proposal20.pdf"
+ },
+ "C229": {
+  "branches": [
+   {
+    "area": "札幌市",
+    "name": "札幌支社"
+   },
+   {
+    "area": "仙台市",
+    "name": "仙台支社"
+   },
+   {
+    "area": "新潟市",
+    "name": "新潟支社"
+   },
+   {
+    "area": "金沢市",
+    "name": "金沢支社"
+   },
+   {
+    "area": "静岡市",
+    "name": "静岡支社"
+   },
+   {
+    "area": "名古屋市",
+    "name": "名古屋支社"
+   },
+   {
+    "area": "岐阜市",
+    "name": "岐阜支社"
+   },
+   {
+    "area": "福岡市",
+    "name": "福岡支社"
+   }
+  ],
+  "business": "補助金DX事業（補助金クラウド）、BPO×SaaS事業、コンサルティング事業",
+  "capital": "3,000万円",
+  "found": true,
+  "founded": "2017年7月",
+  "license": "",
+  "location": "大阪府大阪市中央区備後町4-3-4 大阪タイガービル8階",
+  "rep": "佐藤 淳",
+  "source": "https://stayway.co.jp/"
+ },
+ "C235": {
+  "branches": [],
+  "business": "ファクタリングサービス「PayTech」の運営（運営会社：株式会社T-Rise）",
+  "capital": "",
+  "found": true,
+  "founded": "",
+  "license": "",
+  "location": "東京都千代田区神田須田町一丁目7番8号 VORT秋葉原IV 2F",
+  "rep": "",
+  "source": "https://paytech-factoring.com/"
+ },
+ "C241": {
+  "branches": [
+   {
+    "area": "豊島区",
+    "name": "東京本部（営業本部）"
+   },
+   {
+    "area": "札幌市中央区",
+    "name": "札幌支店（資金管理部）"
+   }
+  ],
+  "business": "ファクタリング事業、リース事業、コンサルティング事業、水産事業、飲食店事業",
+  "capital": "3,000万円",
+  "found": true,
+  "founded": "2007年",
+  "license": "",
+  "location": "東京都新宿区西新宿3丁目7番26号 6F",
+  "rep": "森 雅樹",
+  "source": "https://www.lineprofect.com"
+ },
+ "C247": {
+  "branches": [],
+  "business": "コンサルタント業、法人向けローンサービス業、ファクタリング業（株式会社フェイス）",
+  "capital": "5,500万円",
+  "found": true,
+  "founded": "2017年4月",
+  "license": "貸金業登録 神奈川県知事（3）第05050号",
+  "location": "〒251-0052 神奈川県藤沢市藤沢109-6 湘南NDビルディング7F",
+  "rep": "和田 祐二",
+  "source": "https://faith-by.com/cominfo/"
+ },
+ "C253": {
+  "branches": [],
+  "business": "ファクタリングに関する業務、企業間決済支援、経営・資金調達コンサルティング業務",
+  "capital": "990万円",
+  "found": true,
+  "founded": "2019年10月",
+  "license": "",
+  "location": "〒231-0007 神奈川県横浜市中区弁天通3丁目42番地 NGS弁天通ビル4階",
+  "rep": "永田 翔",
+  "source": "https://linxjapan.jp/company.html"
+ },
+ "C259": {
+  "branches": [],
+  "business": "診療報酬債権ファクタリング「Central Medience Payments」（運営：株式会社Central Medience）",
+  "capital": "1億7,318万円",
+  "found": true,
+  "founded": "2018年5月",
+  "license": "",
+  "location": "東京都港区港南2-12-32 SOUTH PORT品川 8階",
+  "rep": "中川 隆太郎",
+  "source": "https://payments.centralmedience.com/"
+ },
+ "C007": {
+  "branches": [],
+  "business": "クラウドファクタリング事業、与信モデルの企画・開発・提供、クラウド請求書プラットフォーム「INVOY」の運営",
+  "capital": "70億5,305万円（資本準備金含む、2026年8月末時点）",
+  "found": true,
+  "founded": "2017年4月14日",
+  "license": "",
+  "location": "東京都港区赤坂1-12-32 アーク森ビル4階",
+  "rep": "澤岻 優紀",
+  "source": "https://corp.olta.co.jp/pr/2026-1028"
+ },
+ "C015": {
+  "branches": [],
+  "business": "事業者金融業",
+  "capital": "1億1千万円",
+  "found": true,
+  "founded": "2001年1月",
+  "license": "関東財務局長（9）第01262号",
+  "location": "東京都港区芝2丁目31-19",
+  "rep": "深田 裕司",
+  "source": "https://www.aiful-bf.co.jp/company/"
+ },
+ "C017": {
+  "branches": [],
+  "business": "2017年に金融庁から行政処分を受け、後継のスカイキャピタルは2023年に関東財務局から金融商品取引業登録を取り消されており、現存する事業者ではない",
+  "capital": "",
+  "found": false,
+  "founded": "",
+  "license": "",
+  "location": "",
+  "rep": "",
+  "source": "https://www.fsa.go.jp/news/28/syouken/20170330-1.html"
+ },
+ "C027": {
+  "branches": [],
+  "business": "リース事業、割賦販売、事業者金融事業",
+  "capital": "2億2,375万円",
+  "found": true,
+  "founded": "1999年11月",
+  "license": "",
+  "location": "東京都新宿区西新宿2-3-1 新宿モノリスビル9F",
+  "rep": "",
+  "source": "https://www.b-partner.co.jp/"
+ },
+ "C031": {
+  "branches": [],
+  "business": "貸金業（法人向けビジネスローン「キャレント」）",
+  "capital": "",
+  "found": true,
+  "founded": "2003年11月13日",
+  "license": "東京都知事（6）第31399号、日本貸金業協会会員 第006016号",
+  "location": "東京都品川区西五反田7丁目9番2号 KDX五反田ビル5階",
+  "rep": "池田 秀明",
+  "source": "https://www.ipg-fs.co.jp/company/"
+ },
+ "C038": {
+  "branches": [],
+  "business": "インターネット専業銀行",
+  "capital": "460億円",
+  "found": true,
+  "founded": "1986年6月",
+  "license": "登録金融機関 関東財務局長（登金）第636号",
+  "location": "東京都港区六本木三丁目2-1 住友不動産六本木グランドタワー",
+  "rep": "円山 法昭",
+  "source": "https://www.netbk.co.jp/contents/company/about/organization/"
+ },
+ "C045": {
+  "branches": [],
+  "business": "銀行業",
+  "capital": "260億円",
+  "found": true,
+  "founded": "2001年6月11日",
+  "license": "",
+  "location": "東京都港区赤坂二丁目3番5号",
+  "rep": "伊東 武",
+  "source": "https://www.tokyostarbank-recruit.co.jp/company/about/"
+ },
+ "C047": {
+  "branches": [],
+  "business": "パーソナルローン（消費者金融）「レイク」、信用保証",
+  "capital": "1億円",
+  "found": true,
+  "founded": "1994年10月",
+  "license": "貸金業登録 関東財務局長（10）第01024号、日本貸金業協会会員 第000003号",
+  "location": "東京都千代田区外神田三丁目12番8号 住友不動産秋葉原ビル",
+  "rep": "和智 正",
+  "source": "https://shinseifinancial.co.jp/"
+ },
+ "C053": {
+  "branches": [
+   {
+    "area": "神戸市",
+    "name": "神戸支店"
+   },
+   {
+    "area": "京都市",
+    "name": "京都支店"
+   }
+  ],
+  "business": "貸金業（ビジネスローン・不動産担保ローン・商業手形割引・売掛債権担保ローン・フリーキャッシング）",
+  "capital": "5,000万円",
+  "found": true,
+  "founded": "1972年2月8日",
+  "license": "大阪府知事（02）第13014号、日本貸金業協会会員第003138号",
+  "location": "大阪府大阪市北区天神橋1丁目19番6号 ミタカビル",
+  "rep": "",
+  "source": "https://www.mitaka.gr.jp/"
+ },
+ "C059": {
+  "branches": [],
+  "business": "東京都の行政機関（局）であり会社ではないため会社情報としては収録対象外",
+  "capital": "",
+  "found": false,
+  "founded": "",
+  "license": "",
+  "location": "",
+  "rep": "",
+  "source": "https://www.sangyo-rodo.metro.tokyo.lg.jp/about/sosiki"
+ },
+ "C070": {
+  "branches": [],
+  "business": "物流DXプラットフォーム「トラボックス」の運営、クラウド請求書管理/決済プラットフォーム「Finto」の運営",
+  "capital": "5,500万円",
+  "found": true,
+  "founded": "2000年3月3日",
+  "license": "",
+  "location": "〒150-0002 東京都渋谷区渋谷2-15-1 渋谷クロスタワー12F",
+  "rep": "皆川 拓也",
+  "source": "https://www.trabox.co.jp/"
+ },
+ "C072": {
+  "branches": [],
+  "business": "ファクタリング事業、各種コンサルティング事業",
+  "capital": "10,000,000円",
+  "found": true,
+  "founded": "",
+  "license": "",
+  "location": "〒171-0022 東京都豊島区南池袋二丁目33番6号 佐藤ビルディング7階",
+  "rep": "寺西 真悟",
+  "source": "https://jbl.tokyo/company/"
+ },
+ "C077": {
+  "branches": [],
+  "business": "同名会社が多く、資金調達関連の株式会社ケイズプランニングを公式サイトで特定できなかったため収録対象外",
+  "capital": "",
+  "found": false,
+  "founded": "",
+  "license": "",
+  "location": "",
+  "rep": "",
+  "source": ""
+ },
+ "C083": {
+  "branches": [],
+  "business": "ファクタリング業務",
+  "capital": "",
+  "found": true,
+  "founded": "",
+  "license": "",
+  "location": "東京都中央区日本橋本町4-3-4 東海日本橋ビル3階",
+  "rep": "伊藤 公治",
+  "source": "https://ennavi-factoring.net/lp2/"
+ },
+ "C089": {
+  "branches": [],
+  "business": "ファクタリング",
+  "capital": "800万円",
+  "found": true,
+  "founded": "2024年10月1日",
+  "license": "",
+  "location": "東京都豊島区東池袋一丁目31番6 三昌ビル301号",
+  "rep": "橋本 靖彦",
+  "source": "https://attline.co.jp/company/"
+ },
+ "C095": {
+  "branches": [],
+  "business": "ファクタリング事業、経営コンサルティング事業、古物営業",
+  "capital": "8,000万円",
+  "found": true,
+  "founded": "2017年2月",
+  "license": "",
+  "location": "〒810-0041 福岡県福岡市中央区大名2丁目2番42号 ケイワン大名402号",
+  "rep": "",
+  "source": "https://trustgateway.co.jp/admin/"
+ },
+ "C102": {
+  "branches": [],
+  "business": "売掛債権担保融資、ファクタリング、不動産担保融資、アウトソーシング業務等",
+  "capital": "3,500万円",
+  "found": true,
+  "founded": "2019年4月1日",
+  "license": "貸金業 東京都知事（1）第31852号、日本貸金業協会会員 第006172号",
+  "location": "東京都港区南青山5-14-7 アヴァン南青山1階",
+  "rep": "庄司 靖",
+  "source": "https://corp.mynavibridge.jp/"
+ },
+ "C104": {
+  "branches": [],
+  "business": "金融サービス事業、メディア事業",
+  "capital": "8億6,300万円（2025年12月31日現在、資本準備金含む）",
+  "found": true,
+  "founded": "2021年12月1日",
+  "license": "",
+  "location": "〒150-0043 東京都渋谷区道玄坂1-20-8 寿パークビル 7F",
+  "rep": "建部 大",
+  "source": "https://labol.co.jp/"
+ },
+ "C109": {
+  "branches": [],
+  "business": "同名会社が多く、ファクタリングサービス「九州ファクター」の運営会社としての公式会社概要を公式サイトで確認できず、資金調達関連の株式会社トータルサポートを特定できなかったため収録対象外",
+  "capital": "",
+  "found": false,
+  "founded": "",
+  "license": "",
+  "location": "",
+  "rep": "",
+  "source": ""
+ },
+ "C115": {
+  "branches": [
+   {
+    "area": "大阪市淀川区",
+    "name": "大阪支社"
+   }
+  ],
+  "business": "ファクタリング（買速）",
+  "capital": "",
+  "found": true,
+  "founded": "2019年11月",
+  "license": "",
+  "location": "東京都豊島区南池袋2-19-4 南池袋ビル6F",
+  "rep": "小境 英輝",
+  "source": "https://kai-soku.jp/"
+ },
+ "C125": {
+  "branches": [],
+  "business": "医療・介護報酬ファクタリング",
+  "capital": "1,000万円",
+  "found": true,
+  "founded": "2010年3月",
+  "license": "貸金業 東京都知事（5）第31420号",
+  "location": "〒108-0075 東京都港区港南1丁目8番23号 Shinagawa HEART 12階（東京本社）",
+  "rep": "長谷川 万晃",
+  "source": "https://nspkk.com/"
+ },
+ "C132": {
+  "branches": [],
+  "business": "ファクタリング事業（法人専門ファクタリングのBIG）、経営コンサルティング、ファイナンス支援",
+  "capital": "1,000万円",
+  "found": true,
+  "founded": "2021年12月20日",
+  "license": "",
+  "location": "東京都新宿区西新宿三丁目3-13 西新宿水間ビル6F",
+  "rep": "大岡 周平",
+  "source": "https://big-partners.co.jp/"
+ },
+ "C140": {
+  "branches": [],
+  "business": "東京都渋谷区は自治体そのものであり単一の会社ではないため会社情報としては収録対象外",
+  "capital": "",
+  "found": false,
+  "founded": "",
+  "license": "",
+  "location": "",
+  "rep": "",
+  "source": ""
+ },
+ "C146": {
+  "branches": [],
+  "business": "貸付投資プラットフォーム「Funds」の運営",
+  "capital": "567,855千円",
+  "found": true,
+  "founded": "2016年11月1日",
+  "license": "第二種金融商品取引業 関東財務局長（金商）第3103号",
+  "location": "〒150-0021 東京都渋谷区恵比寿西1-10-11 フジワラビルディング5階",
+  "rep": "藤田 雄一郎",
+  "source": "https://funds.jp/about"
+ },
+ "C152": {
+  "branches": [
+   {
+    "area": "大阪市北区",
+    "name": "関西支社"
+   },
+   {
+    "area": "金沢市",
+    "name": "北陸拠点"
+   },
+   {
+    "area": "名古屋市中村区",
+    "name": "名古屋拠点"
+   },
+   {
+    "area": "広島市中区",
+    "name": "中四国拠点"
+   },
+   {
+    "area": "福岡市中央区",
+    "name": "九州拠点"
+   },
+   {
+    "area": "ソウル特別市",
+    "name": "韓国拠点"
+   }
+  ],
+  "business": "応援購入サービス「Makuake」の運営",
+  "capital": "3,138百万円",
+  "found": true,
+  "founded": "2013年5月1日",
+  "license": "",
+  "location": "〒153-0042 東京都目黒区青葉台3-1-12 青葉台イーストビル 1F（東京本社）",
+  "rep": "中山 亮太郎",
+  "source": "https://www.makuake.com/pages/company/pages/guideline/"
+ },
+ "C159": {
+  "branches": [],
+  "business": "Visaプリペイドカード「バンドルカード」等のFinTechサービスの開発・運営",
+  "capital": "約32億9,038万円（資本剰余金含む）",
+  "found": true,
+  "founded": "2011年1月14日",
+  "license": "前払式支払手段（第三者型）発行者 関東財務局長 第00690号、第二種金融商品取引業 関東財務局長（金商）第3321号、電子決済等代行業者 関東財務局長（電代）第146号",
+  "location": "東京都渋谷区恵比寿1丁目20-18 三富ビル新館4階",
+  "rep": "八巻 渉",
+  "source": "https://kanmu.co.jp/"
+ },
+ "C166": {
+  "branches": [
+   {
+    "area": "大阪市中央区",
+    "name": "大阪本社"
+   }
+  ],
+  "business": "ホールセール事業、グローバルビジネス事業、地球環境事業、不動産事業、投融資事業",
+  "capital": "150億円",
+  "found": true,
+  "founded": "1963年2月",
+  "license": "",
+  "location": "東京都千代田区丸の内一丁目3番2号 三井住友銀行東館",
+  "rep": "今枝 哲郎",
+  "source": "https://www.smfl.co.jp/corporate/assets/corporate_profile.pdf"
+ },
+ "C172": {
+  "branches": [],
+  "business": "リース・割賦販売、融資・ファクタリング等の金融事業",
+  "capital": "100億円",
+  "found": true,
+  "founded": "2020年2月21日",
+  "license": "",
+  "location": "東京都港区港南一丁目2番70号 品川シーズンテラス13階",
+  "rep": "近藤 禎一郎",
+  "source": "https://www.ntt-tc-lease.com/"
+ },
+ "C178": {
+  "branches": [],
+  "business": "株式投資型クラウドファンディング「Angel Navi」の運営",
+  "capital": "3,000万円",
+  "found": true,
+  "founded": "2017年10月",
+  "license": "第一種少額電子募集取扱業 関東財務局長（金商）第3146号",
+  "location": "東京都港区赤坂1丁目12-32 アーク森ビル12階",
+  "rep": "",
+  "source": "https://www.equity-funding.co.jp/"
+ },
+ "C184": {
+  "branches": [
+   {
+    "area": "大阪市中央区",
+    "name": "大阪支社"
+   }
+  ],
+  "business": "プライベート・エクイティ投資事業",
+  "capital": "500,000,000円",
+  "found": true,
+  "founded": "2005年9月22日",
+  "license": "",
+  "location": "〒103-0028 東京都中央区八重洲1-3-4 三井住友銀行呉服橋ビル",
+  "rep": "神林 直樹",
+  "source": "http://www.smbc-vc.co.jp/corporate/profile.html"
+ },
+ "C188": {
+  "branches": [],
+  "business": "銀行業",
+  "capital": "2,156億28百万円",
+  "found": true,
+  "founded": "1920年12月16日",
+  "license": "",
+  "location": "〒220-8611 神奈川県横浜市西区みなとみらい3丁目1番1号",
+  "rep": "片岡 達也",
+  "source": "https://www.boy.co.jp/boy/company/gaiyou.html"
+ },
+ "C192": {
+  "branches": [],
+  "business": "銀行業",
+  "capital": "1兆4,040億円（2026年3月31日現在）",
+  "found": true,
+  "founded": "2013年7月1日",
+  "license": "",
+  "location": "東京都千代田区大手町1丁目5番5号（大手町タワー、登記上の本店）",
+  "rep": "加藤 勝彦",
+  "source": "https://www.mizuhobank.co.jp/company/info/profile/index.html"
+ },
+ "C198": {
+  "branches": [],
+  "business": "銀行業",
+  "capital": "621億円（2025年3月末時点）",
+  "found": true,
+  "founded": "1952年1月18日",
+  "license": "",
+  "location": "千葉県千葉市美浜区幸町二丁目1番2号",
+  "rep": "梅田 仁司",
+  "source": "https://www.chibakogyo-bank.co.jp/about/company/officer.html"
+ },
+ "C204": {
+  "branches": [],
+  "business": "銀行業",
+  "capital": "389億7,100万円",
+  "found": true,
+  "founded": "1950年11月24日",
+  "license": "",
+  "location": "大阪市中央区備後町2丁目2番1号",
+  "rep": "原藤 省吾",
+  "source": "https://www.kansaimiraibank.co.jp/"
+ },
+ "C210": {
+  "branches": [
+   {
+    "area": "千代田区",
+    "name": "神田店"
+   }
+  ],
+  "business": "ファクタリングサービス「ソクデル」の運営",
+  "capital": "200万円",
+  "found": true,
+  "founded": "2016年3月14日",
+  "license": "",
+  "location": "千葉県浦安市入船4-9-4-1F",
+  "rep": "髙橋 保彦",
+  "source": "https://sokuderu.com/"
+ },
+ "C216": {
+  "branches": [],
+  "business": "診療報酬・介護給付費等債権に特化したファクタリング、経営コンサルティング",
+  "capital": "",
+  "found": true,
+  "founded": "2013年",
+  "license": "",
+  "location": "〒106-6113 東京都港区六本木6-10-1 六本木ヒルズ森タワー13F",
+  "rep": "石崎 洋輔",
+  "source": "https://www.medley-fs.co.jp/company"
+ },
+ "C222": {
+  "branches": [],
+  "business": "同名会社が多く、ファクタリング一括査定サービス「ファク探」の運営会社としての公式会社概要を公式サイトで確認できず、有限会社エースを特定できなかったため収録対象外",
+  "capital": "",
+  "found": false,
+  "founded": "",
+  "license": "",
+  "location": "",
+  "rep": "",
+  "source": ""
+ },
+ "C230": {
+  "branches": [],
+  "business": "DXソリューション事業（Jエンジン・JDネット）、コンテンツ事業",
+  "capital": "3億8,638万円",
+  "found": true,
+  "founded": "2002年4月5日",
+  "license": "",
+  "location": "〒150-0002 東京都渋谷区渋谷2-15-1 渋谷クロスタワー32F",
+  "rep": "白石 崇",
+  "source": "https://www.writeup.jp/company/"
+ },
+ "C236": {
+  "branches": [],
+  "business": "ファクタリングサービス「インボイスファクター」の運営",
+  "capital": "1,000万円",
+  "found": true,
+  "founded": "2019年4月",
+  "license": "",
+  "location": "東京都千代田区神田小川町2-3-7 6F",
+  "rep": "阿部 良一",
+  "source": "https://invoice-factor.jp/"
+ },
+ "C242": {
+  "branches": [],
+  "business": "ファクタリング事業・コンサルタント事業",
+  "capital": "",
+  "found": true,
+  "founded": "2002年9月",
+  "license": "",
+  "location": "福岡県福岡市中央区西中洲1-13 松田ビル2F",
+  "rep": "藤野 亜希子",
+  "source": "https://www.fukuoka-factoring.jp/company.html"
+ },
+ "C248": {
+  "branches": [],
+  "business": "ファクタリング、経営・財務コンサルティング等",
+  "capital": "1,000万円",
+  "found": true,
+  "founded": "2017年3月17日",
+  "license": "",
+  "location": "〒151-0053 東京都渋谷区代々木1-32-2 宮﨑ビル303号室",
+  "rep": "",
+  "source": "https://www.nextstyle-tokyo.net/company"
+ },
+ "C254": {
+  "branches": [],
+  "business": "ファクタリング業、経営コンサルティング業",
+  "capital": "1,000万円",
+  "found": true,
+  "founded": "2018年",
+  "license": "",
+  "location": "〒160-0023 東京都新宿区西新宿5丁目10-10 青木ビル2階",
+  "rep": "庄司 元倖",
+  "source": "https://www.smart-factor.co.jp/company/"
+ },
+ "C260": {
+  "branches": [],
+  "business": "売掛債権の買取（診療・介護報酬ファクタリング「FPSメディカル」）、経理アウトソーシング、支払代行",
+  "capital": "1億円",
+  "found": true,
+  "founded": "1999年5月",
+  "license": "",
+  "location": "東京都千代田区麹町5丁目1番地1 住友不動産麹町ガーデンタワー",
+  "rep": "菅原 猛",
+  "source": "http://www.accretive.jp/"
+ },
+ "C009": {
+  "branches": [],
+  "business": "オンライン型ファクタリングサービス「ペイトナー」の提供",
+  "capital": "2,417,390,579円（資本準備金含む）",
+  "found": true,
+  "founded": "2019年2月",
+  "license": "",
+  "location": "東京都港区虎ノ門五丁目9番1号 麻布台ヒルズ ガーデンプラザB 5F",
+  "rep": "阪井優",
+  "source": "https://corp.paytner.co.jp/"
+ },
+ "C039": {
+  "branches": [],
+  "business": "法人向けビジネスローン・融資（信用保証融資、不動産担保融資、商業手形割引、売掛債権担保融資等）",
+  "capital": "5,500万円",
+  "found": true,
+  "founded": "2013年5月",
+  "license": "貸金業登録 東京都知事(5)第31521号",
+  "location": "東京都豊島区東池袋3-11-9",
+  "rep": "谷口友祐",
+  "source": "https://actwill.co.jp/company/"
+ },
+ "C061": {
+  "branches": [],
+  "business": "商業手形割引・でんさい（電子記録債権）割引",
+  "capital": "1億円",
+  "found": true,
+  "founded": "1913年",
+  "license": "貸金業登録 東京都知事(15)第02986号",
+  "location": "東京都中央区京橋2丁目12番6号",
+  "rep": "土屋敬",
+  "source": "https://www.go-toshin.co.jp/company/financial/img/financial_2025.pdf"
+ },
+ "C101": {
+  "branches": [],
+  "business": "中規模・小規模事業者への各種ファクタリングサービスの提供",
+  "capital": "",
+  "found": true,
+  "founded": "2017年3月",
+  "license": "",
+  "location": "東京都豊島区池袋2-50-9 第三共立ビル3F",
+  "rep": "馬込喜弘",
+  "source": "https://factorplan.net/company.php"
+ },
+ "C122": {
+  "branches": [],
+  "business": "企業間後払い決済・請求代行、ビジネスカード、請求書カード払い、売掛金早期資金化サービスの開発・提供",
+  "capital": "70,544,000円",
+  "found": true,
+  "founded": "2017年3月",
+  "license": "",
+  "location": "東京都港区芝浦三丁目1番21号 msb Tamachi 田町ステーションタワーS 21階",
+  "rep": "冨山直道",
+  "source": "https://mfkessai.co.jp/company/"
+ },
+ "C060": {
+  "location": "",
+  "rep": "",
+  "founded": "1974年",
+  "capital": "",
+  "license": "貸金業登録 神奈川県知事(15)第00052号、日本貸金業協会会員第002893号",
+  "branches": [],
+  "business": "手形割引・でんさい割引・事業者向け融資（貸金業）",
+  "source": "https://www.eikou-tegata.com/",
+  "found": true
+ },
+ "C078": {
+  "location": "東京都台東区東上野三丁目10番5号",
+  "rep": "小野貢司",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング（売掛金買取）サービス「OTTI」の運営",
+  "source": "https://otti-factoring.com/company/",
+  "found": true
+ },
+ "C084": {
+  "location": "岐阜県大垣市田口町1番地",
+  "rep": "神谷敏郎",
+  "founded": "2014年4月",
+  "capital": "9,000万円",
+  "license": "貸金業登録 岐阜県知事（3）第1180号",
+  "branches": [],
+  "business": "決済・保証サービス事業、ファクタリング事業、融資事業、保険代理業",
+  "source": "https://www.seino-financial.co.jp/company/",
+  "found": true
+ },
+ "C090": {
+  "location": "大阪市淀川区西中島3-10-12 サムティ西中島ビル601",
+  "rep": "宮永健太郎",
+  "founded": "2003年4月",
+  "capital": "1,000万円",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング（2社間・3社間、診療報酬・介護報酬ファクタリング）",
+  "source": "https://scom-f.jp/company.php",
+  "found": true
+ },
+ "C096": {
+  "location": "東京都千代田区内神田3-24-4 9STAGE kanda 6F",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング（売掛金買取）による資金調達支援",
+  "source": "https://next1-one.jp/",
+  "found": true
+ },
+ "C103": {
+  "location": "東京都新宿区四谷4-30-13 クロスシー新宿御苑前ビル4F",
+  "rep": "庄司誠",
+  "founded": "",
+  "capital": "3,000万円",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング事業、経営コンサルティング事業",
+  "source": "https://mentor-capital.jp/company/",
+  "found": true
+ },
+ "C133": {
+  "location": "東京都渋谷区道玄坂1丁目14番6号 ヒューマックス渋谷ビル7F",
+  "rep": "村上知行",
+  "founded": "2002年9月",
+  "capital": "1億5百万円",
+  "license": "資金移動業者（関東財務局長第00043号）、貸金業者（東京都知事(4)第31557号）、電子決済等代行業者（関東財務局長（電代）第36号）",
+  "branches": [],
+  "business": "オンライン販売の決済代行、代金回収代行及び付帯業務（早期入金・ファクタリング等の金融サービスを含む）",
+  "source": "https://www.fincode.jp/company/",
+  "found": true
+ },
+ "C167": {
+  "location": "東京都千代田区丸の内一丁目5番1号 新丸の内ビルディング",
+  "rep": "久井大樹",
+  "founded": "1971年4月",
+  "capital": "331億9,600万円",
+  "license": "",
+  "branches": [],
+  "business": "各種物件のリース、各種物件の割賦販売、各種ファイナンス業務",
+  "source": "https://www.mitsubishi-hc-capital.com/corporate/pdf/corporate_profile.pdf",
+  "found": true
+ },
+ "C173": {
+  "location": "東京都新宿区西新宿1-23-7 新宿ファーストウエスト",
+  "rep": "山崎正晴",
+  "founded": "1987年1月",
+  "capital": "5億2,800万円",
+  "license": "",
+  "branches": [
+   {
+    "name": "水戸支店",
+    "area": "水戸市"
+   },
+   {
+    "name": "広島支店",
+    "area": "広島市"
+   },
+   {
+    "name": "札幌サテライトオフィス",
+    "area": "札幌市"
+   },
+   {
+    "name": "武蔵野オフィス",
+    "area": "武蔵野市"
+   }
+  ],
+  "business": "IT機器・計測器のレンタル事業、システム事業（リース・割賦販売を含む）",
+  "source": "https://www.yrl.com/company/outline.html",
+  "found": true
+ },
+ "C179": {
+  "location": "東京都港区虎ノ門1-23-1 虎ノ門ヒルズ森タワー24階",
+  "rep": "三好啓介",
+  "founded": "1973年4月",
+  "capital": "332億5,100万円",
+  "license": "",
+  "branches": [],
+  "business": "ベンチャーキャピタル（投資ファンドの管理・運営、ベンチャー投資・バイアウト投資）",
+  "source": "https://www.jafco.co.jp/information/news/upload/527cca0038b69d5ab232f22cd2426202cce7ca8e.pdf",
+  "found": true
+ },
+ "C205": {
+  "location": "東京都北区赤羽一丁目64-10 ブルーノ赤羽2F",
+  "rep": "前田高志",
+  "founded": "2019年6月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング事業、金融コンサルティング事業",
+  "source": "https://kyoei-support.com/company/",
+  "found": true
+ },
+ "C217": {
+  "location": "札幌市中央区南三条西9丁目999-10 ビラリベルタ6F",
+  "rep": "北上弘明",
+  "founded": "2011年3月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "Webメディア事業（ファクタリング一括見積もり比較メディア「ファクタリングベスト」等の運営）",
+  "source": "https://webbranding.pro/company/",
+  "found": true
+ },
+ "C223": {
+  "location": "東京都品川区上大崎3丁目14番34号 プラスワン402",
+  "rep": "",
+  "founded": "2026年3月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "法人専用ファクタリング一括申し込みサービス「¥Today」の運営",
+  "source": "https://www.yen-today.jp/",
+  "found": true
+ },
+ "C231": {
+  "location": "東京都豊島区南池袋二丁目19番4号 南池袋ビル",
+  "rep": "小境英輝",
+  "founded": "2022年7月",
+  "capital": "",
+  "license": "",
+  "branches": [
+   {
+    "name": "大阪支社",
+    "area": "大阪市淀川区"
+   }
+  ],
+  "business": "AIファクタリングサービス「SoKuMo」の運営（運営：サンドボックス株式会社）",
+  "source": "https://sokumo.jp/",
+  "found": true
+ },
+ "C028": {
+  "location": "千葉県千葉市中央区千葉港1番2号",
+  "rep": "米本努",
+  "founded": "1943年3月",
+  "capital": "1,450億円",
+  "license": "",
+  "branches": [],
+  "business": "普通銀行業務（法人向けABL等の融資を含む）",
+  "source": "https://www.chibabank.co.jp/news/news20250929_02_001",
+  "found": true
+ },
+ "C189": {
+  "location": "福岡市中央区天神二丁目13番1号",
+  "rep": "五島久",
+  "founded": "1945年3月",
+  "capital": "823億円",
+  "license": "",
+  "branches": [],
+  "business": "銀行業",
+  "source": "https://www.fukuokabank.co.jp/aboutus/outline/",
+  "found": true
+ },
+ "C193": {
+  "location": "東京都千代田区丸の内一丁目1番2号",
+  "rep": "福留朗裕",
+  "founded": "",
+  "capital": "1兆7,710億円",
+  "license": "",
+  "branches": [],
+  "business": "銀行業（預金・貸出・為替業務等）",
+  "source": "https://www.smbc.co.jp/aboutus/profile/",
+  "found": true
+ },
+ "C199": {
+  "location": "茨城県土浦市中央二丁目11番7号",
+  "rep": "生田雅彦",
+  "founded": "1952年9月",
+  "capital": "488億68百万円",
+  "license": "",
+  "branches": [],
+  "business": "銀行業",
+  "source": "https://www.tsukubabank.co.jp/",
+  "found": true
+ },
+ "C041": {
+  "location": "東京都港区南青山二丁目6番21号 楽天クリムゾンハウス青山",
+  "rep": "中村晃一",
+  "founded": "2001年12月",
+  "capital": "193億2,300万円",
+  "license": "",
+  "branches": [
+   {
+    "name": "福岡第1支社",
+    "area": "福岡市"
+   },
+   {
+    "name": "福岡第2支社",
+    "area": "福岡市"
+   },
+   {
+    "name": "福岡第3支社",
+    "area": "福岡市"
+   },
+   {
+    "name": "仙台支社",
+    "area": "仙台市"
+   },
+   {
+    "name": "神戸営業所",
+    "area": "神戸市"
+   },
+   {
+    "name": "長崎営業所",
+    "area": "長崎市"
+   }
+  ],
+  "business": "クレジットカード、カードローン、信用保証業務等",
+  "source": "https://corp.rakuten.co.jp/news/press/2024/0930_12.html",
+  "found": true
+ },
+ "C048": {
+  "location": "京都市下京区烏丸通五条上る高砂町381-1",
+  "rep": "福田光秀",
+  "founded": "1978年2月",
+  "capital": "940億28百万円",
+  "license": "貸金業登録 近畿財務局長（14）第00218号",
+  "branches": [],
+  "business": "消費者金融事業、事業者金融事業、信用保証事業",
+  "source": "https://www.aiful.co.jp/group/corporate/about.html",
+  "found": true
+ },
+ "C054": {
+  "location": "東京都中央区日本橋室町二丁目4番3号 日本橋室町野村ビル",
+  "rep": "山田茂",
+  "founded": "2006年4月",
+  "capital": "1億円",
+  "license": "",
+  "branches": [],
+  "business": "不動産担保ローン等の保証業務・融資事業（SBI新生銀行グループ）",
+  "source": "https://corp.sbishinseibank.co.jp/ja/news/notice/20240607a.html",
+  "found": true
+ },
+ "C018": {
+  "location": "東京都中央区八重洲一丁目1番3号 壽ビル9階",
+  "rep": "田中翔平",
+  "founded": "2014年5月",
+  "capital": "2億1,000万円",
+  "license": "貸金業 東京都知事（2）第31541号、金融商品取引業 関東財務局長（金商）第2807号、宅地建物取引業 東京都知事（1）第97921号",
+  "branches": [],
+  "business": "不動産特化型ソーシャルレンディング「Lucky Bank」の運営",
+  "source": "https://prtimes.jp/main/html/rd/p/000000018.000012682.html",
+  "found": true
+ },
+ "C032": {
+  "location": "東京都台東区東上野1-7-12 徳永ビル4階401号",
+  "rep": "中村健太",
+  "founded": "",
+  "capital": "",
+  "license": "貸金業登録 東京都知事（3）第31698号",
+  "branches": [],
+  "business": "消費者金融業（フリーローン・おまとめローン・ビジネスローン等「デイリーキャッシング」）",
+  "source": "https://www.daily-p.co.jp/company/",
+  "found": true
+ },
+ "C071": {
+  "location": "東京都新宿区高田馬場1丁目29-20 6F",
+  "rep": "寺島翔太",
+  "founded": "2021年12月",
+  "capital": "900万円",
+  "license": "",
+  "branches": [
+   {
+    "name": "大宮オフィス",
+    "area": "さいたま市大宮区"
+   }
+  ],
+  "business": "ファクタリング事業、コンサルティング事業、各種在庫買取サービス事業",
+  "source": "https://goodplus-service.co.jp/",
+  "found": true
+ },
+ "C110": {
+  "location": "東京都渋谷区渋谷2-1-1 青山ファーストビル9F",
+  "rep": "夏川雅貴",
+  "founded": "2011年4月",
+  "capital": "3億円",
+  "license": "",
+  "branches": [],
+  "business": "EC決済事業及びFinTech関連事業のグループ統括（ファクタリング等の金融サービスを含む）",
+  "source": "https://www.sbi-finsol.co.jp/corporate/outline.html",
+  "found": true
+ },
+ "C116": {
+  "location": "東京都港区海岸1-2-3 汐留芝離宮ビルディング13階",
+  "rep": "木村慎",
+  "founded": "1998年2月",
+  "capital": "49億6,918万円",
+  "license": "",
+  "branches": [
+   {
+    "name": "札幌営業所",
+    "area": "札幌市"
+   },
+   {
+    "name": "大阪営業所",
+    "area": "大阪市"
+   },
+   {
+    "name": "名古屋営業所",
+    "area": "名古屋市"
+   },
+   {
+    "name": "福岡営業所",
+    "area": "福岡市"
+   }
+  ],
+  "business": "BtoB（企業間電子商取引）プラットフォームの運営（請求書カード払い等の決済連携を含む）",
+  "source": "https://corp.infomart.co.jp/company/profile/",
+  "found": true
+ },
+ "C126": {
+  "location": "東京都中央区東日本橋一丁目1番7号 野村不動産東日本橋ビル2階",
+  "rep": "濵口慶太",
+  "founded": "2014年8月",
+  "capital": "1億円（資本準備金含む）",
+  "license": "",
+  "branches": [],
+  "business": "医療機関経営支援事業、診療報酬ファクタリング事業、医療機関M&A支援事業",
+  "source": "https://prtimes.jp/main/html/rd/p/000000006.000014494.html",
+  "found": true
+ },
+ "C141": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "東京都荒川区は自治体そのものであり単一の会社ではないため会社情報としては収録対象外",
+  "source": "",
+  "found": false
+ },
+ "C147": {
+  "location": "東京都千代田区一番町5番地 アトラスビル6階",
+  "rep": "相原一也",
+  "founded": "2018年4月",
+  "capital": "24億1,000万円（資本準備金含む）",
+  "license": "第二種金融商品取引業 関東財務局長（金商）第3249号、貸金業登録 東京都知事（2）第31772号",
+  "branches": [],
+  "business": "デジタルアセット担保ローン、貸付型クラウドファンディング「Funvest」、不動産投資プライムローン等の次世代金融サービス",
+  "source": "https://prtimes.jp/main/html/rd/p/000000288.000056375.html",
+  "found": true
+ },
+ "C153": {
+  "location": "東京都港区赤坂二丁目17番46号 グローヴ4階",
+  "rep": "山口慶一",
+  "founded": "2002年2月",
+  "capital": "9,900万円",
+  "license": "第一種・第二種金融商品取引業 関東財務局長（金商）第36号",
+  "branches": [],
+  "business": "オルタナティブ投資プラットフォーム「オルタナバンク」の運営（貸付型クラウドファンディング等）",
+  "source": "https://prtimes.jp/main/html/rd/p/000000530.000013809.html",
+  "found": true
+ },
+ "C160": {
+  "location": "東京都豊島区高田三丁目15番10号",
+  "rep": "本山裕二",
+  "founded": "1974年8月",
+  "capital": "5億円",
+  "license": "",
+  "branches": [],
+  "business": "クレジット（個別・包括信用購入あっせん）、企業間売掛決済サービス、売掛金・動産担保融資サービス、集金代行サービス",
+  "source": "https://www.yamato-hd.co.jp/news/2026/newsrelease_20260514_1.html",
+  "found": true
+ },
+ "C185": {
+  "location": "東京都港区虎ノ門五丁目9番1号 麻布台ヒルズガーデンプラザB 5F",
+  "rep": "赤浦徹、本間真彦、和田圭祐、村田祐介、ポール・マクナーニ（代表パートナー）",
+  "founded": "2010年",
+  "capital": "7,240万円",
+  "license": "",
+  "branches": [],
+  "business": "ベンチャーキャピタル（創業期スタートアップへの投資・育成）",
+  "source": "https://www.mizuhobank.co.jp/release/pdf/20260220release_jp.pdf",
+  "found": true
+ },
+ "C211": {
+  "location": "東京都豊島区東池袋3-11-9 三島ビル2階",
+  "rep": "梅木英孝",
+  "founded": "2022年1月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング（2社間・3社間）",
+  "source": "https://soreiyu.co.jp/company/",
+  "found": true
+ },
+ "C237": {
+  "location": "東京都港区南青山2-5-17 ポーラ青山ビルディング7階",
+  "rep": "髙橋望真",
+  "founded": "2022年3月",
+  "capital": "3,000万円（資本準備金等を含む）",
+  "license": "",
+  "branches": [],
+  "business": "2社間専門のオンラインファクタリング「ATOファクタリング」・請求書カード払い（運営：ATO株式会社、みんなのマーケット子会社）",
+  "source": "https://www.mapion.co.jp/news/release/000000120.000031359-all/",
+  "found": true
+ },
+ "C243": {
+  "location": "東京都豊島区高田3丁目32-1 大東ビル3階",
+  "rep": "本成善大",
+  "founded": "2026年6月",
+  "capital": "2億7,052万円（グループ総資本金）",
+  "license": "",
+  "branches": [],
+  "business": "財務コンサルティング特化型ファクタリング、財務コンサルティング、M&A・事業承継支援（ネクステージグループ）",
+  "source": "https://zaimu-saisei.co.jp/company/profile/",
+  "found": true
+ },
+ "C249": {
+  "location": "東京都新宿区四谷1-18-6 四谷プラザビル7F",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング見直し本舗（乗り換え特化の2社間・3社間ファクタリング。運営：KKT株式会社、旧運営はbesus株式会社）",
+  "source": "https://f-honpo.jp/",
+  "found": true
+ },
+ "C255": {
+  "location": "東京都千代田区神田小川町2-3-7-6F",
+  "rep": "阿部良一",
+  "founded": "2019年4月",
+  "capital": "1,000万円",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング「いーばんく」の運営、経営コンサルティング、ビジネスマッチング（運営：株式会社アクシアプラス）",
+  "source": "https://facpro.jp/axiaplus-factoring/",
+  "found": true
+ },
+ "C261": {
+  "location": "東京都豊島区高田3丁目32番1号 大東ビル3階",
+  "rep": "本成善大",
+  "founded": "2018年10月",
+  "capital": "2億7,052万円（ネクステージグループ全体）",
+  "license": "",
+  "branches": [],
+  "business": "オンライン完結型2社間ファクタリング「SOKULA」（運営：株式会社アクセルファクター、ネクステージグループ）",
+  "source": "https://sokula.info/",
+  "found": true
+ },
+ "C137": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "中小企業庁・中小企業基盤整備機構は行政機関の複合表記であり単一の会社ではないため会社情報としては収録対象外",
+  "source": "",
+  "found": false
+ },
+ "C130": {
+  "location": "〒105-7119 東京都港区東新橋1-5-2 汐留シティセンター19階",
+  "rep": "中村 徳晴",
+  "founded": "1976年12月",
+  "capital": "78億9,686万円",
+  "license": "古物商許可 東京都公安委員会 許可証番号 第301069501606号",
+  "branches": [],
+  "business": "リース&ファイナンス事業・サービス事業・インベストメント事業",
+  "source": "https://www.r-lease.co.jp/corp/about/",
+  "found": true
+ },
+ "C029": {
+  "location": "東京都中野区中央一丁目32番5号",
+  "rep": "小田桐 徹",
+  "founded": "",
+  "capital": "",
+  "license": "貸金業登録 東京都知事（4）第31549号",
+  "branches": [],
+  "business": "貸金業（ビジネスローン、手形割引、売掛債権担保融資、不動産・動産担保融資、診療・介護報酬担保融資等）",
+  "source": "https://www.spt.metro.tokyo.lg.jp/tosei/hodohappyo/press/2023/11/21/documents/12_01.pdf",
+  "found": true
+ },
+ "C062": {
+  "location": "〒810-0011 福岡県福岡市中央区高砂2-6-2 ニチエイ高砂ビル",
+  "rep": "城﨑輝久",
+  "founded": "1958年9月",
+  "capital": "1億3千万円（資本準備金含む）",
+  "license": "貸金業者登録番号 福岡県知事（15）第00003号",
+  "branches": [],
+  "business": "不動産担保ローン・でんさい割引（電子記録債権割引）・不動産賃貸業",
+  "source": "https://www.nichieisoko.co.jp/company/",
+  "found": true
+ },
+ "C119": {
+  "location": "〒101-0032 東京都千代田区岩本町3-3-3 秋葉原サザンビル8F",
+  "rep": "沢田 知規",
+  "founded": "2018年11月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "請求書を活用した資金調達サービス「インボイスPay®」の運営",
+  "source": "https://smart-hedge.co.jp/invoice-pay/",
+  "found": true
+ },
+ "C225": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング比較サイト「ファクマッチ」および補助金検索サイト「補助金マッチ」の運営（ファクタリング会社のマッチング・仲介）",
+  "source": "https://www.facmatch.jp/",
+  "found": true
+ },
+ "C010": {
+  "location": "〒163-0825 東京都新宿区西新宿2丁目4番1号 新宿NSビル25F",
+  "rep": "佐藤 貢",
+  "founded": "2015年6月",
+  "capital": "1億円",
+  "license": "",
+  "branches": [
+   {
+    "name": "大阪支店",
+    "area": "大阪市"
+   },
+   {
+    "name": "福岡支店",
+    "area": "福岡市"
+   },
+   {
+    "name": "札幌営業所",
+    "area": "札幌市"
+   },
+   {
+    "name": "仙台営業所",
+    "area": "仙台市"
+   },
+   {
+    "name": "西新宿営業所",
+    "area": "東京都新宿区"
+   },
+   {
+    "name": "渋谷第一営業所",
+    "area": "東京都渋谷区"
+   },
+   {
+    "name": "さいたま営業所",
+    "area": "さいたま市"
+   },
+   {
+    "name": "千葉営業所",
+    "area": "千葉市"
+   },
+   {
+    "name": "横浜営業所",
+    "area": "横浜市"
+   },
+   {
+    "name": "名古屋営業所",
+    "area": "名古屋市"
+   }
+  ],
+  "business": "売掛金早期資金化（ファクタリング）・財務コンサルティング等の総合成長支援事業",
+  "source": "https://p-m-g.tokyo/company",
+  "found": true
+ },
+ "C022": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "大阪府・大阪信用保証協会・取扱金融機関は行政機関・信用保証協会・金融機関の複合表記であり単一の会社ではないため会社情報としては収録対象外",
+  "source": "",
+  "found": false
+ },
+ "C033": {
+  "location": "東京都中央区銀座一丁目13番1号 ヒューリック銀座一丁目ビル4階",
+  "rep": "須田 幸生",
+  "founded": "2009年9月",
+  "capital": "5,000万円",
+  "license": "貸金業登録番号 東京都知事（3）第31291号",
+  "branches": [],
+  "business": "ビルダー向け出来高融資事業・不動産開発プロジェクトファイナンス事業",
+  "source": "http://efinst.jp/",
+  "found": true
+ },
+ "C042": {
+  "location": "〒107-0052 東京都港区赤坂一丁目8番1号 赤坂インターシティAIR",
+  "rep": "岡田 靖",
+  "founded": "1979年6月",
+  "capital": "48億円",
+  "license": "貸金業者登録番号 関東財務局長（15）第00170号",
+  "branches": [
+   {
+    "name": "大阪オフィス",
+    "area": "大阪市"
+   },
+   {
+    "name": "札幌営業所",
+    "area": "札幌市"
+   },
+   {
+    "name": "仙台営業所",
+    "area": "仙台市"
+   },
+   {
+    "name": "名古屋営業所",
+    "area": "名古屋市"
+   },
+   {
+    "name": "広島営業所",
+    "area": "広島市"
+   },
+   {
+    "name": "福岡営業所",
+    "area": "福岡市"
+   },
+   {
+    "name": "立川オペレーションセンター",
+    "area": "立川市"
+   },
+   {
+    "name": "沖縄オペレーションセンター",
+    "area": "那覇市"
+   }
+  ],
+  "business": "個人向け金融サービス業",
+  "source": "https://finance.docomo.ne.jp/company.html",
+  "found": true
+ },
+ "C049": {
+  "location": "〒135-0061 東京都江東区豊洲二丁目2番31号",
+  "rep": "金子 良平",
+  "founded": "1962年3月",
+  "capital": "140,737百万円",
+  "license": "",
+  "branches": [],
+  "business": "貸金業・保証業",
+  "source": "https://www.smbc-cf.com/data/2024/08/corporate_profile_2024_09.pdf",
+  "found": true
+ },
+ "C055": {
+  "location": "大阪府大東市大字北条1115番地",
+  "rep": "木村 茂",
+  "founded": "1967年",
+  "capital": "3,000万円",
+  "license": "貸金業登録 大阪府知事（06）第12923号、日本貸金業協会会員第002388号",
+  "branches": [
+   {
+    "area": "大阪市北区",
+    "name": "梅田店"
+   },
+   {
+    "area": "吹田市",
+    "name": "吹田店"
+   }
+  ],
+  "business": "消費者金融「ニチデン」（フリーローン・不動産担保ローン・事業者ローン）※公式サイトの商号は株式会社日電社",
+  "source": "https://nichidensha.com/",
+  "found": true
+ },
+ "C063": {
+  "location": "福岡県北九州市小倉北区片野1丁目13番9号",
+  "rep": "",
+  "founded": "1999年5月",
+  "capital": "",
+  "license": "貸金業登録番号 福岡県知事（7）第08486号",
+  "branches": [],
+  "business": "商業手形割引業（手形割引・でんさい割引）",
+  "source": "https://www.e-daiki.co.jp/categories/works/kenchiku_shikinchoutatsu.html",
+  "found": true
+ },
+ "C073": {
+  "location": "〒112-0006 東京都文京区小日向4-6-21 ベルメゾン茗荷谷3F",
+  "rep": "山下 慎吾",
+  "founded": "2018年6月",
+  "capital": "5,000万円",
+  "license": "",
+  "branches": [
+   {
+    "name": "大阪支社",
+    "area": "大阪市"
+   }
+  ],
+  "business": "ファクタリング事業・経営コンサルティング事業",
+  "source": "https://www.jps-tokyo.co.jp/",
+  "found": true
+ },
+ "C079": {
+  "location": "東京都港区南青山2-26-37 VORT外苑前Ⅰ 9F",
+  "rep": "矢野 真一",
+  "founded": "2016年4月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "AIファクタリング「PAYTODAY」の企画・開発・運営、債権流動化、不動産事業",
+  "source": "https://paytoday.jp/company",
+  "found": true
+ },
+ "C085": {
+  "location": "東京都中央区日本橋室町一丁目11番12号",
+  "rep": "辻 秀樹",
+  "founded": "2023年1月",
+  "capital": "10,000,000円",
+  "license": "",
+  "branches": [],
+  "business": "売掛金ファクタリング事業、生花販売事業",
+  "source": "https://change-corp.jp/company/",
+  "found": true
+ },
+ "C091": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "",
+  "source": "",
+  "found": false
+ },
+ "C097": {
+  "location": "〒101-0054 東京都千代田区神田錦町2丁目5番2号",
+  "rep": "田上 栄一",
+  "founded": "",
+  "capital": "5,000万円",
+  "license": "",
+  "branches": [],
+  "business": "AIファクタリングサービス『バイオン』の運営",
+  "source": "https://ai-factoring.jp/",
+  "found": true
+ },
+ "C105": {
+  "location": "〒150-0002 東京都渋谷区渋谷3-12-22 渋谷プレステージ7階",
+  "rep": "福島 範幸",
+  "founded": "2007年2月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "株式会社アイズが運営するオンラインファクタリング「レゾナス」",
+  "source": "https://www.mapion.co.jp/news/release/000000632.000005365-all/",
+  "found": true
+ },
+ "C111": {
+  "location": "〒160-0023 東京都新宿区西新宿3丁目3番13号 西新宿水間ビル2F",
+  "rep": "笹谷 侑矢",
+  "founded": "",
+  "capital": "500万円",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング事業、経営コンサルティング事業",
+  "source": "https://jp-fs.jp/",
+  "found": true
+ },
+ "C117": {
+  "location": "〒100-0005 東京都千代田区丸の内1丁目6番2号 新丸の内センタービルディング7階",
+  "rep": "徳本 英俊",
+  "founded": "1977年4月",
+  "capital": "10億円",
+  "license": "貸金業者登録番号 東京都知事（3）第31668号",
+  "branches": [
+   {
+    "name": "大阪支店",
+    "area": "大阪市"
+   }
+  ],
+  "business": "国内ファクタリング業務、代金回収業務、国際ファクタリング業務",
+  "source": "https://www.mizuho-factor.co.jp/company/profile.html",
+  "found": true
+ },
+ "C127": {
+  "location": "東京都港区芝公園2-11-1 住友不動産芝公園タワー",
+  "rep": "川合俊也",
+  "founded": "2014年1月",
+  "capital": "105,000,000円",
+  "license": "",
+  "branches": [],
+  "business": "介護・医療・障害福祉分野向けファクタリング「カイポケ早期入金」の運営",
+  "source": "https://finance.kaipoke.biz/aboutus/",
+  "found": true
+ },
+ "C134": {
+  "location": "〒108-0075 東京都港区港南1丁目8番23号 Shinagawa HEART 12階",
+  "rep": "長谷川 万晃",
+  "founded": "2010年3月",
+  "capital": "1,000万円",
+  "license": "貸金業者登録",
+  "branches": [
+   {
+    "name": "大阪営業所",
+    "area": "大阪市"
+   },
+   {
+    "name": "福岡営業所",
+    "area": "福岡市"
+   }
+  ],
+  "business": "コンサルティング事業・ソリューション事業・診療報酬ファクタリング事業",
+  "source": "https://nspkk.com/company/",
+  "found": true
+ },
+ "C142": {
+  "location": "東京都港区芝2丁目31番19号 バンザイビル8F",
+  "rep": "川瀬光英",
+  "founded": "2020年8月",
+  "capital": "7,500万円",
+  "license": "第二種金融商品取引業 関東財務局長（金商）第3272号",
+  "branches": [],
+  "business": "第二種金融商品取引業（ソーシャルレンディングプラットフォーム運営）",
+  "source": "https://www.ag-crowdfunding.com/",
+  "found": true
+ },
+ "C148": {
+  "location": "東京都渋谷区代官山町9-10 SodaCCoビル6F",
+  "rep": "沼田健彦",
+  "founded": "2011年6月",
+  "capital": "94,850,000円（内資本準備金 45,425,000円）",
+  "license": "",
+  "branches": [],
+  "business": "クラウドファンディングサイト「GREEN FUNDING」運営",
+  "source": "https://greenfunding.jp/company/",
+  "found": true
+ },
+ "C155": {
+  "location": "東京都渋谷区恵比寿南3-5-7 デジタルゲートビル",
+  "rep": "林 郁",
+  "founded": "1995年8月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "決済事業・マーケティング事業・スタートアップ投資事業",
+  "source": "https://www.garage.co.jp/company/about-us/",
+  "found": true
+ },
+ "C162": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "株式会社UPSIDERと株式会社クレディセゾンの2社による共同運営サービス「支払い.com」であり、単一の会社ではないため会社概要は統合しない",
+  "source": "",
+  "found": false
+ },
+ "C168": {
+  "location": "〒102-0083 東京都千代田区麹町五丁目1番地1 住友不動産麹町ガーデンタワー",
+  "rep": "織田 寛明",
+  "founded": "1969年5月",
+  "capital": "10,532百万円",
+  "license": "",
+  "branches": [],
+  "business": "法人向けリース・ファイナンスサービス（モビリティ／ロジスティクス、エネルギー環境、BPO／ICT、ヘルスケア、サーキュラーエコノミー、不動産、航空機等）",
+  "source": "https://www.fgl.co.jp/fgl/pdf/company_information07.pdf",
+  "found": true
+ },
+ "C174": {
+  "location": "東京都港区芝五丁目29番11号",
+  "rep": "柴原祐喜／大浦学",
+  "founded": "2015年11月",
+  "capital": "",
+  "license": "第一種金融商品取引業者 関東財務局長（金商）第2957号",
+  "branches": [],
+  "business": "株式投資型クラウドファンディング「FUNDINNO」の運営・未上場株式のセカンダリーマーケット運営",
+  "source": "https://corp.fundinno.com/",
+  "found": true
+ },
+ "C180": {
+  "location": "東京都千代田区二番町5-1 住友不動産麹町ビル9F",
+  "rep": "堀 義人",
+  "founded": "2006年7月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ベンチャーキャピタルファンド等の運用・管理",
+  "source": "https://www.globiscapital.co.jp/ja/",
+  "found": true
+ },
+ "C186": {
+  "location": "静岡県静岡市清水区富士見町2番1号",
+  "rep": "岩山 靖宏",
+  "founded": "1928年7月",
+  "capital": "108億1,626万円",
+  "license": "",
+  "branches": [],
+  "business": "銀行業",
+  "source": "https://www.shimizubank.co.jp/assets/pdf/ir/disclosure/2026_all_01.pdf",
+  "found": true
+ },
+ "C194": {
+  "location": "静岡県静岡市葵区呉服町1丁目10番地",
+  "rep": "八木 稔",
+  "founded": "1943年3月",
+  "capital": "908億円",
+  "license": "東海財務局長（登金）第5号",
+  "branches": [],
+  "business": "銀行業",
+  "source": "https://www.shizuokabank.co.jp/companyinfo/profile/gaiyo_history.html",
+  "found": true
+ },
+ "C200": {
+  "location": "愛媛県松山市勝山町2丁目1番地",
+  "rep": "西川 義教",
+  "founded": "1943年3月",
+  "capital": "213億6,700万円",
+  "license": "",
+  "branches": [],
+  "business": "銀行業",
+  "source": "https://www.himegin.co.jp/new_csr/pdf/20260724_3.pdf",
+  "found": true
+ },
+ "C206": {
+  "location": "東京都千代田区内神田二丁目7番6号 ゆまにビル5階",
+  "rep": "",
+  "founded": "",
+  "capital": "10,000,000円",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング事業、財務コンサルティング事業",
+  "source": "https://actbiz.jp/",
+  "found": true
+ },
+ "C212": {
+  "location": "福岡県福岡市博多区",
+  "rep": "高梨伸治",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング事業・財務コンサルティング事業",
+  "source": "https://www.mapion.co.jp/news/release/000000004.000162014-all/",
+  "found": true
+ },
+ "C218": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング会社の比較・情報提供サイト「FundBridge」の運営",
+  "source": "https://fundbridge.jp/",
+  "found": true
+ },
+ "C224": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "",
+  "source": "",
+  "found": false
+ },
+ "C232": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリングサービスおよび資金調達に関するコンサルティング（エーストラスト）",
+  "source": "https://ace-trust.com/",
+  "found": true
+ },
+ "C238": {
+  "location": "東京都豊島区高田3-32-1 大東ビル",
+  "rep": "本成 善大",
+  "founded": "2026年6月",
+  "capital": "2億7,052万円（グループ総資本）",
+  "license": "",
+  "branches": [],
+  "business": "Bizキャピタルは株式会社財務再生支援センターが運営するファクタリング（財務コンサルティング特化型）",
+  "source": "https://www.jiji.com/jc/article?k=000000001.000189393&g=prt",
+  "found": true
+ },
+ "C244": {
+  "location": "",
+  "rep": "",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "サービス名「事業資金エージェント」の公式サイトは所在地（東京都港区新橋）を公表するが、法人名は画像表示のみで公式のテキスト公表から運営会社を特定できなかったため未収録",
+  "source": "https://js-agent.com/",
+  "found": false
+ },
+ "C250": {
+  "location": "〒164-0001 東京都中野区中野三丁目28-23 東建ビル2F",
+  "rep": "吉田 博",
+  "founded": "2013年7月",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "ファクタリング事業・経営/資金調達コンサルティング",
+  "source": "https://rising-tokyo.com/company.html",
+  "found": true
+ },
+ "C256": {
+  "location": "〒105-0001 東京都港区虎ノ門五丁目9番1号 麻布台ヒルズ ガーデンプラザB 5F",
+  "rep": "阪井 優",
+  "founded": "2019年2月",
+  "capital": "2,417,390,579円（2026年8月末時点。資本準備金含む）",
+  "license": "",
+  "branches": [],
+  "business": "決済サービスの提供・与信モデルの開発",
+  "source": "https://corp.paytner.co.jp/about",
+  "found": true
+ },
+ "C008": {
+  "location": "東京都港区南青山2-26-37 VORT外苑前Ⅰ 9F",
+  "rep": "矢野 真一",
+  "founded": "2016年4月",
+  "capital": "",
+  "license": "",
+  "branches": [
+   {
+    "area": "神奈川県江の島",
+    "name": "江の島支店"
+   },
+   {
+    "area": "埼玉県浦和",
+    "name": "浦和支店"
+   }
+  ],
+  "business": "Dual Life Partners株式会社が運営するAIファクタリング「PAYTODAY」の企画・開発・運営、債権流動化",
+  "source": "https://paytoday.jp/company",
+  "found": true
+ },
+ "C262": {
+  "location": "東京都新宿区新宿一丁目3番5号 新進ビル3F",
+  "rep": "福田拓哉",
+  "founded": "",
+  "capital": "",
+  "license": "",
+  "branches": [],
+  "business": "経営者・投資家マッチングサイト「Founder」の運営、資金調達支援、コンサルティング",
+  "source": "https://found-er.com/",
+  "found": true
+ }
+}
