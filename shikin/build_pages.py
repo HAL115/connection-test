@@ -166,7 +166,7 @@ for m in data['methods']:
     if len([s for s in direct if (s.get('fee_lo') or '').strip()]) >= 4:
         compare_methods.add(mid)
     rows = ''.join(
-        f'<div class="svc"><div><b><a href="../services/{s["id"].lower()}.html">{esc(s["name"])}</a></b>（<a href="../companies/{s["entity_id"].lower()}.html">{esc(s["entity"])}</a>）<br>'
+        f'<div class="svc"><div><b><a href="../services/{s["id"].lower()}.html">{esc(s["name"])}</a></b>{"（終了）" if s.get("status") == "廃業・撤退" else ""}（<a href="../companies/{s["entity_id"].lower()}.html">{esc(s["entity"])}</a>）<br>'
         f'手数料 {fee_text(s["fee_lo"], s["fee_hi"])}／入金 {esc(s["speed"]) or "―"}／金額 {amt_text(s["amt_lo"], s["amt_hi"])}<br>{svc_chips(s)}</div>{badge_score(s.get("score", ""))}</div>'
         for s in svcs)
     compare_link = f'<p><a href="../compare/{build.mslug(mid)}.html">{esc(m["name"])}のサービス比較（手数料・速さ・透明性）→</a></p>' if mid in compare_methods else ''
@@ -306,7 +306,7 @@ for e0 in entities:
     biz_block = (f'<h2>事業内容</h2><p>{esc(e["_business"])}</p>' if e.get('_business')
                  else '<h2>事業内容</h2><p>事業内容の詳しい公表は確認できていません。提供しているサービスは、このページの下の一覧のとおりです。</p>')
     body = f"""
-<p class="note"><a href="../index.html">トップ</a> ／ 運営会社 ／ {esc(e['name'])}</p>
+<p class="note"><a href="../index.html">トップ</a> ／ <a href="index.html">運営会社</a> ／ {esc(e['name'])}</p>
 <h1>{esc(e['name'])}</h1>
 <p>{esc(e['name'])}の会社情報と、提供しているサービスの条件です。数値は各社の公式の公表と当サイトの観測に基づきます。公表されていない項目は推定で埋めず、その旨を書いています。</p>
 {biz_block}
@@ -343,6 +343,62 @@ for e0 in entities:
     with open(f'{OUT}/{slug}', 'w') as f:
         f.write(build.page(f'{e["name"]}｜会社情報とサービスの条件', body, article=True, desc=desc, ld=ld, path=slug))
     urls.append(slug)
+
+# ---------- companies index ----------
+PREFS = ['北海道', '青森県', '岩手県', '宮城県', '秋田県', '山形県', '福島県', '茨城県', '栃木県', '群馬県', '埼玉県', '千葉県', '東京都', '神奈川県', '新潟県', '富山県', '石川県', '福井県', '山梨県', '長野県', '岐阜県', '静岡県', '愛知県', '三重県', '滋賀県', '京都府', '大阪府', '兵庫県', '奈良県', '和歌山県', '鳥取県', '島根県', '岡山県', '広島県', '山口県', '徳島県', '香川県', '愛媛県', '高知県', '福岡県', '佐賀県', '長崎県', '熊本県', '大分県', '宮崎県', '鹿児島県', '沖縄県']
+
+def _pref_of(loc):
+    best, bestpos = '', 10 ** 9
+    for p in PREFS:
+        i = (loc or '').find(p)
+        if i >= 0 and i < bestpos:
+            best, bestpos = p, i
+    return best
+
+_by_pref = {}
+_unknown_loc = []
+_ended_ents = []
+for _e0 in entities:
+    _e = prof(_e0)
+    if _e['status'] == '廃業・撤退':
+        _ended_ents.append(_e)
+        continue
+    _p = _pref_of(_e.get('location', ''))
+    if _p:
+        _by_pref.setdefault(_p, []).append(_e)
+    else:
+        _unknown_loc.append(_e)
+
+def _ent_li(_e):
+    _mn = methods.get(_e['method'], {}).get('name', '')
+    _sc = f'／透明性スコア {esc(_e.get("score", ""))} / 5' if _e.get('score') else ''
+    return f'<li><a href="{_e["id"].lower()}.html">{esc(_e["name"])}</a>（{_mn}{_sc}）</li>'
+
+_pref_toc = '、'.join(f'<a href="#pref-{i}">{p}（{len(_by_pref[p])}）</a>' for i, p in enumerate(PREFS) if p in _by_pref)
+_pref_secs = ''.join(
+    f'<h2 class="sec" id="pref-{i}">{p}</h2><ul>' + ''.join(_ent_li(_e) for _e in sorted(_by_pref[p], key=lambda x: x['name'])) + '</ul>'
+    for i, p in enumerate(PREFS) if p in _by_pref)
+_ended_li = ''.join(f'<li><a href="{_e["id"].lower()}.html">{esc(_e["name"])}</a>（{_e["status"]}、確認日 {esc(_e["status_date"])}）</li>' for _e in _ended_ents)
+_unknown_li = ''.join(_ent_li(_e) for _e in sorted(_unknown_loc, key=lambda x: x['name']))
+_all_li = ''.join(_ent_li(_e) for _e in sorted(entities, key=lambda x: x['name']))
+_idx_body = f"""
+<p class="note"><a href="../index.html">トップ</a> ／ 運営会社</p>
+<h1>運営会社の一覧</h1>
+<p>当サイトが収録している運営会社{len(entities)}社の一覧です。都道府県別と、全社の一覧（会社名順）で引けます。サービスを終了した会社は、分けて表示しています。</p>
+<h2 class="sec">都道府県から探す</h2>
+<p>{_pref_toc}</p>
+{_pref_secs}
+<h2 class="sec">サービスを終了した会社</h2>
+<ul>{_ended_li}</ul>
+<h2 class="sec">所在地を確認できていない会社</h2>
+<ul>{_unknown_li}</ul>
+<h2 class="sec">全社の一覧（会社名順）</h2>
+<ul>{_all_li}</ul>
+{build.CTA_BOX}
+"""
+with open(f'{OUT}/companies/index.html', 'w') as f:
+    f.write(build.page('運営会社の一覧', _idx_body, desc='資金調達サービスの運営会社の一覧。都道府県別と会社名順で引けます。終了した会社も分けて表示しています。', path='companies/index.html'))
+urls.append('companies/index.html')
 
 # ---------- service pages ----------
 for s in services:
@@ -386,6 +442,11 @@ for s in services:
     else:
         official = ''
     pr = PR_NOTICE if (_aff and _aff.get('url')) else ''
+    ended = s.get('status') == '廃業・撤退'
+    if ended:
+        official = ''
+        pr = ''
+    ended_banner = '<div class="panel" style="border-left:4px solid #C2410C;margin:14px 0"><b>このサービスは終了しています</b><p style="margin:6px 0 0">当サイトが確認した時点で、このサービスは終了・撤退しています。申し込みはできません。記録として掲載を残しています。</p></div>' if ended else ''
     _ee = prof(e) if e else {}
     ent_block = ''
     if _ee:
@@ -398,13 +459,13 @@ for s in services:
         ])
         ent_block = (f'<h2>運営会社について</h2>{ent_rows}'
                      f'<p><a href="../companies/{s["entity_id"].lower()}.html">{esc(s["entity"])}の会社情報と評判</a></p>')
-    _rel = [x for x in services if x['method'] == s['method'] and x['id'] != sid and (x.get('fee_lo') or '').strip()][:6]
+    _rel = [x for x in services if x['method'] == s['method'] and x['id'] != sid and x.get('status') != '廃業・撤退' and (x.get('fee_lo') or '').strip()][:6]
     if not _rel:
-        _rel = [x for x in services if x['method'] == s['method'] and x['id'] != sid][:6]
+        _rel = [x for x in services if x['method'] == s['method'] and x['id'] != sid and x.get('status') != '廃業・撤退'][:6]
     if not _rel:
         _grp_mids = [mid for mid, g in MID_GROUP.items() if g == MID_GROUP.get(s['method'])]
-        _rel = [x for x in services if x['method'] in _grp_mids and x['id'] != sid][:6]
-    _same_ent = [x for x in services if x['entity_id'] == s['entity_id'] and x['id'] != sid][:4]
+        _rel = [x for x in services if x['method'] in _grp_mids and x['id'] != sid and x.get('status') != '廃業・撤退'][:6]
+    _same_ent = [x for x in services if x['entity_id'] == s['entity_id'] and x['id'] != sid and x.get('status') != '廃業・撤退'][:4]
     rel_svcs = ''
     if _rel or _same_ent:
         parts = ''
@@ -417,6 +478,7 @@ for s in services:
 <p class="note"><a href="../index.html">トップ</a> ／ サービス ／ {esc(s['name'])}</p>
 <h1>{esc(s['name'])}</h1>
 <p>{esc(s['entity'])}が提供する{esc(m.get('name', ''))}のサービスです。条件は公式の公表に基づき、確認日を付けています。</p>
+{ended_banner}
 {pr}
 <h2>条件</h2>
 {rows}
@@ -442,8 +504,8 @@ for s in services:
 for mid in sorted(compare_methods):
     m = methods[mid]
     svcs = svc_by_method.get(mid, [])
-    direct = sorted([s for s in svcs if s.get('form') not in ('仲介・紹介', '比較メディア・送客')], key=fee_num)
-    inter = [s for s in svcs if s.get('form') in ('仲介・紹介', '比較メディア・送客')]
+    direct = sorted([s for s in svcs if s.get('form') not in ('仲介・紹介', '比較メディア・送客') and s.get('status') != '廃業・撤退'], key=fee_num)
+    inter = [s for s in svcs if s.get('form') in ('仲介・紹介', '比較メディア・送客') and s.get('status') != '廃業・撤退']
     trs = ''.join(
         f'<tr><td><b><a href="../services/{s["id"].lower()}.html">{esc(s["name"])}</a></b></td>'
         f'<td><a href="../companies/{s["entity_id"].lower()}.html">{esc(s["entity"])}</a></td>'

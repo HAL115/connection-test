@@ -556,7 +556,7 @@ method_cards = ''.join(
     for m in methods)
 
 methods_js = json.dumps([{k: m[k] for k in ('id', 'name', 'def', 'cost', 'docs', 'period', 'fit', 'unfit', 'target', 'maxDays', 'minDays', 'needsArv', 'taxCaution')} for m in methods], ensure_ascii=False)
-services_js = json.dumps([{k: s[k] for k in ('id', 'name', 'entity', 'method', 'fee_lo', 'fee_hi', 'speed', 'amt_lo', 'amt_hi', 'target', 'online', 'form', 'score')} for s in services], ensure_ascii=False)
+services_js = json.dumps([{k: s[k] for k in ('id', 'name', 'entity', 'method', 'fee_lo', 'fee_hi', 'speed', 'amt_lo', 'amt_hi', 'target', 'online', 'form', 'score')} for s in services if s.get('status') != '廃業・撤退'], ensure_ascii=False)
 method_names = {m['id']: m['name'] for m in methods}
 method_options = ''.join(f'<option value="{mid}">{html.escape(n)}</option>' for mid, n in sorted(method_names.items()))
 
