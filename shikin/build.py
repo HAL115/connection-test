@@ -17,6 +17,9 @@ def asset(name):
     return f'assets/{name}'
 
 data = json.load(open(BASE + '/site/data.json'))
+NSVC = len(data['services'])
+NENT = len(data['entities'])
+NLOG = len(data['log'])
 methods = data['methods']
 services = data['services']
 scores = data['scores']
@@ -295,7 +298,7 @@ def page(title, body, article=False, desc='', ld='', path=None):
 <style>{CSS}</style></head>
 <body>
 <header class="site"><div class="wrap"><div class="logo">建設的な資金調達を実現するサイト<small>可能性のある資金調達方法を、全ての手法から探し出す</small></div><nav class="dnav"><a href="{prefix}index.html#check">状態チェック</a><a href="{prefix}methods/index.html">手法ガイド</a><a href="{prefix}articles/index.html#basics">基礎知識</a><a href="{prefix}articles/index.html#guides">状態別の記事</a><a href="{prefix}index.html#compare">比較</a><a href="{prefix}index.html#search">サービスを探す</a></nav><a class="hdr-cta" href="{prefix}index.html#check">状態チェック</a><button class="menu-btn" onclick="document.body.classList.add('menu-open')">メニュー</button></div></header>
-<div class="mpanel"><div class="mp-head"><span class="mp-title">メニュー</span><button class="mp-close" onclick="document.body.classList.remove('menu-open')">閉じる</button></div><nav><a href="{prefix}index.html#check" onclick="document.body.classList.remove('menu-open')">状態チェック<small>上位の手法から順に確認します</small></a><a href="{prefix}methods/index.html">手法ガイド<small>全24手法の仕組みと条件</small></a><a href="{prefix}articles/index.html#basics">基礎知識<small>仕組みの根幹を先に知る</small></a><a href="{prefix}articles/index.html#guides">状態別の記事<small>状況ごとの進め方</small></a><a href="{prefix}index.html#compare" onclick="document.body.classList.remove('menu-open')">サービスの比較<small>手法ごとの手数料と速さ</small></a><a href="{prefix}index.html#search" onclick="document.body.classList.remove('menu-open')">サービスを探す<small>324件から条件で絞る</small></a><a href="{prefix}about.html">運営者情報</a><a href="{prefix}privacy.html">プライバシーポリシー</a></nav></div>
+<div class="mpanel"><div class="mp-head"><span class="mp-title">メニュー</span><button class="mp-close" onclick="document.body.classList.remove('menu-open')">閉じる</button></div><nav><a href="{prefix}index.html#check" onclick="document.body.classList.remove('menu-open')">状態チェック<small>上位の手法から順に確認します</small></a><a href="{prefix}methods/index.html">手法ガイド<small>全24手法の仕組みと条件</small></a><a href="{prefix}articles/index.html#basics">基礎知識<small>仕組みの根幹を先に知る</small></a><a href="{prefix}articles/index.html#guides">状態別の記事<small>状況ごとの進め方</small></a><a href="{prefix}index.html#compare" onclick="document.body.classList.remove('menu-open')">サービスの比較<small>手法ごとの手数料と速さ</small></a><a href="{prefix}index.html#search" onclick="document.body.classList.remove('menu-open')">サービスを探す<small>{NSVC}件から条件で絞る</small></a><a href="{prefix}about.html">運営者情報</a><a href="{prefix}privacy.html">プライバシーポリシー</a></nav></div>
 {main_open}{body}{main_close}
 <div class="sticky-cta"><a class="btn btn-cta bar-btn" href="{prefix}index.html#check">状態チェックをはじめる</a></div>
 <footer class="site"><div class="wrap"><p class="fname">建設的な資金調達を実現するサイト</p>{footer_cols(prefix)}<p>運営：合同会社MELSY（<a href="{prefix}about.html">運営者情報</a>）</p>このサイトは一般的な情報の提供を目的としています。個別の可否は各社の審査で決まります。</div></footer>
@@ -1037,7 +1040,7 @@ body = f"""
 <h2 class="sec">このサイトの違い</h2>
 <p class="sec-sub">比べる範囲と、数字の扱い方です。どれも、裏づけのページへつながっています。</p>
 <div class="sgrid">
-<div class="scard"><i>1</i><b>全ての手法を横断して比べる</b><p>24手法・324サービス・261社を、1つの物差しで収録しています。ファクタリングだけ、融資だけのサイトでは出てこない候補まで並びます。</p><a href="methods/index.html">手法の一覧を見る</a></div>
+<div class="scard"><i>1</i><b>全ての手法を横断して比べる</b><p>24手法・{NSVC}サービス・{NENT}社を、1つの物差しで収録しています。ファクタリングだけ、融資だけのサイトでは出てこない候補まで並びます。</p><a href="methods/index.html">手法の一覧を見る</a></div>
 <div class="scard"><i>2</i><b>結果は、その場で全部出す</b><p>状態チェックは、連絡先を聞かずに、使える手法と外れる理由まで表示します。候補が見つかった段階で止めることもできます。</p><a href="#check">状態チェックをする</a></div>
 <div class="scard"><i>3</i><b>費用は、下限と上限の両方を書く</b><p>公式が公表していない項目は「公表を確認できていません」と書き、推測で埋めません。透明性スコアは、確認できた公表項目の数です。</p><a href="about.html">掲載の基準と定義を見る</a></div>
 <div class="scard"><i>4</i><b>公式ページを観測し、変更を記録する</b><p>会社の条件は変わります。公式の公表を確認し、直した差分は日付つきで公開しています。</p><a href="observation.html">観測の記録を見る</a></div>
@@ -1116,12 +1119,12 @@ top_ld = json.dumps({'@context': 'https://schema.org', '@graph': [
     {'@type': 'FAQPage', 'mainEntity': [
         {'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in FAQS]},
 ]}, ensure_ascii=False)
-top_desc = '資金調達の手法24件とサービス324件の条件を記録したデータベース。質問に答えると、期限に間に合う手法と、貸してくれる候補の会社がその場で分かります。'
+top_desc = f'資金調達の手法24件とサービス{NSVC}件の条件を記録したデータベース。質問に答えると、期限に間に合う手法と、貸してくれる候補の会社がその場で分かります。'
 with open(OUT + '/index.html', 'w') as f:
     f.write(page('建設的な資金調達を実現するサイト', body, desc=top_desc, ld=top_ld, path=''))
 print('TOP v3 done, review =', REVIEW)
 
-ABOUT_BODY = """
+ABOUT_BODY = f"""
 <div class="wrap">
 <p class="eyebrow">ABOUT</p>
 <h1>運営者情報</h1>
@@ -1130,6 +1133,14 @@ ABOUT_BODY = """
 <p>資金調達の手法は24種類に整理し、サービスごとの条件（費用、入金までの期間、対象、必要書類）は、公式に公表されている記載だけを載せます。公表されていない項目は、推測で埋めず、その旨を明記します。このサイトの内容は一般的な情報の提供であり、個別の融資や買取の可否を判断するものではありません。契約の前には、各社の公式の説明と契約書を必ず確認してください。</p>
 <h2 class="sec">掲載の基準</h2>
 <p>公式サイトで事業の実在と条件を確認できたサービスを掲載します。給与ファクタリングを行う事業者は掲載しません。償還請求権のある契約は、推奨の形では紹介しません。掲載している各ページには、情報の確認日を表示します。</p>
+<h2 class="sec">順位と並びの決め方</h2>
+<p>このサイトは、サービスの総合順位を付けていません。比較ページの並びは、手数料の下限など、比べる項目ごとの機械的な並びで、並びの根拠は各ページの冒頭に書いています。広告リンクの有無が、並びや条件の記載に影響することはありません。状態チェックの結果は、期限と目的と絶対条件から機械的に絞り込むもので、広告の有無では変わりません。</p>
+<h2 class="sec">情報の集め方と観測</h2>
+<p>条件は各社の公式サイトの公表から集め、公的機関の公表資料で裏づけを取ります。集めた条件は週に1回、公式ページの変更がないかを観測し、変更があれば記録を残します。観測の記録は<a href="observation.html">観測の記録</a>のページで全件を公開しています。公式の公表と当サイトの記録が食い違う場合は、公式の公表が正です。</p>
+<h2 class="sec">数字の出し方</h2>
+<p>透明性スコアは、費用の下限と上限、金額の下限と上限、償還請求権の有無、実績、所在地と代表者の5項目のうち、公式に公表されている項目の数です。公表が多いことは条件の良し悪しとは関係ありません。記事や手法のページに出す集計の数字は、収録しているサービスの公式の公表値を当サイトが数えたもので、数えた範囲と確認日を併記します。</p>
+<h2 class="sec">収録と観測の数字</h2>
+<p>2026年11月24日時点で、収録しているサービスは{NSVC}件、会社は{NENT}社、手法は24種類です。公式ページの変更の観測記録は{NLOG}件を公開しています。</p>
 <h2 class="sec">広告について</h2>
 <p>一部のページには、アフィリエイト広告のリンクを含む場合があります。その場合は、ページの冒頭に「広告」「PR」の表示を置きます。広告の有無で、条件の記載や並び順を変えることはしません。</p>
 <h2 class="sec">お問い合わせ</h2>

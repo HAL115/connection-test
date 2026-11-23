@@ -170,6 +170,24 @@ for m in data['methods']:
         f'手数料 {fee_text(s["fee_lo"], s["fee_hi"])}／入金 {esc(s["speed"]) or "―"}／金額 {amt_text(s["amt_lo"], s["amt_hi"])}<br>{svc_chips(s)}</div>{badge_score(s.get("score", ""))}</div>'
         for s in svcs)
     compare_link = f'<p><a href="../compare/{build.mslug(mid)}.html">{esc(m["name"])}のサービス比較（手数料・速さ・透明性）→</a></p>' if mid in compare_methods else ''
+    agg = ''
+    if mid in ('M13', 'M16', 'M24') and len(svcs) >= 10:
+        _n = len(svcs)
+        def _pct(x):
+            return f'{x * 100 // _n}%'
+        _fb = sum(1 for s in svcs if s['fee_lo'] and s['fee_hi'])
+        _sp = sum(1 for s in svcs if s['speed'])
+        _on = sum(1 for s in svcs if s['online'])
+        _arows = [('手数料の下限と上限の両方を公表', f'{_fb}件（{_pct(_fb)}）'),
+                  ('入金スピードを公表', f'{_sp}件（{_pct(_sp)}）')]
+        if mid in ('M13', 'M16'):
+            _rc = sum(1 for s in svcs if s['recourse'])
+            _arows.append(('償還請求権の有無を公表', f'{_rc}件（{_pct(_rc)}）'))
+        _arows.append(('オンラインで完結するかを公表', f'{_on}件（{_pct(_on)}）'))
+        agg = (f'<h2>収録サービスから見える公表の状況</h2>'
+               f'<p>当サイトが収録しているこの手法のサービス{_n}件について、公式の公表の状況を数えました（2026年11月24日時点）。</p>'
+               + kv_table(_arows)
+               + '<p class="note">公表の有無は、条件の良し悪しとは関係ありません。公表されていない項目は、申し込みの前に書面で確認してください。</p>')
     body = f"""
 <p class="note"><a href="../index.html">トップ</a> ／ <a href="index.html">手法ガイド</a>（{esc(MID_GROUP.get(mid, ""))}） ／ {esc(m['name'])}</p>
 <h1>{esc(m['name'])}とは</h1>
@@ -186,6 +204,7 @@ for m in data['methods']:
 <h2>必要書類</h2><p>{esc(m['docs'])}</p>
 <h2>注意点</h2><p>{esc(m['legal'])}</p>
 <p class="note">根拠：{esc(m['basis'])}（最終確認日 {esc(m['checked'])}）</p>
+{agg}
 <h2>この手法のサービス（{len(svcs)}件）</h2>
 {compare_link}
 {rows if rows else '<p>現在、収録しているサービスはありません。</p>'}
