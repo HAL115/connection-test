@@ -105,22 +105,16 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .hero-links a:hover{background:#fff}
 .hero-links svg{flex:none}
 .rank-card{background:#fff;border-radius:20px;box-shadow:var(--shadow-lg);padding:22px 22px 12px}
-.rank-head{display:flex;justify-content:space-between;align-items:baseline;gap:6px 10px;margin-bottom:12px;flex-wrap:wrap}
+.rank-head{display:flex;justify-content:space-between;align-items:baseline;gap:6px 10px;margin-bottom:6px;flex-wrap:wrap}
 .rank-head b{font-size:16.5px;font-weight:900;letter-spacing:.02em}
 .rank-head a{font-size:13px;font-weight:700;color:var(--primary-deep);text-decoration:none;white-space:nowrap}
-.rank-pills{display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap}
-.rank-pills a{font-size:13px;font-weight:700;padding:7px 14px;border-radius:999px;border:1.5px solid var(--line);color:var(--sub);text-decoration:none}
-.rank-pills a.on{background:var(--primary);border-color:var(--primary);color:#fff}
-.rank-row{display:flex;gap:12px;align-items:center;padding:13px 2px;border-top:1px solid var(--line)}
-.rank-no{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-weight:700;font-size:15px;color:#fff;flex:none}
-.rank-no.r1{background:linear-gradient(135deg,#F5B81D,#D97706)}
-.rank-no.r2{background:linear-gradient(135deg,#B9C4C0,#8FA39C)}
-.rank-no.r3{background:linear-gradient(135deg,#D89B6A,#B4713B)}
-.rank-main{flex:1;min-width:0}
-.rank-main b{font-size:15.5px;letter-spacing:.02em}
-.rank-main .rm-sub{font-size:13px;color:var(--sub);font-variant-numeric:tabular-nums}
-.rank-main .rm-sub b{font-size:13px;color:var(--primary-deep)}
-.badge-hot{display:inline-block;background:linear-gradient(135deg,#F06423,#D9480F);color:#fff;border-radius:999px;font-size:11.5px;font-weight:700;padding:2.5px 10px;letter-spacing:.03em;white-space:nowrap}
+.merit-row{padding:12px 2px;border-top:1px solid var(--line)}
+.merit-row:first-of-type{border-top:0}
+.merit-row .m-label{font-size:12px;font-weight:700;color:var(--sub);letter-spacing:.08em;margin-bottom:5px}
+.merit-ours{display:flex;gap:8px;align-items:flex-start;font-weight:700;font-size:14.5px;line-height:1.6}
+.merit-ours .ck{flex:none;width:19px;height:19px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;display:inline-flex;align-items:center;justify-content:center;margin-top:3px}
+.merit-other{display:flex;gap:8px;align-items:flex-start;color:var(--sub);font-size:13px;line-height:1.6;margin-top:3px}
+.merit-other .dash{flex:none;width:19px;text-align:center;color:#B9C6C1;font-weight:700}
 .rank-foot{border-top:1px solid var(--line);padding:11px 2px 6px}
 .rank-foot a{font-weight:700;color:var(--primary-deep);text-decoration:none;font-size:14.5px}
 .trust-row{display:flex;gap:8px 14px;flex-wrap:wrap;align-items:center;justify-content:center;margin:26px 0 0;font-size:13.5px;color:var(--sub)}
@@ -1033,28 +1027,17 @@ FAQS = [
 ]
 faq_html = ''.join(f'<details class="faq rv"><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>' for q, a in FAQS)
 
-def _svc_score(s):
-    try:
-        return int(scores.get(s.get('entity_id')) or 0)
-    except Exception:
-        return 0
-_m13n = len([s for s in services if s.get('method') == 'M13' and s.get('status') not in ('廃業・撤退', '重複')])
-_m13 = [s for s in services if s.get('method') == 'M13' and s.get('status') not in ('廃業・撤退', '重複') and s.get('form') == '自社買取・直接']
-_m13.sort(key=lambda s: (-_svc_score(s), -_rev_all.get(s.get('entity_id'), {}).get('count', 0)))
-def _fee_range(s):
-    lo, hi = s.get('fee_lo', ''), s.get('fee_hi', '')
-    if lo and hi:
-        return lo if lo == hi else f'{lo}〜{hi}'
-    return lo or hi or '非公表'
-def _rank_badge(s):
-    if '即日' in (s.get('speed') or ''):
-        return '<span class="badge-hot">最短即日で入金</span>'
-    if s.get('fee_lo') and s.get('fee_hi'):
-        return '<span class="badge-hot">手数料の上下限を公表</span>'
-    return f'<span class="badge-hot">透明性スコア{_svc_score(s)}</span>'
-rank_rows = ''.join(
-    f'<div class="rank-row"><span class="rank-no r{i + 1}">{i + 1}</span><div class="rank-main"><b>{html.escape(s["name"])}</b><div class="rm-sub">手数料 {_fee_range(s)} ／ 入金 <b>{html.escape(s.get("speed") or "非公表")}</b></div></div>{_rank_badge(s)}</div>'
-    for i, s in enumerate(_m13[:3]))
+MERITS = [
+    ('比べる範囲', f'{len(methods)}の手法・{NSVC}サービスを、1か所で横断して比べられます', '手法専業のサイトは、1つの手法だけしか比べられません'),
+    ('状態チェックの結果', '連絡先を聞かずに、使える手法と外れる理由までその場で全部表示します', '見積もりの登録が前提になっている所もあります'),
+    ('数字の出し方', '公式が公表していない数字は「非公表」と書き、推測で埋めません', '下限だけの表示で、上限が分からない所もあります'),
+    ('情報の鮮度', '公式ページを毎週観測し、変わった条件は日付つきで記録しています', 'いつ時点の情報か分からない所もあります'),
+]
+merit_rows = ''.join(
+    f'<div class="merit-row"><div class="m-label">{html.escape(label)}</div>'
+    f'<div class="merit-ours"><span class="ck">✓</span><span>{html.escape(ours)}</span></div>'
+    f'<div class="merit-other"><span class="dash">―</span><span>他サイト：{html.escape(other)}</span></div></div>'
+    for label, ours, other in MERITS)
 
 body = f"""
 <div class="hero">
@@ -1072,13 +1055,12 @@ body = f"""
 </div>
 </div>
 <div class="rank-card">
-<div class="rank-head"><b>収録中のファクタリング会社</b><a href="compare/ファクタリング2社間.html">全{_m13n}サービス ›</a></div>
-<div class="rank-pills"><a class="on" href="compare/ファクタリング2社間.html">2社間</a><a href="compare/ファクタリング3社間.html">3社間</a><a href="compare/注文書ファクタリング.html">注文書</a></div>
-{rank_rows}
-<div class="rank-foot"><a href="compare/ファクタリング2社間.html">透明性スコアの高い順に並べています。比較表を見る ›</a></div>
+<div class="rank-head"><b>このサイトを使うメリット</b><a href="about.html">掲載の基準 ›</a></div>
+{merit_rows}
+<div class="rank-foot"><a href="about.html">比べ方と数字の出し方は、運営者情報で開示しています ›</a></div>
 </div>
 </div>
-<div class="trust-row"><span>運営：<b>合同会社MELSY</b></span><span>掲載の基準と数字の出し方は、<a href="about.html">運営者情報</a>で開示しています</span></div>
+<div class="trust-row"><span>運営：<b>合同会社MELSY</b></span><span>掲載している数字には、全て出典と確認日を付けています</span></div>
 <div class="hero-stats">
 <div class="hstat"><b><span data-count="{NSVC}">0</span><i>件</i></b><span>収録サービス</span></div>
 <div class="hstat"><b><span data-count="{len(methods)}">0</span><i>件</i></b><span>資金調達の手法</span></div>
