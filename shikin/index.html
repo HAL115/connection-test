@@ -625,6 +625,30 @@ if(n > 0) rs.push('金額：希望の帯（' + BAND_LABEL[ans.amt] + '）に公�
 if(m.fit) rs.push('手法の向く状態：' + m.fit);
 return rs;
 }
+function speedDays(s){
+const t = s.speed || '';
+if(!t) return null;
+if(/プロジェクト|翌々月|翌月|支給対象期|か月ごと/.test(t)) return null;
+if(/分|時間|即日|当日|即時/.test(t)) return 0;
+const r = t.match(/([0-9]+)\s*[〜～\-]\s*([0-9]+)\s*(営業日|週間|か月|ヶ月|ヵ月|日)/);
+if(r){ const v = parseInt(r[1], 10); const u = r[3]; return u === '週間' ? v * 7 : (u === '日' || u === '営業日') ? v : v * 30; }
+let m = t.match(/([0-9]+)営業日/); if(m) return parseInt(m[1], 10);
+m = t.match(/([0-9]+)週間/); if(m) return parseInt(m[1], 10) * 7;
+m = t.match(/([0-9]+)(か月|ヶ月|ヵ月)/); if(m) return parseInt(m[1], 10) * 30;
+m = t.match(/([0-9]+)日/); if(m) return parseInt(m[1], 10);
+if(/翌営業日|翌銀行営業日|翌日/.test(t)) return 1;
+if(t.includes('数週間')) return 21;
+if(t.includes('数日')) return 3;
+return null;
+}
+function deadlineBadge(s){
+const maxD = parseInt(ans.days || '999', 10);
+if(maxD >= 999) return '';
+const est = speedDays(s);
+if(est === null) return '';
+if(est <= maxD) return ' <span class="badge">期限に間に合う目安</span>';
+return ' <span class="badge low">期限には厳しい目安</span>';
+}
 function cardHtml(m, isA){
 const svcs = svcOf(m.id).slice().sort((a,b) => (parseInt(b.score)||0) - (parseInt(a.score)||0));
 let h = '<div class="mcard"><h3>' + m.name + (isA? ' <span class="badge">可能性が高い</span>': '') + (m._maybe? ' <span class="badge low">最短では間に合うが確実ではない</span>': '') + '</h3><p style="margin:0">' + m.def + '</p>';
@@ -645,9 +669,10 @@ if(m.id === 'M07' && ans.docs2 && ans.docs2!== 'two') h += '<p class="note">注�
 if(m.id === 'M06' && ans.sales && ans.sales!== 'down') h += '<p class="note">セーフティネット保証5号は、指定業種で直近の売上が減っていることが認定の要件です。要件に当たらない場合は、一般の保証枠が入口になります。</p>';
 if(m.id === 'M16' && ans.tax && ans.tax!== 'none') h += '<p class="note">報酬債権の専門会社には、税金の滞納があっても審査に影響しないと案内する会社があります。条件は会社ごとに異なるため、見積もりで確認してください。</p>';
 for(const s of svcs.slice(0,3)){
-h += '<div class="svc"><div><b><a href="services/' + s.id.toLowerCase() + '.html">' + s.name + '</a></b>（' + s.entity + '）<br>手数料 ' + feeText(s) + '／入金 ' + (s.speed || '―') + '／公表している金額 ' + amtText(s) + '</div><span class="badge' + ((parseInt(s.score)||0) >= 3? '': ' low') + '">透明性 ' + (s.score || '―') + ' / 5</span></div>';
+h += '<div class="svc"><div><b><a href="services/' + s.id.toLowerCase() + '.html">' + s.name + '</a></b>（' + s.entity + '）<br>手数料 ' + feeText(s) + '／入金 ' + (s.speed || '―') + '／公表している金額 ' + amtText(s) + deadlineBadge(s) + '</div><span class="badge' + ((parseInt(s.score)||0) >= 3? '': ' low') + '">透明性 ' + (s.score || '―') + ' / 5</span></div>';
 }
 if(svcs.length) h += '<p class="note">金額は各社が公表している範囲で、調達できる金額の約束ではありません。手数料の上限が「非公表」の会社は、見積もりで確認が必要です。</p>';
+if(svcs.length && parseInt(ans.days || '999', 10) < 999) h += '<p class="note">「期限に間に合う目安／期限には厳しい目安」は、各社が公表している最短の入金時期と、あなたが選んだ時期（' + DAYS_LABEL[ans.days] + '）を比べた目安です。実際の入金は、審査の進み方で変わります。</p>';
 h += '<div class="cta-row">';
 if(svcs.length) h += '<button class="btn btn-cta btn-sm" data-goto="' + m.id + '">候補 ' + svcs.length + '件を比べる</button>';
 if(COMPARE[m.id]) h += '<a class="btn btn-sub btn-sm" href="' + COMPARE[m.id] + '">比較の記事を読む</a>';
