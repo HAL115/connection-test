@@ -20,6 +20,12 @@ data = json.load(open(BASE + '/site/data.json'))
 NSVC = len([s for s in data['services'] if s.get('status') != '重複'])
 NENT = len(data['entities'])
 NLOG = len(data['log'])
+try:
+    _rev_all = json.load(open(BASE + '/site/reviews.json'))
+    REVIEWS_TOTAL = sum(v.get('count', 0) for v in _rev_all.values())
+except Exception:
+    _rev_all = {}
+    REVIEWS_TOTAL = 0
 methods = data['methods']
 services = data['services']
 scores = data['scores']
@@ -55,45 +61,79 @@ for s in services:
 
 CSS = """
 :root{
-  --primary:#14504C; --primary-deep:#0B3532; --cta:#C2410C; --cta-dark:#9A3412; --gold:#E8B34B;
-  --ink:#191919; --sub:#5A564E; --bg:#FAF8F4; --surface:#FFFFFF; --line:#DDD8CE; --chip:#EAF2F1;
-  --shadow:0 1px 2px rgba(20,40,38,.05),0 8px 24px rgba(20,40,38,.06);
-  --shadow-lg:0 2px 4px rgba(20,40,38,.06),0 16px 40px rgba(20,40,38,.12);
-  --radius:14px;
+  --primary:#14957F; --primary-deep:#0F7A68; --cta:#D97706; --cta-dark:#B45309; --gold:#F59E0B;
+  --ink:#182420; --sub:#5C6B66; --bg:#F3F9F7; --surface:#FFFFFF; --line:#E0ECE8; --chip:#E9F5F1;
+  --shadow:0 1px 2px rgba(15,90,80,.04),0 10px 30px rgba(15,90,80,.07);
+  --shadow-lg:0 2px 6px rgba(15,90,80,.05),0 20px 44px rgba(15,90,80,.13);
+  --radius:16px;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{font-family:'Noto Sans JP',-apple-system,'Hiragino Kaku Gothic ProN',sans-serif;font-size:16px;line-height:1.85;letter-spacing:.02em;color:var(--ink);background:var(--bg);margin:0;padding:0 0 120px;-webkit-font-smoothing:antialiased}
+body{font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN',-apple-system,sans-serif;font-size:16px;line-height:1.85;letter-spacing:.02em;color:var(--ink);background:var(--bg);margin:0;padding:0 0 120px;-webkit-font-smoothing:antialiased}
 ::selection{background:var(--primary);color:#fff}
 .wrap{max-width:1024px;margin:0 auto;padding:0 20px}
 a{color:var(--primary)}
 :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 header.site{background:rgba(255,255,255,.92);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;backdrop-filter:blur(6px)}
-header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:62px;padding-top:8px;padding-bottom:8px}
-.logo{font-weight:900;font-size:17px;color:var(--primary);letter-spacing:.03em;line-height:1.35;min-width:0}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:62px;padding-top:8px;padding-bottom:8px;max-width:1200px}
+.logo{font-weight:900;font-size:17px;color:var(--primary-deep);letter-spacing:.03em;line-height:1.35;min-width:0}
 .logo small{display:block;font-size:10px;color:var(--sub);font-weight:500;letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hdr-cta{background:var(--cta);color:#fff;text-decoration:none;font-weight:700;border-radius:8px;padding:10px 16px;font-size:14px;letter-spacing:.04em;min-height:44px;display:inline-flex;align-items:center;transition:background .2s;white-space:nowrap;flex:none}
-.hdr-cta:hover{background:var(--cta-dark)}
-.hero{position:relative;color:#fff;overflow:hidden;background:var(--primary-deep) center/cover no-repeat}
-.hero-media{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hero-shade{position:absolute;inset:0;background:linear-gradient(100deg,rgba(8,38,35,.92) 0%,rgba(8,38,35,.72) 46%,rgba(8,38,35,.30) 100%)}
-.hero-in{position:relative;padding:84px 0 72px;max-width:680px}
-.eyebrow{font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--gold);margin:0 0 18px}
-.eyebrow.dark{color:var(--cta)}
-.hero h1{font-size:clamp(30px,5.2vw,52px);line-height:1.32;font-weight:900;letter-spacing:.02em;margin:0 0 20px}
-.hero h1 em{font-style:normal;color:var(--gold)}
-.hero p.lead{font-size:17px;line-height:1.9;margin:0 0 30px;max-width:600px;color:rgba(255,255,255,.94)}
-.hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.hero-note{font-size:13px;color:rgba(255,255,255,.82);margin-top:16px;letter-spacing:.03em}
-.hero-stats{display:flex;gap:0;flex-wrap:wrap;margin-top:44px;border-top:1px solid rgba(255,255,255,.28);padding-top:22px}
-.hstat{padding-right:30px;margin-right:30px;border-right:1px solid rgba(255,255,255,.22)}
-.hstat:last-child{border-right:0;margin-right:0;padding-right:0}
-.hstat b{display:block;font-size:34px;font-weight:900;line-height:1.1;font-variant-numeric:tabular-nums}
-.hstat b i{font-style:normal;font-size:16px;font-weight:700;margin-left:2px}
-.hstat span{font-size:12px;color:rgba(255,255,255,.8);letter-spacing:.06em}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:10px;font-weight:700;letter-spacing:.04em;text-decoration:none;cursor:pointer;border:0;min-height:56px;padding:14px 28px;font-size:16px;transition:transform .18s,box-shadow .18s,background .18s}
-.btn-cta{background:var(--cta);color:#fff;box-shadow:0 6px 20px rgba(194,65,12,.35)}
-.btn-cta:hover{background:var(--cta-dark);transform:translateY(-2px)}
+.hdr-cta{background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;text-decoration:none;font-weight:700;border-radius:999px;padding:10px 20px;font-size:14px;letter-spacing:.04em;min-height:44px;display:inline-flex;align-items:center;transition:filter .2s;white-space:nowrap;flex:none;box-shadow:0 4px 14px rgba(217,119,6,.30)}
+.hdr-cta:hover{filter:brightness(1.06)}
+.hdr-stats{display:none}
+@media(min-width:900px){.hdr-stats{display:flex;flex-direction:column;gap:1px;margin-right:auto;margin-left:22px;flex:none}
+.hdr-stats div{display:flex;align-items:baseline;gap:8px;white-space:nowrap}
+.hdr-stats span{font-size:11px;color:var(--sub);font-weight:700;letter-spacing:.05em;white-space:nowrap}
+.hdr-stats b{font-family:'Jost','Zen Kaku Gothic New',sans-serif;font-size:16px;font-weight:700;color:var(--cta);font-variant-numeric:tabular-nums}
+.hdr-stats b i{font-style:normal;font-size:11px;margin-left:1px}}
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#E9F5F1,#F3F9F7)}
+.hero-in{position:relative;padding:52px 0 30px}
+.hero-grid{display:grid;gap:28px}
+@media(min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr;align-items:start}}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.1em;color:var(--primary-deep);margin:0 0 16px}
+.eyebrow.dark{color:var(--primary-deep)}
+.hero h1{font-size:clamp(30px,7.8vw,46px);line-height:1.34;font-weight:900;letter-spacing:.015em;margin:0 0 18px;color:var(--primary)}
+.hero h1 em{font-style:normal;color:var(--ink)}
+.hero p.lead{font-size:16.5px;line-height:1.9;margin:0 0 26px;max-width:600px;color:var(--ink)}
+.hero p.lead mark{background:linear-gradient(transparent 62%,#FDE9BE 62%);color:inherit;padding:0 2px}
+.btn-hero2{display:flex;align-items:center;gap:14px;width:100%;max-width:520px;text-align:left;padding:16px 22px;border-radius:16px;box-sizing:border-box}
+.btn-hero2 .bh-t{display:block;font-size:19px;font-weight:900;letter-spacing:.03em}
+.btn-hero2 .bh-s{display:block;font-size:12.5px;font-weight:500;opacity:.94;margin-top:2px;letter-spacing:.02em}
+.btn-hero2 .bh-c{margin-left:auto;font-size:26px;font-weight:700;flex:none}
+.hero-links{display:flex;gap:4px;flex-wrap:wrap;margin-top:16px}
+.hero-links a{display:inline-flex;align-items:center;gap:7px;color:var(--primary-deep);font-weight:700;font-size:14.5px;text-decoration:none;padding:8px 12px;border-radius:10px}
+.hero-links a:hover{background:#fff}
+.hero-links svg{flex:none}
+.rank-card{background:#fff;border-radius:20px;box-shadow:var(--shadow-lg);padding:22px 22px 12px}
+.rank-head{display:flex;justify-content:space-between;align-items:baseline;gap:6px 10px;margin-bottom:12px;flex-wrap:wrap}
+.rank-head b{font-size:16.5px;font-weight:900;letter-spacing:.02em}
+.rank-head a{font-size:13px;font-weight:700;color:var(--primary-deep);text-decoration:none;white-space:nowrap}
+.rank-pills{display:flex;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.rank-pills a{font-size:13px;font-weight:700;padding:7px 14px;border-radius:999px;border:1.5px solid var(--line);color:var(--sub);text-decoration:none}
+.rank-pills a.on{background:var(--primary);border-color:var(--primary);color:#fff}
+.rank-row{display:flex;gap:12px;align-items:center;padding:13px 2px;border-top:1px solid var(--line)}
+.rank-no{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Jost',sans-serif;font-weight:700;font-size:15px;color:#fff;flex:none}
+.rank-no.r1{background:linear-gradient(135deg,#F5B81D,#D97706)}
+.rank-no.r2{background:linear-gradient(135deg,#B9C4C0,#8FA39C)}
+.rank-no.r3{background:linear-gradient(135deg,#D89B6A,#B4713B)}
+.rank-main{flex:1;min-width:0}
+.rank-main b{font-size:15.5px;letter-spacing:.02em}
+.rank-main .rm-sub{font-size:13px;color:var(--sub);font-variant-numeric:tabular-nums}
+.rank-main .rm-sub b{font-size:13px;color:var(--primary-deep)}
+.badge-hot{display:inline-block;background:linear-gradient(135deg,#F06423,#D9480F);color:#fff;border-radius:999px;font-size:11.5px;font-weight:700;padding:2.5px 10px;letter-spacing:.03em;white-space:nowrap}
+.rank-foot{border-top:1px solid var(--line);padding:11px 2px 6px}
+.rank-foot a{font-weight:700;color:var(--primary-deep);text-decoration:none;font-size:14.5px}
+.trust-row{display:flex;gap:8px 14px;flex-wrap:wrap;align-items:center;justify-content:center;margin:26px 0 0;font-size:13.5px;color:var(--sub)}
+.trust-row b{color:var(--ink)}
+.hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}
+@media(min-width:760px){.hero-stats{grid-template-columns:repeat(4,1fr)}}
+.hstat{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.hstat b{display:block;font-family:'Jost','Zen Kaku Gothic New',sans-serif;font-size:30px;font-weight:700;line-height:1.15;color:var(--primary-deep);font-variant-numeric:tabular-nums}
+.hstat b i{font-style:normal;font-size:15px;font-weight:700;margin-left:2px;font-family:'Zen Kaku Gothic New',sans-serif}
+.hstat span{font-size:12px;color:var(--sub);letter-spacing:.05em;font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;font-weight:700;letter-spacing:.04em;text-decoration:none;cursor:pointer;border:0;min-height:56px;padding:14px 28px;font-size:16px;transition:transform .18s,box-shadow .18s,filter .18s}
+.btn-cta{background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;box-shadow:0 8px 22px rgba(217,119,6,.32)}
+.btn-cta:hover{filter:brightness(1.05);transform:translateY(-2px)}
 .btn-hero{font-size:18px;min-height:62px;padding:16px 36px}
 .btn-glass{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.55)}
 .btn-glass:hover{background:rgba(255,255,255,.2)}
@@ -152,7 +192,7 @@ table{border-collapse:collapse;width:100%;font-size:14px;background:#fff}
 th,td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
 tr:last-child td{border-bottom:0}
 th{background:var(--chip);font-weight:700;letter-spacing:.03em;white-space:nowrap}
-tbody tr:hover td{background:#FBF9F4}
+tbody tr:hover td{background:#F4FAF8}
 .tblwrap table.wide{min-width:640px}
 .svc-cards{display:grid;gap:12px}
 @media(min-width:760px){.svc-cards{grid-template-columns:1fr 1fr}}
@@ -294,10 +334,10 @@ def page(title, body, article=False, desc='', ld='', path=None, sub=False):
 {ANALYTICS_TAGS}
 <title>{html.escape(title)}</title>{meta}
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
 <style>{CSS}</style></head>
 <body>
-<header class="site"><div class="wrap"><div class="logo">建設的な資金調達を実現するサイト<small>可能性のある資金調達方法を、全ての手法から探し出す</small></div><nav class="dnav"><a href="{prefix}index.html#check">状態チェック</a><a href="{prefix}methods/index.html">手法ガイド</a><a href="{prefix}articles/index.html#basics">基礎知識</a><a href="{prefix}articles/index.html#guides">状態別の記事</a><a href="{prefix}index.html#compare">比較</a><a href="{prefix}index.html#search">サービスを探す</a></nav><a class="hdr-cta" href="{prefix}index.html#check">状態チェック</a><button class="menu-btn" onclick="document.body.classList.add('menu-open')">メニュー</button></div></header>
+<header class="site"><div class="wrap"><div class="logo">建設的な資金調達を実現するサイト<small>可能性のある資金調達方法を、全ての手法から探し出す</small></div><div class="hdr-stats"><div><span>収録サービス</span><b>{NSVC}<i>件</i></b></div><div><span>口コミ集計</span><b>{REVIEWS_TOTAL:,}<i>件</i></b></div></div><nav class="dnav"><a href="{prefix}index.html#check">状態チェック</a><a href="{prefix}methods/index.html">手法ガイド</a><a href="{prefix}articles/index.html#basics">基礎知識</a><a href="{prefix}articles/index.html#guides">状態別の記事</a><a href="{prefix}index.html#compare">比較</a><a href="{prefix}index.html#search">サービスを探す</a></nav><a class="hdr-cta" href="{prefix}index.html#check">状態チェック</a><button class="menu-btn" onclick="document.body.classList.add('menu-open')">メニュー</button></div></header>
 <div class="mpanel"><div class="mp-head"><span class="mp-title">メニュー</span><button class="mp-close" onclick="document.body.classList.remove('menu-open')">閉じる</button></div><nav><a href="{prefix}index.html#check" onclick="document.body.classList.remove('menu-open')">状態チェック<small>上位の手法から順に確認します</small></a><a href="{prefix}methods/index.html">手法ガイド<small>全24手法の仕組みと条件</small></a><a href="{prefix}articles/index.html#basics">基礎知識<small>仕組みの根幹を先に知る</small></a><a href="{prefix}articles/index.html#guides">状態別の記事<small>状況ごとの進め方</small></a><a href="{prefix}index.html#compare" onclick="document.body.classList.remove('menu-open')">サービスの比較<small>手法ごとの手数料と速さ</small></a><a href="{prefix}index.html#search" onclick="document.body.classList.remove('menu-open')">サービスを探す<small>{NSVC}件から条件で絞る</small></a><a href="{prefix}about.html">運営者情報</a><a href="{prefix}privacy.html">プライバシーポリシー</a></nav></div>
 {main_open}{body}{main_close}
 <div class="sticky-cta"><a class="btn btn-cta bar-btn" href="{prefix}index.html#check">状態チェックをはじめる</a></div>
@@ -993,21 +1033,54 @@ FAQS = [
 ]
 faq_html = ''.join(f'<details class="faq rv"><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>' for q, a in FAQS)
 
+def _svc_score(s):
+    try:
+        return int(scores.get(s.get('entity_id')) or 0)
+    except Exception:
+        return 0
+_m13n = len([s for s in services if s.get('method') == 'M13' and s.get('status') not in ('廃業・撤退', '重複')])
+_m13 = [s for s in services if s.get('method') == 'M13' and s.get('status') not in ('廃業・撤退', '重複') and s.get('form') == '自社買取・直接']
+_m13.sort(key=lambda s: (-_svc_score(s), -_rev_all.get(s.get('entity_id'), {}).get('count', 0)))
+def _fee_range(s):
+    lo, hi = s.get('fee_lo', ''), s.get('fee_hi', '')
+    if lo and hi:
+        return lo if lo == hi else f'{lo}〜{hi}'
+    return lo or hi or '非公表'
+def _rank_badge(s):
+    if '即日' in (s.get('speed') or ''):
+        return '<span class="badge-hot">最短即日で入金</span>'
+    if s.get('fee_lo') and s.get('fee_hi'):
+        return '<span class="badge-hot">手数料の上下限を公表</span>'
+    return f'<span class="badge-hot">透明性スコア{_svc_score(s)}</span>'
+rank_rows = ''.join(
+    f'<div class="rank-row"><span class="rank-no r{i + 1}">{i + 1}</span><div class="rank-main"><b>{html.escape(s["name"])}</b><div class="rm-sub">手数料 {_fee_range(s)} ／ 入金 <b>{html.escape(s.get("speed") or "非公表")}</b></div></div>{_rank_badge(s)}</div>'
+    for i, s in enumerate(_m13[:3]))
+
 body = f"""
-<div class="hero" style="background-image:url('__POSTER__')">
-{hero_media}
-<div class="hero-shade"></div>
+<div class="hero">
 <div class="wrap"><div class="hero-in">
-<p class="eyebrow">FUNDING OBSERVATORY — 全ての手法から探し出す</p>
-<h1>支払いの期限に<em>間に合う</em><br>資金調達を、状態から<br>見つける</h1>
-<p class="lead">費用の低い手法から順に確認します。あなたの状態で使える手法と、貸してくれる候補の会社がその場で分かります。</p>
-<div class="hero-cta">
-<a class="btn btn-cta btn-hero" href="#check">状態チェックをはじめる →</a>
-<a class="btn btn-glass" href="#search">{len(services)}件のサービスから探す</a>
+<div class="hero-grid">
+<div class="hero-main">
+<p class="eyebrow">⚡ 全ての手法から探し出す、資金調達の比較サイト</p>
+<h1>支払いの期限に<br><em>間に合う</em>資金調達を、<br>状態から見つける</h1>
+<p class="lead"><mark>費用の低い手法から順に確認します。</mark>あなたの状態で使える手法と、貸してくれる候補の会社がその場で分かります。</p>
+<a class="btn btn-cta btn-hero2" href="#check"><span><span class="bh-t">状態チェックをはじめる</span><span class="bh-s">結果はその場で全部表示します。連絡先は不要です</span></span><span class="bh-c">›</span></a>
+<div class="hero-links">
+<a href="methods/index.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0F7A68" stroke-width="2.4" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>手法ガイド</a>
+<a href="companies/index.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0F7A68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M15 9h4a2 2 0 0 1 2 2v10"/></svg>会社一覧</a>
+<a href="observation.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0F7A68" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>観測の記録</a>
 </div>
-<p class="hero-note">結果はその場で表示されます。結果と現状をまとめたシートは、各社の担当者への相談にそのまま使えます。</p>
+</div>
+<div class="rank-card">
+<div class="rank-head"><b>収録中のファクタリング会社</b><a href="compare/ファクタリング2社間.html">全{_m13n}サービス ›</a></div>
+<div class="rank-pills"><a class="on" href="compare/ファクタリング2社間.html">2社間</a><a href="compare/ファクタリング3社間.html">3社間</a><a href="compare/注文書ファクタリング.html">注文書</a></div>
+{rank_rows}
+<div class="rank-foot"><a href="compare/ファクタリング2社間.html">透明性スコアの高い順に並べています。比較表を見る ›</a></div>
+</div>
+</div>
+<div class="trust-row"><span>運営：<b>合同会社MELSY</b></span><span>掲載の基準と数字の出し方は、<a href="about.html">運営者情報</a>で開示しています</span></div>
 <div class="hero-stats">
-<div class="hstat"><b><span data-count="{len(services)}">0</span><i>件</i></b><span>収録サービス</span></div>
+<div class="hstat"><b><span data-count="{NSVC}">0</span><i>件</i></b><span>収録サービス</span></div>
 <div class="hstat"><b><span data-count="{len(methods)}">0</span><i>件</i></b><span>資金調達の手法</span></div>
 <div class="hstat"><b><span data-count="{len(log)}">0</span><i>件</i></b><span>観測で直した条件の差分</span></div>
 <div class="hstat"><b style="font-size:22px;padding-top:8px">{html.escape(last_checked)}</b><span>最終確認日</span></div>
@@ -1016,7 +1089,7 @@ body = f"""
 </div>
 <main class="wrap">
 <section id="check">
-<p class="eyebrow dark">01 — CHECK</p>
+<p class="eyebrow dark">CHECK</p>
 <h2 class="sec">状態チェック</h2>
 <p class="sec-sub">費用の低い上位の手法から順に確認します。条件が合えば少ない質問で終わり、合わない場合は下位の手法へ進むため、質問が増えます。</p>
 <div class="panel" id="wiz">
@@ -1036,7 +1109,7 @@ body = f"""
 </section>
 
 <section>
-<p class="eyebrow dark">02 — WHY THIS SITE</p>
+<p class="eyebrow dark">WHY THIS SITE</p>
 <h2 class="sec">このサイトの違い</h2>
 <p class="sec-sub">比べる範囲と、数字の扱い方です。どれも、裏づけのページへつながっています。</p>
 <div class="sgrid">
@@ -1048,7 +1121,7 @@ body = f"""
 </section>
 
 <section>
-<p class="eyebrow dark">03 — BY SITUATION</p>
+<p class="eyebrow dark">BY SITUATION</p>
 <h2 class="sec">状態別の入口</h2>
 <p class="sec-sub">ピラーの記事は、状態ごとに進め方を書いています。</p>
 <div class="split">
@@ -1058,7 +1131,7 @@ body = f"""
 </section>
 
 <section>
-<p class="eyebrow dark">04 — OBSERVATION</p>
+<p class="eyebrow dark">OBSERVATION</p>
 <h2 class="sec">観測の記録</h2>
 <p class="sec-sub">会社の条件は変わります。公式の公表を確認し、差分があれば日付つきで記録しています。手数料の上限を公表していない会社は、その事実も含めて記録します。</p>
 <div class="split">
@@ -1077,7 +1150,7 @@ body = f"""
 </section>
 
 <section id="search">
-<p class="eyebrow dark">05 — SEARCH</p>
+<p class="eyebrow dark">SEARCH</p>
 <h2 class="sec">サービスを探す</h2>
 <p class="sec-sub">条件で絞れます。透明性スコアは、確認できた公表項目の数です（定義は下にあります）。</p>
 <div class="filters">
@@ -1092,7 +1165,7 @@ body = f"""
 </section>
 
 <section id="methods">
-<p class="eyebrow dark">06 — METHODS</p>
+<p class="eyebrow dark">METHODS</p>
 <h2 class="sec">手法ガイド</h2>
 <p class="sec-sub">全24手法の定義と、入金までの期間、費用の目安です。</p>
 <p class="scroll-hint">横にスクロールできます →</p>
@@ -1100,7 +1173,7 @@ body = f"""
 </section>
 
 <section>
-<p class="eyebrow dark">07 — FAQ</p>
+<p class="eyebrow dark">FAQ</p>
 <h2 class="sec">よくある質問</h2>
 <p class="sec-sub">当サイトの数字の出し方と、掲載の基準について答えます。</p>
 {faq_html}

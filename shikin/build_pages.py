@@ -448,13 +448,13 @@ for s in services:
     if ended:
         official = ''
         pr = ''
-    ended_banner = '<div class="panel" style="border-left:4px solid #C2410C;margin:14px 0"><b>このサービスは終了しています</b><p style="margin:6px 0 0">当サイトが確認した時点で、このサービスは終了・撤退しています。申し込みはできません。記録として掲載を残しています。</p></div>' if ended else ''
+    ended_banner = '<div class="panel" style="border-left:4px solid #D9480F;margin:14px 0"><b>このサービスは終了しています</b><p style="margin:6px 0 0">当サイトが確認した時点で、このサービスは終了・撤退しています。申し込みはできません。記録として掲載を残しています。</p></div>' if ended else ''
     dup = s.get('status') == '重複'
     _twin = next((x for x in services if x['id'] != sid and x['name'] == s['name'] and x['entity_id'] == s['entity_id'] and x.get('status') != '重複'), None) if dup else None
     if dup:
         official = ''
         pr = ''
-    dup_banner = f'<div class="panel" style="border-left:4px solid #C2410C;margin:14px 0"><b>このページは統合しました</b><p style="margin:6px 0 0">このサービスは<a href="{_twin["id"].lower()}.html">{esc(s["name"])}（{esc(s["entity"])}）</a>と同一のため、そちらに統合しました。</p></div>' if _twin else ''
+    dup_banner = f'<div class="panel" style="border-left:4px solid #D9480F;margin:14px 0"><b>このページは統合しました</b><p style="margin:6px 0 0">このサービスは<a href="{_twin["id"].lower()}.html">{esc(s["name"])}（{esc(s["entity"])}）</a>と同一のため、そちらに統合しました。</p></div>' if _twin else ''
     _ee = prof(e) if e else {}
     ent_block = ''
     if _ee:
