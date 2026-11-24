@@ -333,9 +333,9 @@ ANALYTICS_TAGS = """<meta name="google-site-verification" content="awXV921gXdL9Z
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4LCT3L2TED"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4LCT3L2TED');</script>"""
 
-def page(title, body, article=False, desc='', ld='', path=None, sub=False):
+def page(title, body, article=False, desc='', ld='', path=None, sub=False, bare=False):
     prefix = '../' if (article or sub) else ''
-    main_open = '<article class="wrap">' if article else '<main>'
+    main_open = '<article class="wrap">' if article else ('<main>' if bare else '<main class="wrap">')
     main_close = '</article>' if article else '</main>'
     meta = ''
     if desc:
@@ -1345,11 +1345,11 @@ top_ld = json.dumps({'@context': 'https://schema.org', '@graph': [
 ]}, ensure_ascii=False)
 top_desc = f'資金調達の手法24件とサービス{NSVC}件の条件を記録したデータベース。質問に答えると、期限に間に合う手法と、貸してくれる候補の会社がその場で分かります。'
 with open(OUT + '/index.html', 'w') as f:
-    f.write(page('建設的な資金調達を実現するサイト', body, desc=top_desc, ld=top_ld, path=''))
+    f.write(page('建設的な資金調達を実現するサイト', body, desc=top_desc, ld=top_ld, path='', bare=True))
 print('TOP v3 done, review =', REVIEW)
 
 ABOUT_BODY = f"""
-<div class="wrap">
+
 <p class="eyebrow">ABOUT</p>
 <h1>運営者情報</h1>
 <p>このサイトは、事業の資金調達に関する手法とサービスの条件を、各社の公式サイトと公的機関の公表に基づいて収集し、定期的に観測して記録する情報サイトです。運営は合同会社MELSYが行います。</p>
@@ -1369,14 +1369,14 @@ ABOUT_BODY = f"""
 <p>一部のページには、アフィリエイト広告のリンクを含む場合があります。その場合は、ページの冒頭に「広告」「PR」の表示を置きます。広告の有無で、条件の記載や並び順を変えることはしません。</p>
 <h2 class="sec">お問い合わせ</h2>
 <p>掲載内容の誤りのご指摘などは、運営会社のサイト（<a href="https://melsy.info">melsy.info</a>）の窓口からご連絡ください。個別の資金調達の相談は、このサイトでは受け付けていません。</p>
-</div>
+
 """
 with open(OUT + '/about.html', 'w') as f:
     _org_ld = json.dumps({'@context': 'https://schema.org', '@type': 'Organization', 'name': '合同会社MELSY', 'url': 'https://melsy.info/', 'brand': '建設的な資金調達を実現するサイト'}, ensure_ascii=False)
     f.write(page('運営者情報', ABOUT_BODY, desc='このサイトの運営者、目的、掲載の基準、広告についての説明です。', ld=_org_ld, path='about.html'))
 
 PRIVACY_BODY = """
-<div class="wrap">
+
 <p class="eyebrow">PRIVACY</p>
 <h1>プライバシーポリシー</h1>
 <p>このサイトにおける、利用者の情報の扱いを説明します。</p>
@@ -1392,25 +1392,25 @@ PRIVACY_BODY = """
 <p>個人情報を取得するのは、現状シートの作成を申し込んだ場合だけです（上の項目をご覧ください）。運営者へ直接ご連絡いただいた場合に得た情報は、返信と対応のためだけに使い、第三者へ提供しません。</p>
 <h2 class="sec">改定</h2>
 <p>このポリシーを改定した場合は、このページで公表します。</p>
-</div>
+
 """
 with open(OUT + '/privacy.html', 'w') as f:
     f.write(page('プライバシーポリシー', PRIVACY_BODY, desc='このサイトにおける利用者の情報の扱い（状態チェックの入力、アクセス解析、広告）について説明します。', path='privacy.html'))
 
 NOTFOUND_BODY = """
-<div class="wrap">
+
 <p class="eyebrow">NOT FOUND</p>
 <h1>ページが見つかりません</h1>
 <p>指定されたページは、移転したか、現在は公開していません。お探しの内容は、次の入口から探せます。</p>
 <p><a href="index.html#check">状態チェックで、使える資金調達の方法を探す</a></p>
 <p><a href="index.html">トップページへ戻る</a></p>
-</div>
+
 """
 with open(OUT + '/404.html', 'w') as f:
     f.write(page('ページが見つかりません', NOTFOUND_BODY, desc='指定されたページは見つかりませんでした。', path='404.html'))
 
 SHEET_BODY = """
-<div class="wrap">
+
 <p class="eyebrow">SHEET</p>
 <h1>資金調達 現状シート</h1>
 <p>状態チェックの結果と、あなたの現状をまとめたシートです。各社の担当者への相談に、そのままお使いください。</p>
@@ -1432,7 +1432,7 @@ SHEET_BODY = """
     var s = '<div class="mcard"><h3>' + m.name + (m.maybe ? ' <span class="badge low">最短では間に合うが確実ではない</span>' : '') + '</h3>'
       + '<dl class="kv"><dt>入金まで</dt><dd>' + m.period + '</dd><dt>費用の目安</dt><dd>' + m.cost + '</dd></dl>';
     if(m.svcs.length) s += '<p style="margin:6px 0 0">候補：' + m.svcs.join('／') + '</p>';
-    return s + '</div>';
+    return s + '';
   }).join('');
   if(d.docs && d.docs.length) h += '<h2 class="sec">まず用意する書類（複数社で使い回せます）</h2><ul class="why-list">' + d.docs.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul>';
   if(d.pending && d.pending.length) h += '<h2 class="sec">まだ確認していない手法</h2><p>' + d.pending.join('、') + '</p>';
@@ -1450,7 +1450,7 @@ print('about/privacy done')
 # ---------- observation page ----------
 all_log_rows = ''.join(f"<tr><td>{html.escape(r['date'])}</td><td>{html.escape(r['entity'])}</td><td>{html.escape(r['item'])}</td><td>{html.escape(r['before'])} → {html.escape(r['after'])}</td></tr>" for r in log[::-1])
 OBS_BODY = f"""
-<article class="wrap">
+<article>
 <p class="eyebrow dark">OBSERVATION</p>
 <h1>観測の記録</h1>
 <p>会社の条件は変わります。このサイトでは、収録したサービスの公式ページを定期的に確認し、公表の内容と当サイトの記録に差分があれば、ここに日付つきで残します。</p>
