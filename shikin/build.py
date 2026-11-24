@@ -17,7 +17,7 @@ def asset(name):
     return f'assets/{name}'
 
 data = json.load(open(BASE + '/site/data.json'))
-NSVC = len(data['services'])
+NSVC = len([s for s in data['services'] if s.get('status') != '重複'])
 NENT = len(data['entities'])
 NLOG = len(data['log'])
 methods = data['methods']
@@ -276,8 +276,8 @@ ANALYTICS_TAGS = """<meta name="google-site-verification" content="awXV921gXdL9Z
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4LCT3L2TED"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4LCT3L2TED');</script>"""
 
-def page(title, body, article=False, desc='', ld='', path=None):
-    prefix = '../' if article else ''
+def page(title, body, article=False, desc='', ld='', path=None, sub=False):
+    prefix = '../' if (article or sub) else ''
     main_open = '<article class="wrap">' if article else '<main>'
     main_close = '</article>' if article else '</main>'
     meta = ''
@@ -430,7 +430,7 @@ def footer_cols(prefix):
     basics = links([(f'{prefix}articles/{sl}', ART_TITLES[sl]) for sl in BASICS_SLUGS])
     pillars = links([(f'{prefix}articles/{sl}', ART_TITLES[sl]) for sl in PILLAR_SLUGS])
     meths = links([(f'{prefix}methods/{mslug(mm["id"])}.html', mm['name']) for mm in methods])
-    comps = links([(f'{prefix}compare/{mid.lower()}.html', next(mm['name'] for mm in methods if mm['id'] == mid) + 'のサービス比較') for mid in COMPARE_MIDS])
+    comps = links([(f'{prefix}compare/{mslug(mid)}.html', next(mm['name'] for mm in methods if mm['id'] == mid) + 'のサービス比較') for mid in COMPARE_MIDS])
     return (f'<div class="fcols"><div class="flist"><a class="fhead" href="{prefix}articles/index.html#basics">基礎知識（仕組みの根幹）</a>{basics}</div>'
             f'<div class="flist"><a class="fhead" href="{prefix}articles/index.html#guides">状態別の進め方</a>{pillars}</div>'
             f'<div class="flist"><a class="fhead" href="{prefix}methods/index.html">手法ガイド</a>{meths}</div>'
@@ -556,7 +556,7 @@ method_cards = ''.join(
     for m in methods)
 
 methods_js = json.dumps([{k: m[k] for k in ('id', 'name', 'def', 'cost', 'docs', 'period', 'fit', 'unfit', 'target', 'maxDays', 'minDays', 'needsArv', 'taxCaution')} for m in methods], ensure_ascii=False)
-services_js = json.dumps([{k: s[k] for k in ('id', 'name', 'entity', 'method', 'fee_lo', 'fee_hi', 'speed', 'amt_lo', 'amt_hi', 'target', 'online', 'form', 'score')} for s in services if s.get('status') != '廃業・撤退'], ensure_ascii=False)
+services_js = json.dumps([{k: s[k] for k in ('id', 'name', 'entity', 'method', 'fee_lo', 'fee_hi', 'speed', 'amt_lo', 'amt_hi', 'target', 'online', 'form', 'score')} for s in services if s.get('status') not in ('廃業・撤退', '重複')], ensure_ascii=False)
 method_names = {m['id']: m['name'] for m in methods}
 method_options = ''.join(f'<option value="{mid}">{html.escape(n)}</option>' for mid, n in sorted(method_names.items()))
 

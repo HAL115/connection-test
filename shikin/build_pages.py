@@ -166,7 +166,7 @@ for m in data['methods']:
     if len([s for s in direct if (s.get('fee_lo') or '').strip()]) >= 4:
         compare_methods.add(mid)
     rows = ''.join(
-        f'<div class="svc"><div><b><a href="../services/{s["id"].lower()}.html">{esc(s["name"])}</a></b>{"（終了）" if s.get("status") == "廃業・撤退" else ""}（<a href="../companies/{s["entity_id"].lower()}.html">{esc(s["entity"])}</a>）<br>'
+        f'<div class="svc"><div><b><a href="../services/{s["id"].lower()}.html">{esc(s["name"])}</a></b>{"（終了）" if s.get("status") == "廃業・撤退" else "（統合済み）" if s.get("status") == "重複" else ""}（<a href="../companies/{s["entity_id"].lower()}.html">{esc(s["entity"])}</a>）<br>'
         f'手数料 {fee_text(s["fee_lo"], s["fee_hi"])}／入金 {esc(s["speed"]) or "―"}／金額 {amt_text(s["amt_lo"], s["amt_hi"])}<br>{svc_chips(s)}</div>{badge_score(s.get("score", ""))}</div>'
         for s in svcs)
     compare_link = f'<p><a href="../compare/{build.mslug(mid)}.html">{esc(m["name"])}のサービス比較（手数料・速さ・透明性）→</a></p>' if mid in compare_methods else ''
@@ -397,7 +397,7 @@ _idx_body = f"""
 {build.CTA_BOX}
 """
 with open(f'{OUT}/companies/index.html', 'w') as f:
-    f.write(build.page('運営会社の一覧', _idx_body, desc='資金調達サービスの運営会社の一覧。都道府県別と会社名順で引けます。終了した会社も分けて表示しています。', path='companies/index.html'))
+    f.write(build.page('運営会社の一覧', _idx_body, desc='資金調達サービスの運営会社の一覧。都道府県別と会社名順で引けます。終了した会社も分けて表示しています。', path='companies/index.html', sub=True))
 urls.append('companies/index.html')
 
 # ---------- service pages ----------
@@ -447,6 +447,12 @@ for s in services:
         official = ''
         pr = ''
     ended_banner = '<div class="panel" style="border-left:4px solid #C2410C;margin:14px 0"><b>このサービスは終了しています</b><p style="margin:6px 0 0">当サイトが確認した時点で、このサービスは終了・撤退しています。申し込みはできません。記録として掲載を残しています。</p></div>' if ended else ''
+    dup = s.get('status') == '重複'
+    _twin = next((x for x in services if x['id'] != sid and x['name'] == s['name'] and x['entity_id'] == s['entity_id'] and x.get('status') != '重複'), None) if dup else None
+    if dup:
+        official = ''
+        pr = ''
+    dup_banner = f'<div class="panel" style="border-left:4px solid #C2410C;margin:14px 0"><b>このページは統合しました</b><p style="margin:6px 0 0">このサービスは<a href="{_twin["id"].lower()}.html">{esc(s["name"])}（{esc(s["entity"])}）</a>と同一のため、そちらに統合しました。</p></div>' if _twin else ''
     _ee = prof(e) if e else {}
     ent_block = ''
     if _ee:
@@ -459,13 +465,13 @@ for s in services:
         ])
         ent_block = (f'<h2>運営会社について</h2>{ent_rows}'
                      f'<p><a href="../companies/{s["entity_id"].lower()}.html">{esc(s["entity"])}の会社情報と評判</a></p>')
-    _rel = [x for x in services if x['method'] == s['method'] and x['id'] != sid and x.get('status') != '廃業・撤退' and (x.get('fee_lo') or '').strip()][:6]
+    _rel = [x for x in services if x['method'] == s['method'] and x['id'] != sid and x.get('status') not in ('廃業・撤退', '重複') and (x.get('fee_lo') or '').strip()][:6]
     if not _rel:
-        _rel = [x for x in services if x['method'] == s['method'] and x['id'] != sid and x.get('status') != '廃業・撤退'][:6]
+        _rel = [x for x in services if x['method'] == s['method'] and x['id'] != sid and x.get('status') not in ('廃業・撤退', '重複')][:6]
     if not _rel:
         _grp_mids = [mid for mid, g in MID_GROUP.items() if g == MID_GROUP.get(s['method'])]
-        _rel = [x for x in services if x['method'] in _grp_mids and x['id'] != sid and x.get('status') != '廃業・撤退'][:6]
-    _same_ent = [x for x in services if x['entity_id'] == s['entity_id'] and x['id'] != sid and x.get('status') != '廃業・撤退'][:4]
+        _rel = [x for x in services if x['method'] in _grp_mids and x['id'] != sid and x.get('status') not in ('廃業・撤退', '重複')][:6]
+    _same_ent = [x for x in services if x['entity_id'] == s['entity_id'] and x['id'] != sid and x.get('status') not in ('廃業・撤退', '重複')][:4]
     rel_svcs = ''
     if _rel or _same_ent:
         parts = ''
@@ -479,6 +485,7 @@ for s in services:
 <h1>{esc(s['name'])}</h1>
 <p>{esc(s['entity'])}が提供する{esc(m.get('name', ''))}のサービスです。条件は公式の公表に基づき、確認日を付けています。</p>
 {ended_banner}
+{dup_banner}
 {pr}
 <h2>条件</h2>
 {rows}
@@ -497,15 +504,15 @@ for s in services:
     ld = json.dumps([svc_ld, json.loads(crumbs(('トップ', ''), (s['name'], slug)))], ensure_ascii=False)
     desc = f'{s["name"]}（{s["entity"]}）の条件です。手数料 {fee_text(s["fee_lo"], s["fee_hi"])}、入金スピード、金額、必要書類を公式の公表に基づいて掲載しています。'
     with open(f'{OUT}/{slug}', 'w') as f:
-        f.write(build.page(f'{s["name"]}｜手数料・入金スピード・金額の条件', body, article=True, desc=desc, ld=ld, path=slug))
+        f.write(build.page(f'{s["name"]}（{s["entity"]}）｜手数料・入金スピード・金額の条件' + ('（統合済み）' if _twin else ''), body, article=True, desc=desc, ld=ld, path=f'services/{_twin["id"].lower()}.html' if _twin else slug))
     urls.append(slug)
 
 # ---------- compare pages ----------
 for mid in sorted(compare_methods):
     m = methods[mid]
     svcs = svc_by_method.get(mid, [])
-    direct = sorted([s for s in svcs if s.get('form') not in ('仲介・紹介', '比較メディア・送客') and s.get('status') != '廃業・撤退'], key=fee_num)
-    inter = [s for s in svcs if s.get('form') in ('仲介・紹介', '比較メディア・送客') and s.get('status') != '廃業・撤退']
+    direct = sorted([s for s in svcs if s.get('form') not in ('仲介・紹介', '比較メディア・送客') and s.get('status') not in ('廃業・撤退', '重複')], key=fee_num)
+    inter = [s for s in svcs if s.get('form') in ('仲介・紹介', '比較メディア・送客') and s.get('status') not in ('廃業・撤退', '重複')]
     trs = ''.join(
         f'<tr><td><b><a href="../services/{s["id"].lower()}.html">{esc(s["name"])}</a></b></td>'
         f'<td><a href="../companies/{s["entity_id"].lower()}.html">{esc(s["entity"])}</a></td>'
@@ -639,6 +646,19 @@ if os.path.exists(_map_path):
     lines.append('/articles/company-beatreding.html /companies/c002.html 301')
     lines.append('/articles/service-ququmo.html /services/s094.html 301')
     lines.append(f'/articles/compare-2sha.html /compare/{urllib.parse.quote(build.MSLUG["M13"])}.html 301')
+    _pairs = []
+    for _ln in lines:
+        _p = _ln.split(' ')
+        if len(_p) >= 3:
+            _pairs.append((_p[0], _p[1], _p[2]))
+    _rmap = {s: t for s, t, _st in _pairs}
+    def _final(t):
+        _seen = set()
+        while t in _rmap and t not in _seen:
+            _seen.add(t)
+            t = _rmap[t]
+        return t
+    lines = [f'{s} {_final(t)} {st}' for s, t, st in _pairs]
     with open(f'{OUT}/_redirects', 'w') as f:
         f.write('\n'.join(lines) + '\n')
     print('redirects:', len(lines))
