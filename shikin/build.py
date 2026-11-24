@@ -110,9 +110,9 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .rank-head a{font-size:13px;font-weight:700;color:var(--primary-deep);text-decoration:none;white-space:nowrap}
 .merit-row{padding:13px 2px;border-top:1px solid var(--line)}
 .merit-row:first-of-type{border-top:0}
-.merit-head{display:flex;gap:8px;align-items:flex-start;font-weight:900;font-size:15px;line-height:1.6;letter-spacing:.02em}
+.merit-head{display:flex;gap:8px;align-items:flex-start;font-weight:900;font-size:15.5px;line-height:1.6;letter-spacing:.02em}
 .merit-head .ck{flex:none;width:19px;height:19px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;display:inline-flex;align-items:center;justify-content:center;margin-top:3px}
-.merit-why{color:var(--sub);font-size:13px;line-height:1.7;margin:4px 0 0 27px}
+.merit-why{color:var(--sub);font-size:14px;line-height:1.75;margin:4px 0 0 27px}
 .rank-foot{border-top:1px solid var(--line);padding:11px 2px 6px}
 .rank-foot a{font-weight:700;color:var(--primary-deep);text-decoration:none;font-size:14.5px}
 .trust-row{display:flex;gap:8px 14px;flex-wrap:wrap;align-items:center;justify-content:center;margin:26px 0 0;font-size:13.5px;color:var(--sub)}
@@ -1029,7 +1029,7 @@ MERITS = [
     ('信用評価という資産を傷めない手法から、見つけられます',
      '資金調達できる方法を網羅し、公的・銀行系の手法から順に確認していく仕組みだからです。条件に合わない手法へ、当てずっぽうに申し込むこともありません。'),
     ('調達にかかるコストを、抑えられます',
-     '費用の低い手法から順に当たるためです。同じ金額でも、金利と保証料で調達する場合と、手数料で現金化する場合では、総額が大きく変わります。'),
+     '費用の低い手法から順に当たるためです。ファクタリングの手数料は、収録サービスの中央値で上限10%。100万円の売掛金なら、手数料だけで約10万円が消えます。金利と保証料で調達できるなら、その差がそのまま残ります。'),
     ('間に合わない方法に、時間を使わずに済みます',
      '入金までの期間も物差しに入れて並べるためです。安くても期限に間に合わない方法は、先に外れます。'),
     ('次の一手が、その場で分かります',
@@ -1045,10 +1045,10 @@ body = f"""
 <div class="wrap"><div class="hero-in">
 <div class="hero-grid">
 <div class="hero-main">
-<p class="eyebrow">⚡ 全ての手法から探し出す、資金調達の比較サイト</p>
-<h1>支払いの期限に<br><em>間に合う</em>資金調達を、<br>状態から見つける</h1>
-<p class="lead"><mark>費用の低い手法から順に確認します。</mark>あなたの状態で使える手法と、貸してくれる候補の会社がその場で分かります。</p>
-<a class="btn btn-cta btn-hero2" href="#check"><span><span class="bh-t">状態チェックをはじめる</span><span class="bh-s">結果はその場で全部表示します。連絡先は不要です</span></span><span class="bh-c">›</span></a>
+<p class="eyebrow">⚡ 支払いが迫っている経営者のための、資金調達の比較サイト</p>
+<h1>資金調達は、<br><em>申し込む順番</em>で<br>損が決まります</h1>
+<p class="lead">期限が迫ると、つい目先の方法に申し込んでしまいます。でも<mark>最初に当たる方法を間違えると、手数料で大きく損をしたり、信用評価という資産を傷めたりします。</mark>このサイトは、公的・銀行系の手法から順に、あなたの状態で使える方法を確かめます。</p>
+<a class="btn btn-cta btn-hero2" href="#check"><span><span class="bh-t">使える手法をチェックする</span><span class="bh-s">無料です。結果はその場で全部表示します。連絡先は不要です</span></span><span class="bh-c">›</span></a>
 <div class="hero-links">
 <a href="methods/index.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0F7A68" stroke-width="2.4" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>手法ガイド</a>
 <a href="companies/index.html"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0F7A68" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v14M15 9h4a2 2 0 0 1 2 2v10"/></svg>会社一覧</a>
@@ -1073,8 +1073,8 @@ body = f"""
 <main class="wrap">
 <section id="check">
 <p class="eyebrow dark">CHECK</p>
-<h2 class="sec">状態チェック</h2>
-<p class="sec-sub">費用の低い上位の手法から順に確認します。条件が合えば少ない質問で終わり、合わない場合は下位の手法へ進むため、質問が増えます。</p>
+<h2 class="sec">質問に答えるだけで、当たるべき順番が出ます</h2>
+<p class="sec-sub">費用の低い手法から順に確認します。条件が合えば少ない質問で終わり、合わない場合は次の手法へ進みます。</p>
 <div class="panel" id="wiz">
 <div class="step-label" id="step-label">STEP 1 / 4</div>
 <div class="progress"><i id="progress-bar" style="width:0%"></i></div>
@@ -1093,20 +1093,20 @@ body = f"""
 
 <section>
 <p class="eyebrow dark">WHY THIS SITE</p>
-<h2 class="sec">このサイトの違い</h2>
-<p class="sec-sub">比べる範囲と、数字の扱い方です。どれも、裏づけのページへつながっています。</p>
+<h2 class="sec">順番を間違えると、コストと信用を失います</h2>
+<p class="sec-sub">だからこのサイトは、比べる範囲と数字の扱い方を、先に決めています。どれも、裏づけのページへつながっています。</p>
 <div class="sgrid">
-<div class="scard"><i>1</i><b>全ての手法を横断して比べる</b><p>24手法・{NSVC}サービス・{NENT}社を、1つの物差しで収録しています。ファクタリングだけ、融資だけのサイトでは出てこない候補まで並びます。</p><a href="methods/index.html">手法の一覧を見る</a></div>
-<div class="scard"><i>2</i><b>結果は、その場で全部出す</b><p>状態チェックは、連絡先を聞かずに、使える手法と外れる理由まで表示します。候補が見つかった段階で止めることもできます。</p><a href="#check">状態チェックをする</a></div>
-<div class="scard"><i>3</i><b>費用は、下限と上限の両方を書く</b><p>公式が公表していない項目は「公表を確認できていません」と書き、推測で埋めません。透明性スコアは、確認できた公表項目の数です。</p><a href="about.html">掲載の基準と定義を見る</a></div>
-<div class="scard"><i>4</i><b>公式ページを観測し、変更を記録する</b><p>会社の条件は変わります。公式の公表を確認し、直した差分は日付つきで公開しています。</p><a href="observation.html">観測の記録を見る</a></div>
+<div class="scard"><i>1</i><b>24の手法を、1か所で比べる</b><p>24手法・{NSVC}サービス・{NENT}社を、1つの物差しで収録しています。ファクタリングだけ、融資だけのサイトでは出てこない候補まで並びます。</p><a href="methods/index.html">手法の一覧を見る</a></div>
+<div class="scard"><i>2</i><b>結果は、連絡先なしで全部出す</b><p>状態チェックは、連絡先を聞かずに、使える手法と外れる理由まで表示します。候補が見つかった段階で止めることもできます。</p><a href="#check">状態チェックをする</a></div>
+<div class="scard"><i>3</i><b>費用は、上限まで書く</b><p>公式が公表していない項目は「公表を確認できていません」と書き、推測で埋めません。透明性スコアは、確認できた公表項目の数です。</p><a href="about.html">掲載の基準と定義を見る</a></div>
+<div class="scard"><i>4</i><b>条件が変われば、記録に残る</b><p>会社の条件は変わります。公式の公表を確認し、直した差分は日付つきで公開しています。</p><a href="observation.html">観測の記録を見る</a></div>
 </div>
 </section>
 
 <section>
 <p class="eyebrow dark">BY SITUATION</p>
-<h2 class="sec">状態別の入口</h2>
-<p class="sec-sub">ピラーの記事は、状態ごとに進め方を書いています。</p>
+<h2 class="sec">今の状態に近いところから、進め方が分かります</h2>
+<p class="sec-sub">記事は、状態ごとに進め方を書いています。</p>
 <div class="split">
 <img class="photo rv" src="{asset('section-owner.webp')}" alt="請求書を確認する事業者">
 <div class="cards" style="grid-template-columns:1fr">{cards_html}</div>
@@ -1115,7 +1115,7 @@ body = f"""
 
 <section>
 <p class="eyebrow dark">OBSERVATION</p>
-<h2 class="sec">観測の記録</h2>
+<h2 class="sec">会社の条件は変わります。その変更を、記録しています</h2>
 <p class="sec-sub">会社の条件は変わります。公式の公表を確認し、差分があれば日付つきで記録しています。手数料の上限を公表していない会社は、その事実も含めて記録します。</p>
 <div class="split">
 <img class="photo rv" src="{asset('section-observation.webp')}" alt="資料とノートで条件を確認する机">
@@ -1134,7 +1134,7 @@ body = f"""
 
 <section id="search">
 <p class="eyebrow dark">SEARCH</p>
-<h2 class="sec">サービスを探す</h2>
+<h2 class="sec">{NSVC}のサービスから、条件で絞れます</h2>
 <p class="sec-sub">条件で絞れます。透明性スコアは、確認できた公表項目の数です（定義は下にあります）。</p>
 <div class="filters">
 <select id="f-method" onchange="runSearch()"><option value="">手法：すべて</option>{method_options}</select>
@@ -1149,7 +1149,7 @@ body = f"""
 
 <section id="methods">
 <p class="eyebrow dark">METHODS</p>
-<h2 class="sec">手法ガイド</h2>
+<h2 class="sec">手法ごとに、費用と期間を比べます</h2>
 <p class="sec-sub">全24手法の定義と、入金までの期間、費用の目安です。</p>
 <p class="scroll-hint">横にスクロールできます →</p>
 <div class="hscroll">{method_cards}</div>
