@@ -488,9 +488,41 @@ def _ent_li(_e):
     _sc = f'／透明性スコア {esc(_e.get("score", ""))} / 5' if _e.get('score') else ''
     return f'<li><a href="{_e["id"].lower()}.html">{esc(_e["name"])}</a>（{_mn}{_sc}）</li>'
 
-_pref_toc = '、'.join(f'<a href="#pref-{i}">{p}（{len(_by_pref[p])}）</a>' for i, p in enumerate(PREFS) if p in _by_pref)
+def _short_loc(loc, pref):
+    rest = loc or ''
+    if pref and rest.startswith(pref):
+        rest = rest[len(pref):]
+    m = re.search(r'^.*?[市区町村]', rest)
+    if m and len(m.group(0)) <= 12:
+        return pref + m.group(0)
+    return (loc or '')[:16]
+
+def _score_dots(score):
+    if score in ('', None) or not str(score).isdigit():
+        return ''
+    n = int(score)
+    return (f'<span class="sd"><span class="sd-on">{"●" * n}</span><span class="sd-off">{"●" * (5 - n)}</span></span>'
+            f'<span class="ent-score">透明性 {n}/5</span>')
+
+def _ent_card(_e):
+    _mn = methods.get(_e['method'], {}).get('name', '')
+    _p = _pref_of(_e.get('location', ''))
+    _bits = []
+    if _e.get('location'):
+        _bits.append(esc(_short_loc(_e['location'], _p)))
+    _nsvc = len(svc_by_entity.get(_e['id'], []))
+    if _nsvc:
+        _bits.append(f'サービス{_nsvc}件')
+    _rv = REVIEWS.get(_e['id'])
+    _rvh = f'<div class="ent-sub">Google口コミ ★{_rv["rating"]}（{_rv["count"]}件）</div>' if _rv and _rv.get('count') else ''
+    return (f'<div class="ent-card"><a class="ent-name" href="{_e["id"].lower()}.html">{esc(_e["name"])}</a>'
+            f'<div class="ent-meta"><span class="ent-chip">{esc(_mn)}</span>{_score_dots(_e.get("score", ""))}</div>'
+            f'<div class="ent-sub">{"／".join(_bits)}</div>{_rvh}</div>')
+
+_pref_toc = ''.join(f'<a href="#pref-{i}">{p}（{len(_by_pref[p])}）</a>' for i, p in enumerate(PREFS) if p in _by_pref)
 _pref_secs = ''.join(
-    f'<h2 class="sec" id="pref-{i}">{p}</h2><ul>' + ''.join(_ent_li(_e) for _e in sorted(_by_pref[p], key=lambda x: x['name'])) + '</ul>'
+    f'<h2 class="sec" id="pref-{i}">{p}<span class="cnt">{len(_by_pref[p])}社</span></h2><div class="ent-grid">'
+    + ''.join(_ent_card(_e) for _e in sorted(_by_pref[p], key=lambda x: x['name'])) + '</div>'
     for i, p in enumerate(PREFS) if p in _by_pref)
 _ended_li = ''.join(f'<li><a href="{_e["id"].lower()}.html">{esc(_e["name"])}</a>（{_e["status"]}、確認日 {esc(_e["status_date"])}）</li>' for _e in _ended_ents)
 _unknown_li = ''.join(_ent_li(_e) for _e in sorted(_unknown_loc, key=lambda x: x['name']))
@@ -498,16 +530,16 @@ _all_li = ''.join(_ent_li(_e) for _e in sorted(entities, key=lambda x: x['name']
 _idx_body = f"""
 <p class="note"><a href="../index.html">トップ</a> ／ 運営会社</p>
 <h1>運営会社の一覧</h1>
-<p>当サイトが収録している運営会社{len(entities)}社の一覧です。都道府県別と、全社の一覧（会社名順）で引けます。サービスを終了した会社は、分けて表示しています。</p>
+<p>当サイトが収録している運営会社{len(entities)}社の一覧です。都道府県別と、全社の一覧（会社名順）で引けます。各カードには、主な手法、透明性スコア（確認できた公表項目の数）、所在地、サービスの件数と、集計できた会社にはGoogleマップの口コミの評価と件数を表示しています。サービスを終了した会社は、分けて表示しています。</p>
 <h2 class="sec">都道府県から探す</h2>
-<p>{_pref_toc}</p>
+<div class="pref-nav">{_pref_toc}</div>
 {_pref_secs}
 <h2 class="sec">サービスを終了した会社</h2>
 <ul>{_ended_li}</ul>
 <h2 class="sec">所在地を確認できていない会社</h2>
 <ul>{_unknown_li}</ul>
 <h2 class="sec">全社の一覧（会社名順）</h2>
-<ul>{_all_li}</ul>
+<ul class="all-list">{_all_li}</ul>
 {build.CTA_BOX}
 """
 with open(f'{OUT}/companies/index.html', 'w') as f:
