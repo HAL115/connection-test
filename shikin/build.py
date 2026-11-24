@@ -108,13 +108,11 @@ header.site .wrap{display:flex;align-items:center;justify-content:space-between;
 .rank-head{display:flex;justify-content:space-between;align-items:baseline;gap:6px 10px;margin-bottom:6px;flex-wrap:wrap}
 .rank-head b{font-size:16.5px;font-weight:900;letter-spacing:.02em}
 .rank-head a{font-size:13px;font-weight:700;color:var(--primary-deep);text-decoration:none;white-space:nowrap}
-.merit-row{padding:12px 2px;border-top:1px solid var(--line)}
+.merit-row{padding:13px 2px;border-top:1px solid var(--line)}
 .merit-row:first-of-type{border-top:0}
-.merit-row .m-label{font-size:12px;font-weight:700;color:var(--sub);letter-spacing:.08em;margin-bottom:5px}
-.merit-ours{display:flex;gap:8px;align-items:flex-start;font-weight:700;font-size:14.5px;line-height:1.6}
-.merit-ours .ck{flex:none;width:19px;height:19px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;display:inline-flex;align-items:center;justify-content:center;margin-top:3px}
-.merit-other{display:flex;gap:8px;align-items:flex-start;color:var(--sub);font-size:13px;line-height:1.6;margin-top:3px}
-.merit-other .dash{flex:none;width:19px;text-align:center;color:#B9C6C1;font-weight:700}
+.merit-head{display:flex;gap:8px;align-items:flex-start;font-weight:900;font-size:15px;line-height:1.6;letter-spacing:.02em}
+.merit-head .ck{flex:none;width:19px;height:19px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;display:inline-flex;align-items:center;justify-content:center;margin-top:3px}
+.merit-why{color:var(--sub);font-size:13px;line-height:1.7;margin:4px 0 0 27px}
 .rank-foot{border-top:1px solid var(--line);padding:11px 2px 6px}
 .rank-foot a{font-weight:700;color:var(--primary-deep);text-decoration:none;font-size:14.5px}
 .trust-row{display:flex;gap:8px 14px;flex-wrap:wrap;align-items:center;justify-content:center;margin:26px 0 0;font-size:13.5px;color:var(--sub)}
@@ -1028,16 +1026,19 @@ FAQS = [
 faq_html = ''.join(f'<details class="faq rv"><summary>{html.escape(q)}</summary><p>{html.escape(a)}</p></details>' for q, a in FAQS)
 
 MERITS = [
-    ('比べる範囲', f'{len(methods)}の手法・{NSVC}サービスを、1か所で横断して比べられます', '手法専業のサイトは、1つの手法だけしか比べられません'),
-    ('状態チェックの結果', '連絡先を聞かずに、使える手法と外れる理由までその場で全部表示します', '見積もりの登録が前提になっている所もあります'),
-    ('数字の出し方', '公式が公表していない数字は「非公表」と書き、推測で埋めません', '下限だけの表示で、上限が分からない所もあります'),
-    ('情報の鮮度', '公式ページを毎週観測し、変わった条件は日付つきで記録しています', 'いつ時点の情報か分からない所もあります'),
+    ('信用評価という資産を傷めない手法から、見つけられます',
+     '資金調達できる方法を網羅し、公的・銀行系の手法から順に確認していく仕組みだからです。条件に合わない手法へ、当てずっぽうに申し込むこともありません。'),
+    ('調達にかかるコストを、抑えられます',
+     '費用の低い手法から順に当たるためです。同じ金額でも、金利と保証料で調達する場合と、手数料で現金化する場合では、総額が大きく変わります。'),
+    ('間に合わない方法に、時間を使わずに済みます',
+     '入金までの期間も物差しに入れて並べるためです。安くても期限に間に合わない方法は、先に外れます。'),
+    ('次の一手が、その場で分かります',
+     '条件が合わない手法は、理由と一緒に表示するためです。外れた理由が分かれば、次に当たる手法も決まります。'),
 ]
 merit_rows = ''.join(
-    f'<div class="merit-row"><div class="m-label">{html.escape(label)}</div>'
-    f'<div class="merit-ours"><span class="ck">✓</span><span>{html.escape(ours)}</span></div>'
-    f'<div class="merit-other"><span class="dash">―</span><span>他サイト：{html.escape(other)}</span></div></div>'
-    for label, ours, other in MERITS)
+    f'<div class="merit-row"><div class="merit-head"><span class="ck">✓</span><span>{html.escape(head)}</span></div>'
+    f'<p class="merit-why">{html.escape(why)}</p></div>'
+    for head, why in MERITS)
 
 body = f"""
 <div class="hero">
@@ -1055,9 +1056,9 @@ body = f"""
 </div>
 </div>
 <div class="rank-card">
-<div class="rank-head"><b>このサイトを使うメリット</b><a href="about.html">掲載の基準 ›</a></div>
+<div class="rank-head"><b>探す順番が、あなたの利益を守ります</b></div>
 {merit_rows}
-<div class="rank-foot"><a href="about.html">比べ方と数字の出し方は、運営者情報で開示しています ›</a></div>
+<div class="rank-foot"><a href="#check">状態チェックで、あなたの順番を確認する ›</a></div>
 </div>
 </div>
 <div class="trust-row"><span>運営：<b>合同会社MELSY</b></span><span>掲載している数字には、全て出典と確認日を付けています</span></div>
