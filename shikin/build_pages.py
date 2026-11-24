@@ -171,16 +171,18 @@ for m in data['methods']:
         for s in svcs)
     compare_link = f'<p><a href="../compare/{build.mslug(mid)}.html">{esc(m["name"])}のサービス比較（手数料・速さ・透明性）→</a></p>' if mid in compare_methods else ''
     agg = ''
-    if mid in ('M13', 'M16', 'M24') and len(svcs) >= 10:
+    if len(svcs) >= 5:
         _n = len(svcs)
         def _pct(x):
             return f'{x * 100 // _n}%'
         _fb = sum(1 for s in svcs if s['fee_lo'] and s['fee_hi'])
+        _ab = sum(1 for s in svcs if s['amt_lo'] and s['amt_hi'])
         _sp = sum(1 for s in svcs if s['speed'])
         _on = sum(1 for s in svcs if s['online'])
         _arows = [('手数料の下限と上限の両方を公表', f'{_fb}件（{_pct(_fb)}）'),
+                  ('金額の下限と上限の両方を公表', f'{_ab}件（{_pct(_ab)}）'),
                   ('入金スピードを公表', f'{_sp}件（{_pct(_sp)}）')]
-        if mid in ('M13', 'M16'):
+        if mid in ('M13', 'M14', 'M15', 'M16', 'M17'):
             _rc = sum(1 for s in svcs if s['recourse'])
             _arows.append(('償還請求権の有無を公表', f'{_rc}件（{_pct(_rc)}）'))
         _arows.append(('オンラインで完結するかを公表', f'{_on}件（{_pct(_on)}）'))
@@ -530,13 +532,33 @@ for mid in sorted(compare_methods):
             _cb = f'<div class="aff-banner">{_a["banner"]}</div>'
             break
     _cpr = PR_NOTICE if _cb else ''
+    _fees = sorted(float(s['fee_hi']) for s in direct if (s.get('fee_hi') or '').replace('.', '', 1).isdigit())
+    _med = _fees[len(_fees) // 2] if _fees else None
+    _fb2 = sum(1 for s in direct if s['fee_lo'] and s['fee_hi'])
+    def _sc(s):
+        try:
+            return int(s.get('score') or 0)
+        except (TypeError, ValueError):
+            return 0
+    _sc4 = sum(1 for s in direct if _sc(s) >= 4)
+    _cguide = (f'<h2>比べるときの見方</h2>'
+               f'<p><b>仕組み：</b>{esc(m["how"])}</p>'
+               f'<p><b>費用の決まり方：</b>{esc(m["cost"])}</p>'
+               f'<p><b>注意点：</b>{esc(m["legal"])}</p>'
+               + kv_table([('直接の事業者', f'{len(direct)}件'),
+                           ('手数料の下限と上限の両方を公表', f'{_fb2}件'),
+                           ('手数料・費用の上限の中央値', f'{_med:g}%' if _med is not None else '公表が少なく、算出していません'),
+                           ('透明性スコア4以上', f'{_sc4}件')])
+               + f'<p class="note">上限が非公表の会社は、申し込みの前に総額の見積もりを書面で確認してください。仕組みと向く状態は<a href="../methods/{build.mslug(mid)}.html">{esc(m["name"])}のページ</a>にまとめています。</p>')
     body = f"""
 <p class="note"><a href="../index.html">トップ</a> ／ <a href="../methods/{build.mslug(mid)}.html">{esc(m['name'])}</a> ／ サービス比較</p>
 <h1>{esc(m['name'])}のサービス比較</h1>
 {_cpr}
 <p>並びは、手数料の下限が小さい順という機械的な並びです。順位ではありません。比べた項目は手数料、入金スピード、金額、事業形態、透明性スコアです。手数料の上限が「非公表」の会社は、見積もりで幅の確認が必要です。数字は各社の公式の公表に基づき、確認日は各サービスのページに付けています。透明性スコアは確認できた公表項目の数で、定義は<a href="../about.html">運営者情報</a>に書いています。</p>
+<h2>条件の一覧</h2>
 <div class="tblwrap"><table class="wide"><tr><th>サービス</th><th>運営会社</th><th>手数料</th><th>入金スピード</th><th>金額</th><th>事業形態</th><th>透明性</th></tr>{trs}</table></div>
 {_cb}
+{_cguide}
 {f'<h2>仲介・紹介のサービス（{len(inter)}件）</h2>' + inter_rows if inter else ''}
 {build.CTA_BOX}
 """
