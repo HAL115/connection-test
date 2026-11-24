@@ -141,6 +141,40 @@ def _fee_band(s):
             f'<text x="{X(hi_all):.0f}" y="66" text-anchor="end" font-size="11.5" fill="#5C6B66">{mname}の上限の分布 {lo_all:g}%〜{hi_all:g}%（公表 {len(dist)}件）</text></svg></div>'
             f'<p class="note">帯は、同じ手法の収録サービスのうち上限を公表しているものの幅です。位置は条件の良し悪しではなく、公表値の分布の中での位置です。</p>')
 
+
+def _log_block(names):
+    rows = [x for x in data.get('log', []) if x.get('entity') in names]
+    if not rows:
+        return ''
+    trs = ''.join(
+        f"<tr><td>{esc(x['date'])}</td><td>{esc(x['item'])}</td><td>{esc(((x['before'] + ' → ') if x.get('before') else '') + x['after'])}</td></tr>"
+        for x in rows)
+    return (f'<h2>確認の記録</h2><p>当サイトが公式ページを確認した記録です。'
+            f'条件が変われば、ここに日付つきで残ります。</p>'
+            f'<div class="tblwrap"><table><tr><th>確認日</th><th>項目</th><th>内容</th></tr>{trs}</table></div>')
+
+def _svc_reading(s):
+    if s.get('status') in ('廃業・撤退', '重複'):
+        return ''
+    parts = []
+    mn = methods.get(s['method'], {}).get('name', '')
+    pool = [x for x in services if x['method'] == s['method'] and x.get('status') not in ('廃業・撤退', '重複')]
+    def _depth(x):
+        return sum(v for _, v in _svc_axes(x))
+    if len(pool) >= 5:
+        d0 = _depth(s)
+        rank = 1 + sum(1 for x in pool if _depth(x) > d0)
+        parts.append(f'公表の充実度は、同じ「{esc(mn)}」の収録{len(pool)}件の中で{rank}番目の水準です')
+    dist = _fee_dist.get(s['method'], [])
+    fv = _pctnum(s.get('fee_hi'))
+    if len(dist) >= 5 and fv is not None and '%' in (s.get('fee_hi') or ''):
+        med = _stats.median(dist)
+        rank = 1 + sum(1 for v in dist if v < fv)
+        parts.append(f'手数料の上限（{fv:g}%）は、上限を公表している{len(dist)}件の中で低い方から{rank}番目にあり、中央値は{med:g}%です')
+    if not parts:
+        return ''
+    return '<p>' + '。'.join(parts) + '。いずれも当サイトの収録データからの算出で、公式の公表値に基づきます。</p>'
+
 import os as _os
 PROFILES = {}
 if _os.path.exists(BASE + '/site/profiles.json'):
@@ -416,12 +450,34 @@ for e0 in entities:
             _agg.append((_lab, max(_svc_axes(_s)[_i][1] for _s in svcs)))
         _ent_radar = _radar_block(_agg, esc(e['score']) if e['score'] else '―',
                                   'この会社が提供するサービスのうち、最も公表が厚いものの深さです。')
+    _facts = []
+    if e['location']:
+        _facts.append(f"所在地は{e['location']}です")
+    if e['founded']:
+        _facts.append(f"設立は{e['founded']}です")
+    if e['capital']:
+        _facts.append(f"資本金は{e['capital']}です")
+    if e['rep']:
+        _facts.append(f"代表者は{e['rep']}です")
+    _mnames = []
+    for _s in svcs:
+        _mn2 = methods.get(_s['method'], {}).get('name', '')
+        if _mn2 and _mn2 not in _mnames:
+            _mnames.append(_mn2)
+    _dtxt = '。'.join(esc(x) for x in _facts)
+    if _mnames:
+        _dtxt += ('。' if _dtxt else '') + f"提供しているのは{'、'.join(esc(x) for x in _mnames)}のサービス{len(svcs)}件です"
+    if _rv and _rv.get('count'):
+        _dtxt += f"。Googleマップの口コミは{_rv['count']}件、評価は★{_rv['rating']}です（{_rv.get('checked', '')}集計）"
+    digest = f'<p>{_dtxt}。</p>' if _dtxt else ''
+    _ent_log = _log_block({e['name']} | {x['name'] for x in svcs})
     biz_block = (f'<h2>事業内容</h2><p>{esc(e["_business"])}</p>' if e.get('_business')
                  else '<h2>事業内容</h2><p>事業内容の詳しい公表は確認できていません。提供しているサービスは、このページの下の一覧のとおりです。</p>')
     body = f"""
 <p class="note"><a href="../index.html">トップ</a> ／ <a href="index.html">運営会社</a> ／ {esc(e['name'])}</p>
 <h1>{esc(e['name'])}</h1>
 <p>{esc(e['name'])}の会社情報と、提供しているサービスの条件です。数値は各社の公式の公表と当サイトの観測に基づきます。公表されていない項目は推定で埋めず、その旨を書いています。</p>
+{digest}
 {biz_block}
 <h2>会社情報</h2>
 {basic}
@@ -437,6 +493,7 @@ for e0 in entities:
 {review_block}
 {_ent_radar}
 <p><a href="https://www.google.com/maps/search/?api=1&query={gmap_q}" rel="nofollow noopener" target="_blank">Googleマップでこの会社と口コミを見る</a></p>
+{_ent_log}
 <h2>提供しているサービス（{len(svcs)}件）</h2>
 {svc_rows if svc_rows else '<p>現在、収録しているサービスはありません。</p>'}
 <p class="note">最終観測日：{esc(e['observed']) or '―'}</p>
@@ -637,11 +694,13 @@ for s in services:
 {rows}
 {_radar_block(_svc_axes(s), esc(s.get('score', '') or e.get('score', '') or '―'), 'このサービスが公式に公表している項目の深さを、5つの軸で見たものです。')}
 {_fee_band(s)}
+{_svc_reading(s)}
 {features}
 {ent_block}
 {rel_svcs}
 {official}
 {source}
+{_log_block({s['name']})}
 {build.CTA_BOX}
 """
     slug = f'services/{sid.lower()}.html'
