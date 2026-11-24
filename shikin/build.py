@@ -243,6 +243,14 @@ body.menu-open{overflow:hidden}
 .scard b{display:block;font-size:16.5px;margin-bottom:5px}
 .scard p{margin:0 0 10px;font-size:14px;color:var(--ink2);line-height:1.65}
 .scard a{font-size:14px;font-weight:700}
+.sim-form{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:12px 0}
+.sim-form input,.sim-form select{font:inherit;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+.map-panel{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:18px;margin:14px 0}
+.viz{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;margin:14px 0}
+.viz-svg{flex:0 1 264px;max-width:264px}
+.viz-tbl{flex:1 1 260px;min-width:240px}
+.viz-tbl table{margin:0}
+.band-wrap{margin:8px 0 4px;max-width:640px}
 .mapwrap{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;background:#fff}
 .mapwrap iframe{width:100%;height:260px;border:0;display:block}
 .pub{list-style:none;padding:0;margin:10px 0}
@@ -1040,6 +1048,121 @@ merit_rows = ''.join(
     f'<p class="merit-why">{html.escape(why)}</p></div>'
     for head, why in MERITS)
 
+# ---------- 手取りシミュレータ＋手法マップ ----------
+import re as _re
+import statistics as _st
+
+def _pctn(v):
+    m = _re.search(r'([0-9]+(?:\.[0-9]+)?)', v or '')
+    return float(m.group(1)) if m else None
+
+_sim_by_method = {}
+for _s in services:
+    if _s.get('status') in ('廃業・撤退', '重複'):
+        continue
+    _lo, _hi = _pctn(_s.get('fee_lo')), _pctn(_s.get('fee_hi'))
+    if _lo is None or _hi is None or '%' not in (_s.get('fee_hi') or ''):
+        continue
+    _ft = _s.get('fee_type') or '手数料'
+    _kind = 'rate' if ('金利' in _ft or '保証料' in _ft) else 'fee'
+    _sim_by_method.setdefault(_s['method'], {'kind': _kind, 'ft': _ft, 'los': [], 'his': []})
+    _sim_by_method[_s['method']]['los'].append(_lo)
+    _sim_by_method[_s['method']]['his'].append(_hi)
+SIM = []
+_method_names = {m['id']: m['name'] for m in methods}
+for _mid, _v in _sim_by_method.items():
+    if len(_v['los']) >= 3:
+        SIM.append({'name': _method_names.get(_mid, _mid), 'type': _v['kind'], 'ft': _v['ft'],
+                    'lo': round(_st.median(_v['los']), 2), 'hi': round(_st.median(_v['his']), 2), 'n': len(_v['los'])})
+SIM.sort(key=lambda x: x['hi'])
+SIM_JSON = json.dumps(SIM, ensure_ascii=False)
+
+def _sim_rows(amt=300, months=12):
+    rows = []
+    for m in SIM:
+        if m['type'] == 'rate':
+            lo = amt * m['lo'] / 100 * months / 12
+            hi = amt * m['hi'] / 100 * months / 12
+        else:
+            lo = amt * m['lo'] / 100
+            hi = amt * m['hi'] / 100
+        rows.append((hi, m, lo))
+    rows.sort(key=lambda t: t[0])
+    out = ''
+    for hi, m, lo in rows:
+        basis = f"{m['ft']}の中央値 {m['lo']:g}〜{m['hi']:g}%" + ('（期間で計算）' if m['type'] == 'rate' else '（1回）')
+        out += (f'<tr><td><b>{html.escape(m["name"])}</b><br><span class="note">{basis}／公表 {m["n"]}件</span></td>'
+                f'<td style="text-align:right">{lo:,.1f}〜{hi:,.1f}万円</td>'
+                f'<td style="text-align:right"><b>{amt - hi:,.1f}〜{amt - lo:,.1f}万円</b></td></tr>')
+    return out
+
+SIM_SECTION = """
+<section id="sim">
+<p class="eyebrow dark">SIMULATOR</p>
+<h2 class="sec">金額を入れると、手取りの目安が出ます</h2>
+<p class="sec-sub">手法ごとに、費用の違いで手取りがどれだけ変わるかの概算です。費用は、収録サービスの公表値の中央値から計算しています。実際の費用は、審査と条件で変わります。</p>
+<div class="sim-form">
+<label>調達したい金額 <input id="sim-amt" type="number" value="300" min="1" style="width:110px"> 万円</label>
+<label>借りる場合の期間 <select id="sim-term"><option value="6">6か月</option><option value="12" selected>12か月</option><option value="24">24か月</option><option value="36">36か月</option></select></label>
+<button class="btn btn-sub btn-sm" type="button" onclick="simCalc()">計算する</button>
+</div>
+<div class="tblwrap"><table class="wide"><tr><th>手法</th><th style="text-align:right">費用の目安</th><th style="text-align:right">手取りの目安</th></tr><tbody id="sim-rows">__SIM_ROWS__</tbody></table></div>
+<p class="note">金利・保証料の手法は、選んだ期間で借りた場合の総額で計算しています。手数料の手法は1回分です。公表値が3件未満の手法は、中央値が安定しないため出していません。</p>
+</section>
+<script>
+const SIM = __SIM_JSON__;
+function simCalc(){
+  const amt = parseFloat(document.getElementById('sim-amt').value) || 0;
+  const months = parseInt(document.getElementById('sim-term').value) || 12;
+  const rows = SIM.map(m => {
+    let lo, hi;
+    if(m.type === 'rate'){ lo = amt * m.lo / 100 * months / 12; hi = amt * m.hi / 100 * months / 12; }
+    else { lo = amt * m.lo / 100; hi = amt * m.hi / 100; }
+    return {m, lo, hi};
+  }).sort((a, b) => a.hi - b.hi);
+  document.getElementById('sim-rows').innerHTML = rows.map(r =>
+    '<tr><td><b>' + r.m.name + '</b><br><span class="note">' + r.m.ft + 'の中央値 ' + r.m.lo + '〜' + r.m.hi + '%' + (r.m.type === 'rate' ? '（期間で計算）' : '（1回）') + '／公表 ' + r.m.n + '件</span></td>' +
+    '<td style="text-align:right">' + r.lo.toFixed(1) + '〜' + r.hi.toFixed(1) + '万円</td>' +
+    '<td style="text-align:right"><b>' + (amt - r.hi).toFixed(1) + '〜' + (amt - r.lo).toFixed(1) + '万円</b></td></tr>').join('');
+}
+</script>
+""".replace('__SIM_ROWS__', _sim_rows()).replace('__SIM_JSON__', SIM_JSON)
+
+_MAP_POS = [
+    ('日本政策金融公庫', 0, 2), ('信用保証協会付き融資', 0, 1), ('マル経融資', 0, 1),
+    ('制度融資', 0, 3), ('銀行融資（プロパー）', 0, 1),
+    ('ビジネスローン', 1, 0), ('事業者向けカードローン', 1, 0), ('不動産担保ローン', 1, 1),
+    ('ABL', 1, 1), ('請求書カード払い・B2B掛け払い', 1, 0),
+    ('ファクタリング（3社間）', 1, 0), ('ファクタリング（2社間）', 2, 0), ('注文書ファクタリング', 2, 0),
+    ('手形割引', 1, 0), ('リースと割賦', 1, 2), ('補助金', 0, 3),
+]
+def _method_map_svg(w=640, h=380):
+    pad_l, pad_t, pad_b, pad_r = 86, 16, 40, 12
+    iw, ih = w - pad_l - pad_r, h - pad_t - pad_b
+    cw, ch = iw / 4, ih / 3
+    cells = {}
+    for name, c, s in _MAP_POS:
+        cells.setdefault((c, s), []).append(name)
+    out = [f'<svg viewBox="0 0 {w} {h}" width="100%" role="img" aria-label="手法マップ">']
+    for c in range(3):
+        for s in range(4):
+            x, y = pad_l + s * cw, pad_t + c * ch
+            fill = '#F3F9F7' if (c + s) % 2 == 0 else '#FFFFFF'
+            out.append(f'<rect x="{x:.0f}" y="{y:.0f}" width="{cw:.0f}" height="{ch:.0f}" fill="{fill}" stroke="#E0ECE8"/>')
+    for (c, s), names in cells.items():
+        x = pad_l + s * cw + cw / 2
+        y0 = pad_t + c * ch + ch / 2 - (len(names) - 1) * 11
+        for i, n in enumerate(names):
+            out.append(f'<text x="{x:.0f}" y="{y0 + i * 22:.0f}" text-anchor="middle" font-size="12" font-weight="700" fill="#0F4C40">{html.escape(n)}</text>')
+    for s, lab in enumerate(['即日〜数日', '1〜2週間', '3週間〜1か月', '1か月以上']):
+        out.append(f'<text x="{pad_l + s * cw + cw / 2:.0f}" y="{h - 14}" text-anchor="middle" font-size="11.5" fill="#5C6B66">入金まで：{lab}</text>')
+    for c, lab in enumerate(['費用が低い（金利・保証料）', '中間', '費用が高い（手数料）']):
+        yy = pad_t + c * ch + ch / 2
+        out.append(f'<text x="14" y="{yy:.0f}" font-size="11.5" fill="#5C6B66" transform="rotate(-90 16 {yy:.0f})" text-anchor="middle">{lab}</text>')
+    out.append('</svg>')
+    return ''.join(out)
+
+
 body = f"""
 <div class="hero">
 <div class="wrap"><div class="hero-in">
@@ -1103,6 +1226,8 @@ body = f"""
 </div>
 </section>
 
+{SIM_SECTION}
+
 <section>
 <p class="eyebrow dark">BY SITUATION</p>
 <h2 class="sec">今の状態に近いところから、進め方が分かります</h2>
@@ -1151,6 +1276,7 @@ body = f"""
 <p class="eyebrow dark">METHODS</p>
 <h2 class="sec">手法ごとに、費用と期間を比べます</h2>
 <p class="sec-sub">全24手法の定義と、入金までの期間、費用の目安です。</p>
+<div class="map-panel">{_method_map_svg()}<p class="note" style="margin:8px 0 0">主な手法の位置づけです。費用の水準と入金までの期間の帯に、手法DBの公表記述に基づいて分類しています。個別の条件は手法ごとに変わります。</p></div>
 <p class="scroll-hint">横にスクロールできます →</p>
 <div class="hscroll">{method_cards}</div>
 </section>

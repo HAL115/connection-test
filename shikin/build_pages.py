@@ -38,6 +38,109 @@ METHOD_GROUPS = [
 ]
 MID_GROUP = {mid: g for g, mids in METHOD_GROUPS for mid in mids}
 
+# ---------- 視覚化（公表レーダー／条件バンド） ----------
+import math as _math
+import statistics as _stats
+
+def _dep2(lo, hi):
+    if lo and hi:
+        return 2
+    if lo or hi:
+        return 1
+    return 0
+
+def _dep1(v):
+    return 2 if (v or '').strip() else 0
+
+def _svc_axes(s):
+    return [('費用', _dep2(s.get('fee_lo'), s.get('fee_hi'))),
+            ('金額', _dep2(s.get('amt_lo'), s.get('amt_hi'))),
+            ('入金スピード', _dep1(s.get('speed'))),
+            ('契約の条件', 2 if ((s.get('recourse') or '').strip() or (s.get('registry') or '').strip()) else 0),
+            ('実績', _dep1(s.get('results')))]
+
+def _radar_svg(axes, score, size=264):
+    cx = cy = size / 2
+    R = size / 2 - 46
+    def _pt(i, v):
+        ang = -_math.pi / 2 + i * 2 * _math.pi / 5
+        r = R * v / 2
+        return (cx + r * _math.cos(ang), cy + r * _math.sin(ang))
+    rings = ''
+    for lv in (1, 2):
+        rp = []
+        for i in range(5):
+            ang = -_math.pi / 2 + i * 2 * _math.pi / 5
+            r = R * lv / 2
+            rp.append(f'{cx + r * _math.cos(ang):.1f},{cy + r * _math.sin(ang):.1f}')
+        rings += f'<polygon points="{" ".join(rp)}" fill="none" stroke="#E0ECE8" stroke-width="1"/>'
+    spokes, labels = '', ''
+    for i, (label, v) in enumerate(axes):
+        ang = -_math.pi / 2 + i * 2 * _math.pi / 5
+        x2, y2 = cx + R * _math.cos(ang), cy + R * _math.sin(ang)
+        spokes += f'<line x1="{cx}" y1="{cy}" x2="{x2:.1f}" y2="{y2:.1f}" stroke="#E0ECE8"/>'
+        lx, ly = cx + (R + 22) * _math.cos(ang), cy + (R + 18) * _math.sin(ang)
+        anchor = 'middle'
+        if _math.cos(ang) > 0.3:
+            anchor = 'start'
+        elif _math.cos(ang) < -0.3:
+            anchor = 'end'
+        labels += f'<text x="{lx:.1f}" y="{ly:.1f}" text-anchor="{anchor}" font-size="11.5" font-weight="700" fill="#182420">{label}<tspan fill="#0F7A68"> {v}/2</tspan></text>'
+    pts = [_pt(i, v) for i, (label, v) in enumerate(axes)]
+    poly = ' '.join(f'{x:.1f},{y:.1f}' for x, y in pts)
+    dots = ''.join(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="3.5" fill="#14957F"/>' for x, y in pts)
+    return (f'<svg viewBox="0 0 {size} {size}" width="100%" role="img" aria-label="公表レーダーチャート">'
+            f'{rings}{spokes}<polygon points="{poly}" fill="rgba(20,149,127,.18)" stroke="#14957F" stroke-width="2"/>'
+            f'{dots}{labels}'
+            f'<text x="{cx}" y="{cy - 2}" text-anchor="middle" font-size="10.5" fill="#5C6B66">透明性スコア</text>'
+            f'<text x="{cx}" y="{cy + 20}" text-anchor="middle" font-size="22" font-weight="700" fill="#0F7A68" font-family="Jost">{score}<tspan font-size="12" fill="#5C6B66">/5</tspan></text></svg>')
+
+_DEP_TXT = {2: '下限と上限まで公表', 1: '一部を公表', 0: '公表を確認できていません'}
+
+def _radar_block(axes, score, heading_note):
+    arows = ''.join(f'<tr><td>{html.escape(lab)}</td><td>{v}／2（{_DEP_TXT[v]}）</td></tr>' for lab, v in axes)
+    return (f'<h2>公表の充実度（レーダー）</h2>'
+            f'<p>{heading_note}評価ではなく、公式がどこまで数字を出しているかを数えたものです。公表が薄い項目は、申し込みの前に書面で確認してください。</p>'
+            f'<div class="viz"><div class="viz-svg">{_radar_svg(axes, score)}</div>'
+            f'<div class="viz-tbl"><table><tr><th>項目</th><th>公表の深さ</th></tr>{arows}</table></div></div>')
+
+def _pctnum(v):
+    m = re.search(r'([0-9]+(?:\.[0-9]+)?)', v or '')
+    return float(m.group(1)) if m else None
+
+_fee_dist = {}
+for _s in services:
+    if _s.get('status') in ('廃業・撤退', '重複'):
+        continue
+    _h = _pctnum(_s.get('fee_hi'))
+    if _h is not None and '%' in (_s.get('fee_hi') or ''):
+        _fee_dist.setdefault(_s['method'], []).append(_h)
+for _k in _fee_dist:
+    _fee_dist[_k] = sorted(_fee_dist[_k])
+
+def _fee_band(s):
+    dist = _fee_dist.get(s['method'], [])
+    flo, fhi = _pctnum(s.get('fee_lo')), _pctnum(s.get('fee_hi'))
+    if len(dist) < 5 or flo is None or fhi is None or '%' not in (s.get('fee_hi') or ''):
+        return ''
+    med = _stats.median(dist)
+    lo_all, hi_all = dist[0], dist[-1]
+    W = 560
+    scale = hi_all * 1.05 or 1
+    def X(v):
+        return 8 + (W - 16) * v / scale
+    ftype = s.get('fee_type') or '費用'
+    mname = methods.get(s['method'], {}).get('name', '')
+    return (f'<h3>{ftype}の位置（同じ手法の中での幅）</h3>'
+            f'<div class="band-wrap"><svg viewBox="0 0 {W} 92" width="100%" role="img" aria-label="{ftype}バンド">'
+            f'<rect x="{X(lo_all):.0f}" y="30" width="{max(X(hi_all) - X(lo_all), 4):.0f}" height="16" rx="8" fill="#E9F5F1"/>'
+            f'<line x1="{X(med):.0f}" y1="22" x2="{X(med):.0f}" y2="54" stroke="#D97706" stroke-width="2.5"/>'
+            f'<text x="{X(med):.0f}" y="14" text-anchor="middle" font-size="12" font-weight="700" fill="#B45309">上限の中央値 {med:g}%</text>'
+            f'<rect x="{X(flo):.0f}" y="30" width="{max(X(fhi) - X(flo), 6):.0f}" height="16" rx="8" fill="#14957F"/>'
+            f'<text x="{X(flo):.0f}" y="66" font-size="12.5" font-weight="700" fill="#182420">このサービス：{ftype} {html.escape(s.get("fee_lo") or "")}〜{html.escape(s.get("fee_hi") or "")}</text>'
+            f'<text x="{X(hi_all):.0f}" y="66" text-anchor="end" font-size="11.5" fill="#5C6B66">{mname}の上限の分布 {lo_all:g}%〜{hi_all:g}%（公表 {len(dist)}件）</text></svg></div>'
+            f'<p class="note">帯は、同じ手法の収録サービスのうち上限を公表しているものの幅です。位置は条件の良し悪しではなく、公表値の分布の中での位置です。</p>')
+
 import os as _os
 PROFILES = {}
 if _os.path.exists(BASE + '/site/profiles.json'):
@@ -305,6 +408,14 @@ for e0 in entities:
     if _svc_results:
         rlis = ''.join(f'<li>{esc(s["name"])}：{esc(s["results"])}</li>' for s in _svc_results)
         results_block = f'<h3>実績（公式の公表値）</h3><ul>{rlis}</ul>'
+    _ent_radar = ''
+    if svcs:
+        _labels = ['費用', '金額', '入金スピード', '契約の条件', '実績']
+        _agg = []
+        for _i, _lab in enumerate(_labels):
+            _agg.append((_lab, max(_svc_axes(_s)[_i][1] for _s in svcs)))
+        _ent_radar = _radar_block(_agg, esc(e['score']) if e['score'] else '―',
+                                  'この会社が提供するサービスのうち、最も公表が厚いものの深さです。')
     biz_block = (f'<h2>事業内容</h2><p>{esc(e["_business"])}</p>' if e.get('_business')
                  else '<h2>事業内容</h2><p>事業内容の詳しい公表は確認できていません。提供しているサービスは、このページの下の一覧のとおりです。</p>')
     body = f"""
@@ -324,6 +435,7 @@ for e0 in entities:
 {pub_block}
 {results_block}
 {review_block}
+{_ent_radar}
 <p><a href="https://www.google.com/maps/search/?api=1&query={gmap_q}" rel="nofollow noopener" target="_blank">Googleマップでこの会社と口コミを見る</a></p>
 <h2>提供しているサービス（{len(svcs)}件）</h2>
 {svc_rows if svc_rows else '<p>現在、収録しているサービスはありません。</p>'}
@@ -491,6 +603,8 @@ for s in services:
 {pr}
 <h2>条件</h2>
 {rows}
+{_radar_block(_svc_axes(s), esc(s.get('score', '') or e.get('score', '') or '―'), 'このサービスが公式に公表している項目の深さを、5つの軸で見たものです。')}
+{_fee_band(s)}
 {features}
 {ent_block}
 {rel_svcs}
