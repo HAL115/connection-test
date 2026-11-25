@@ -764,6 +764,7 @@ for mid in sorted(compare_methods):
 <div class="tblwrap"><table class="wide"><tr><th>サービス</th><th>運営会社</th><th>手数料</th><th>入金スピード</th><th>金額</th><th>事業形態</th><th>透明性</th></tr>{trs}</table></div>
 {_cb}
 {_cguide}
+<p><a href="../compare-tool.html">比較ツールで、気になるサービスを最大4社まで並べて比べる</a>（手法をまたいだ比較もできます）</p>
 {f'<h2>仲介・紹介のサービス（{len(inter)}件）</h2>' + inter_rows if inter else ''}
 {build.CTA_BOX}
 """
@@ -839,6 +840,136 @@ if 'observation.html' not in urls:
     urls.append('observation.html')
 if 'methods/index.html' not in urls:
     urls.append('methods/index.html')
+
+# ---------- cost index & compare tool ----------
+_active = [s for s in services if s.get('status') not in ('廃業・撤退', '重複')]
+_checked_max = max((s.get('checked') or '') for s in services)
+
+def _share2(pred, pool):
+    return round(100 * sum(1 for x in pool if pred(x)) / len(pool)) if pool else 0
+
+def _score_of(x):
+    v = x.get('score') or ent_by_id.get(x['entity_id'], {}).get('score') or ''
+    return int(v) if str(v).isdigit() else 0
+
+_ci_rows = ''
+_ci_medians = []
+for _mid, _m in methods.items():
+    _pool = [s for s in _active if s['method'] == _mid]
+    if not _pool:
+        continue
+    _dist = _fee_dist.get(_mid, [])
+    _med = _stats.median(_dist) if len(_dist) >= 5 else None
+    if _med is not None:
+        _ci_medians.append((_m['name'], _med))
+    _ci_rows += (f'<tr><td><a href="methods/{build.mslug(_mid)}.html">{esc(_m["name"])}</a></td>'
+                 f'<td>{len(_pool)}件</td><td>{("%g%%" % _med) if _med is not None else "―"}</td>'
+                 f'<td>{_share2(lambda x: x.get("fee_lo") and x.get("fee_hi"), _pool)}%</td>'
+                 f'<td>{_share2(lambda x: x.get("amt_lo") and x.get("amt_hi"), _pool)}%</td>'
+                 f'<td>{_share2(lambda x: x.get("speed"), _pool)}%</td>'
+                 f'<td>{sum(1 for x in _pool if _score_of(x) >= 4)}件</td></tr>')
+_m13 = [s for s in _active if s['method'] == 'M13']
+_m13_fb = _share2(lambda x: x.get('fee_lo') and x.get('fee_hi'), _m13)
+_m13_rec_none = sum(1 for x in _m13 if 'なし' in (x.get('recourse') or ''))
+_m13_rec_unpub = sum(1 for x in _m13 if not x.get('recourse'))
+_all_fb = _share2(lambda x: x.get('fee_lo') and x.get('fee_hi'), _active)
+_lo_m = min(_ci_medians, key=lambda t: t[1])
+_hi_m = max(_ci_medians, key=lambda t: t[1])
+_rv_total = sum(v.get('count', 0) for v in REVIEWS.values())
+_ci_body = f"""
+<p class="note"><a href="index.html">トップ</a> ／ 資金調達コスト・インデックス</p>
+<h1>資金調達コスト・インデックス</h1>
+<p>このサイトが収録している{len(_active)}のサービスについて、各社が公式に公表している費用と条件を手法ごとに集計したものです。数字は{_checked_max}時点の公表値に基づきます。「相場」を知りたいときの出発点として、また、公表がどこまで進んでいるかを見る物差しとして公開します。</p>
+<h2 class="sec">集計で見えること</h2>
+<ul>
+<li>ファクタリング（2社間）の収録{len(_m13)}件で、手数料の下限と上限がそろって公表されているのは{_m13_fb}%です。償還請求権は「なし」と公表しているのが{_m13_rec_none}件で、公表自体がない会社が{_m13_rec_unpub}件あります。</li>
+<li>手数料・費用の上限の中央値（公表が5件以上ある手法どうしの比較）では、最も低いのが「{_lo_m[0]}」の{_lo_m[1]:g}%、最も高いのが「{_hi_m[0]}」の{_hi_m[1]:g}%です。</li>
+<li>収録サービス全体では、手数料の下限と上限がそろって公表されているのは{_all_fb}%にとどまります。費用の幅が見えないまま申し込む構造が、数字のうえでも確認できます。</li>
+</ul>
+<h2 class="sec">手法ごとの集計</h2>
+<div class="tblwrap"><table class="wide"><tr><th>手法</th><th>収録</th><th>手数料・費用の上限の中央値</th><th>手数料の両方を公表</th><th>金額の両方を公表</th><th>入金スピードを公表</th><th>透明性スコア4以上</th></tr>{_ci_rows}</table></div>
+<p class="note">中央値は、その手法の収録サービスのうち上限を公表しているものの中央値です。公表が5件未満の手法は算出していません。中央値や公表率は条件の良し悪しを示すものではありません。個別のサービスの条件は、各手法の比較ページとサービスのページで確認できます。</p>
+<h2 class="sec">集計の方法</h2>
+<p>対象は、このサイトが収録しているサービスのうち、現在利用できる{len(_active)}件です。各社が公式サイトで公表している値を当サイトが記録し、手法ごとに集計しました。公表されていない項目は推定で埋めていません。あわせて、Googleマップの口コミは{_rv_total:,}件を集計し、各会社ページに評価と件数を表示しています。集計の前提は<a href="about.html">運営者情報</a>にも書いています。</p>
+{build.CTA_BOX}
+"""
+_ci_ld = json.dumps({'@context': 'https://schema.org', '@type': 'Dataset', 'name': '資金調達コスト・インデックス',
+                     'description': '資金調達の手法ごとに、各社の公式公表値から費用の中央値と公表率を集計したデータ。',
+                     'dateModified': _checked_max, 'publisher': {'@type': 'Organization', 'name': '合同会社MELSY'}}, ensure_ascii=False)
+with open(f'{OUT}/cost-index.html', 'w') as f:
+    f.write(build.page('資金調達コスト・インデックス｜手法ごとの費用の中央値と公表率', _ci_body, desc='資金調達の手法ごとに、各社の公式公表値から手数料の中央値と公表率を集計したインデックス。相場と公表の進み具合を見る物差しです。', ld=_ci_ld, path='cost-index.html'))
+urls.append('cost-index.html')
+
+def _rng(lo, hi):
+    if lo and hi:
+        return f'{lo}〜{hi}'
+    return lo or hi or '公表なし'
+
+_tool = []
+for _s in _active:
+    _e = ent_by_id.get(_s['entity_id'], {})
+    _aff = AFF.get(_s['id'])
+    _rv = REVIEWS.get(_s['entity_id'])
+    _fee = _rng(_s.get('fee_lo', ''), _s.get('fee_hi', ''))
+    if _fee != '公表なし' and _s.get('fee_type'):
+        _fee += f'（{_s["fee_type"]}）'
+    _scv = _s.get('score') or _e.get('score') or ''
+    _tool.append({'id': _s['id'], 'name': _s['name'], 'ent': _s['entity'],
+                  'mid': methods.get(_s['method'], {}).get('name', ''),
+                  'fee': _fee, 'spd': _s.get('speed') or '公表なし',
+                  'amt': _rng(_s.get('amt_lo', ''), _s.get('amt_hi', '')),
+                  'con': _s.get('contract') or '公表なし', 'rec': _s.get('recourse') or '公表なし',
+                  'reg': _s.get('registry') or '公表なし', 'onl': _s.get('online') or '公表なし',
+                  'sc': (f'{_scv} / 5' if _scv != '' else '―'),
+                  'rv': (f'★{_rv["rating"]}（{_rv["count"]}件）' if _rv and _rv.get('count') else '集計なし'),
+                  'url': (_aff or {}).get('url') or _s.get('url') or '',
+                  'aff': 1 if _aff else 0,
+                  'page': f'services/{_s["id"].lower()}.html'})
+_tool_js = """
+<p class="note"><a href="index.html">トップ</a> ／ 比較ツール</p>
+<h1>サービス比較ツール</h1>
+<p>気になるサービスを最大4つまで選ぶと、条件を横並びで比べられます。手法をまたいだ比較もできます。数字は各社の公式の公表に基づきます。</p>
+__PR__
+<input class="tool-search" id="tq" type="search" placeholder="サービス名・会社名・手法で探す" autocomplete="off">
+<div class="tool-results" id="tres"></div>
+<div class="tool-sel" id="tsel"></div>
+<div class="tblwrap"><table class="wide" id="ttbl"></table></div>
+<p class="note">「公表なし」は、その項目の公表を確認できていないという意味で、条件の良し悪しではありません。詳しい条件と確認日は、各サービスのページにあります。</p>
+__CTA__
+<script>
+var DATA = __DATA__;
+var sel = [];
+var ROWS = [['運営会社','ent'],['手法','mid'],['費用','fee'],['入金スピード','spd'],['金額','amt'],['契約方式','con'],['償還請求権','rec'],['債権譲渡登記','reg'],['オンライン完結','onl'],['透明性スコア','sc'],['Google口コミ','rv']];
+function byId(id){ for (var i=0;i<DATA.length;i++) if (DATA[i].id===id) return DATA[i]; return null; }
+function render(){
+  var chips = document.getElementById('tsel');
+  chips.innerHTML = sel.map(function(id){ var d=byId(id); return '<span class="tool-chip">'+d.name+'<button data-rm="'+id+'" aria-label="外す">×</button></span>'; }).join('');
+  var tbl = document.getElementById('ttbl');
+  if (!sel.length){ tbl.innerHTML=''; return; }
+  var h = '<tr><th>項目</th>' + sel.map(function(id){ var d=byId(id); return '<th><a href="'+d.page+'">'+d.name+'</a></th>'; }).join('') + '</tr>';
+  ROWS.forEach(function(r){ h += '<tr><th>'+r[0]+'</th>' + sel.map(function(id){ return '<td>'+byId(id)[r[1]]+'</td>'; }).join('') + '</tr>'; });
+  h += '<tr><th>公式サイト</th>' + sel.map(function(id){ var d=byId(id); return '<td>'+(d.url?'<a href="'+d.url+'" rel="'+(d.aff?'sponsored nofollow noopener':'nofollow noopener')+'" target="_blank">公式サイトをチェック</a>':'―')+'</td>'; }).join('') + '</tr>';
+  tbl.innerHTML = h;
+  chips.querySelectorAll('button').forEach(function(b){ b.onclick = function(){ sel = sel.filter(function(x){ return x !== b.getAttribute('data-rm'); }); render(); }; });
+}
+var q = document.getElementById('tq');
+q.addEventListener('input', function(){
+  var v = q.value.trim().toLowerCase(); var box = document.getElementById('tres');
+  if (!v){ box.innerHTML=''; return; }
+  var hits = DATA.filter(function(d){ return (d.name+' '+d.ent+' '+d.mid).toLowerCase().indexOf(v) >= 0 && sel.indexOf(d.id) < 0; }).slice(0, 12);
+  box.innerHTML = hits.map(function(d){ return '<button class="tool-hit" data-add="'+d.id+'"><span>'+d.name+'<small>（'+d.ent+'／'+d.mid+'）</small></span><span class="tool-add">＋ 追加</span></button>'; }).join('') || '<p class="note">見つかりませんでした。</p>';
+  box.querySelectorAll('button').forEach(function(b){ b.onclick = function(){ if (sel.length >= 4){ alert('比べられるのは4つまでです'); return; } sel.push(b.getAttribute('data-add')); q.value=''; box.innerHTML=''; render(); }; });
+});
+var pre = new URLSearchParams(location.search).get('s');
+if (pre){ sel = pre.split(',').filter(function(id){ return byId(id); }).slice(0,4); }
+render();
+</script>
+"""
+_tool_body = _tool_js.replace('__DATA__', json.dumps(_tool, ensure_ascii=False)).replace('__PR__', PR_NOTICE).replace('__CTA__', build.CTA_BOX)
+with open(f'{OUT}/compare-tool.html', 'w') as f:
+    f.write(build.page('サービス比較ツール｜最大4社を並べて比べる', _tool_body, desc='資金調達サービスを最大4社まで選んで、費用、入金スピード、金額、契約の条件を横並びで比べられるツールです。', path='compare-tool.html'))
+urls.append('compare-tool.html')
+
 
 # ---------- sitemap ----------
 BASE_URL = 'https://kensetusikinnavi.net/'

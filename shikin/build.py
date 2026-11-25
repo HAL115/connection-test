@@ -263,6 +263,15 @@ body.menu-open{overflow:hidden}
 .sec .cnt{font-size:14px;color:var(--primary-deep);background:var(--chip);border-radius:999px;padding:2px 11px;margin-left:10px;vertical-align:middle}
 .all-list{columns:290px;column-gap:28px}
 .all-list li{break-inside:avoid}
+.tool-search{width:100%;padding:13px 16px;font-size:16px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);box-sizing:border-box}
+.tool-results{margin-top:10px;display:flex;flex-direction:column;gap:6px}
+.tool-hit{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-size:14.5px;text-align:left;cursor:pointer;width:100%;color:var(--ink)}
+.tool-hit:hover{border-color:var(--primary)}
+.tool-hit small{color:var(--sub)}
+.tool-add{flex:none;background:var(--chip);color:var(--primary-deep);font-weight:700;border-radius:999px;padding:3px 11px;font-size:12.5px}
+.tool-sel{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.tool-chip{background:var(--primary);color:#fff;border-radius:999px;padding:6px 8px 6px 14px;font-size:13.5px;font-weight:700;display:flex;align-items:center;gap:8px}
+.tool-chip button{background:rgba(255,255,255,.25);border:none;color:#fff;border-radius:999px;width:20px;height:20px;cursor:pointer;line-height:1}
 .viz{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;margin:14px 0}
 .viz-svg{flex:0 1 264px;max-width:264px}
 .viz-tbl{flex:1 1 260px;min-width:240px}
@@ -488,10 +497,11 @@ def footer_cols(prefix):
     pillars = links([(f'{prefix}articles/{sl}', ART_TITLES[sl]) for sl in PILLAR_SLUGS])
     meths = links([(f'{prefix}methods/{mslug(mm["id"])}.html', mm['name']) for mm in methods])
     comps = links([(f'{prefix}compare/{mslug(mid)}.html', next(mm['name'] for mm in methods if mm['id'] == mid) + 'のサービス比較') for mid in COMPARE_MIDS])
+    extra = links([(f'{prefix}compare-tool.html', '比較ツール（最大4社まで）'), (f'{prefix}cost-index.html', '資金調達コスト・インデックス'), (f'{prefix}companies/index.html', '運営会社の一覧'), (f'{prefix}observation.html', '観測の記録')])
     return (f'<div class="fcols"><div class="flist"><a class="fhead" href="{prefix}articles/index.html#basics">基礎知識（仕組みの根幹）</a>{basics}</div>'
             f'<div class="flist"><a class="fhead" href="{prefix}articles/index.html#guides">状態別の進め方</a>{pillars}</div>'
             f'<div class="flist"><a class="fhead" href="{prefix}methods/index.html">手法ガイド</a>{meths}</div>'
-            f'<div class="flist"><span class="fhead">サービスの比較</span>{comps}</div></div>')
+            f'<div class="flist"><span class="fhead">サービスの比較</span>{comps}{extra}</div></div>')
 
 def rel_box(slug):
     basics = ''.join(f'<li><a href="{s2}">{html.escape(ART_TITLES[s2])}</a></li>' for s2 in BASICS_SLUGS if s2 != slug)
