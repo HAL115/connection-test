@@ -876,6 +876,74 @@ _all_fb = _share2(lambda x: x.get('fee_lo') and x.get('fee_hi'), _active)
 _lo_m = min(_ci_medians, key=lambda t: t[1])
 _hi_m = max(_ci_medians, key=lambda t: t[1])
 _rv_total = sum(v.get('count', 0) for v in REVIEWS.values())
+
+def _amt_man(v):
+    if not v:
+        return None
+    total = 0.0
+    found = False
+    m = re.search(r'([0-9,]+(?:\.[0-9]+)?)億', v)
+    if m:
+        total += float(m.group(1).replace(',', '')) * 10000
+        found = True
+    m = re.search(r'([0-9,]+(?:\.[0-9]+)?)万', v)
+    if m:
+        total += float(m.group(1).replace(',', ''))
+        found = True
+    return total if found else None
+
+def _man_fmt(x):
+    if x >= 10000:
+        return f'{x / 10000:g}億円'
+    return f'{x:g}万円'
+
+def _amt_med(mid):
+    vals = [_amt_man(s.get('amt_hi')) for s in _active if s['method'] == mid]
+    vals = [v for v in vals if v]
+    return _stats.median(vals) if len(vals) >= 3 else None
+
+_sell = [s for s in _active if s['method'] in ('M13', 'M14', 'M15', 'M16', 'M17')]
+_sell_rec = sum(1 for s in _sell if s.get('recourse'))
+_sell_reg = sum(1 for s in _sell if s.get('registry'))
+_onl_n = sum(1 for s in _active if s.get('online'))
+_res_n = sum(1 for s in _active if s.get('results'))
+_med13 = _stats.median(_fee_dist['M13'])
+_am13 = _amt_med('M13')
+_am16 = _amt_med('M16')
+_am07 = _amt_med('M07')
+_am09 = _amt_med('M09')
+_onl24 = _share2(lambda x: x.get('online'), [s for s in _active if s['method'] == 'M24'])
+_onl09 = _share2(lambda x: x.get('online'), [s for s in _active if s['method'] == 'M09'])
+_onl13 = _share2(lambda x: x.get('online'), _m13)
+_fb16 = _share2(lambda x: x.get('fee_lo') and x.get('fee_hi'), [s for s in _active if s['method'] == 'M16'])
+_med24 = _stats.median(_fee_dist['M24'])
+_ci_extra = f"""
+<h2 class="sec">全体の数字</h2>
+<p>収録しているのは、現在利用できる{len(_active)}のサービスと、その運営会社{len(entities)}社です。手数料の下限と上限がそろって公表されているのは全体の{_all_fb}%、オンラインで完結すると公表しているのは{_onl_n}件（{_share2(lambda x: x.get('online'), _active)}%）、実績の数字を公表しているのは{_res_n}件（{_share2(lambda x: x.get('results'), _active)}%）です。売掛金を扱う手法（ファクタリングと電子記録債権の売却、計{len(_sell)}件）では、償還請求権の扱いを公表しているのが{_sell_rec}件、債権譲渡登記の扱いを公表しているのが{_sell_reg}件にとどまります。Googleマップの口コミは、所在地まで確認できた会社を中心に{_rv_total:,}件を集計しています。</p>
+<h2 class="sec">手法別の読み取り</h2>
+<p><b>ファクタリング（2社間）</b>：収録{len(_m13)}件と、手法の中で最も厚い層です。手数料の上限の中央値は{_med13:g}%（公表{len(_fee_dist['M13'])}件）、金額の上限の中央値は{_man_fmt(_am13)}です。オンライン完結の公表は{_onl13}%で、償還請求権は「なし」と公表しているのが{_m13_rec_none}件あります。</p>
+<p><b>診療報酬・介護報酬ファクタリング</b>：収録{len([s for s in _active if s['method'] == 'M16'])}件。手数料の下限と上限がそろって公表されているのは{_fb16}%で、主要な手法の中で最も低い水準です。金額の上限の中央値は{_man_fmt(_am16)}です。</p>
+<p><b>請求書カード払い・B2B掛け払い</b>：収録{len([s for s in _active if s['method'] == 'M24'])}件。手数料の上限の中央値は{_med24:g}%と低く、オンライン完結の公表は{_onl24}%です。申し込みから支払いまでをオンラインで完結させる設計のサービスが集まっています。</p>
+<p><b>ビジネスローン</b>：収録{len([s for s in _active if s['method'] == 'M07'])}件。費用は手数料ではなく金利で決まります。金額の上限の中央値は{_man_fmt(_am07)}です。</p>
+<p><b>不動産担保ローン</b>：収録{len([s for s in _active if s['method'] == 'M09'])}件。金額の上限の中央値は{_man_fmt(_am09)}と大きい一方、オンライン完結の公表は{_onl09}%で、対面と書類の手続きが前提の手法です。</p>
+<h2 class="sec">よくある質問</h2>
+<h3>ファクタリングの手数料の相場はいくらですか</h3>
+<p>2社間ファクタリングの収録{len(_m13)}件で、手数料の上限を公表している{len(_fee_dist['M13'])}件の中央値は{_med13:g}%です。ただし、下限と上限の両方を公表しているのは{_m13_fb}%で、残りは見積もりを取るまで幅が分かりません。相場の数字だけで判断せず、幅の見える会社から比べるのが安全です。</p>
+<h3>費用が妥当かどうかは、どこで判断できますか</h3>
+<p>手数料の上限だけでなく、下限と上限の幅、償還請求権の有無、債権譲渡登記の費用が別にかかるか、の3点で判断できます。このサイトの各サービスのページには、同じ手法の中での位置を文章と図で出しています。最大4社を並べる<a href="compare-tool.html">比較ツール</a>も使えます。</p>
+<h3>公表が特に少ない項目は何ですか</h3>
+<p>債権譲渡登記の扱い（売掛金を扱う{len(_sell)}件中{_sell_reg}件）と、償還請求権の扱い（同じく{_sell_rec}件）です。どちらも契約の条件を左右する項目ですが、公式サイトに書いていない会社が大半です。申し込みの前に、書面で確認してください。</p>
+<h3>この集計の数字は、どこから来ていますか</h3>
+<p>各社が公式サイトで公表している値を、当サイトが記録して集計したものです。公表されていない項目は推定で埋めていません。確認の方法と日付は、各サービスのページと<a href="about.html">運営者情報</a>に書いています。</p>
+"""
+_ci_faq_ld = {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [
+    {'@type': 'Question', 'name': 'ファクタリングの手数料の相場はいくらですか',
+     'acceptedAnswer': {'@type': 'Answer', 'text': f'2社間ファクタリングの収録{len(_m13)}件で、手数料の上限を公表している{len(_fee_dist["M13"])}件の中央値は{_med13:g}%です。下限と上限の両方を公表しているのは{_m13_fb}%です。'}},
+    {'@type': 'Question', 'name': '公表が特に少ない項目は何ですか',
+     'acceptedAnswer': {'@type': 'Answer', 'text': f'債権譲渡登記の扱い（売掛金を扱う{len(_sell)}件中{_sell_reg}件）と、償還請求権の扱い（同じく{_sell_rec}件）です。'}},
+    {'@type': 'Question', 'name': 'この集計の数字は、どこから来ていますか',
+     'acceptedAnswer': {'@type': 'Answer', 'text': '各社が公式サイトで公表している値を、当サイトが記録して集計したものです。公表されていない項目は推定で埋めていません。'}}]}
+
 _ci_body = f"""
 <p class="note"><a href="index.html">トップ</a> ／ 資金調達コスト・インデックス</p>
 <h1>資金調達コスト・インデックス</h1>
@@ -889,6 +957,7 @@ _ci_body = f"""
 <h2 class="sec">手法ごとの集計</h2>
 <div class="tblwrap"><table class="wide"><tr><th>手法</th><th>収録</th><th>手数料・費用の上限の中央値</th><th>手数料の両方を公表</th><th>金額の両方を公表</th><th>入金スピードを公表</th><th>透明性スコア4以上</th></tr>{_ci_rows}</table></div>
 <p class="note">中央値は、その手法の収録サービスのうち上限を公表しているものの中央値です。公表が5件未満の手法は算出していません。中央値や公表率は条件の良し悪しを示すものではありません。個別のサービスの条件は、各手法の比較ページとサービスのページで確認できます。</p>
+{_ci_extra}
 <h2 class="sec">集計の方法</h2>
 <p>対象は、このサイトが収録しているサービスのうち、現在利用できる{len(_active)}件です。各社が公式サイトで公表している値を当サイトが記録し、手法ごとに集計しました。公表されていない項目は推定で埋めていません。あわせて、Googleマップの口コミは{_rv_total:,}件を集計し、各会社ページに評価と件数を表示しています。集計の前提は<a href="about.html">運営者情報</a>にも書いています。</p>
 {build.CTA_BOX}
@@ -896,6 +965,7 @@ _ci_body = f"""
 _ci_ld = json.dumps({'@context': 'https://schema.org', '@type': 'Dataset', 'name': '資金調達コスト・インデックス',
                      'description': '資金調達の手法ごとに、各社の公式公表値から費用の中央値と公表率を集計したデータ。',
                      'dateModified': _checked_max, 'publisher': {'@type': 'Organization', 'name': '合同会社MELSY'}}, ensure_ascii=False)
+_ci_ld = json.dumps([json.loads(_ci_ld), _ci_faq_ld], ensure_ascii=False)
 with open(f'{OUT}/cost-index.html', 'w') as f:
     f.write(build.page('資金調達コスト・インデックス｜手法ごとの費用の中央値と公表率', _ci_body, desc='資金調達の手法ごとに、各社の公式公表値から手数料の中央値と公表率を集計したインデックス。相場と公表の進み具合を見る物差しです。', ld=_ci_ld, path='cost-index.html'))
 urls.append('cost-index.html')
