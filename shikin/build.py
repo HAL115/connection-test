@@ -482,6 +482,7 @@ SAMPLES = [
     ('../pillar/guide-akaji.md', 'guide-akaji.html', False),
     ('../pillar/guide-equipment.md', 'guide-equipment.html', False),
     ('../pillar/guide-subsidy-bridge.md', 'guide-subsidy-bridge.html', False),
+    ('../pillar/guide-institution-combo.md', 'guide-institution-combo.html', False),
     ('../pillar/guide-arv-delay.md', 'guide-arv-delay.html', False),
     ('../pillar/guide-urgent.md', 'guide-urgent.html', False),
     ('../pillar/guide-no-notify.md', 'guide-no-notify.html', False),
