@@ -40,7 +40,11 @@ MID_GROUP = {mid: g for g, mids in METHOD_GROUPS for mid in mids}
 
 CUT_DEFS = {
     'M13': [('factoring-recommend', 'おすすめ'), ('factoring-kojinn', '個人事業主向け'),
-            ('factoring-sokujitsu', '即日入金'), ('factoring-online', 'オンライン完結')],
+            ('factoring-sokujitsu', '即日入金'), ('factoring-online', 'オンライン完結'),
+            ('factoring-lowfee', '手数料が安い'), ('factoring-small', '少額から'),
+            ('factoring-large', '大口・高額'), ('factoring-weekend', '土日・24時間対応')],
+    'M14': [('factoring3-recommend', 'おすすめ')],
+    'M15': [('order-recommend', 'おすすめ')],
     'M07': [('businessloan-recommend', 'おすすめ'), ('businessloan-kojinn', '個人事業主向け')],
     'M09': [('realestate-recommend', 'おすすめ')],
     'M24': [('cardpay-recommend', 'おすすめ'), ('cardpay-online', 'オンライン完結')],
@@ -871,6 +875,32 @@ def _rank_key(s):
     cap = _pctnum(s.get('fee_hi'))
     return (-_sc(s), -(rv.get('count', 0) if rv else 0), cap if cap is not None else 9999)
 
+def _amt_wan(v):
+    if not v:
+        return None
+    if '上限なし' in v:
+        return float('inf')
+    if '下限なし' in v:
+        return 0.0
+    total = 0.0
+    found = False
+    rest = v
+    oku = re.search(r'([\d.]+)\s*億', v)
+    if oku:
+        total += float(oku.group(1)) * 10000
+        found = True
+        rest = v.replace(oku.group(0), '')
+    man = re.search(r'([\d,]+)\s*万', rest)
+    if man:
+        total += float(man.group(1).replace(',', ''))
+        found = True
+    if found:
+        return total
+    yen = re.search(r'([\d,]+)\s*円', v)
+    if yen:
+        return float(yen.group(1).replace(',', '')) / 10000
+    return None
+
 def _is_fast(sp):
     sp = sp or ''
     return ('即日' in sp) or ('当日' in sp) or bool(re.search(r'最短\d+\s*分', sp)) or bool(re.search(r'最短\d+\s*時間', sp)) or ('数時間' in sp)
@@ -942,6 +972,42 @@ CUT_CONTENT = {
         'points': ['手数料の公表範囲を見る。公表がない会社は、見積もりで必ず料率の提示を受けてから比べる', '買取の対象（診療報酬のみか、介護報酬・調剤報酬を含むか）を確認する', '入金のタイミング（レセプト請求のサイクルとの関係）を確認する'],
         'faq': [('診療報酬の何割を買い取ってもらえますか？', '割合は会社ごとに公表が違います。各サービスのページの金額欄と特徴を確認してください。'), ('介護報酬も対象になりますか？', '対象に介護報酬を含む会社と、診療報酬だけの会社があります。各サービスのページの対象欄にあります。')],
     },
+    'factoring-lowfee': {
+        'label': '手数料が安い', 'sort': 'fee', 'filter': lambda s: __import__('re').search(r'\d', s.get('fee_hi') or '') is not None,
+        'intro': '手数料の上限を数値で公表している48件から、上限が低い順に15件を選んだ。上限が低い会社は「最も高い場合でもここまで」と分かるのが利点で、実際の料率も低いとは限らない（料率は売掛先の信用と金額で決まる）。公表していない会社はこの一覧に入っていない。比べるときは、上限の低さと、見積もりで提示された実際の料率の両方を見る。',
+        'points': ['下限でなく上限で比べる。下限は最も条件が良い場合の数字', '手数料以外の費用（債権譲渡登記の費用・印紙代・振込手数料）も総額で見る', '2社間は仕組み上、3社間より料率が高め。売掛先の承諾が取れる場合は3社間も比べる'],
+        'faq': [('一番上の会社が一番安いですか？', 'この順は公表している手数料の上限が低い順です。あなたの請求書に対する実際の料率は、見積もりでしか分かりません。複数社で見積もりを取って比べるのが確実です。'), ('手数料以外に費用はかかりますか？', '債権譲渡登記が必要な会社では登記の費用が、契約書には印紙代がかかる場合があります。各サービスのページと契約書で確認してください。')],
+    },
+    'factoring-small': {
+        'label': '少額から', 'sort': 'amtlo', 'filter': lambda s: True,
+        'intro': '買取金額の下限が低い順に並べた。ファクタリング（2社間）の収録121件には、下限なし・1万円からと公表する会社から、下限が数百万円の会社まである。請求書の金額が小さい場合は、まず下限で申し込める会社が限られる。並びは下限が低い順で、同額の場合は公表の充実度と口コミの件数の順。',
+        'points': ['自分の請求書の金額が下限以上かを確認する。下限未満は申し込めない', '少額では「最低手数料」を設定する会社で実質の料率が上がる場合がある。見積もりの総額で比べる', '下限なしの会社でも、売掛先の信用によっては買取できない場合がある'],
+        'faq': [('10万円の請求書でも使えますか？', '下限が10万円以下の会社なら申し込めます。この一覧は下限が低い順なので、上から確認してください。'), ('少額だと断られやすいですか？', '金額より売掛先の信用が軸になります。少額専門をうたう会社もあります。')],
+    },
+    'factoring-large': {
+        'label': '大口・高額', 'sort': 'amthi', 'filter': lambda s: True,
+        'intro': '買取金額の上限が高い順に並べた。上限なし・10億円超を公表する会社から順に載せている。大口の買取では、売掛先の信用調査がより丁寧に行われ、入金まで日数がかかる場合がある。並びは上限が高い順で、同額の場合は公表の充実度と口コミの件数の順。',
+        'points': ['上限は「買取できる最大」の公表で、実際の可否は売掛先の信用で決まる', '大口では手数料の料率が下がる会社が多い。金額が大きいほど料率の交渉余地も見る', '売掛先の承諾が取れる大口は、3社間の方が料率が低くなる場合がある'],
+        'faq': [('1億円以上の請求書でも買い取ってもらえますか？', '上限を1億円以上と公表する会社は複数あります。この一覧の上位は上限なし・10億円超の公表がある会社です。実際の可否は売掛先の信用調査によります。'), ('大口は入金まで時間がかかりますか？', '売掛先の確認に時間がかかる場合があります。各社の公表する入金スピードはサービスのページにあります。')],
+    },
+    'factoring-weekend': {
+        'label': '土日・24時間対応', 'filter': lambda s: any(w in (s.get('features') or '') for w in ('土日', '365日', '24時間')),
+        'intro': '特徴に「土日」「365日」「24時間」の対応を公式に書いている会社だけを集めた。ファクタリング（2社間）の収録121件のうち、明記しているのは5件と少ない。注意点として、「土日に振込対応」と「土日に審査・契約まで進む」は別の話で、各社の公表の範囲はサービスのページで確認してほしい。',
+        'points': ['何が土日に対応するのか（受付だけか、審査・振込までか）を確認する', '平日の締め時刻との関係を見る。金曜の遅い時間の申し込みは月曜扱いの会社がある', '急ぎの場合は、即日入金の切り口とあわせて見る'],
+        'faq': [('土日でも入金されますか？', '会社によります。「24時間365日振込対応」と公表する会社がある一方、受付だけ土日対応の会社もあります。各社の公表の範囲を確認してください。'), ('なぜ5件だけなのですか？', '公式の特徴に土日・24時間の対応を明記している会社だけを対象にしたためです。明記がなくても対応する会社はあります。')],
+    },
+    'factoring3-recommend': {
+        'label': 'おすすめ', 'filter': lambda s: True,
+        'intro': 'ファクタリング（3社間）の収録6件を全て載せた。3社間は売掛先の承諾を得て進める形で、手数料は2社間より低くなる（当サイトの集計では、手数料上限の中央値は3社間2.8%・2社間10%）。代わりに、売掛先に知られることと、入金まで日数がかかることが前提になる。並びは公表の充実度と口コミの件数の順で、「おすすめ順」ではない。',
+        'points': ['売掛先への承諾の取り方を確認する。会社が間に入って進める形が一般的', '入金までの日数を見る。承諾の手続きがある分、2社間より長くなる', '手数料の幅を見る。3社間でも会社ごとに差がある'],
+        'faq': [('売掛先に知られてしまいますか？', '3社間は売掛先の承諾が前提のため、知られます。知られたくない場合は2社間が選択肢になります。'), ('2社間との手数料の差はどれくらいですか？', '当サイトの集計では、手数料の上限の中央値が2社間10%に対して3社間2.8%です（公表値ベース）。実際の料率は請求書の内容で決まります。')],
+    },
+    'order-recommend': {
+        'label': 'おすすめ', 'filter': lambda s: True,
+        'intro': '注文書ファクタリングの収録7件を全て載せた。注文書ファクタリングは、請求書が発行される前の「受注した時点」で、注文書（発注書）を基に資金化する仕組み。通常のファクタリングより早い段階で資金が入る代わりに、対象の仕事や発注元の条件が問われる。並びは公表の充実度と口コミの件数の順で、「おすすめ順」ではない。',
+        'points': ['対象になる注文書の条件（発注元の法人格・金額）を確認する', '入金のタイミングを見る。発注の確定後すぐか、納品・検収の後かで大きく違う', '仕事が完了できなかった場合の扱い（返金の条件）を確認する'],
+        'faq': [('請求書がなくても使えますか？', 'はい。注文書ファクタリングは請求書の発行前、受注の段階で申し込む仕組みです。発注書や契約書が資料になります。'), ('どんな業種で使われますか？', '建設・製造・ITなど、受注から納品・請求までの期間が長い業種で使われます。')],
+    },
 }
 
 for _mid, _cuts in CUT_DEFS.items():
@@ -949,7 +1015,16 @@ for _mid, _cuts in CUT_DEFS.items():
     _pool_all = [s for s in svc_by_method.get(_mid, []) if s.get('status') not in ('廃業・撤退', '重複')]
     for _cslug, _clabel in _cuts:
         _cc = CUT_CONTENT[_cslug]
-        _pool = sorted([s for s in _pool_all if _cc['filter'](s)], key=_rank_key)[:_cc.get('limit', 15)]
+        _sk = _cc.get('sort', 'rank')
+        if _sk == 'fee':
+            _keyfn = lambda s: ((_pctnum(s.get('fee_hi')) if _pctnum(s.get('fee_hi')) is not None else 999),) + _rank_key(s)
+        elif _sk == 'amtlo':
+            _keyfn = lambda s: ((_amt_wan(s.get('amt_lo')) if _amt_wan(s.get('amt_lo')) is not None else float('inf')),) + _rank_key(s)
+        elif _sk == 'amthi':
+            _keyfn = lambda s: ((-(_amt_wan(s.get('amt_hi')) if _amt_wan(s.get('amt_hi')) is not None else -1),) + _rank_key(s))
+        else:
+            _keyfn = _rank_key
+        _pool = sorted([s for s in _pool_all if _cc['filter'](s)], key=_keyfn)[:_cc.get('limit', 15)]
         _cards = ''
         for i, s in enumerate(_pool):
             rv = REVIEWS.get(s.get('entity_id', ''), {})
@@ -968,10 +1043,13 @@ for _mid, _cuts in CUT_DEFS.items():
         _faq = list(_cc['faq']) + [(f'{_clabel}の{_cc.get("fee_name", "手数料")}の相場はどれくらいですか？', f'この{_pool.__len__()}件で{_cc.get("fee_name", "手数料")}の上限を公表している会社の中央値は{_med}です（当サイトの集計）。実際の条件は申込み内容と審査で決まるため、相場は目安として見てください。')]
         _faq_html = ''.join(f'<h3>{esc(q)}</h3><p>{esc(a)}</p>' for q, a in _faq)
         _pts = ''.join(f'<li>{esc(p)}</li>' for p in _cc['points'])
+        _chks = [s.get('checked') for s in _pool if s.get('checked')]
+        _chk_line = f'<p class="note">掲載の条件は各社の公式公表に基づき、{esc(max(_chks))} 時点で確認しています。</p>' if _chks else ''
         _others = '／'.join(f'<a href="{cs}.html">{esc(cl)}</a>' for cs, cl in _cuts if cs != _cslug)
         body_c = f"""
 <p class="note"><a href="../index.html">トップ</a> ／ <a href="../methods/{build.mslug(_mid)}.html">{esc(_m['name'])}</a> ／ {_clabel}</p>
 <h1>{esc(_m['name'])}の{_clabel} {_pool.__len__()}選</h1>
+{_chk_line}
 <p>{esc(_cc['intro'])}</p>
 <h2 class="sec">選ぶときに見る点</h2>
 <ul>{_pts}</ul>
