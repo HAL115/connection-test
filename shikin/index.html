@@ -105,6 +105,10 @@ h2.sec{font-size:26px;font-weight:900;letter-spacing:.03em;line-height:1.5;margi
 .step3 p{margin:8px 0 0;font-size:14px;color:var(--sub)}
 .result-head{background:var(--chip);border-radius:var(--radius);padding:22px 26px;margin-bottom:20px}
 .result-head b{font-size:20px;letter-spacing:.03em}
+.result-top{background:var(--chip);border-radius:var(--radius);padding:22px 26px;margin-bottom:20px}
+.result-top h3{margin:0 0 6px;font-size:23px;letter-spacing:.03em}
+.result-top ol{margin:8px 0 4px;padding-left:22px}
+.result-top ol li{margin:5px 0;font-size:16px}
 .mcard{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:22px 24px;margin:0 0 16px;box-shadow:var(--shadow)}
 .mcard h3{margin:0 0 6px;font-size:19px;letter-spacing:.03em}
 .kv{display:grid;grid-template-columns:92px 1fr;gap:5px 14px;font-size:15px;margin:12px 0}
@@ -330,18 +334,18 @@ footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-sp
 <section id="check">
 <p class="eyebrow dark">CHECK</p>
 <h2 class="sec">質問に答えるだけで、当たるべき順番が出ます</h2>
-<p class="sec-sub">費用の低い手法から順に確認します。条件が合えば少ない質問で終わり、合わない場合は次の手法へ進みます。</p>
+<p class="sec-sub">費用の低い手法から順に、全24手法を判定します。質問は最大で14問です。途中で止めて、その時点までの結果を見ることもできます。</p>
 <div class="panel" id="wiz">
 <div class="step-label" id="step-label">STEP 1 / 4</div>
 <div class="progress"><i id="progress-bar" style="width:0%"></i></div>
 <div class="wiz-q" id="wiz-q"></div>
 <div class="opts" id="wiz-opts"></div>
-<div class="wiz-nav"><button class="linkbtn" id="wiz-back" onclick="backStep()">← もどる</button><span class="note">選んだ内容は、結果の表示だけに使います</span></div>
+<div class="wiz-nav"><button class="linkbtn" id="wiz-back" onclick="backStep()">← もどる</button><button class="linkbtn" id="wiz-partial" onclick="showResult(true)" style="display:none">ここまでの結果を見る →</button><span class="note">選んだ内容は、結果の表示だけに使います</span></div>
 </div>
 <div id="result" style="display:none"></div>
 <iframe name="gform_sink" style="display:none" title="送信先"></iframe>
 <div class="steps3">
-<div class="step3 rv"><b><i>1</i>質問に答える</b><p>上位の手法から順に、審査で見られる条件を確認します。候補が見つかった段階で止めることもできます。</p></div>
+<div class="step3 rv"><b><i>1</i>質問に答える</b><p>上位の手法から順に、審査で見られる条件を確認します。途中で止めて、その時点までの結果を見ることもできます。</p></div>
 <div class="step3 rv"><b><i>2</i>間に合う手法と候補が出る</b><p>上位の系統から順に出ます。向かない手法も、理由つきで確認できます。</p></div>
 <div class="step3 rv"><b><i>3</i>現状シートを担当者へ渡す</b><p>結果と現状を1枚にまとめたシートを作れます。担当者への相談が早く進みます。</p></div>
 </div>
@@ -551,6 +555,8 @@ box.innerHTML = s.opts.map(o =>
 '<button class="opt' + (ans[s.key] === o[0]? ' sel': '') + '" data-val="' + o[0] + '">' + o[1] + (o[2]? '<span class="sub">' + o[2] + '</span>': '') + '</button>').join('');
 box.querySelectorAll('.opt').forEach(b => b.addEventListener('click', () => pick(s.key, b.dataset.val)));
 document.getElementById('wiz-back').style.visibility = hist.length === 0? 'hidden': 'visible';
+const pb = document.getElementById('wiz-partial');
+if(pb) pb.style.display = Object.keys(EVAL).length? '': 'none';
 }
 function pick(key, val){
 hist.push([stageIdx, qIdx]);
@@ -576,28 +582,10 @@ EVAL[st.tier] = {fit: [], maybe: [], unfit1: [], unfit2: METHODS.filter(m => TIE
 EVAL[st.tier] = evaluate(TIER[st.tier]);
 }
 for(let i = stageIdx + 1; i < STAGE_DEFS.length; i++){ const t = STAGE_DEFS[i].tier; if(t) delete EVAL[t];}
-const ev = EVAL[st.tier];
-if(stageIdx < STAGE_DEFS.length - 1 &&!ev.skipped && (ev.fit.length + ev.maybe.length) > 0){ renderBranch(st.tier); return;}
 }
 nextStage();
 }
 function nextStage(){ stageIdx++; qIdx = 0; if(stageIdx >= STAGE_DEFS.length){ showResult(false); return;} renderStep();}
-function renderBranch(tier){
-branchTierNow = tier;
-const ev = EVAL[tier];
-const cands = ev.fit.concat(ev.maybe);
-document.getElementById('step-label').textContent = TIER_SHORT[tier] + 'の確認が終わりました';
-document.getElementById('progress-bar').style.width = ((stageIdx + 1) / STAGE_DEFS.length * 100) + '%';
-document.getElementById('wiz-q').textContent = 'ここまでの確認で、' + TIER_SHORT[tier] + 'に候補が ' + cands.length + ' 件あります。';
-const box = document.getElementById('wiz-opts');
-box.innerHTML = '<div class="panel" style="text-align:left;margin-bottom:14px"><b>候補</b><ul class="why-list">'
-+ cands.map(m => '<li>' + m.name + (signals(m) >= 1 &&!m._maybe? '（可能性が高い）': '') + (m._maybe? '（最短では間に合うが確実ではない）': '') + '</li>').join('')
-+ '</ul><p class="note" style="margin:0">この候補で結果を見るか、下位の手法まで調べるか選んでください。下位は費用が高くなる代わりに、審査の形が違います。状況に合う手法が下位にしかない場合は、質問に答えるほど絞り込めます。</p></div>'
-+ '<button class="opt" data-act="result">この候補で結果を見る</button>'
-+ '<button class="opt" data-act="deeper">下位の手法まで調べる（質問が続きます）</button>';
-box.querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => { if(b.dataset.act === 'result') showResult(true); else { branchTierNow = null; nextStage();}}));
-document.getElementById('wiz-back').style.visibility = 'visible';
-}
 function resumeCascade(){
 flowGen++;
 for(let i = 0; i < STAGE_DEFS.length; i++){ const t = STAGE_DEFS[i].tier; if(t &&!EVAL[t]){ stageIdx = i; qIdx = 0; break;}}
@@ -760,20 +748,17 @@ const c = all.filter(m => m._maybe);
 shownByTier[t] = a.concat(b, c).map(m => ({m: m, isA: a.includes(m)}));
 totalShown += all.length; totalA += a.length;
 }
-let h = '<div class="result-head"><b>絞り込みの過程（上位から順に確認しました）</b><br>全手法 ' + METHODS.length + '件';
+let procLines = '全手法 ' + METHODS.length + '件を、上位の系統から順に確認しました。';
 for(const t of order){
 if(EVAL[t]){
 const ev = EVAL[t];
-if(ev.skipped) h += '<br>→ ' + TIER_SHORT[t] + '：期限（' + DAYS_LABEL[ans.days] + '）に間に合わないため、対象外です';
-else h += '<br>→ ' + TIER_SHORT[t] + '：候補 ' + (ev.fit.length + ev.maybe.length) + '件／外れた手法 ' + (ev.unfit1.length + ev.unfit2.length) + '件';
+if(ev.skipped) procLines += '<br>→ ' + TIER_SHORT[t] + '：期限（' + DAYS_LABEL[ans.days] + '）に間に合わないため、対象外です';
+else procLines += '<br>→ ' + TIER_SHORT[t] + '：候補 ' + (ev.fit.length + ev.maybe.length) + '件／外れた手法 ' + (ev.unfit1.length + ev.unfit2.length) + '件';
 } else {
-h += '<br>→ ' + TIER_SHORT[t] + '：まだ確認していません';
+procLines += '<br>→ ' + TIER_SHORT[t] + '：まだ確認していません';
 }
 }
-h += '<br><b>提示する手法は ' + totalShown + '件、そのうち「可能性が高い」のは ' + totalA + '件です。</b>上位の系統から順に並べました。外れた手法も、段階ごとに理由つきで下に置きました。</div>';
-h += '<div class="panel" style="margin-bottom:20px"><b>まず用意する書類（複数社で使い回せます）</b>'
-+ '<ul class="why-list">' + DOCS_COMMON.map(d => '<li>' + d + '</li>').join('') + '</ul>'
-+ '<p class="note" style="margin:0">申し込み先ごとに違う書類をそろえ直す手間が、締切を逃す原因になります。共通分は先にそろえてください。現状シートにもこの一覧を載せます。</p></div>';
+let h = '';
 const ENT_LABEL = {corp:'法人', sole:'個人事業主'};
 const BIZ_LABEL = {medical:'医療・介護・調剤', construction:'建設', transport:'運送', manufacturing:'製造', wholesale:'卸・小売', food:'飲食・サービス', other:'その他'};
 const CP_LABEL = {corp:'法人', sole:'個人事業主', person:'個人・一般消費者', public:'公的機関', none:'売掛金はない'};
@@ -796,7 +781,7 @@ if(ans.asset) stateRows.push(['担保にできる資産', ans.asset === 'yes'? '
 if(ans.loan) stateRows.push(['借入の状況', LOAN_LABEL[ans.loan] || '']);
 if(ans.cp){ stateRows.push(['売掛先', CP_LABEL[ans.cp] || '']); if(hasArv()){ stateRows.push(['請求書の状態', INV_LABEL[ans.inv] || '']); stateRows.push(['売掛金の支払期日まで', INVDAYS_LABEL[ans.invdays] || '']);}}
 const shownFlat = [];
-for(const t of order){ if(shownByTier[t]) for(const x of shownByTier[t]) shownFlat.push(x);}
+for(const t of order){ if(shownByTier[t]) for(const x of shownByTier[t]) shownFlat.push({m: x.m, isA: x.isA, t: t});}
 const shownData = shownFlat.map(x => ({name: x.m.name, period: x.m.period, cost: x.m.cost, maybe:!!x.m._maybe, tierA: x.isA, svcs: svcOf(x.m.id).slice(0,3).map(s => s.name + '（' + s.entity + '）')}));
 const unfitNames = [];
 for(const t of order){ if(EVAL[t]) for(const x of EVAL[t].unfit1.concat(EVAL[t].unfit2)) unfitNames.push(x[0].name);}
@@ -806,8 +791,22 @@ SHEET_DATA = {date: new Date().toLocaleDateString('ja-JP'), state: stateRows, sh
 const sumText = '' + stateRows.map(r => r[0] + '：' + r[1]).join('／')
 + ' ' + shownData.map(d => d.name + '：' + (d.svcs.join('、') || '候補なし')).join('／')
 + ' ' + unfitNames.join('、') + (pendingNames.length? ' ' + pendingNames.join('、'): '');
+const chips = stateRows.filter(r => r[1]).map(r => '<span class="chip">' + r[0] + '：' + r[1] + '</span>').join('');
+if(shownFlat.length){
+const top = shownFlat.slice(0, 3);
+h += '<div class="result-top"><p class="note" style="margin:0 0 4px">状態チェックの結果（全' + METHODS.length + '手法を確認）</p>'
++ '<h3>当たるべき順番は、この' + shownFlat.length + '件です</h3>'
++ '<ol>' + top.map(x => '<li><b>' + x.m.name + '</b>（' + TIER_SHORT[x.t] + '）' + (x.isA? ' <span class="badge">可能性が高い</span>': '') + (x.m._maybe? ' <span class="badge low">最短では間に合うが確実ではない</span>': '') + '</li>').join('') + '</ol>'
++ '<p style="margin:6px 0 10px">費用の低い系統から順に並べました。各手法の候補の会社と申し込み先は、この下にあります。外れた手法と理由は、末尾にまとめました。' + (partial && pendingNames.length? 'まだ確認していない手法が' + pendingNames.length + '件あります。続きの質問に答えると、その分も判定できます。': '') + '</p>'
++ '<div>' + chips + '</div></div>';
+} else {
+h += '<div class="result-top"><p class="note" style="margin:0 0 4px">状態チェックの結果（全' + METHODS.length + '手法を確認）</p>'
++ '<h3>今の条件に合う手法は、公表条件では見つかりませんでした</h3>'
++ '<p style="margin:6px 0 10px">条件を少し変えると、結果が変わることがあります。外れた手法と理由は末尾にまとめました。下の現状シートに申し込むと、この結果と現状を1枚に整理して、各社の担当者に渡せる形にできます。</p>'
++ '<div>' + chips + '</div></div>';
+}
 h += '<div class="lead-panel" id="lead"><h3>結果と現状をまとめた「現状シート」を作る</h3>'
-+ '<p>この結果に、あなたの現状（期限・希望額・売掛先・決算の状態）と、用意する書類の一覧を整理して1枚にまとめたシートです。提示した手法と候補の会社、外れた手法も載せるので、各社の担当者にそのまま渡せて、相談が早く進みます。作成は無料です。</p>'
++ '<p>この結果と、あなたの現状（期限・希望額・売掛先・決算の状態）、用意する書類を1枚にまとめたシートです。各社の担当者にそのまま渡せます。作成は無料です。</p>'
 + '<form class="lead-form" action="https://docs.google.com/forms/d/e/1FAIpQLSf48qJWe-muxLveesTBzHgfHhrD5b7jgVHew2RjvRThgWtPuA/formResponse" method="POST" target="gform_sink" onsubmit="return submitLead()">'
 + '<input type="hidden" name="entry.18224998" value="' + sumText.replace(/"/g, '”') + '">'
 + '<label>会社名<span class="req">必須</span><input type="text" name="entry.1873836302" required autocomplete="organization"></label>'
@@ -822,6 +821,9 @@ if(!shownByTier[t]) continue;
 h += '<h3 style="margin:26px 0 12px">' + TIER_NAME[t] + '</h3>';
 for(const x of shownByTier[t]) h += cardHtml(x.m, x.isA);
 }
+h += '<div class="panel" style="margin:26px 0 20px"><b>まず用意する書類（複数社で使い回せます）</b>'
++ '<ul class="why-list">' + DOCS_COMMON.map(d => '<li>' + d + '</li>').join('') + '</ul>'
++ '<p class="note" style="margin:0">申し込み先ごとに違う書類をそろえ直す手間が、締切を逃す原因になります。共通分は先にそろえてください。現状シートにもこの一覧を載せます。</p></div>';
 for(const t of order){
 if(!EVAL[t]) continue;
 const ev = EVAL[t];
@@ -834,6 +836,7 @@ h += '<h3 style="margin-top:30px">' + TIER_SHORT[t] + 'で外れた手法（期�
 for(const [m, r] of ev.unfit2) h += '<details class="unfit"><summary>' + m.name + '</summary><p>' + r + '</p></details>';
 }
 }
+h += '<details class="unfit"><summary>絞り込みの過程（全' + METHODS.length + '手法の確認結果）</summary><p>' + procLines + '</p></details>';
 if(partial && pendingNames.length){
 h += '<div class="panel" style="margin-top:26px"><b>まだ確認していない手法（' + pendingNames.length + '件）</b><p style="margin:6px 0">' + pendingNames.join('、') + '</p><p class="note" style="margin:0 0 10px">下位の系統は、上の系統で候補が見つからなかった場合に効きます。続きの質問に答えると、この手法も含めて絞り込めます。</p><button class="btn btn-cta" onclick="resumeCascade()">続きの質問に答える</button></div>';
 }
