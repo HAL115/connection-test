@@ -38,6 +38,11 @@ METHOD_GROUPS = [
 ]
 MID_GROUP = {mid: g for g, mids in METHOD_GROUPS for mid in mids}
 
+CUT_DEFS = {
+    'M13': [('factoring-recommend', 'おすすめ'), ('factoring-kojinn', '個人事業主向け'),
+            ('factoring-sokujitsu', '即日入金'), ('factoring-online', 'オンライン完結')],
+}
+
 # ---------- 視覚化（公表レーダー／条件バンド） ----------
 import math as _math
 import statistics as _stats
@@ -308,6 +313,10 @@ for m in data['methods']:
         for s in svcs)
     compare_link = f'<p><a href="../compare/{build.mslug(mid)}.html">{esc(m["name"])}のサービス比較（手数料・速さ・透明性）→</a></p>' if mid in compare_methods else ''
     rank_link = f'<p><a href="../ranking/{build.mslug(mid)}.html">{esc(m["name"])}のランキング（公表の充実度順）→</a></p>' if len(svcs) >= 5 else ''
+    cut_link = ''
+    if mid in CUT_DEFS:
+        _cl = '／'.join(f'<a href="../articles/{cs}.html">{esc(cl)}</a>' for cs, cl in CUT_DEFS[mid])
+        cut_link = f'<p>切り口で探す：{_cl}</p>'
     agg = ''
     if len(svcs) >= 5:
         _n = len(svcs)
@@ -348,6 +357,7 @@ for m in data['methods']:
 <h2>この手法のサービス（{len(svcs)}件）</h2>
 {compare_link}
 {rank_link}
+{cut_link}
 {rows if rows else '<p>現在、収録しているサービスはありません。</p>'}
 {method_articles(mid, m['name'])}
 {build.sheet_block('../')}
@@ -842,6 +852,97 @@ if 'observation.html' not in urls:
     urls.append('observation.html')
 if 'methods/index.html' not in urls:
     urls.append('methods/index.html')
+
+# ---------- cut pages (切り口別おすすめ) ----------
+def _sc(s):
+    v = s.get('score') or build.scores.get(s.get('entity_id', ''), '')
+    try:
+        return int(v)
+    except Exception:
+        return 0
+
+def _rank_key(s):
+    rv = REVIEWS.get(s.get('entity_id', ''), {})
+    cap = _pctnum(s.get('fee_hi'))
+    return (-_sc(s), -(rv.get('count', 0) if rv else 0), cap if cap is not None else 9999)
+
+def _is_fast(sp):
+    sp = sp or ''
+    return ('即日' in sp) or ('当日' in sp) or bool(re.search(r'最短\d+\s*分', sp)) or bool(re.search(r'最短\d+\s*時間', sp)) or ('数時間' in sp)
+
+CUT_CONTENT = {
+    'factoring-recommend': {
+        'label': 'おすすめ', 'filter': lambda s: True,
+        'intro': 'ファクタリング（2社間）の収録121件から、公式公表の充実度（透明性スコア）とGoogle口コミの件数で上位15件を選んだ。「おすすめ順」ではなく、申し込みの前に条件を確認しやすい順である。手数料の安さだけで選ぶと、幅を公表していない会社を不当に外すことになるため、この順にしている。',
+        'points': ['手数料は下限でなく上限で見る。下限は最も条件が良い場合の数字で、実際の料率は請求書の内容と売掛先の信用で決まる', '償還請求権の有無を確かめる。「なし」と公表している会社は収録121件中14件だけ。公表がない会社は契約書で確かめる前提で比べる', '入金スピードの「最短」は、書類が全て揃った場合の目安。必要書類の準備状況で実際の日数は変わる'],
+        'faq': [('この15選は「おすすめ順」ですか？', '違います。並びは公式公表の充実度と口コミの件数で、条件の良し悪しではありません。会社の状態（期限・金額・売掛先）で合う会社は変わります。'), ('2社間と3社間はどちらがよいですか？', '2社間は売掛先に知られず入金が速い一方、手数料は高めです。3社間は手数料が低めですが売掛先の承諾が要ります。詳しくはファクタリング（3社間）のページにあります。')],
+    },
+    'factoring-kojinn': {
+        'label': '個人事業主向け', 'filter': lambda s: '個人事業主' in (s.get('target') or ''),
+        'intro': '対象に「個人事業主」を公式に明記している会社だけを集めた。ファクタリング（2社間）の収録121件のうち、個人事業主の利用を明記しているのは91件ある。その中から、公表の充実度と口コミの件数で上位15件を選んでいる。',
+        'points': ['買取金額の下限を見る。少額の請求書しかない場合は、下限が低い（または下限なし）の会社でないと申し込めない', '必要書類を確認する。個人事業主は決算書の代わりに確定申告書で足りる会社が多いが、会社ごとに違う', '債権譲渡登記の扱いを見る。登記が必要な会社では費用と日数が増える。「登記なし」と公表している会社は少ない'],
+        'faq': [('個人事業主でも本当に使えますか？', 'この一覧は、対象に個人事業主を公式に明記している会社だけです。ただし実際の可否は請求書の内容と売掛先で決まります。'), ('開業したばかりでも申し込めますか？', '売掛金（請求書）が発生していれば申し込める会社が大半です。開業届や確定申告書の提出を求める会社もあります。各サービスのページの必要書類を確認してください。')],
+    },
+    'factoring-sokujitsu': {
+        'label': '即日入金', 'filter': lambda s: _is_fast(s.get('speed')),
+        'intro': '入金スピードを「即日」「当日」「最短◯分／◯時間」と公表している会社だけを集めた。ファクタリング（2社間）の収録121件のうち91件が即日相当の速さを公表している。その中から、公表の充実度と口コミの件数で上位15件を選んでいる。',
+        'points': ['締め時刻を確認する。即日入金は「午前中の申込みまで」など時刻の条件がある会社が多い。公表がなければ申込み前に聞く', '必要書類が手元にあるかが実際の速さを決める。請求書・通帳の写し・本人確認書類は先に用意する', '「最短」は最良の場合の目安。売掛先の確認に時間がかかると翌営業日になる会社もある'],
+        'faq': [('本当に即日に入金されますか？', '各社が公表しているのは「最短」の目安です。書類が揃い、締め時刻に間に合った場合の話で、保証ではありません。急ぐ場合は、申し込む前に「今日中に入金できるか」を直接確認するのが確実です。'), ('即日と書いていない会社は遅いですか？', '公表していないだけの会社もあります。この一覧は、速さを公式に公表している会社だけを対象にしています。')],
+    },
+    'factoring-online': {
+        'label': 'オンライン完結', 'filter': lambda s: (s.get('online') or '') in ('あり', '可'),
+        'intro': '申込みから契約までオンラインで完結することを公式に公表している会社だけを集めた。ファクタリング（2社間）の収録121件のうち、オンライン完結を公表しているのは32件。その中から、公表の充実度と口コミの件数で上位15件を選んでいる。',
+        'points': ['契約方式を確認する。電子契約（クラウドサイン等）で完結する会社と、契約書の郵送が残る会社がある', '本人確認の方法を見る。オンライン完結でも、電話での確認が入る会社はある', '入金までの日数とあわせて見る。オンライン完結でも入金が翌日以降の会社はある'],
+        'faq': [('来店なしで契約できますか？', 'この一覧の会社は、オンライン完結を公式に公表しています。ただし本人確認の電話など、一部の手順が残る会社もあります。'), ('地方でも使えますか？', 'オンライン完結の会社は地域を問わないのが利点です。対象地域の公表がある会社は、各サービスのページで確認してください。')],
+    },
+}
+
+for _mid, _cuts in CUT_DEFS.items():
+    _m = methods[_mid]
+    _pool_all = [s for s in svc_by_method.get(_mid, []) if s.get('status') not in ('廃業・撤退', '重複')]
+    for _cslug, _clabel in _cuts:
+        _cc = CUT_CONTENT[_cslug]
+        _pool = sorted([s for s in _pool_all if _cc['filter'](s)], key=_rank_key)[:15]
+        _cards = ''
+        for i, s in enumerate(_pool):
+            rv = REVIEWS.get(s.get('entity_id', ''), {})
+            rv_t = f'Google口コミ ★{rv["rating"]}（{rv["count"]}件）' if rv and rv.get('count') else '口コミ集計なし'
+            feat = esc((s.get('features') or '')[:90])
+            _cards += (f'<div class="rank-card"><div class="rank-head"><span class="rank-num">{i + 1}</span>'
+                       f'<h3><a href="../services/{s["id"].lower()}.html">{esc(s["name"])}</a></h3></div>'
+                       f'<p class="rank-ent">{esc(s["entity"])}</p>'
+                       f'<dl class="kv"><dt>手数料</dt><dd>{fee_text(s["fee_lo"], s["fee_hi"])}</dd>'
+                       f'<dt>入金スピード</dt><dd>{esc(s["speed"]) or "―"}</dd>'
+                       f'<dt>金額</dt><dd>{amt_text(s["amt_lo"], s["amt_hi"])}</dd></dl>'
+                       + (f'<p>{feat}</p>' if feat else '')
+                       + f'<p class="rank-meta">透明性スコア {_sc(s)}／5 ・ {rv_t}</p></div>')
+        _caps = [c for c in (_pctnum(s.get('fee_hi')) for s in _pool) if c is not None]
+        _med = f'{_stats.median(_caps):g}%' if _caps else '―'
+        _faq = list(_cc['faq']) + [(f'{_clabel}の手数料の相場はどれくらいですか？', f'この{_pool.__len__()}件で手数料の上限を公表している会社の中央値は{_med}です（当サイトの集計）。実際の料率は請求書の金額と売掛先の信用で決まるため、相場は目安として見てください。')]
+        _faq_html = ''.join(f'<h3>{esc(q)}</h3><p>{esc(a)}</p>' for q, a in _faq)
+        _pts = ''.join(f'<li>{esc(p)}</li>' for p in _cc['points'])
+        _others = '／'.join(f'<a href="{cs}.html">{esc(cl)}</a>' for cs, cl in _cuts if cs != _cslug)
+        body_c = f"""
+<p class="note"><a href="../index.html">トップ</a> ／ <a href="../methods/{build.mslug(_mid)}.html">{esc(_m['name'])}</a> ／ {_clabel}</p>
+<h1>{esc(_m['name'])}の{_clabel} {_pool.__len__()}選</h1>
+<p>{esc(_cc['intro'])}</p>
+<h2 class="sec">選ぶときに見る点</h2>
+<ul>{_pts}</ul>
+<h2 class="sec">{_clabel}の{_pool.__len__()}選</h2>
+{_cards}
+<h2 class="sec">よくある質問</h2>
+{_faq_html}
+<p>他の切り口：{_others}／全件の順位は<a href="../ranking/{build.mslug(_mid)}.html">ランキング</a>、条件の横並びは<a href="../compare/{build.mslug(_mid)}.html">サービス比較</a>にあります。</p>
+{build.sheet_block('../')}
+"""
+        slug_c = f'articles/{_cslug}.html'
+        faq_ld = {'@context': 'https://schema.org', '@type': 'FAQPage', 'mainEntity': [{'@type': 'Question', 'name': q, 'acceptedAnswer': {'@type': 'Answer', 'text': a}} for q, a in _faq]}
+        itemlist = {'@context': 'https://schema.org', '@type': 'ItemList', 'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'name': s['name'], 'url': build.BASE_URL + f'services/{s["id"].lower()}.html'} for i, s in enumerate(_pool)]}
+        ld = json.dumps([faq_ld, itemlist, json.loads(crumbs(('トップ', ''), (_m['name'], f'methods/{build.mslug(_mid)}.html'), (_clabel, slug_c)))], ensure_ascii=False)
+        with open(f'{OUT}/{slug_c}', 'w') as f:
+            f.write(build.page(f'{_m["name"]}の{_clabel} {_pool.__len__()}選｜公表データで選ぶ', body_c, article=True,
+                               desc=f'{_m["name"]}の{_clabel}を、公式公表の充実度と口コミ件数で選んだ{_pool.__len__()}件。手数料・入金スピード・金額の条件つき。', ld=ld, path=slug_c))
+        urls.append(slug_c)
 
 # ---------- ranking pages ----------
 def _sc(s):
