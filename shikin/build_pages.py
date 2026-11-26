@@ -307,6 +307,7 @@ for m in data['methods']:
         f'手数料 {fee_text(s["fee_lo"], s["fee_hi"])}／入金 {esc(s["speed"]) or "―"}／金額 {amt_text(s["amt_lo"], s["amt_hi"])}<br>{svc_chips(s)}</div>{badge_score(s.get("score", ""))}</div>'
         for s in svcs)
     compare_link = f'<p><a href="../compare/{build.mslug(mid)}.html">{esc(m["name"])}のサービス比較（手数料・速さ・透明性）→</a></p>' if mid in compare_methods else ''
+    rank_link = f'<p><a href="../ranking/{build.mslug(mid)}.html">{esc(m["name"])}のランキング（公表の充実度順）→</a></p>' if len(svcs) >= 5 else ''
     agg = ''
     if len(svcs) >= 5:
         _n = len(svcs)
@@ -346,9 +347,10 @@ for m in data['methods']:
 {agg}
 <h2>この手法のサービス（{len(svcs)}件）</h2>
 {compare_link}
+{rank_link}
 {rows if rows else '<p>現在、収録しているサービスはありません。</p>'}
 {method_articles(mid, m['name'])}
-{build.CTA_BOX}
+{build.sheet_block('../')}
 <p><a href="../index.html#methods">手法ガイドの一覧へ戻る</a></p>
 """
     slug = f'methods/{build.mslug(mid)}.html'
@@ -497,7 +499,7 @@ for e0 in entities:
 <h2>提供しているサービス（{len(svcs)}件）</h2>
 {svc_rows if svc_rows else '<p>現在、収録しているサービスはありません。</p>'}
 <p class="note">最終観測日：{esc(e['observed']) or '―'}</p>
-{build.CTA_BOX}
+{build.sheet_band('../')}
 """
     slug = f'companies/{cid.lower()}.html'
     org = {'@context': 'https://schema.org', '@type': 'Organization', 'name': e['name']}
@@ -701,7 +703,7 @@ for s in services:
 {official}
 {source}
 {_log_block({s['name']})}
-{build.CTA_BOX}
+{build.sheet_band('../')}
 """
     slug = f'services/{sid.lower()}.html'
     svc_ld = {'@context': 'https://schema.org', '@type': 'Service', 'name': s['name'],
@@ -766,7 +768,7 @@ for mid in sorted(compare_methods):
 {_cguide}
 <p><a href="../compare-tool.html">比較ツールで、気になるサービスを最大4社まで並べて比べる</a>（手法をまたいだ比較もできます）</p>
 {f'<h2>仲介・紹介のサービス（{len(inter)}件）</h2>' + inter_rows if inter else ''}
-{build.CTA_BOX}
+{build.sheet_block('../')}
 """
     slug = f'compare/{build.mslug(mid)}.html'
     itemlist = {'@context': 'https://schema.org', '@type': 'ItemList',
@@ -840,6 +842,77 @@ if 'observation.html' not in urls:
     urls.append('observation.html')
 if 'methods/index.html' not in urls:
     urls.append('methods/index.html')
+
+# ---------- ranking pages ----------
+def _sc(s):
+    v = s.get('score') or build.scores.get(s.get('entity_id', ''), '')
+    try:
+        return int(v)
+    except Exception:
+        return 0
+
+def _rank_key(s):
+    rv = REVIEWS.get(s.get('entity_id', ''), {})
+    cap = _pctnum(s.get('fee_hi'))
+    return (-_sc(s), -(rv.get('count', 0) if rv else 0), cap if cap is not None else 9999)
+
+os.makedirs(f'{OUT}/ranking', exist_ok=True)
+rank_methods = [mid for mid in sorted(methods)
+                if len([s for s in svc_by_method.get(mid, []) if s.get('status') not in ('廃業・撤退', '重複')]) >= 5]
+for mid in rank_methods:
+    m = methods[mid]
+    pool = sorted([s for s in svc_by_method.get(mid, []) if s.get('status') not in ('廃業・撤退', '重複')], key=_rank_key)
+    cards = ''
+    for i, s in enumerate(pool[:3]):
+        rv = REVIEWS.get(s.get('entity_id', ''), {})
+        rv_t = f'Google口コミ ★{rv["rating"]}（{rv["count"]}件）' if rv and rv.get('count') else '口コミ集計なし'
+        cards += (f'<div class="rank-card"><div class="rank-head"><span class="rank-num">{i + 1}</span>'
+                  f'<h3><a href="../services/{s["id"].lower()}.html">{esc(s["name"])}</a></h3></div>'
+                  f'<p class="rank-ent">{esc(s["entity"])}</p>'
+                  f'<dl class="kv"><dt>手数料</dt><dd>{fee_text(s["fee_lo"], s["fee_hi"])}</dd>'
+                  f'<dt>入金スピード</dt><dd>{esc(s["speed"]) or "―"}</dd>'
+                  f'<dt>金額</dt><dd>{amt_text(s["amt_lo"], s["amt_hi"])}</dd></dl>'
+                  f'<p class="rank-meta">透明性スコア {_sc(s)}／5 ・ {rv_t}</p></div>')
+    rows_r = ''.join(
+        f'<tr><td>{i + 1}</td><td><b><a href="../services/{s["id"].lower()}.html">{esc(s["name"])}</a></b></td>'
+        f'<td>{esc(s["entity"])}</td><td>{fee_text(s["fee_lo"], s["fee_hi"])}</td>'
+        f'<td>{esc(s["speed"]) or "―"}</td><td>{amt_text(s["amt_lo"], s["amt_hi"])}</td>'
+        f'<td>{_sc(s)}／5</td></tr>'
+        for i, s in enumerate(pool))
+    body_r = f"""
+<p class="note"><a href="../index.html">トップ</a> ／ <a href="../methods/{build.mslug(mid)}.html">{esc(m['name'])}</a> ／ ランキング</p>
+<h1>{esc(m['name'])}のサービスランキング</h1>
+<p>このランキングは「おすすめ順」ではありません。並びは、公式公表の充実度（透明性スコア）、Google口コミの件数、手数料の上限の順です。公表が厚い会社ほど、申し込みの前に条件を比べられます。条件そのものの良し悪しは、会社の状態で変わります。</p>
+{cards}
+<h2 class="sec">全{len(pool)}件の順位</h2>
+<div class="tblwrap"><table class="wide"><tr><th>順位</th><th>サービス</th><th>運営会社</th><th>手数料</th><th>入金スピード</th><th>金額</th><th>透明性</th></tr>{rows_r}</table></div>
+<p>条件を横に並べて見るなら<a href="../compare/{build.mslug(mid)}.html">{esc(m['name'])}のサービス比較</a>、仕組みと向く状態は<a href="../methods/{build.mslug(mid)}.html">{esc(m['name'])}のページ</a>にあります。</p>
+{build.sheet_block('../')}
+"""
+    slug = f'ranking/{build.mslug(mid)}.html'
+    itemlist = {'@context': 'https://schema.org', '@type': 'ItemList',
+                'itemListElement': [{'@type': 'ListItem', 'position': i + 1, 'name': s['name'], 'url': build.BASE_URL + f'services/{s["id"].lower()}.html'} for i, s in enumerate(pool)]}
+    ld = json.dumps([itemlist, json.loads(crumbs(('トップ', ''), (m['name'], f'methods/{build.mslug(mid)}.html'), ('ランキング', slug)))], ensure_ascii=False)
+    with open(f'{OUT}/{slug}', 'w') as f:
+        f.write(build.page(f'{m["name"]}のサービスランキング｜公表の充実度順', body_r, article=True,
+                           desc=f'{m["name"]}の収録サービス{len(pool)}件を、公式公表の充実度（透明性スコア）と口コミ件数で並べたランキングです。おすすめ順ではありません。', ld=ld, path=slug))
+    urls.append(slug)
+
+_rank_items = ''.join(
+    f'<div class="rank-card"><div class="rank-head"><h3><a href="{build.mslug(mid)}.html">{esc(methods[mid]["name"])}のランキング</a></h3></div>'
+    f'<p class="rank-meta">収録 {len([s for s in svc_by_method.get(mid, []) if s.get("status") not in ("廃業・撤退", "重複")])}件</p></div>'
+    for mid in rank_methods)
+body_ri = f"""
+<p class="note"><a href="../index.html">トップ</a> ／ 手法別ランキング</p>
+<h1>手法別ランキング</h1>
+<p>手法ごとに、収録サービスを公式公表の充実度（透明性スコア）と口コミ件数で並べたランキングです。おすすめ順ではありません。申し込みの前に条件を確認しやすい順に並べています。</p>
+{_rank_items}
+{build.sheet_block('../')}
+"""
+with open(f'{OUT}/ranking/index.html', 'w') as f:
+    f.write(build.page('手法別ランキング｜資金調達サービス', body_ri, article=True,
+                       desc='資金調達の手法ごとに、収録サービスを公表の充実度と口コミ件数で並べたランキングの一覧です。', path='ranking/index.html'))
+urls.append('ranking/index.html')
 
 # ---------- cost index & compare tool ----------
 _active = [s for s in services if s.get('status') not in ('廃業・撤退', '重複')]

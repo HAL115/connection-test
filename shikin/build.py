@@ -272,6 +272,25 @@ body.menu-open{overflow:hidden}
 .tool-sel{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
 .tool-chip{background:var(--primary);color:#fff;border-radius:999px;padding:6px 8px 6px 14px;font-size:13.5px;font-weight:700;display:flex;align-items:center;gap:8px}
 .tool-chip button{background:rgba(255,255,255,.25);border:none;color:#fff;border-radius:999px;width:20px;height:20px;cursor:pointer;line-height:1}
+.sheet-block{border:2px solid var(--primary);border-radius:16px;padding:26px 24px;margin:34px 0;background:linear-gradient(180deg,#fff,#F3F9F7)}
+.sheet-block h2{margin:4px 0 10px;font-size:23px}
+.sb-eyebrow{color:var(--primary-deep);font-weight:700;font-size:12.5px;letter-spacing:.06em;margin:0}
+.sb-lead{margin:0 0 14px}
+.sb-sample{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 14px;overflow-x:auto}
+.sb-cap{font-size:12px;color:var(--sub);font-weight:700;margin:0 0 8px}
+.sb-sample table{border-collapse:collapse;font-size:13.5px;min-width:480px;width:100%}
+.sb-sample th{text-align:left;color:var(--sub);font-weight:700;padding:5px 10px 5px 0;white-space:nowrap;vertical-align:top;border:none;background:none}
+.sb-sample td{padding:5px 0;border:none}
+.sb-points{margin:0 0 18px;padding-left:20px}.sb-points li{margin:4px 0}
+.sb-ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.sb-note{font-size:13px;color:var(--sub);margin:12px 0 0}
+.sheet-band{border:1px solid var(--line);border-left:5px solid var(--cta);border-radius:12px;padding:18px 20px;margin:30px 0;background:#FFF9EC}
+.sheet-band p{margin:0 0 12px}
+.rank-card{border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin:14px 0;background:#fff;box-shadow:var(--shadow)}
+.rank-head{display:flex;align-items:center;gap:12px}.rank-head h3{margin:0;font-size:19px}
+.rank-num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--gold);color:#fff;font-weight:900;font-family:Jost,sans-serif;flex:none}
+.rank-ent{color:var(--sub);margin:6px 0 10px;font-size:14px}
+.rank-meta{color:var(--sub);font-size:13.5px;margin:10px 0 0}
 .viz{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;margin:14px 0}
 .viz-svg{flex:0 1 264px;max-width:264px}
 .viz-tbl{flex:1 1 260px;min-width:240px}
@@ -431,6 +450,30 @@ def md2html(md):
 
 CTA_BOX = """<div class="cta-box"><p>あなたの状態では、どの手法が期限に間に合いますか</p><a class="btn btn-cta" href="../index.html#check">状態チェックで確認する</a></div>"""
 
+FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSf48qJWe-muxLveesTBzHgfHhrD5b7jgVHew2RjvRThgWtPuA/viewform'
+
+def sheet_block(prefix='../'):
+    return f"""<div class="sheet-block">
+<p class="sb-eyebrow">無料・その場で表示</p>
+<h2>結果と現状をまとめた「現状シート」が作れます</h2>
+<p class="sb-lead">状態チェックに答えると、あなたの現状と、候補の手法・会社、用意する書類の一覧を1枚に整理したシートが、その場で表示されます。各社の担当者にそのまま渡せて、相談が早く進みます。</p>
+<div class="sb-sample"><p class="sb-cap">現状シートの見本（一部）</p><table>
+<tr><th>現状</th><td>支払いの期限まで2週間／希望額 300万円／売掛金あり</td></tr>
+<tr><th>候補の順番</th><td>1. 日本政策金融公庫（間に合う見込み）　2. ファクタリング（2社間）　3. ビジネスローン</td></tr>
+<tr><th>用意する書類</th><td>決算書、試算表、売掛金の請求書、本人確認書類 ほか</td></tr>
+</table></div>
+<ul class="sb-points"><li>候補の手法と会社に加えて、外れた手法とその理由も載ります</li><li>手法ごとに違う必要書類を、共通分から先にそろえる形で一覧にします</li><li>印刷・保存して、各社の担当者への相談に使えます</li></ul>
+<div class="sb-ctas"><a class="btn btn-cta btn-hero" href="{prefix}index.html#check">状態チェックでシートを作る</a><a class="btn btn-ghost" href="{FORM_URL}" target="_blank" rel="noopener">チェックなしで申し込む</a></div>
+<p class="sb-note">チェックなしで申し込む場合は、フォームの最後の欄に今の状況（期限・希望額など）を書いてください。内容を確認のうえ、メールでご連絡します。シートの作成も相談も無料です。連絡先の使い方は<a href="{prefix}privacy.html">プライバシーポリシー</a>に書いています。</p>
+</div>"""
+
+def sheet_band(prefix='../'):
+    return f"""<div class="sheet-band">
+<p><b>このサービスが合うかどうかは、会社の状態で変わります。</b>状態チェックで当たる順番を確かめてから申し込むと、手数料と信用の無駄遣いを避けられます。結果は「現状シート」にまとめて、その場で表示されます。</p>
+<div class="sb-ctas"><a class="btn btn-cta" href="{prefix}index.html#check">状態チェックをする</a><a class="btn btn-ghost" href="{FORM_URL}" target="_blank" rel="noopener">現状シートを申し込む</a></div>
+</div>"""
+
+
 SAMPLES = [
     ('../pillar/guide-first-time.md', 'guide-first-time.html', False),
     ('../pillar/guide-rejected.md', 'guide-rejected.html', False),
@@ -497,7 +540,7 @@ def footer_cols(prefix):
     pillars = links([(f'{prefix}articles/{sl}', ART_TITLES[sl]) for sl in PILLAR_SLUGS])
     meths = links([(f'{prefix}methods/{mslug(mm["id"])}.html', mm['name']) for mm in methods])
     comps = links([(f'{prefix}compare/{mslug(mid)}.html', next(mm['name'] for mm in methods if mm['id'] == mid) + 'のサービス比較') for mid in COMPARE_MIDS])
-    extra = links([(f'{prefix}compare-tool.html', '比較ツール（最大4社まで）'), (f'{prefix}cost-index.html', '資金調達コスト・インデックス'), (f'{prefix}companies/index.html', '運営会社の一覧'), (f'{prefix}observation.html', '観測の記録')])
+    extra = links([(f'{prefix}compare-tool.html', '比較ツール（最大4社まで）'), (f'{prefix}cost-index.html', '資金調達コスト・インデックス'), (f'{prefix}companies/index.html', '運営会社の一覧'), (f'{prefix}ranking/index.html', '手法別ランキング'), (f'{prefix}observation.html', '観測の記録')])
     return (f'<div class="fcols"><div class="flist"><a class="fhead" href="{prefix}articles/index.html#basics">基礎知識（仕組みの根幹）</a>{basics}</div>'
             f'<div class="flist"><a class="fhead" href="{prefix}articles/index.html#guides">状態別の進め方</a>{pillars}</div>'
             f'<div class="flist"><a class="fhead" href="{prefix}methods/index.html">手法ガイド</a>{meths}</div>'
@@ -540,7 +583,7 @@ for fname, slug, pr in SAMPLES:
     _mini = '<div class="cta-mini"><p>読む前に、自分の状態で使える手法だけを確認できます。</p><a class="btn btn-cta" href="../index.html#check">状態チェック</a></div>'
     _h = re.sub(r'(</h1>)', r'\1' + _mini, _h, count=1) if '<h1>' in _h else _mini + _h
     _byline = '<div class="byline">運営・編集：合同会社MELSY。この記事の数値と条件は、各社の公式ページで確認した内容に基づきます。掲載の基準と確認の方法は<a href="../about.html">運営者情報</a>に書いています。</div>'
-    body = pr_html + _h + CTA_BOX + _byline + rel_box(slug) + '<p><a href="../index.html">トップへ戻る</a></p>'
+    body = pr_html + _h + sheet_block('../') + _byline + rel_box(slug) + '<p><a href="../index.html">トップへ戻る</a></p>'
     desc_m = re.search(r'メタディスクリプション：(.+)', parts[0]) if len(parts) > 1 else None
     desc = desc_m.group(1).strip() if desc_m else title
     _full_md = md
@@ -1334,6 +1377,7 @@ body = f"""
 </section>
 
 <section>
+{sheet_block('')}
 <p class="eyebrow dark">FAQ</p>
 <h2 class="sec">よくある質問</h2>
 <p class="sec-sub">当サイトの数字の出し方と、掲載の基準について答えます。</p>
