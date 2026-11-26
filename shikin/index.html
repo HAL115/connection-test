@@ -711,6 +711,14 @@ function cardHtml(m, isA){
 const svcs = svcOf(m.id).slice().sort((a,b) => (parseInt(b.score)||0) - (parseInt(a.score)||0));
 let h = '<div class="mcard"><h3>' + m.name + (isA? ' <span class="badge">可能性が高い</span>': '') + (m._maybe? ' <span class="badge low">最短では間に合うが確実ではない</span>': '') + '</h3><p style="margin:0">' + m.def + '</p>';
 h += '<dl class="kv"><dt>費用の目安</dt><dd>' + m.cost + '</dd><dt>入金まで</dt><dd>' + m.period + '</dd><dt>必要書類</dt><dd>' + m.docs + '</dd></dl>';
+const caps = svcs.map(s => amtHiWan(s)).filter(v => v !== null && isFinite(v)).sort((x, y) => x - y);
+if(caps.length >= 3){
+const med = caps[Math.floor(caps.length / 2)];
+const fmtW = v => v >= 10000 ? (Math.round(v / 1000) / 10) + '億円' : Math.round(v).toLocaleString() + '万円';
+let amtNote = '金額の目安：この手法の収録サービスが公表している金額の上限は、中央値で ' + fmtW(med) + ' です（金額の上限を算出できた ' + caps.length + ' 件から）。あなたが調達できる金額の約束ではありません。';
+if(ans.amt && BAND_LO[ans.amt] && med < BAND_LO[ans.amt]) amtNote += '希望額の水準より中央値が低めのため、上限が高い会社から当たる必要があります。';
+h += '<p class="note">' + amtNote + '</p>';
+}
 const rs = reasons(m,!!m._maybe);
 if(rs.length) h += '<p style="margin:10px 0 2px"><b>おすすめの理由</b></p><ul class="why-list">' + rs.map(r => '<li>' + r + '</li>').join('') + '</ul>';
 if((ans.fin === 'akaji' || ans.fin === 'over') && FIN_CAUTION.includes(m.id)){
