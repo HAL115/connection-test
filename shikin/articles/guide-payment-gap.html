@@ -270,6 +270,10 @@ body.menu-open{overflow:hidden}
 .cta-mini{border:1.5px solid var(--cta);border-radius:14px;padding:13px 16px;margin:20px 0;background:#FFF7ED;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .cta-mini p{margin:0;font-size:14.5px;font-weight:700;flex:1;min-width:180px}
 .cta-mini a{flex:none}
+.conclusion{background:var(--chip);border-left:5px solid var(--primary);border-radius:12px;padding:16px 20px;margin:14px 0 22px}
+.conclusion p{margin:0 0 8px}
+.conclusion p:last-child{margin-bottom:0}
+.check3{border:1.5px solid var(--line);border-radius:12px;padding:6px 20px 10px;margin:14px 0 22px;background:#fff}
 .byline{border-top:1px solid var(--line);margin:30px 0 0;padding:14px 0 0;font-size:13.5px;color:var(--mut);line-height:1.7}
 .chip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 9px;font-size:12px;color:var(--ink2);margin:3px 4px 0 0;background:#fff}
 .rel-box{border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:26px 0;background:#fff;text-align:left}
@@ -305,13 +309,13 @@ footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-sp
 <div class="mpanel"><div class="mp-head"><span class="mp-title">メニュー</span><button class="mp-close" onclick="document.body.classList.remove('menu-open')">閉じる</button></div><nav><a href="../index.html#check" onclick="document.body.classList.remove('menu-open')">状態チェック<small>上位の手法から順に確認します</small></a><a href="../methods/index.html">手法ガイド<small>全24手法の仕組みと条件</small></a><a href="../articles/index.html#basics">基礎知識<small>仕組みの根幹を先に知る</small></a><a href="../articles/index.html#guides">状態別の記事<small>状況ごとの進め方</small></a><a href="../index.html#compare" onclick="document.body.classList.remove('menu-open')">サービスの比較<small>手法ごとの手数料と速さ</small></a><a href="../index.html#search" onclick="document.body.classList.remove('menu-open')">サービスを探す<small>331件から条件で絞る</small></a><a href="../about.html">運営者情報</a><a href="../privacy.html">プライバシーポリシー</a></nav></div>
 <article class="wrap"><p>公開日：2026年11月17日／更新日：2026年11月23日</p>
 <h1>売掛金の入金は来月なのに、今月の支払いが厳しいときの進め方</h1><div class="cta-mini"><p>読む前に、自分の状態で使える手法だけを確認できます。</p><a class="btn btn-cta" href="../index.html#check">状態チェック</a></div><nav class="toc"><b>目次</b><ol><li><a href="#s1">この記事の結論</a></li><li><a href="#s2">先に確かめる3点</a></li><li><a href="#s3">手法ごとの、向く場合と向かない場合</a></li><li><a href="#s4">費用の試算</a></li><li><a href="#s5">必要書類と、準備で差が出る点</a></li><li><a href="#s6">手続きの流れ</a></li><li><a href="#s7">失敗しやすい点</a></li><li><a href="#s8">進め方の例</a></li><li><a href="#s9">状況が変わると、答えが変わる</a></li><li><a href="#s10">手法の組み合わせ方</a></li><li><a href="#s11">よくある質問</a></li><li><a href="#s12">参照した情報と確認日</a></li></ol></nav>
-<h2 id="s1">この記事の結論</h2>
+<h2 id="s1">この記事の結論</h2><div class="conclusion">
 <p>今月の支払いが入金より先に来る場合は、まず不足する金額と期限、売掛先と入金日、ずれが毎月続くかどうかを確かめます。今回の期限に間に合う系統はファクタリングとビジネスローンで、日本政策金融公庫の融資は入金まで3週間から1か月程度かかるため、来月以降のずれへの手当てになります。ファクタリングを使う場合は、契約の前に償還請求権と買戻しの特約の有無を確かめます。毎月続くずれは、支払い条件の見直しや融資の枠組みで直す対象です。</p>
 <p>仕事は終わり、請求書も出した。けれど入金は来月の末で、今月の給与と外注費の支払いが先に来る。この記事は、そのように入金と支払いの時期がずれて、今月の支払いが厳しい状態にある事業者に向けて書きます。</p>
 <figure class="fig"><svg viewBox="0 0 360 216" role="img" aria-label="支払いと入金の時期のズレを示すタイムラインの図"><text x="8" y="14" font-size="13" font-weight="bold" fill="#14504C">支払いと入金のズレ（例）</text><rect x="8" y="26" width="58" height="36" rx="8" fill="#14504C"/><text x="37" y="48" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">当月</text><rect x="74" y="26" width="278" height="36" rx="8" fill="#FFFFFF" stroke="#14504C"/><text x="88" y="48" font-size="12" fill="#22303A">仕事が終わり、請求書を出す</text><rect x="8" y="74" width="58" height="36" rx="8" fill="#C2410C"/><text x="37" y="96" font-size="12" font-weight="bold" fill="#FFFFFF" text-anchor="middle">今月末</text><rect x="74" y="74" width="278" height="36" rx="8" fill="#FFFFFF" stroke="#C2410C"/><text x="88" y="96" font-size="12" fill="#22303A">給与と外注費の支払いが先に来る</text><rect x="8" y="122" width="58" height="36" rx="8" fill="#E8B34B"/><text x="37" y="144" font-size="12" font-weight="bold" fill="#22303A" text-anchor="middle">来月末</text><rect x="74" y="122" width="278" height="36" rx="8" fill="#FFFFFF" stroke="#14504C"/><text x="88" y="144" font-size="12" fill="#22303A">売掛金が入金される</text><rect x="8" y="170" width="344" height="38" rx="8" fill="#FAF8F4" stroke="#E8B34B"/><text x="20" y="194" font-size="12" fill="#22303A">支払いが入金より先に来る間が、不足の期間です</text></svg><figcaption>入金と支払いの時期がずれると、仕事が終わっていても手元のお金が足りなくなります。不足する金額と期限を先に固定することが、手法選びの出発点です。</figcaption></figure>
-<h2 id="s2">先に確かめる3点</h2>
+</div><h2 id="s2">先に確かめる3点</h2><div class="check3">
 <ol><li><b>不足する金額と、支払いの期限</b>：いくら足りないのか、いつまでに必要なのかを先に固定します。金額と期限が決まれば、使える手法は絞れます。</li><li><b>売掛金の相手と入金日</b>：売掛先がどこで、入金日がいつかを確認します。売掛先の信用と期日までの長さで、ファクタリングの手数料は変わります。</li><li><b>来月以降も同じずれが続くか</b>：今回だけのずれなら一時的な資金化で足ります。毎月続くずれなら、支払い条件の見直しや融資の枠組みなど、続けて効く手当てが要ります。</li></ol>
-<h2 id="s3">手法ごとの、向く場合と向かない場合</h2>
+</div><h2 id="s3">手法ごとの、向く場合と向かない場合</h2>
 <h3>ファクタリング（2社間）</h3>
 <p>売掛金を、取引先に知らせずにファクタリング会社へ売って資金化する方法です。</p>
 <ul><li>向く場合：取引先に知られたくないとき、急ぎで資金化したいとき。入金は最短で即日から数日です。</li><li>向かない場合：手数料の負担を最小にしたいとき。2社間の手数料は3社間より高く、相場は8〜18%とされます（民間の比較資料の目安）。</li><li>注意点：償還請求権や買戻しの特約がある契約は、実質的に貸付けと判断される可能性があります。契約前に特約の有無を確かめてください。</li></ul>

@@ -105,6 +105,13 @@ h2.sec{font-size:26px;font-weight:900;letter-spacing:.03em;line-height:1.5;margi
 .step3 p{margin:8px 0 0;font-size:14px;color:var(--sub)}
 .result-head{background:var(--chip);border-radius:var(--radius);padding:22px 26px;margin-bottom:20px}
 .result-head b{font-size:20px;letter-spacing:.03em}
+.result-top{background:var(--chip);border-radius:var(--radius);padding:22px 26px;margin-bottom:20px}
+.result-top h3{margin:0 0 6px;font-size:23px;letter-spacing:.03em}
+.result-top ol{margin:8px 0 4px;padding-left:22px}
+.result-top ol li{margin:5px 0;font-size:16px}
+.act-panel{margin-bottom:20px}
+.act-list{margin:10px 0 0;padding-left:22px}
+.act-list li{margin:7px 0}
 .mcard{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:22px 24px;margin:0 0 16px;box-shadow:var(--shadow)}
 .mcard h3{margin:0 0 6px;font-size:19px;letter-spacing:.03em}
 .kv{display:grid;grid-template-columns:92px 1fr;gap:5px 14px;font-size:15px;margin:12px 0}
@@ -263,6 +270,10 @@ body.menu-open{overflow:hidden}
 .cta-mini{border:1.5px solid var(--cta);border-radius:14px;padding:13px 16px;margin:20px 0;background:#FFF7ED;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .cta-mini p{margin:0;font-size:14.5px;font-weight:700;flex:1;min-width:180px}
 .cta-mini a{flex:none}
+.conclusion{background:var(--chip);border-left:5px solid var(--primary);border-radius:12px;padding:16px 20px;margin:14px 0 22px}
+.conclusion p{margin:0 0 8px}
+.conclusion p:last-child{margin-bottom:0}
+.check3{border:1.5px solid var(--line);border-radius:12px;padding:6px 20px 10px;margin:14px 0 22px;background:#fff}
 .byline{border-top:1px solid var(--line);margin:30px 0 0;padding:14px 0 0;font-size:13.5px;color:var(--mut);line-height:1.7}
 .chip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 9px;font-size:12px;color:var(--ink2);margin:3px 4px 0 0;background:#fff}
 .rel-box{border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:26px 0;background:#fff;text-align:left}
@@ -305,6 +316,7 @@ footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-sp
 <p><b>対象：</b>法人・個人事業主</p>
 <p><b>向く状態：</b>銀行との取引が浅い／創業期／担保が乏しい</p>
 <p><b>向かない状態：</b>急ぎの資金（審査に時間がかかる）</p>
+<div class="cta-mini"><p>あなたの状態でこの手法が使えるかは、各社の公表条件との照合で判定できます。</p><a class="btn btn-cta" href="../index.html#check">状態チェックで判定する</a></div>
 <h2>費用と期間</h2>
 <p><b>費用の目安と決まり方：</b>金利に加えて信用保証料がかかる。保証料率は財務内容の評価（CRD）で9区分に分かれ、年0.45〜1.90%（責任共有の対象の場合）が目安。保証は原則として融資額の80%（責任共有制度）で、創業関連保証やセーフティネット保証の一部は100%</p>
 <p><b>入金までの期間：</b>2週間〜1か月程度</p>
@@ -319,7 +331,7 @@ footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-sp
 <p><a href="../ranking/信用保証協会付き融資.html">信用保証協会付き融資のランキング（公表の充実度順）→</a></p>
 
 <div class="svc"><div><b><a href="../services/s001.html">セーフティネット保証1〜4号・6号（経営安定関連保証）</a></b>（<a href="../companies/c021.html">信用保証協会</a>）<br>手数料 0.90%／入金 ―／金額 2億円（無担保8000万円、一般保証とは別枠）<br><span class="chip">大型倒産・災害・金融機関の支店廃止等の影響を受けた中小企業（市区町村長の認定が必要）</span></div><span class="badge low">透明性 ― / 5</span></div><div class="svc"><div><b><a href="../services/s002.html">セーフティネット保証5号・7号・8号（経営安定関連保証）</a></b>（<a href="../companies/c021.html">信用保証協会</a>）<br>手数料 0.75%／入金 ―／金額 2億円（無担保8000万円、一般保証とは別枠）<br><span class="chip">業況悪化業種・金融情勢の影響を受けた中小企業（市区町村長の認定が必要）</span></div><span class="badge low">透明性 ― / 5</span></div><div class="svc"><div><b><a href="../services/s003.html">創業関連保証</a></b>（<a href="../companies/c021.html">信用保証協会</a>）<br>手数料 0.50%／入金 ―／金額 3500万円<br><span class="chip">創業予定者・創業後5年未満の中小企業</span></div><span class="badge low">透明性 ― / 5</span></div><div class="svc"><div><b><a href="../services/s004.html">危機関連保証</a></b>（<a href="../companies/c021.html">信用保証協会</a>）<br>手数料 0.80%以下／入金 ―／金額 2億8000万円（無担保8000万円、一般保証・セーフティネット保証とは別枠）<br><span class="chip">大規模な経済危機・災害等で資金繰りが悪化した中小企業（市区町村長の認定が必要）</span></div><span class="badge low">透明性 ― / 5</span></div><div class="svc"><div><b><a href="../services/s005.html">当座貸越根保証・カードローン根保証</a></b>（<a href="../companies/c021.html">信用保証協会</a>）<br>手数料 非公表／入金 ―／金額 ―<br><span class="chip">継続的な資金需要のある中小企業</span></div><span class="badge low">透明性 ― / 5</span></div><div class="svc"><div><b><a href="../services/s006.html">普通保証</a></b>（<a href="../companies/c021.html">信用保証協会</a>）<br>手数料 0.45%〜1.90%／入金 ―／金額 2億円<br><span class="chip">中小企業・小規模事業者</span></div><span class="badge low">透明性 ― / 5</span></div><div class="svc"><div><b><a href="../services/s007.html">流動資産担保融資保証（ABL保証）</a></b>（<a href="../companies/c021.html">信用保証協会</a>）<br>手数料 非公表／入金 ―／金額 ―<br><span class="chip">売掛債権・棚卸資産を担保に融資を受ける中小企業</span></div><span class="badge low">透明性 ― / 5</span></div><div class="svc"><div><b><a href="../services/s008.html">無担保保証</a></b>（<a href="../companies/c021.html">信用保証協会</a>）<br>手数料 0.45%〜1.90%／入金 ―／金額 8000万円<br><span class="chip">中小企業・小規模事業者</span></div><span class="badge low">透明性 ― / 5</span></div>
-<div class="rel-box"><h2>この手法を深く知る（記事）</h2><ul><li><a href="../articles/basics-guarantee.html">型5：基礎知識と手続き</a></li><li><a href="../articles/guide-rejected.html">型1：状態別アドバイス／ピラー0</a></li><li><a href="../articles/guide-first-time.html">型1：状態別アドバイス／ピラー0</a></li><li><a href="../articles/guide-tax-arrears.html">型1：状態別アドバイス／ピラー0</a></li></ul></div>
+<div class="rel-box"><h2>この手法を深く知る（記事）</h2><ul><li><a href="../articles/basics-guarantee.html">型5：基礎知識と手続き</a></li><li><a href="../articles/guide-first-time.html">型1：状態別アドバイス／ピラー0</a></li><li><a href="../articles/guide-tax-arrears.html">型1：状態別アドバイス／ピラー0</a></li><li><a href="../articles/guide-startup.html">型1：状態別アドバイス／ピラー0</a></li></ul></div>
 <div class="sheet-block">
 <p class="sb-eyebrow">無料・その場で表示</p>
 <h2>結果と現状をまとめた「現状シート」が作れます</h2>
