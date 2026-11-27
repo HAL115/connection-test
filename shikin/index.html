@@ -334,6 +334,12 @@ footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-sp
 </div></div>
 </div>
 <main class="wrap">
+<section>
+<p class="eyebrow dark">START FROM YOUR SITUATION</p>
+<h2 class="sec">まず、今の状態を選んでください</h2>
+<p class="sec-sub">資金調達で一番多い失敗は、状態に合わない方法から申し込むことです。当てはまる状態があれば、そこから進め方を確認してください。どれか分からなければ、この下の状態チェックで判定できます。</p>
+<div class="cards"><a class="state-card" href="articles/guide-payment-gap.html"><b>入金は来月なのに、今月の支払いが厳しい</b><span>支払いと入金のズレへの進め方を見る →</span></a><a class="state-card" href="articles/guide-rejected.html"><b>銀行の審査に落ちた</b><span>理由の切り分けと次の窓口を見る →</span></a><a class="state-card" href="articles/guide-tax-arrears.html"><b>税金の滞納がある</b><span>残る選択肢と最初の一手を見る →</span></a><a class="state-card" href="articles/guide-startup.html"><b>創業したばかりで実績が少ない</b><span>創業直後の窓口と順番を見る →</span></a><a class="state-card" href="articles/guide-akaji.html"><b>赤字・債務超過が続いている</b><span>決算で決まらない系統を見る →</span></a><a class="state-card" href="articles/guide-urgent.html"><b>支払いまで数日しかない</b><span>間に合う系統と順番を見る →</span></a><a class="state-card" href="articles/guide-no-notify.html"><b>売掛先に知られずに資金化したい</b><span>2社間の仕組みと条件を見る →</span></a><a class="state-card" href="articles/guide-refinance.html"><b>返済の負担を軽くしたい</b><span>借り換えと条件変更の違いを見る →</span></a></div>
+</section>
 <section id="check">
 <p class="eyebrow dark">CHECK</p>
 <h2 class="sec">質問に答えるだけで、当たるべき順番が出ます</h2>
@@ -824,12 +830,13 @@ if(maxD2 <= 7 && shownFlat.length > 1) a2 += '返事を待つ間に、2番目の
 acts.push(a2);
 acts.push('申し込む内容が決まったら、下の現状シートを作ってください。この結果と現状が1枚にまとまるので、各社の担当者にそのまま渡せて、説明の手間が省けます。');
 } else {
-if(ans.tax && ans.tax!== 'none') acts.push('まず、税務署と自治体へ分納の相談をしてください。分納が認められると、公的・銀行系の窓口が開きます。今は滞納があるため、その系統は対象外になっています。');
+if(ans.tax && ans.tax!== 'none') acts.push('まず、税務署と自治体へ分納の相談をしてください。滞納がある間は、納税証明書が必要な公的・銀行系は対象外です。分納の相談が、その系統へ進むための最初の一手になります。');
 if(ans.cp === 'none') acts.push('売掛金（入金待ちの請求書）が発生したら、その時点でファクタリングの系統が使えます。請求書の金額と期日が確定していることが条件です。');
 if(maxD2 <= 30) acts.push('支払いの期限が近い場合は、支払先へ期限の延長の交渉を先にしてください。条件が変わると、使える手法も変わります。');
 acts.push('条件を変えたら、もう一度このチェックをやり直してください。変えられない場合は、下の現状シートを作ると、この結果と現状を担当者へ渡せる形にできます。');
 }
 if(ans.tax && ans.tax!== 'none') warns.push('税金の滞納がある状態で公的融資に申し込んでも、納税証明書の段階で止まります。先に分納の相談をしてください。');
+if(ans.loan === 'rejected') warns.push('断られた理由を確認しないまま、別の金融機関に申し込むのは止めてください。理由は、申し込んだ金融機関に確認できます。同じ理由が残っていると、次も止まります。');
 if(ans.cp === 'person') warns.push('売掛先が個人・一般消費者の請求書は、多くのファクタリング会社で対象外です。その請求書では申し込まないでください。');
 if(maxD2 <= 7 && order.some(t => EVAL[t] && EVAL[t].unfit2.length)) warns.push('期限まで7日以内です。入金まで時間のかかる系統から当たると、期限に間に合いません。');
 if(acts.length){
