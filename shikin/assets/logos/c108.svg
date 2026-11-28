@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- 仮ロゴ（v7 の図形モチーフ）。本ロゴは 外観 › カスタマイズ › サイト基本情報 › ロゴ から差し替えてください。 -->
+  <defs>
+    <linearGradient id="l" x1="0.35" y1="0" x2="0.6" y2="1">
+      <stop offset="0" stop-color="#63c23f"/><stop offset="0.5" stop-color="#2ba36a"/><stop offset="1" stop-color="#0d7f80"/>
+    </linearGradient>
+    <linearGradient id="b" x1="0" y1="0" x2="0.9" y2="1">
+      <stop offset="0" stop-color="#2f86ea"/><stop offset="1" stop-color="#1553c7"/>
+    </linearGradient>
+  </defs>
+  <path d="M32,4 C46,18 46,46 32,60 C18,46 18,18 32,4 Z" fill="url(#l)" transform="rotate(32 32 32)"/>
+  <circle cx="50" cy="14" r="7" fill="url(#b)"/>
+</svg>

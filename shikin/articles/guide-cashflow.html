@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="google-site-verification" content="awXV921gXdL9ZE5oPz-J0BztoyJs1I80R4oJdtl66Cg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4LCT3L2TED"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-4LCT3L2TED');</script>
+<title>資金繰り表の作り方と、月ごとの回し方</title><meta name="description" content="資金繰り表を、入金と出金を日付順に並べるだけの形で作る方法と、月初に3か月先まで更新する月次の回し方を書きます。残高が一番低くなる月を先に知るための表です。"><meta property="og:description" content="資金繰り表を、入金と出金を日付順に並べるだけの形で作る方法と、月初に3か月先まで更新する月次の回し方を書きます。残高が一番低くなる月を先に知るための表です。"><link rel="canonical" href="https://kensetusikinnavi.net/articles/guide-cashflow.html"><meta property="og:title" content="資金繰り表の作り方と、月ごとの回し方"><meta property="og:type" content="article"><script type="application/ld+json">[{"@context": "https://schema.org", "@type": "Article", "headline": "資金繰り表の作り方と、月ごとの回し方", "description": "資金繰り表を、入金と出金を日付順に並べるだけの形で作る方法と、月初に3か月先まで更新する月次の回し方を書きます。残高が一番低くなる月を先に知るための表です。", "datePublished": "2026-11-28", "dateModified": "2026-11-28", "author": {"@type": "Organization", "name": "合同会社MELSY", "url": "https://melsy.info/"}, "publisher": {"@type": "Organization", "name": "合同会社MELSY", "url": "https://melsy.info/"}, "inLanguage": "ja", "mainEntityOfPage": "https://kensetusikinnavi.net/articles/guide-cashflow.html"}, {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "トップ", "item": "https://kensetusikinnavi.net/"}, {"@type": "ListItem", "position": 2, "name": "記事一覧", "item": "https://kensetusikinnavi.net/articles/"}, {"@type": "ListItem", "position": 3, "name": "資金繰り表の作り方と、月ごとの回し方", "item": "https://kensetusikinnavi.net/articles/guide-cashflow.html"}]}, {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "表計算ソフトで十分ですか", "acceptedAnswer": {"@type": "Answer", "text": "十分です。会計ソフトの資金繰り機能でも同じことができます。大切なのは道具ではなく、入金日を契約どおりに入れることと、3か月先まで保つことです。"}}, {"@type": "Question", "name": "毎日更新する必要がありますか", "acceptedAnswer": {"@type": "Answer", "text": "月次で回すのが基本です。残高が薄い時期や、底が月の中にある時期だけ、週次または日次に細かくします。"}}, {"@type": "Question", "name": "入金予定がまだ請求していない売上でも入れますか", "acceptedAnswer": {"@type": "Answer", "text": "受注が確定しているものは、入金サイトから逆算した日付で入れます。見込み段階の売上は入れません。入れる場合は、確定分と分けて書きます。"}}, {"@type": "Question", "name": "融資を受けたら、表はどう直しますか", "acceptedAnswer": {"@type": "Answer", "text": "融資の実行を入金に、返済を出金に入れます。返済は元金と利息の合計で、返済予定表どおりの日付です。借りた直後に残高が増えて安心しがちですが、返済の出金まで入れて初めて、底がどう変わったかが見えます。"}}]}]</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --primary:#14957F; --primary-deep:#0F7A68; --cta:#D97706; --cta-dark:#B45309; --gold:#F59E0B;
+  --ink:#182420; --sub:#5C6B66; --bg:#F3F9F7; --surface:#FFFFFF; --line:#E0ECE8; --chip:#E9F5F1;
+  --shadow:0 1px 2px rgba(15,90,80,.04),0 10px 30px rgba(15,90,80,.07);
+  --shadow-lg:0 2px 6px rgba(15,90,80,.05),0 20px 44px rgba(15,90,80,.13);
+  --radius:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Zen Kaku Gothic New','Hiragino Kaku Gothic ProN',-apple-system,sans-serif;font-size:16px;line-height:1.85;letter-spacing:.02em;color:var(--ink);background:var(--bg);margin:0;padding:0 0 120px;-webkit-font-smoothing:antialiased}
+::selection{background:var(--primary);color:#fff}
+.wrap{max-width:1024px;margin:0 auto;padding:0 20px}
+a{color:var(--primary)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+header.site{background:rgba(255,255,255,.92);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40;backdrop-filter:blur(6px)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:62px;padding-top:8px;padding-bottom:8px;max-width:1200px}
+.logo{font-weight:900;font-size:17px;color:var(--primary-deep);letter-spacing:.03em;line-height:1.35;min-width:0}
+.logo small{display:block;font-size:10px;color:var(--sub);font-weight:500;letter-spacing:.06em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hdr-cta{background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;text-decoration:none;font-weight:700;border-radius:999px;padding:10px 20px;font-size:14px;letter-spacing:.04em;min-height:44px;display:inline-flex;align-items:center;transition:filter .2s;white-space:nowrap;flex:none;box-shadow:0 4px 14px rgba(217,119,6,.30)}
+.hdr-cta:hover{filter:brightness(1.06)}
+.hdr-stats{display:none}
+@media(min-width:900px){.hdr-stats{display:flex;flex-direction:column;gap:1px;margin-right:auto;margin-left:22px;flex:none}
+.hdr-stats div{display:flex;align-items:baseline;gap:8px;white-space:nowrap}
+.hdr-stats span{font-size:11px;color:var(--sub);font-weight:700;letter-spacing:.05em;white-space:nowrap}
+.hdr-stats b{font-family:'Jost','Zen Kaku Gothic New',sans-serif;font-size:16px;font-weight:700;color:var(--cta);font-variant-numeric:tabular-nums}
+.hdr-stats b i{font-style:normal;font-size:11px;margin-left:1px}}
+.hero{position:relative;overflow:hidden;background:linear-gradient(180deg,#E9F5F1,#F3F9F7)}
+.hero-in{position:relative;padding:52px 0 30px}
+.hero-grid{display:grid;gap:28px}
+@media(min-width:960px){.hero-grid{grid-template-columns:1.05fr .95fr;align-items:start}}
+.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.1em;color:var(--primary-deep);margin:0 0 16px}
+.eyebrow.dark{color:var(--primary-deep)}
+.hero h1{font-size:clamp(30px,7.8vw,46px);line-height:1.34;font-weight:900;letter-spacing:.015em;margin:0 0 18px;color:var(--primary)}
+.hero h1 em{font-style:normal;color:var(--ink)}
+.hero p.lead{font-size:16.5px;line-height:1.9;margin:0 0 26px;max-width:600px;color:var(--ink)}
+.hero p.lead mark{background:linear-gradient(transparent 62%,#FDE9BE 62%);color:inherit;padding:0 2px}
+.btn-hero2{display:flex;align-items:center;gap:14px;width:100%;max-width:520px;text-align:left;padding:16px 22px;border-radius:16px;box-sizing:border-box}
+.btn-hero2 .bh-t{display:block;font-size:19px;font-weight:900;letter-spacing:.03em}
+.btn-hero2 .bh-s{display:block;font-size:12.5px;font-weight:500;opacity:.94;margin-top:2px;letter-spacing:.02em}
+.btn-hero2 .bh-c{margin-left:auto;font-size:26px;font-weight:700;flex:none}
+.hero-links{display:flex;gap:4px;flex-wrap:wrap;margin-top:16px}
+.hero-links a{display:inline-flex;align-items:center;gap:7px;color:var(--primary-deep);font-weight:700;font-size:14.5px;text-decoration:none;padding:8px 12px;border-radius:10px}
+.hero-links a:hover{background:#fff}
+.hero-links svg{flex:none}
+.rank-card{background:#fff;border-radius:20px;box-shadow:var(--shadow-lg);padding:22px 22px 12px}
+.rank-head{display:flex;justify-content:space-between;align-items:baseline;gap:6px 10px;margin-bottom:6px;flex-wrap:wrap}
+.rank-head b{font-size:16.5px;font-weight:900;letter-spacing:.02em}
+.rank-head a{font-size:13px;font-weight:700;color:var(--primary-deep);text-decoration:none;white-space:nowrap}
+.merit-row{padding:13px 2px;border-top:1px solid var(--line)}
+.merit-row:first-of-type{border-top:0}
+.merit-head{display:flex;gap:8px;align-items:flex-start;font-weight:900;font-size:15.5px;line-height:1.6;letter-spacing:.02em}
+.merit-head .ck{flex:none;width:19px;height:19px;border-radius:50%;background:var(--primary);color:#fff;font-size:12px;display:inline-flex;align-items:center;justify-content:center;margin-top:3px}
+.merit-why{color:var(--sub);font-size:14px;line-height:1.75;margin:4px 0 0 27px}
+.rank-foot{border-top:1px solid var(--line);padding:11px 2px 6px}
+.rank-foot a{font-weight:700;color:var(--primary-deep);text-decoration:none;font-size:14.5px}
+.trust-row{display:flex;gap:8px 14px;flex-wrap:wrap;align-items:center;justify-content:center;margin:26px 0 0;font-size:13.5px;color:var(--sub)}
+.trust-row b{color:var(--ink)}
+.hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:22px}
+@media(min-width:760px){.hero-stats{grid-template-columns:repeat(4,1fr)}}
+.hstat{background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);padding:16px 18px}
+.hstat b{display:block;font-family:'Jost','Zen Kaku Gothic New',sans-serif;font-size:30px;font-weight:700;line-height:1.15;color:var(--primary-deep);font-variant-numeric:tabular-nums}
+.hstat b i{font-style:normal;font-size:15px;font-weight:700;margin-left:2px;font-family:'Zen Kaku Gothic New',sans-serif}
+.hstat span{font-size:12px;color:var(--sub);letter-spacing:.05em;font-weight:700}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;font-weight:700;letter-spacing:.04em;text-decoration:none;cursor:pointer;border:0;min-height:56px;padding:14px 28px;font-size:16px;transition:transform .18s,box-shadow .18s,filter .18s}
+.btn-cta{background:linear-gradient(135deg,#F59E0B,#D97706);color:#fff;box-shadow:0 8px 22px rgba(217,119,6,.32)}
+.btn-cta:hover{filter:brightness(1.05);transform:translateY(-2px)}
+.btn-hero{font-size:18px;min-height:62px;padding:16px 36px}
+.btn-glass{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.55)}
+.btn-glass:hover{background:rgba(255,255,255,.2)}
+.btn-sub{background:var(--surface);color:var(--primary);border:2px solid var(--primary)}
+.btn-sub:hover{background:var(--chip)}
+.btn-ghost{background:transparent;color:var(--primary);border:2px solid var(--line)}
+.btn-sm{min-height:48px;padding:10px 20px;font-size:15px;border-radius:8px}
+section{padding:72px 0 4px}
+h2.sec{font-size:26px;font-weight:900;letter-spacing:.03em;line-height:1.5;margin:0 0 10px}
+.sec-sub{color:var(--sub);margin:0 0 24px;max-width:720px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px;box-shadow:var(--shadow)}
+.progress{height:8px;background:#ECE9E2;border-radius:4px;overflow:hidden;margin:8px 0 6px}
+.progress i{display:block;height:100%;background:var(--cta);border-radius:4px;transition:width .35s cubic-bezier(.22,.61,.36,1)}
+.step-label{font-size:12px;color:var(--sub);font-weight:700;letter-spacing:.14em}
+.wiz-q{font-size:22px;font-weight:900;letter-spacing:.03em;margin:12px 0 20px;animation:fadeSlide .35s cubic-bezier(.22,.61,.36,1)}
+.opts{display:grid;gap:12px;animation:fadeSlide .35s cubic-bezier(.22,.61,.36,1)}
+@media(min-width:640px){.opts{grid-template-columns:1fr 1fr}}
+@keyframes fadeSlide{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.opt{display:flex;align-items:center;gap:12px;border:2px solid var(--line);border-radius:12px;padding:16px 18px;font-size:16px;font-weight:700;letter-spacing:.03em;cursor:pointer;min-height:64px;background:#fff;text-align:left;width:100%;font-family:inherit;color:var(--ink);transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--primary)}
+.opt.sel{border-color:var(--cta);background:#FFF4EC}
+.opt .sub{display:block;font-weight:500;font-size:13px;color:var(--sub);letter-spacing:.02em}
+.wiz-nav{display:flex;justify-content:space-between;align-items:center;margin-top:22px}
+.linkbtn{background:none;border:0;color:var(--primary);font-size:15px;font-weight:700;cursor:pointer;min-height:44px;font-family:inherit}
+.steps3{display:grid;gap:12px;margin-top:18px}
+@media(min-width:760px){.steps3{grid-template-columns:repeat(3,1fr)}}
+.step3{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;box-shadow:var(--shadow)}
+.step3 b{display:flex;align-items:center;gap:10px;font-size:15px}
+.step3 b i{font-style:normal;background:var(--primary);color:#fff;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex:none}
+.step3 p{margin:8px 0 0;font-size:14px;color:var(--sub)}
+.result-head{background:var(--chip);border-radius:var(--radius);padding:22px 26px;margin-bottom:20px}
+.result-head b{font-size:20px;letter-spacing:.03em}
+.result-top{background:var(--chip);border-radius:var(--radius);padding:22px 26px;margin-bottom:20px}
+.result-top h3{margin:0 0 6px;font-size:23px;letter-spacing:.03em}
+.result-top ol{margin:8px 0 4px;padding-left:22px}
+.result-top ol li{margin:5px 0;font-size:16px}
+.act-panel{margin-bottom:20px}
+.act-list{margin:10px 0 0;padding-left:22px}
+.act-list li{margin:7px 0}
+.mcard{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:22px 24px;margin:0 0 16px;box-shadow:var(--shadow)}
+.mcard h3{margin:0 0 6px;font-size:19px;letter-spacing:.03em}
+.kv{display:grid;grid-template-columns:92px 1fr;gap:5px 14px;font-size:15px;margin:12px 0}
+.kv dt{color:var(--sub);font-weight:700}
+.kv dd{margin:0}
+.svc{display:flex;justify-content:space-between;gap:12px;border-top:1px dashed var(--line);padding:11px 0;font-size:14px}
+.svc:first-of-type{border-top:0}
+.badge{display:inline-block;background:var(--primary);color:#fff;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:.04em;padding:3px 11px;white-space:nowrap;height:fit-content}
+.badge.low{background:#8A8578}
+.cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
+details.unfit,details.faq{border:1px solid var(--line);border-radius:var(--radius);background:#fff;padding:4px 22px;margin-bottom:10px;box-shadow:var(--shadow)}
+details.unfit summary,details.faq summary{cursor:pointer;font-weight:700;min-height:48px;display:flex;align-items:center;letter-spacing:.02em}
+details.unfit p,details.faq p{font-size:14.5px;color:#33312D;padding-bottom:10px}
+.why-list{margin:0 0 8px;padding-left:20px;font-size:14.5px;line-height:1.8}
+.split{display:grid;gap:26px;align-items:stretch}
+@media(min-width:860px){.split{grid-template-columns:5fr 7fr}}
+.split img.photo{width:100%;height:100%;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-lg);display:block}
+.stat-band{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:20px 0}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:18px;text-align:center;box-shadow:var(--shadow)}
+.stat b{display:block;font-size:32px;color:var(--primary);font-weight:900;font-variant-numeric:tabular-nums;line-height:1.15}
+.stat span{font-size:12.5px;color:var(--sub);letter-spacing:.05em}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;font-size:14px;background:#fff}
+th,td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+tr:last-child td{border-bottom:0}
+th{background:var(--chip);font-weight:700;letter-spacing:.03em;white-space:nowrap}
+tbody tr:hover td{background:#F4FAF8}
+.tblwrap table.wide{min-width:640px}
+.svc-cards{display:grid;gap:12px}
+@media(min-width:760px){.svc-cards{grid-template-columns:1fr 1fr}}
+.svc-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px;box-shadow:var(--shadow)}
+.svc-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.svc-top b{font-size:15.5px;letter-spacing:.02em}
+.svc-ent{font-size:13px;color:var(--sub)}
+.svc-kv{display:grid;grid-template-columns:1fr 1fr;gap:6px 10px;margin:10px 0 0}
+.svc-kv>div:last-child{grid-column:1/-1}
+@media(min-width:640px){.svc-kv{grid-template-columns:repeat(3,1fr)}.svc-kv>div:last-child{grid-column:auto}}
+.svc-kv dt{font-size:11.5px;color:var(--sub);font-weight:700;letter-spacing:.04em}
+.svc-kv dd{margin:0;font-size:13.5px;font-variant-numeric:tabular-nums;line-height:1.55}
+.more-row{text-align:center;margin-top:18px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.state-card{display:block;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s}
+.state-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.state-card b{font-size:15.5px;letter-spacing:.02em}
+.state-card span{display:block;color:var(--cta);font-weight:700;font-size:13.5px;margin-top:6px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.filters select{font-size:15px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;min-height:46px;background:#fff;font-family:inherit}
+.filters label{font-size:14px;font-weight:700;display:inline-flex;align-items:center;gap:6px;min-height:46px}
+.filters input[type=checkbox]{width:18px;height:18px;accent-color:var(--primary)}
+.pr{display:inline-block;background:#FFF3D6;border:1px solid #D9A400;color:#6B4E00;font-size:12px;font-weight:700;border-radius:6px;padding:3px 10px;letter-spacing:.03em}
+article h1{font-size:28px;line-height:1.55;font-weight:900;letter-spacing:.02em}
+article h2{font-size:21px;font-weight:900;letter-spacing:.03em;border-left:6px solid var(--primary);padding-left:12px;margin-top:38px}
+article h3{font-size:17px}
+.cta-box{background:var(--chip);border-radius:var(--radius);padding:28px;text-align:center;margin:44px 0}
+.aff-banner{margin:24px 0;text-align:center}
+.aff-banner img{max-width:100%;height:auto}
+.cta-box p{font-weight:900;font-size:18px;margin:0 0 16px;letter-spacing:.03em}
+.sticky-cta{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.96);border-top:1px solid var(--line);padding:10px 12px calc(10px + env(safe-area-inset-bottom));z-index:50;backdrop-filter:blur(6px);box-sizing:border-box;max-width:100vw;overflow:hidden}
+.bar-btn{display:block;width:100%;max-width:640px;margin:0 auto;box-sizing:border-box;min-height:48px;padding:12px 16px;font-size:15px;text-align:center;white-space:normal}
+@media(max-width:640px){.hstat{padding-right:18px;margin-right:18px}.hstat b{font-size:26px}section{padding:52px 0 4px}.logo{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.logo small{display:none}.hdr-cta{padding:9px 11px;font-size:13px}header.site .wrap{padding-left:14px;padding-right:14px}}
+footer.site{border-top:1px solid var(--line);margin-top:64px;padding:30px 0 10px;color:var(--sub);font-size:13px}
+.dnav{display:none}
+@media(min-width:1100px){.dnav{display:flex;align-items:center;gap:2px}.dnav a{padding:8px 9px;font-size:13.5px;font-weight:700;color:var(--ink2);white-space:nowrap}.menu-btn{display:none}}
+.menu-btn{flex:none;background:#fff;border:1.5px solid var(--primary);color:var(--primary);border-radius:10px;padding:9px 13px;font-size:13.5px;font-weight:800;cursor:pointer;font-family:inherit}
+.mpanel{position:fixed;inset:0;background:var(--bg);z-index:90;display:none;padding:18px 20px calc(18px + env(safe-area-inset-bottom));overflow-y:auto}
+body.menu-open .mpanel{display:block}
+body.menu-open{overflow:hidden}
+.mpanel .mp-head{display:flex;justify-content:space-between;align-items:center;max-width:1024px;margin:0 auto 10px}
+.mpanel .mp-title{font-weight:900;color:var(--primary);font-size:16px}
+.mpanel .mp-close{background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:9px 14px;font-size:14px;font-weight:800;cursor:pointer;font-family:inherit;color:var(--ink)}
+.mpanel nav{max-width:1024px;margin:0 auto;display:flex;flex-direction:column}
+.mpanel nav a{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;min-height:54px;padding:6px 4px;font-size:17px;font-weight:800;color:var(--ink);border-bottom:1px solid var(--line);text-decoration:none}
+.mpanel nav a small{display:block;font-size:12.5px;font-weight:500;color:var(--mut)}
+
+.fcols{display:grid;grid-template-columns:1fr 1fr;gap:18px 22px;margin:8px 0 18px;text-align:left}
+@media(min-width:900px){.fcols{grid-template-columns:repeat(4,1fr)}}
+.flist .fhead{display:block;font-size:13px;font-weight:900;color:var(--primary);margin-bottom:6px;text-decoration:none}
+.flist a.l{display:block;font-size:13.5px;padding:3.5px 0;color:var(--ink2);line-height:1.45}
+.sgrid{display:grid;gap:12px;margin-top:6px}
+@media(min-width:760px){.sgrid{grid-template-columns:1fr 1fr}}
+.scard{border:1px solid var(--line);border-radius:14px;padding:18px;background:#fff;text-align:left}
+.scard i{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--primary);color:#fff;font-style:normal;font-weight:900;font-size:14px;margin-bottom:8px}
+.scard b{display:block;font-size:16.5px;margin-bottom:5px}
+.scard p{margin:0 0 10px;font-size:14px;color:var(--ink2);line-height:1.65}
+.scard a{font-size:14px;font-weight:700}
+.sim-form{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:12px 0}
+.sim-form input,.sim-form select{font:inherit;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+.map-panel{background:#fff;border-radius:16px;box-shadow:var(--shadow);padding:18px;margin:14px 0}
+.ent-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:12px;margin:12px 0 10px}
+.ent-card{background:var(--surface);border-radius:14px;box-shadow:var(--shadow);padding:14px 16px}
+.ent-name{font-weight:700;font-size:16.5px;color:var(--ink);text-decoration:none}
+.ent-name:hover{color:var(--primary-deep);text-decoration:underline}
+.ent-meta{display:flex;align-items:center;gap:8px;margin-top:7px;flex-wrap:wrap}
+.ent-chip{background:var(--chip);color:var(--primary-deep);border-radius:999px;padding:2px 10px;font-size:12.5px;font-weight:700}
+.sd{font-size:10px;letter-spacing:2px}
+.sd-on{color:var(--primary)}
+.sd-off{color:#CBDCD6}
+.ent-score{font-size:12.5px;color:var(--sub)}
+.ent-sub{margin-top:7px;font-size:13.5px;color:var(--sub);line-height:1.6}
+.pref-nav{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.pref-nav a{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 13px;font-size:13.5px;font-weight:700;color:var(--ink);text-decoration:none}
+.pref-nav a:hover{border-color:var(--primary);color:var(--primary-deep)}
+.sec .cnt{font-size:14px;color:var(--primary-deep);background:var(--chip);border-radius:999px;padding:2px 11px;margin-left:10px;vertical-align:middle}
+.all-list{columns:290px;column-gap:28px}
+.all-list li{break-inside:avoid}
+.tool-search{width:100%;padding:13px 16px;font-size:16px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);box-sizing:border-box}
+.tool-results{margin-top:10px;display:flex;flex-direction:column;gap:6px}
+.tool-hit{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-size:14.5px;text-align:left;cursor:pointer;width:100%;color:var(--ink)}
+.tool-hit:hover{border-color:var(--primary)}
+.tool-hit small{color:var(--sub)}
+.tool-add{flex:none;background:var(--chip);color:var(--primary-deep);font-weight:700;border-radius:999px;padding:3px 11px;font-size:12.5px}
+.tool-sel{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}
+.tool-chip{background:var(--primary);color:#fff;border-radius:999px;padding:6px 8px 6px 14px;font-size:13.5px;font-weight:700;display:flex;align-items:center;gap:8px}
+.tool-chip button{background:rgba(255,255,255,.25);border:none;color:#fff;border-radius:999px;width:20px;height:20px;cursor:pointer;line-height:1}
+.sheet-block{border:2px solid var(--primary);border-radius:16px;padding:26px 24px;margin:34px 0;background:linear-gradient(180deg,#fff,#F3F9F7)}
+.sheet-block h2{margin:4px 0 10px;font-size:23px}
+.sb-eyebrow{color:var(--primary-deep);font-weight:700;font-size:12.5px;letter-spacing:.06em;margin:0}
+.sb-lead{margin:0 0 14px}
+.sb-sample{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:0 0 14px;overflow-x:auto}
+.sb-cap{font-size:12px;color:var(--sub);font-weight:700;margin:0 0 8px}
+.sb-sample table{border-collapse:collapse;font-size:13.5px;min-width:480px;width:100%}
+.sb-sample th{text-align:left;color:var(--sub);font-weight:700;padding:5px 10px 5px 0;white-space:nowrap;vertical-align:top;border:none;background:none}
+.sb-sample td{padding:5px 0;border:none}
+.sb-points{margin:0 0 18px;padding-left:20px}.sb-points li{margin:4px 0}
+.sb-ctas{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.sb-note{font-size:13px;color:var(--sub);margin:12px 0 0}
+.sheet-band{border:1px solid var(--line);border-left:5px solid var(--cta);border-radius:12px;padding:18px 20px;margin:30px 0;background:#FFF9EC}
+.sheet-band p{margin:0 0 12px}
+.rank-card{border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin:14px 0;background:#fff;box-shadow:var(--shadow)}
+.rank-head{display:flex;align-items:center;gap:12px}.rank-head h3{margin:0;font-size:19px}
+.rank-num{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--gold);color:#fff;font-weight:900;font-family:Jost,sans-serif;flex:none}
+.rank-ent{color:var(--sub);margin:6px 0 10px;font-size:14px}
+.rank-meta{color:var(--sub);font-size:13.5px;margin:10px 0 0}
+.viz{display:flex;gap:20px;align-items:flex-start;flex-wrap:wrap;margin:14px 0}
+.viz-svg{flex:0 1 264px;max-width:264px}
+.viz-tbl{flex:1 1 260px;min-width:240px}
+.viz-tbl table{margin:0}
+.band-wrap{margin:8px 0 4px;max-width:640px}
+.mapwrap{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:14px 0;background:#fff}
+.mapwrap iframe{width:100%;height:260px;border:0;display:block}
+.pub{list-style:none;padding:0;margin:10px 0}
+.pub li{padding:7px 0;border-bottom:1px dashed var(--line);font-size:14.5px}
+.pub li b{display:inline-block;min-width:52px;color:var(--primary)}
+.pub li .no{color:var(--ink2)}
+.fig{border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px 14px 10px;margin:18px 0}
+.fig svg{display:block;width:100%;height:auto}
+.fig figcaption{font-size:12.5px;color:var(--ink2);margin-top:8px;line-height:1.6}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(235px,1fr));gap:10px}
+.fcard{display:block;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:#fff;text-decoration:none}
+.fcard b{display:block;font-size:14.5px;color:var(--ink);line-height:1.45}
+.fcard span{display:block;font-size:12.5px;color:var(--mut);margin-top:3px;line-height:1.55}
+.toc{border:1px solid var(--line);border-radius:14px;padding:14px 18px;margin:20px 0;background:#fff}
+.toc b{display:block;font-size:14px;margin-bottom:6px;color:var(--primary)}
+.toc ol{margin:0;padding-left:20px}
+.toc li{margin:4px 0;font-size:14.5px;line-height:1.5}
+.cta-mini{border:1.5px solid var(--cta);border-radius:14px;padding:13px 16px;margin:20px 0;background:#FFF7ED;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.cta-mini p{margin:0;font-size:14.5px;font-weight:700;flex:1;min-width:180px}
+.cta-mini a{flex:none}
+.mflow{display:grid;gap:10px;margin:16px 0 22px}
+@media(min-width:760px){.mflow{grid-template-columns:repeat(var(--n,4),1fr)}}
+.mf-step{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 14px;position:relative}
+.mf-step b{display:flex;align-items:center;gap:8px;font-size:14.5px}
+.mf-step b i{font-style:normal;background:var(--primary);color:#fff;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+.mf-step p{margin:6px 0 0;font-size:13.5px;color:var(--sub);line-height:1.65}
+.logo-img{height:30px;max-width:120px;object-fit:contain;vertical-align:middle;margin-right:10px;background:#fff;border:1px solid var(--line);border-radius:7px;padding:2px 5px}
+.rank-logo{height:24px;max-width:96px;object-fit:contain;vertical-align:middle;margin-right:8px;background:#fff;border:1px solid var(--line);border-radius:6px;padding:1px 4px}
+.conclusion{background:var(--chip);border-left:5px solid var(--primary);border-radius:12px;padding:16px 20px;margin:14px 0 22px}
+.conclusion p{margin:0 0 8px}
+.conclusion p:last-child{margin-bottom:0}
+.check3{border:1.5px solid var(--line);border-radius:12px;padding:6px 20px 10px;margin:14px 0 22px;background:#fff}
+.byline{border-top:1px solid var(--line);margin:30px 0 0;padding:14px 0 0;font-size:13.5px;color:var(--mut);line-height:1.7}
+.chip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 9px;font-size:12px;color:var(--ink2);margin:3px 4px 0 0;background:#fff}
+.rel-box{border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:26px 0;background:#fff;text-align:left}
+.rel-box h2{font-size:17px;margin:0 0 6px}
+.rel-box p{margin:10px 0 2px}
+.rel-box ul{margin:0;padding-left:18px}
+.rel-box li{margin:4px 0;font-size:14.5px;line-height:1.55}
+footer.site .fname{font-weight:900;color:var(--primary);font-size:15px;letter-spacing:.03em;margin:0 0 4px}
+.hscroll{display:flex;gap:14px;overflow-x:auto;padding:6px 2px 18px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+.hscroll>.mcard{flex:0 0 292px;scroll-snap-align:start;margin:0}
+@media(min-width:760px){.hscroll>.mcard{flex-basis:330px}}
+.scroll-hint{font-size:12.5px;color:var(--sub);margin:0 0 8px;letter-spacing:.05em}
+.lead-panel{background:var(--primary-deep);color:#fff;border-radius:var(--radius);padding:30px;margin:34px 0 8px;box-shadow:var(--shadow-lg)}
+.lead-panel h3{margin:0 0 8px;font-size:21px;letter-spacing:.03em}
+.lead-panel p{margin:0 0 16px;color:rgba(255,255,255,.92);font-size:15px}
+.lead-form{display:grid;gap:12px}
+@media(min-width:640px){.lead-form{grid-template-columns:1fr 1fr}.lead-form .wide{grid-column:1/-1}}
+.lead-form label{font-size:13px;font-weight:700;letter-spacing:.04em;display:block}
+.lead-form input{width:100%;margin-top:5px;padding:12px 14px;border-radius:8px;border:1.5px solid rgba(255,255,255,.4);background:#fff;color:var(--ink);font-size:16px;font-family:inherit;min-height:50px}
+.lead-form .req{color:var(--gold);font-size:11.5px;margin-left:4px}
+.lead-note{font-size:12.5px;color:rgba(255,255,255,.75);margin:12px 0 0}
+.note{font-size:13px;color:var(--sub)}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .7s cubic-bezier(.22,.61,.36,1),transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv.on{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .wiz-q,.opts{animation:none}
+  html{scroll-behavior:auto}
+}
+</style></head>
+<body>
+<header class="site"><div class="wrap"><div class="logo">建設的な資金調達を実現するサイト<small>可能性のある資金調達方法を、全ての手法から探し出す</small></div><div class="hdr-stats"><div><span>収録サービス</span><b>331<i>件</i></b></div><div><span>口コミ集計</span><b>5,184<i>件</i></b></div></div><nav class="dnav"><a href="../index.html#check">状態チェック</a><a href="../methods/index.html">手法ガイド</a><a href="../articles/index.html#basics">基礎知識</a><a href="../articles/index.html#guides">状態別の記事</a><a href="../index.html#compare">比較</a><a href="../index.html#search">サービスを探す</a></nav><a class="hdr-cta" href="../index.html#check">状態チェック</a><button class="menu-btn" onclick="document.body.classList.add('menu-open')">メニュー</button></div></header>
+<div class="mpanel"><div class="mp-head"><span class="mp-title">メニュー</span><button class="mp-close" onclick="document.body.classList.remove('menu-open')">閉じる</button></div><nav><a href="../index.html#check" onclick="document.body.classList.remove('menu-open')">状態チェック<small>上位の手法から順に確認します</small></a><a href="../methods/index.html">手法ガイド<small>全24手法の仕組みと条件</small></a><a href="../articles/index.html#basics">基礎知識<small>仕組みの根幹を先に知る</small></a><a href="../articles/index.html#guides">状態別の記事<small>状況ごとの進め方</small></a><a href="../index.html#compare" onclick="document.body.classList.remove('menu-open')">サービスの比較<small>手法ごとの手数料と速さ</small></a><a href="../index.html#search" onclick="document.body.classList.remove('menu-open')">サービスを探す<small>331件から条件で絞る</small></a><a href="../about.html">運営者情報</a><a href="../privacy.html">プライバシーポリシー</a></nav></div>
+<article class="wrap"><p>公開日：2026年11月28日／更新日：2026年11月28日</p>
+<h1>資金繰り表の作り方と、月ごとの回し方</h1><div class="cta-mini"><p>読む前に、自分の状態で使える手法だけを確認できます。</p><a class="btn btn-cta" href="../index.html#check">状態チェック</a></div><nav class="toc"><b>目次</b><ol><li><a href="#s1">この記事の結論</a></li><li><a href="#s2">先に確かめる3点</a></li><li><a href="#s3">表の作り方</a></li><li><a href="#s4">月ごとの回し方</a></li><li><a href="#s5">金融機関への相談で、表がどう効くか</a></li><li><a href="#s6">やってはいけないこと</a></li><li><a href="#s7">よくある質問</a></li><li><a href="#s8">参照した情報と確認日</a></li></ol></nav>
+<h2 id="s1">この記事の結論</h2><div class="conclusion">
+<p>資金繰り表は、入金と出金を日付の順に並べて、現金の残高がどう動くかを先に見る表です。作り方は難しくなく、列は「日付・入金・出金・残高」の4つだけです。</p>
+<p>見るべき点は1つで、残高が一番低くなる月（または日）がいつかです。その月の前に手当てを打てるかどうかで、資金繰りの詰まり方は変わります。</p>
+<p>表は3か月先まで作ります。融資の申し込みから実行までは数週間から1か月以上かかるため、残高が尽きる月が見えてから動いても間に合いません。</p>
+<p>金融機関への相談でも、資金繰り表は決算書や試算表と並ぶ提出物です。表があると、相談が「いくら足りないか」ではなく「いつの残高をどう守るか」という具体的な話になります。</p>
+<p>資金繰りの失敗は、利益が出ていないことより、入金と出金の時期のズレで起きます。売上があっても、入金が翌々月で、支払いと給料が今月末なら、現金は足りなくなります。資金繰り表は、そのズレを数字で先に見るための道具です。</p>
+</div><h2 id="s2">先に確かめる3点</h2><div class="check3">
+<ol><li><b>今月末の残高の見込み</b>：今日の残高に、今月中の入金予定と出金予定を足し引きした金額です。ここが分からない状態が、一番危険です。</li><li><b>残高が一番低くなる時期</b>：3か月先までの見込みの中で、残高の底がいつ来るか。税金の支払い月と、入金の少ない月が重なると底が深くなります。</li><li><b>入金と出金のズレの大きさ</b>：売上の入金サイト（納品から入金までの期間）と、仕入れや外注の支払いサイトの差です。ズレが大きい業種ほど、売上が増える局面で現金が減ります。</li></ol>
+<figure class="fig"><svg viewBox="0 0 360 208" role="img" aria-label="資金繰り表の見本。月ごとに入金と出金と月末残高を並べ、税金の月に残高の底が来ることを示した表"><text x="8" y="14" font-size="13" font-weight="bold" fill="#14504C">資金繰り表の見本（月次・3か月）</text><rect x="8" y="26" width="344" height="34" rx="6" fill="#14504C"/><text x="20" y="47" font-size="12" fill="#FFFFFF" font-weight="bold">月</text><text x="110" y="47" font-size="12" fill="#FFFFFF" font-weight="bold">入金</text><text x="200" y="47" font-size="12" fill="#FFFFFF" font-weight="bold">出金</text><text x="290" y="47" font-size="12" fill="#FFFFFF" font-weight="bold">月末残高</text><rect x="8" y="64" width="344" height="34" rx="6" fill="#FFFFFF" stroke="#C9D4D2"/><text x="20" y="85" font-size="12" fill="#22303A">4月</text><text x="110" y="85" font-size="12" fill="#22303A">480万円</text><text x="200" y="85" font-size="12" fill="#22303A">510万円</text><text x="290" y="85" font-size="12" fill="#22303A">290万円</text><rect x="8" y="102" width="344" height="34" rx="6" fill="#FDF0E6" stroke="#C2410C"/><text x="20" y="123" font-size="12" fill="#22303A">5月</text><text x="110" y="123" font-size="12" fill="#22303A">450万円</text><text x="200" y="123" font-size="12" fill="#22303A">560万円</text><text x="290" y="123" font-size="12" font-weight="bold" fill="#C2410C">180万円</text><rect x="8" y="140" width="344" height="34" rx="6" fill="#FFFFFF" stroke="#C9D4D2"/><text x="20" y="161" font-size="12" fill="#22303A">6月</text><text x="110" y="161" font-size="12" fill="#22303A">620万円</text><text x="200" y="161" font-size="12" fill="#22303A">470万円</text><text x="290" y="161" font-size="12" fill="#22303A">330万円</text><text x="8" y="196" font-size="11.5" fill="#5A6B72">5月は税金の支払いが重なり、残高の底になります</text></svg><figcaption>見本の数字は作り方を示す例です。見る点は金額の大きさではなく、残高の底がいつ来るかです。この例では5月が底で、手当ては4月のうちに打ちます。</figcaption></figure>
+</div><h2 id="s3">表の作り方</h2>
+<h3>列は4つだけにする</h3>
+<p>日付、入金、出金、残高の4列です。入金と出金は、項目を細かく分けるより先に、日付の順に並べることを優先します。細かい分類は、回し始めてから足せば足ります。</p>
+<div class="tblwrap"><table><tr><th>列</th><th>書くこと</th></tr><tr><td>日付</td><td>入金・出金が実際に起きる日。入金は希望の日ではなく、契約で決まった入金日</td></tr><tr><td>入金</td><td>売掛金の入金、融資の実行、その他の入金。金額は請求済みのものから</td></tr><tr><td>出金</td><td>仕入れ・外注の支払い、給料、社会保険料、税金、借入の返済、家賃</td></tr><tr><td>残高</td><td>前の残高に入金を足し、出金を引いた金額</td></tr></table></div>
+<h3>入金は「契約上の入金日」で書く</h3>
+<p>一番多い間違いは、入金を請求した月に入れてしまうことです。入金は、取引先との約束で決まった日（月末締め翌月末払いなら、その日）に入れます。売掛金の入金サイトが60日なら、売上を立てた月の2か月後です。下請法では、給付の受領から60日以内に代金を支払うことが発注側の義務とされていますが、60日ちょうどの入金も珍しくありません。</p>
+<h3>出金で漏れやすい項目</h3>
+<ul><li>税金（法人税・消費税・源泉所得税）と社会保険料。月々の出金と違い、特定の月にまとまって出ます</li><li>借入の返済。元金と利息の合計で、返済予定表の金額を入れます</li><li>給料の支払日と、売掛金の入金日の順序。同じ月でも、給料が25日で入金が月末なら、その間は残高が薄くなります。底が月の中にある場合は、月次ではなく週次・日次で表を作ります</li></ul>
+<h3>見本（数字は例）</h3>
+<div class="tblwrap"><table class="wide"><tr><th>月</th><th>月初の残高</th><th>入金</th><th>出金</th><th>月末の残高</th></tr><tr><td>4月</td><td>320万円</td><td>480万円</td><td>510万円</td><td>290万円</td></tr><tr><td>5月</td><td>290万円</td><td>450万円</td><td>560万円（税金120万円を含む）</td><td>180万円</td></tr><tr><td>6月</td><td>180万円</td><td>620万円</td><td>470万円</td><td>330万円</td></tr></table></div>
+<p>この例では、5月に残高の底（180万円）が来ます。6月には回復するため、必要な手当ては「5月を越える分」だけです。表があれば、借りる金額も期間も、この底に合わせて決められます。表がないと、不足の感覚だけで金額を決めることになります。</p>
+<h2 id="s4">月ごとの回し方</h2>
+<ol><li><b>月初に、3か月先までを更新する</b>：先月分の実績を確定させ、新しい3か月目を足します。常に「これから3か月」が見えている状態を保ちます。</li><li><b>予定と実績の差を記録する</b>：入金が遅れた、出金が増えたという差は、翌月の予定の精度を上げる材料です。差の理由を1行で残します。</li><li><b>底の月が2か月以内に来たら、その月に向けた手当てを決める</b>：融資の相談、売掛金の早期資金化、支払いサイトの交渉のどれを使うかを、底の深さと残された時間で選びます。順番の判定は、当サイトの状態チェックでも行えます。</li><li><b>底を越えたら、表を実績で閉じる</b>：予定どおりに越えたか、どの手当てが効いたかを残すと、次の底への備えが速くなります。</li></ol>
+<h2 id="s5">金融機関への相談で、表がどう効くか</h2>
+<p>融資の相談では、決算書2期分と試算表が標準の提出物で、資金繰り表も合わせて求められることが一般的です。表を持っていくと、相談は「お金が足りない」ではなく「何月にいくら残高が下がり、いつ戻るか」という形になり、金額と期間の根拠を先方と共有できます。借入の返済負担を軽くする相談（条件変更）でも、返済の見通しを示す資料として同じ表が使えます。</p>
+<h2 id="s6">やってはいけないこと</h2>
+<ul><li><b>入金を希望の日で書く</b>：入金日は契約で決まっています。希望で書いた表は、底の月を実際より遅く見せて、手当てを遅らせます。</li><li><b>1か月分だけ作る</b>：底は2〜3か月先に来ることが多い表です。1か月分では、作る意味の半分が落ちます。</li><li><b>税金と社会保険料を入れない</b>：金額が大きく、月も決まっている出金です。入れ忘れは、そのまま底の見落としになります。</li><li><b>赤字だからと作るのをやめる</b>：表は黒字を証明する道具ではなく、手当ての順番を決める道具です。苦しい時期ほど、底の時期と深さが判断の材料になります。</li></ul>
+<h2 id="s7">よくある質問</h2>
+<h3>表計算ソフトで十分ですか</h3>
+<p>十分です。会計ソフトの資金繰り機能でも同じことができます。大切なのは道具ではなく、入金日を契約どおりに入れることと、3か月先まで保つことです。</p>
+<h3>毎日更新する必要がありますか</h3>
+<p>月次で回すのが基本です。残高が薄い時期や、底が月の中にある時期だけ、週次または日次に細かくします。</p>
+<h3>入金予定がまだ請求していない売上でも入れますか</h3>
+<p>受注が確定しているものは、入金サイトから逆算した日付で入れます。見込み段階の売上は入れません。入れる場合は、確定分と分けて書きます。</p>
+<h3>融資を受けたら、表はどう直しますか</h3>
+<p>融資の実行を入金に、返済を出金に入れます。返済は元金と利息の合計で、返済予定表どおりの日付です。借りた直後に残高が増えて安心しがちですが、返済の出金まで入れて初めて、底がどう変わったかが見えます。</p>
+<h2 id="s8">参照した情報と確認日</h2>
+<ul><li><a href="https://laws.e-gov.go.jp/law/331AC0000000120">下請代金支払遅延等防止法</a>（支払期日は給付の受領から60日以内）</li><li>金融機関の提出物の実態（決算書・試算表・資金繰り表。当サイトの需要調査で確認）</li><li>当サイトの収録データ（手法ごとの入金までの期間の目安）</li></ul>
+<p>確認日：2026年11月28日</p><div class="sheet-block">
+<p class="sb-eyebrow">無料・その場で表示</p>
+<h2>結果と現状をまとめた「現状シート」が作れます</h2>
+<p class="sb-lead">状態チェックに答えると、あなたの現状と、候補の手法・会社、用意する書類の一覧を1枚に整理したシートが、その場で表示されます。各社の担当者にそのまま渡せて、相談が早く進みます。</p>
+<div class="sb-sample"><p class="sb-cap">現状シートの見本（一部）</p><table>
+<tr><th>現状</th><td>支払いの期限まで2週間／希望額 300万円／売掛金あり</td></tr>
+<tr><th>候補の順番</th><td>1. 日本政策金融公庫（間に合う見込み）　2. ファクタリング（2社間）　3. ビジネスローン</td></tr>
+<tr><th>用意する書類</th><td>決算書、試算表、売掛金の請求書、本人確認書類 ほか</td></tr>
+</table></div>
+<ul class="sb-points"><li>候補の手法と会社に加えて、外れた手法とその理由も載ります</li><li>手法ごとに違う必要書類を、共通分から先にそろえる形で一覧にします</li><li>印刷・保存して、各社の担当者への相談に使えます</li></ul>
+<div class="sb-ctas"><a class="btn btn-cta btn-hero" href="../index.html#check">状態チェックでシートを作る</a><a class="btn btn-ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSf48qJWe-muxLveesTBzHgfHhrD5b7jgVHew2RjvRThgWtPuA/viewform" target="_blank" rel="noopener">チェックなしで申し込む</a></div>
+<p class="sb-note">チェックなしで申し込む場合は、フォームの最後の欄に今の状況（期限・希望額など）を書いてください。内容を確認のうえ、メールでご連絡します。シートの作成も相談も無料です。連絡先の使い方は<a href="../privacy.html">プライバシーポリシー</a>に書いています。</p>
+</div><div class="byline">運営・編集：合同会社MELSY。この記事の数値と条件は、各社の公式ページで確認した内容に基づきます。掲載の基準と確認の方法は<a href="../about.html">運営者情報</a>に書いています。</div><div class="rel-box"><h2>次に読む</h2><p><b>基礎知識（仕組みの根幹）</b></p><ul><li><a href="basics-2sha.html">2社間ファクタリングの仕組みと申し込みの流れ</a></li><li><a href="basics-factoring.html">ファクタリングとは</a></li><li><a href="basics-recourse.html">償還請求権とは</a></li><li><a href="basics-registry.html">債権譲渡登記とは</a></li><li><a href="basics-guarantee.html">信用保証協会とは</a></li><li><a href="basics-businessloan.html">ビジネスローンとは</a></li><li><a href="basics-abl.html">ABLとは</a></li><li><a href="basics-safety-net.html">セーフティネット保証の認定の取り方</a></li></ul></div><p><a href="../index.html">トップへ戻る</a></p></article>
+<div class="sticky-cta"><a class="btn btn-cta bar-btn" href="../index.html#check">状態チェックをはじめる</a></div>
+<footer class="site"><div class="wrap"><p class="fname">建設的な資金調達を実現するサイト</p><div class="fcols"><div class="flist"><a class="fhead" href="../articles/index.html#basics">基礎知識（仕組みの根幹）</a><a class="l" href="../articles/basics-2sha.html">2社間ファクタリングの仕組みと申し込みの流れ</a><a class="l" href="../articles/basics-factoring.html">ファクタリングとは</a><a class="l" href="../articles/basics-recourse.html">償還請求権とは</a><a class="l" href="../articles/basics-registry.html">債権譲渡登記とは</a><a class="l" href="../articles/basics-guarantee.html">信用保証協会とは</a><a class="l" href="../articles/basics-businessloan.html">ビジネスローンとは</a><a class="l" href="../articles/basics-abl.html">ABLとは</a><a class="l" href="../articles/basics-safety-net.html">セーフティネット保証の認定の取り方</a></div><div class="flist"><a class="fhead" href="../articles/index.html#guides">状態別の進め方</a><a class="l" href="../articles/guide-first-time.html">初めての資金調達で、最初に確かめることと進め方</a><a class="l" href="../articles/guide-rejected.html">銀行の審査に落ちたときに、理由の切り分けと次の窓口</a><a class="l" href="../articles/guide-tax-arrears.html">税金の滞納がある事業者の資金調達と、最初の一手</a><a class="l" href="../articles/guide-startup.html">創業・開業直後の資金調達で使える窓口と順番</a><a class="l" href="../articles/guide-akaji.html">赤字・債務超過の事業者に残る資金調達の選択肢</a><a class="l" href="../articles/guide-equipment.html">設備投資の資金調達で、期間のミスマッチを避ける進め方</a><a class="l" href="../articles/guide-subsidy-bridge.html">補助金の採択後、入金までのつなぎ資金の進め方</a><a class="l" href="../articles/guide-institution-combo.html">公的融資だけでは足りないときの、民間の資金調達との併用の組み立て方</a><a class="l" href="../articles/guide-cashflow.html">資金繰り表の作り方と、月ごとの回し方</a><a class="l" href="../articles/guide-arv-delay.html">売掛先の入金が遅れた・倒産したときの資金繰りの進め方</a><a class="l" href="../articles/guide-urgent.html">支払いまで数日しかないときの資金調達の進め方</a><a class="l" href="../articles/guide-no-notify.html">売掛先に知られずに売掛金を資金化する進め方</a><a class="l" href="../articles/guide-refinance.html">借入の返済負担を軽くする進め方</a><a class="l" href="../articles/guide-order-received.html">大きな受注が決まったが先に費用がかかるときの進め方</a><a class="l" href="../articles/guide-tax-payment.html">納税の期限が近いが資金が足りないときの進め方</a><a class="l" href="../articles/guide-sole-proprietor.html">個人事業主の資金調達の進め方</a><a class="l" href="../articles/guide-medical-care.html">診療報酬・介護報酬の入金が約2か月先のときの進め方</a><a class="l" href="../articles/guide-notes-receivable.html">手形・でんさいを受け取ったときの現金化の進め方</a><a class="l" href="../articles/guide-payment-gap.html">売掛金の入金は来月なのに、今月の支払いが厳しいときの進め方</a></div><div class="flist"><a class="fhead" href="../methods/index.html">手法ガイド</a><a class="l" href="../methods/銀行融資.html">銀行融資（プロパー）</a><a class="l" href="../methods/信用保証協会付き融資.html">信用保証協会付き融資</a><a class="l" href="../methods/日本政策金融公庫.html">日本政策金融公庫の融資</a><a class="l" href="../methods/制度融資.html">制度融資</a><a class="l" href="../methods/マル経融資.html">マル経融資（小規模事業者経営改善資金）</a><a class="l" href="../methods/セーフティネット保証.html">セーフティネット保証・危機対応の貸付</a><a class="l" href="../methods/ビジネスローン.html">ノンバンクのビジネスローン</a><a class="l" href="../methods/カードローン.html">事業者向けカードローン</a><a class="l" href="../methods/不動産担保ローン.html">不動産担保ローン</a><a class="l" href="../methods/ABL.html">売掛債権担保融資（ABL）</a><a class="l" href="../methods/手形割引.html">手形割引</a><a class="l" href="../methods/リースと割賦.html">リースと割賦</a><a class="l" href="../methods/ファクタリング2社間.html">ファクタリング（2社間）</a><a class="l" href="../methods/ファクタリング3社間.html">ファクタリング（3社間）</a><a class="l" href="../methods/注文書ファクタリング.html">注文書ファクタリング</a><a class="l" href="../methods/診療報酬ファクタリング.html">診療報酬・介護報酬ファクタリング</a><a class="l" href="../methods/電子記録債権.html">手形・電子記録債権の売却</a><a class="l" href="../methods/補助金.html">補助金</a><a class="l" href="../methods/雇用助成金.html">雇用関係の助成金</a><a class="l" href="../methods/利子補給.html">自治体の利子補給・保証料補助</a><a class="l" href="../methods/クラウドファンディング.html">クラウドファンディング（購入型・融資型）</a><a class="l" href="../methods/出資.html">出資（ベンチャーキャピタル・個人投資家）</a><a class="l" href="../methods/私募債.html">私募債・銀行保証付私募債</a><a class="l" href="../methods/請求書カード払い.html">請求書カード払い・B2B掛け払い</a></div><div class="flist"><span class="fhead">サービスの比較</span><a class="l" href="../compare/銀行融資.html">銀行融資（プロパー）のサービス比較</a><a class="l" href="../compare/信用保証協会付き融資.html">信用保証協会付き融資のサービス比較</a><a class="l" href="../compare/日本政策金融公庫.html">日本政策金融公庫の融資のサービス比較</a><a class="l" href="../compare/ビジネスローン.html">ノンバンクのビジネスローンのサービス比較</a><a class="l" href="../compare/カードローン.html">事業者向けカードローンのサービス比較</a><a class="l" href="../compare/不動産担保ローン.html">不動産担保ローンのサービス比較</a><a class="l" href="../compare/手形割引.html">手形割引のサービス比較</a><a class="l" href="../compare/ファクタリング2社間.html">ファクタリング（2社間）のサービス比較</a><a class="l" href="../compare/注文書ファクタリング.html">注文書ファクタリングのサービス比較</a><a class="l" href="../compare/診療報酬ファクタリング.html">診療報酬・介護報酬ファクタリングのサービス比較</a><a class="l" href="../compare/電子記録債権.html">手形・電子記録債権の売却のサービス比較</a><a class="l" href="../compare/クラウドファンディング.html">クラウドファンディング（購入型・融資型）のサービス比較</a><a class="l" href="../compare/請求書カード払い.html">請求書カード払い・B2B掛け払いのサービス比較</a><a class="l" href="../compare-tool.html">比較ツール（最大4社まで）</a><a class="l" href="../cost-index.html">資金調達コスト・インデックス</a><a class="l" href="../companies/index.html">運営会社の一覧</a><a class="l" href="../ranking/index.html">手法別ランキング</a><a class="l" href="../observation.html">観測の記録</a></div></div><p>運営：合同会社MELSY（<a href="../about.html">運営者情報</a>）</p>このサイトは一般的な情報の提供を目的としています。個別の可否は各社の審査で決まります。</div></footer>
+<script>const io = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } }), {threshold: .12}); document.querySelectorAll('.rv').forEach(el => io.observe(el));</script>
+</body></html>
